@@ -1,0 +1,27 @@
+https://www.revaw.fr/passport/RW-48v2710000/bUTl5j
+echo '{ "ri_discharge_average": 0.00123, "ri_charge_average": 0.00115, "diffusion_discharge_average": 0.00045, "diffusion_charge_average": 0.00052 }' | mosquitto_pub -h localhost -p 1883 -t "banc1/ri/results" -l
+python-csv-sync@suivibatteriescsv.iam.gserviceaccount.com
+
+
+echo '{ "ri_discharge_average": 0.00455, "ri_charge_average": 0.00457, "diffusion_discharge_average": 0.213292, "diffusion_charge_average": 0.00186 }' | mosquitto_pub -h localhost -p 1883 -t "banc1/ri/results" -l
+
+echo '{ "ri_discharge_average": 0.24781, "diffusion_discharge_average": 0.213292, "ri_charge_average": 0.30423, "diffusion_charge_average": 0.20282, "delta_ri_cells": [0.00012, 0.00013, 0.00011, 0.00012, 0.00014, 0.00013, 0.00012, 0.00015, 0.00011, 0.00012, 0.00013, 0.00014, 0.00012, 0.00013, 0.00011], "delta_diffusion_cells": [0.00005, 0.00006, 0.00005, 0.00005, 0.00006, 0.00007, 0.00005, 0.00006, 0.00005, 0.00005, 0.00006, 0.00006, 0.00005, 0.00005, 0.00004] }' | mosquitto_pub -h localhost -p 1883 -t "banc1/ri/results" -l
+
+{
+  "ri_discharge_average": 0.00085,
+  "diffusion_discharge_average": 0.00015,
+  "ri_charge_average": 0.00075,
+  "diffusion_charge_average": 0.00012,
+  "delta_ri_average": 0.0001,
+  "delta_diffusion_average": 0.00003,
+  "delta_ri_cells": [
+    0.00012, 0.00013, 0.00011, 0.00012, 0.00014, 0.00013, 0.00012, 
+    0.00015, 0.00011, 0.00012, 0.00013, 0.00014, 0.00012, 0.00013, 
+    0.00011
+  ],
+  "delta_diffusion_cells": [
+    0.00005, 0.00006, 0.00005, 0.00005, 0.00006, 0.00007, 0.00005, 
+    0.00006, 0.00005, 0.00005, 0.00006, 0.00006, 0.00005, 0.00005, 
+    0.00004
+  ]
+}
