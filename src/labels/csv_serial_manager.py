@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Gestionnaire pour les fichiers CSV et la génération de numéros de série.
 """

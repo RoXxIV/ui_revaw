@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Utilitaires pour la gestion des fichiers et dossiers des bancs de test.
 """

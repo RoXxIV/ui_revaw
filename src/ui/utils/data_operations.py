@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Gestionnaire des opérations sur les données et fichiers.
 

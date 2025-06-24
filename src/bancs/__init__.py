@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Ce module regroupe :
 - Les handlers pour les messages MQTT des bancs

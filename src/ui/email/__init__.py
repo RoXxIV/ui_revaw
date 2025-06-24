@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Module de configuration et templates pour les emails.
 """

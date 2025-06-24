@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Handlers pour les messages MQTT du service d'impression.
 """

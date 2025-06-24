@@ -1,22 +1,26 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import tkinter as tk
 from PIL import Image
 import customtkinter as ctk
-import json, os, threading, time, re, subprocess, sys
+import json, os, time
 import paho.mqtt.client as mqtt
 import threading
 import socket
 from src.ui.scan import ScanManager
-from src.ui.utils import (get_banc_info, VALID_BANCS, load_bancs_config, get_banc_for_serial, find_battery_folder,
-                          is_past_business_hours, is_banc_running, set_banc_status, get_charge_duration, log,
-                          MQTT_BROKER, MQTT_PORT, DATA_DIR, get_temperature_coefficient, NUM_BANCS, reset_specific_banc,
-                          is_printer_service_running, is_battery_checked)
-from src.ui.ui_components import (update_soc_canvas, create_block_labels, _create_info_widget, MultiColorProgress,
-                                  get_phase_message, _get_balance_color, _get_temp_color, _get_capacity_color,
-                                  _get_energy_color)
+from src.ui.utils import (
+    load_bancs_config,
+    get_charge_duration,
+    log,
+    MQTT_BROKER,
+    MQTT_PORT,
+    get_temperature_coefficient,
+    NUM_BANCS,
+)
+from src.ui.ui_components import (update_soc_canvas, create_block_labels, get_phase_message, _get_balance_color,
+                                  _get_temp_color, _get_capacity_color, _get_energy_color)
 from src.ui.email import EmailTemplates, email_config
 from src.ui import get_ui_message_handlers
-from datetime import datetime
-from urllib.parse import urlparse
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart

@@ -1,18 +1,11 @@
-# 1. Imports de la Bibliothèque Standard
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import socket
 import time
 import collections
 import threading
-import re  # Pour l'analyse de la réponse
-import random
-import string
-import csv
-import os
-from datetime import datetime
-import json
-# 2. Imports de Bibliothèques Tierces
+import re
 import paho.mqtt.client as mqtt
-# 3. Imports Locale
 from src.ui.utils import log
 from src.labels import LabelTemplates, PrinterConfig, CSVSerialManager, get_topic_handlers
 

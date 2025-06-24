@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Configuration pour le service d'impression des étiquettes.
 """

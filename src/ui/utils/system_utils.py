@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Utilitaires système et logging.
 

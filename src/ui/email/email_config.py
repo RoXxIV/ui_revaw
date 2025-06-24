@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Gestionnaire de configuration email pour le système de test de batteries.
 

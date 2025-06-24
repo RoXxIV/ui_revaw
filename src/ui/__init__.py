@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Package 'ui' pour l'interface utilisateur et la logique associée.
 

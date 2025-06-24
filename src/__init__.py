@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Package principal 'src' du projet Banc de Test de Batterie.
 

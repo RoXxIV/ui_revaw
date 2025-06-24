@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Ce module regroupe toutes les fonctions utilitaires organisées par famille :
 - config_manager : Gestion des configurations des bancs

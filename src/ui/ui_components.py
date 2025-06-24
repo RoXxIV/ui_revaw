@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import tkinter as tk
 import customtkinter as ctk
 from src.ui.utils import log

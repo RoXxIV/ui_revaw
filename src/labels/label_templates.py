@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Templates ZPL pour les étiquettes d'impression.
 """

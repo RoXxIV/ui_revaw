@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Gestionnaire pour les fichiers de configuration des bancs de test.
 """

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Ce module fournit une interface simplifiée pour la gestion des scans
 via la classe ScanManager, qui encapsule toute la logique de traitement

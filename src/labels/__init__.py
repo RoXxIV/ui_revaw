@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Module complet pour la gestion des étiquettes d'impression.
 

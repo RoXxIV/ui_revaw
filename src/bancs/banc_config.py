@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Configuration pour les bancs de test de batteries.
 """
