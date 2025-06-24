@@ -6,7 +6,7 @@ import collections
 import threading
 import re
 import paho.mqtt.client as mqtt
-from src.ui.utils import log
+from src.ui.system_utils import log
 from src.labels import LabelTemplates, PrinterConfig, CSVSerialManager, get_topic_handlers
 
 # --- File d'attente et Verrou ---

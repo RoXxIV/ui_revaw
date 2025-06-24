@@ -6,8 +6,7 @@ import csv
 import os
 import random
 import string
-from datetime import datetime
-from src.ui.utils import log
+from src.ui.system_utils import log
 
 
 class CSVSerialManager:

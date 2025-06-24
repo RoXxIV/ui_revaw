@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import tkinter as tk
 import customtkinter as ctk
-from src.ui.utils import log
+from .system_utils import log
 
 
 def update_soc_canvas(canvas, soc):

@@ -3,7 +3,7 @@
 Utilitaires pour la gestion des fichiers et dossiers des bancs de test.
 """
 import os
-from src.ui.utils import log
+from src.ui.system_utils import log
 
 
 class FileUtils:

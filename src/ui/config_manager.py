@@ -13,6 +13,7 @@ import random
 from .system_utils import log
 
 # Constantes importées
+DATA_DIR = "data"
 NUM_BANCS = 4
 VALID_BANCS = [f"banc{i+1}" for i in range(NUM_BANCS)]
 CONFIG_PATH = "bancs_config.json"

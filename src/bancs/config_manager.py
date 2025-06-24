@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
-"""
-Gestionnaire pour les fichiers de configuration des bancs de test.
-"""
 import json
 import os
 from datetime import datetime
-from src.ui.utils import log
+from src.ui.system_utils import log
+from src.ui import DATA_DIR
 
 
 class BancConfigManager:
     """
-    Classe pour gérer les opérations de configuration des bancs de test.
+    Classe pour gérer les Json de configuration.
     """
 
     @staticmethod
@@ -32,7 +30,6 @@ class BancConfigManager:
                   Retourne le défaut même si un fichier existant est corrompu (il sera écrasé).
                   Peut lever une exception si la création du dossier/fichier par défaut échoue.
         """
-        from src.ui.utils import DATA_DIR
 
         # Construit le chemin vers le fichier config.json attendu dans le dossier de la batterie.
         config_path = os.path.join(battery_folder, "config.json")

@@ -4,7 +4,7 @@ Handlers pour les messages MQTT du service d'impression.
 """
 import json
 from datetime import datetime
-from src.ui.utils import log
+from src.ui.system_utils import log
 from .csv_serial_manager import CSVSerialManager
 
 

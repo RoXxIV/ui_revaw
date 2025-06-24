@@ -10,7 +10,7 @@ composants graphiques réutilisables, et les handlers de messages MQTT.
 # --- Imports depuis les sous-modules ---
 
 # Depuis le gestionnaire de scan
-from .scan.scan_manager import ScanManager
+from .scan_manager import ScanManager
 
 # Depuis les composants graphiques réutilisables
 from .ui_components import (create_block_labels, update_soc_canvas, MultiColorProgress)
@@ -21,19 +21,34 @@ from .email.email_config import email_config, EmailConfig
 
 # Depuis les handlers de messages MQTT
 from .message_handlers import get_ui_message_handlers
+# Depuis le module de gestion des phases
+from .phase_calculator import PhaseCalculator
+from .animation_manager import AnimationManager
+from .ui_updater import UIUpdater
+# Depuis le module de gestion des bancs
+from .config_manager import load_bancs_config, NUM_BANCS, DATA_DIR
+from .system_utils import log, MQTT_BROKER, MQTT_PORT
+from .data_operations import get_charge_duration, get_temperature_coefficient
 
 __all__ = [
-    # Exportations de scan et email
     'ScanManager',
     'EmailTemplates',
     'email_config',
     'EmailConfig',
-
-    # Exportations réelles de ui_components.py
     'create_block_labels',
     'update_soc_canvas',
     'MultiColorProgress',
-
-    # Handlers MQTT
     'get_ui_message_handlers',
+    'PhaseCalculator',
+    'AnimationManager',
+    'UIUpdater',
+    'load_bancs_config',
+    'NUM_BANCS',
+    'log',
+    'MQTT_BROKER',
+    'MQTT_PORT',
+    'get_charge_duration',
+    'get_temperature_coefficient',
+    'ScanManager',
+    'DATA_DIR',
 ]

@@ -9,7 +9,7 @@ offrant une interface propre pour accéder aux paramètres SMTP et destinataires
 import json
 import os
 from typing import List, Optional
-from src.ui.utils import log
+from ..system_utils import log
 
 
 class EmailConfig:

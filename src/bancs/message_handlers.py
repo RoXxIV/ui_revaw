@@ -10,7 +10,7 @@ import os
 import json
 import shutil
 from datetime import datetime
-from src.ui.utils import log, is_printer_service_running
+from src.ui.system_utils import log, is_printer_service_running
 from .banc_config import BancConfig
 from .config_manager import BancConfigManager
 

@@ -2,8 +2,7 @@
 """
 Handlers pour les messages MQTT de l'interface utilisateur.
 """
-import json
-from src.ui.utils import log
+from .system_utils import log
 from .ui_components import get_phase_message
 
 
@@ -20,14 +19,14 @@ def handle_step_message(payload_str, banc_id, app):
         new_step = int(payload_str)
     except ValueError:
         log(f"UI: Payload /step invalide pour {banc_id}: {payload_str}", level="WARNING")
-        return  # Ignorer si le step n'est pas un nombre.
+        return
 
     widgets = app.banc_widgets.get(banc_id)
     if not widgets:
         log(f"UI: Widgets non trouvés pour {banc_id} lors réception step {new_step}", level="WARNING")
         return
 
-    # Récupère l'étape précédente connue par l'UI AVANT de la mettre à jour.
+    # Récupère l'étape précédente connue par l'UI AVANT de la mettre à jour
     previous_step = widgets.get("current_step", 0)
     widgets["current_step"] = new_step
 
@@ -57,10 +56,10 @@ def handle_step_message(payload_str, banc_id, app):
         log(f"UI: Étape 2 détectée pour {banc_id}. Planification MAJ Ri/Diffusion UI.", level="INFO")
         app.after(0, app.update_ri_diffusion_widgets, banc_id)
 
-    # Si la nouvelle étape est une phase active à animer (1, 2, 3 ou 4).
+    # Si la nouvelle étape est une phase active à animer (1, 2, 3 ou 4)
     if new_step in [1, 2, 3, 4]:
         app.after(0, app.animate_phase_segment, banc_id, new_step)
-    # Si la nouvelle étape est 5 (fin normale du test).
+    # Si la nouvelle étape est 5 (fin normale du test)
     elif new_step == 5:
         _handle_step_5_test_completed(banc_id, app, widgets)
 
@@ -120,7 +119,7 @@ def handle_state_message(payload_str, banc_id, app):
     action = state_map.get(payload_str)
     if action:
         icon_type, icon_state = action
-        # mettre à jour l'UI
+        # Mettre à jour l'UI
         app.after(0, app.update_status_icon, banc_id, icon_type, icon_state)
     else:
         log(f"UI: Payload non reconnu '{payload_str}' reçu sur le topic /{banc_id}/state", level="WARNING")
@@ -133,10 +132,10 @@ def _handle_step_6_failed_test(banc_id, app, widgets):
     """Gère le step 6 (test échoué)."""
     log(f"UI: Step 6 (Test ÉCHOUÉ) reçu pour {banc_id}. Arrêt timer et MàJ UI.", level="INFO")
 
-    # 1. Finaliser/Stopper l'animation de la phase en cours.
-    app.finalize_previous_phase(banc_id)
+    # 1. Finaliser/Stopper l'animation de la phase en cours
+    app.animation_manager.finalize_previous_phase(banc_id)
 
-    # 2. Mettre à jour le label du temps restant.
+    # 2. Mettre à jour le label du temps restant
     label_time_left_step6 = widgets.get("time_left")
     if label_time_left_step6:
         app.after(0, lambda w=label_time_left_step6: w.configure(text="Terminé (Échec)"))
@@ -169,24 +168,10 @@ def _handle_step_7_security_stop(banc_id, app, widgets):
     """Gère le step 7 (arrêt sécurité ESP32)."""
     log(f"UI: Step 7 (Arrêt Sécurité ESP32) reçu pour {banc_id}. Arrêt du timer d'animation UI.", level="INFO")
 
-    # 1. Stopper l'animation de la phase en cours sans la marquer comme "terminée à 100%"
-    active_timer_info = app.active_phase_timers.get(banc_id)
-    if active_timer_info:
-        active_timer_info["cancel"] = True  # Signale à la boucle d'animation de s'arrêter
-        after_id_to_cancel = active_timer_info.get("after_id")
-        if after_id_to_cancel:
-            try:
-                app.after_cancel(after_id_to_cancel)
-                log(f"UI: Timer d'animation (ID: {after_id_to_cancel}) pour {banc_id} annulé suite à Step 7.",
-                    level="DEBUG")
-            except ValueError:
-                log(f"UI: Tentative d'annulation d'un timer d'animation (ID: {after_id_to_cancel}) déjà expiré/invalide pour {banc_id} (Step 7).",
-                    level="WARNING")
-        # Retirer l'entrée du timer pour ce banc
-        app.active_phase_timers.pop(banc_id, None)
-        log(f"UI: Entrée active_phase_timers pour {banc_id} retirée suite à Step 7.", level="DEBUG")
+    # Utiliser AnimationManager pour annuler toutes les animations
+    app.animation_manager.cancel_all_animations(banc_id)
 
-    # 2. Mettre à jour le label du temps restant
+    # Mettre à jour le label du temps restant
     label_time_left = widgets.get("time_left")
     if label_time_left:
         app.after(0, lambda w=label_time_left: w.configure(text="--:--:--"))
@@ -195,17 +180,20 @@ def _handle_step_7_security_stop(banc_id, app, widgets):
 def _handle_step_8_stop_requested(banc_id, app):
     """Gère le step 8 (arrêt demandé)."""
     log(f"UI: Step 8 (Arrêt) reçu pour {banc_id}. Reset activé pour ce banc.", level="INFO")
-    # Active le flag permettant le reset manuel pour ce banc.
+
+    # Active le flag permettant le reset manuel pour ce banc
     app.reset_enabled_for_banc[banc_id] = True
-    app.finalize_previous_phase(banc_id)
+
+    # Utiliser AnimationManager
+    app.animation_manager.finalize_previous_phase(banc_id)
 
 
 def _handle_step_9_manual_stop(banc_id, app, widgets, previous_step):
     """Gère le step 9 (arrêt manuel)."""
     log(f"UI: Step 9 reçu pour {banc_id}. Arrêt timer et correction label phase.", level="INFO")
 
-    # Arrêter l'animation/timer en cours
-    app.finalize_previous_phase(banc_id)
+    # Arrêter l'animation/timer en cours avec AnimationManager
+    app.animation_manager.finalize_previous_phase(banc_id)
 
     # Réinitialiser l'affichage du timer à 0
     label_time_left = widgets.get("time_left")
@@ -222,11 +210,13 @@ def _handle_step_9_manual_stop(banc_id, app, widgets, previous_step):
 
 def _handle_step_5_test_completed(banc_id, app, widgets):
     """Gère le step 5 (test terminé avec succès)."""
-    app.finalize_previous_phase(banc_id)  # Finaliser la phase precedente.
+    # Utiliser AnimationManager pour finaliser la phase précédente
+    app.animation_manager.finalize_previous_phase(banc_id)
 
     phase_bar = widgets.get("progress_bar_phase")
     if phase_bar:
-        try:  # Tente de mettre TOUS les segments de la barre à 100% pour indiquer la complétion.
+        try:
+            # Mettre TOUS les segments de la barre à 100%
             if hasattr(phase_bar, 'progress_ri'):
                 app.after(0, phase_bar.progress_ri.set, 1.0)
             if hasattr(phase_bar, 'progress_phase2'):

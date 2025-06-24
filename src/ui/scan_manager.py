@@ -6,10 +6,10 @@ import os
 import subprocess
 import sys
 from datetime import datetime
-from src.ui.utils import (VALID_BANCS, log, get_banc_info, is_banc_running, get_banc_for_serial, find_battery_folder,
-                          is_past_business_hours, set_banc_status, is_printer_service_running, is_battery_checked,
-                          DATA_DIR, reset_specific_banc)
-from src.ui.ui_components import get_phase_message
+from .config_manager import (VALID_BANCS, get_banc_info, get_banc_for_serial, set_banc_status, reset_specific_banc)
+from .data_operations import (find_battery_folder, is_battery_checked, DATA_DIR)
+from .system_utils import (log, is_banc_running, is_printer_service_running, is_past_business_hours)
+from .ui_components import get_phase_message
 
 
 class ScanManager:
@@ -302,7 +302,6 @@ class ScanManager:
 
         # Réinitialisation des animations et barres de progression
         self.app.finalize_previous_phase(self.scanned_banc)
-        self.app.active_phase_timers.pop(self.scanned_banc, None)
 
         # Réinitialisation de la bordure
         parent_frame = widgets.get("parent_frame")
@@ -336,10 +335,7 @@ class ScanManager:
             return
 
         try:
-            import os  # Import nécessaire pour os.path.join
-            from datetime import datetime  # Import nécessaire pour datetime
-
-            # Vérification que DATA_DIR est bien une string (optionnel mais bonne pratique)
+            # Vérification que DATA_DIR est bien une string
             if not isinstance(DATA_DIR, str):
                 raise ValueError("DATA_DIR must be a string")
 

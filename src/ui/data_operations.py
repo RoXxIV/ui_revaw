@@ -13,9 +13,9 @@ import os
 import csv
 import bisect
 from .system_utils import log
-
+from .config_manager import DATA_DIR
 # Constantes
-DATA_DIR = "data"
+
 SERIALS_CSV_PATH = "printed_serials.csv"
 MODULE_DIR = os.path.dirname(__file__)
 CHARGE_PROFILE_PATH = os.path.join(MODULE_DIR, "charge_profile.csv")

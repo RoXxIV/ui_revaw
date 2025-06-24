@@ -4,7 +4,7 @@ Gestionnaire pour les fichiers CSV des bancs de test.
 """
 import csv
 import os
-from src.ui.utils import log
+from src.ui.system_utils import log
 from .banc_config import BancConfig
 
 
