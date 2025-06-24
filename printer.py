@@ -362,12 +362,14 @@ def printer_worker_thread():
 def create_topic_handlers():
     """Crée les handlers MQTT avec accès aux variables globales."""
     base_handlers = get_topic_handlers()
+    print(f"DEBUG: base_handlers keys: {list(base_handlers.keys())}")  # ← Ajout
 
-    # Wrapper qui injecte print_queue et queue_lock dans chaque handler
     wrapped_handlers = {}
     for topic, handler_func in base_handlers.items():
+        print(f"DEBUG: Wrapping {topic} -> {handler_func.__name__}")  # ← Ajout
         wrapped_handlers[topic] = lambda payload, h=handler_func: h(payload, print_queue, queue_lock)
 
+    print(f"DEBUG: wrapped_handlers keys: {list(wrapped_handlers.keys())}")  # ← Ajout
     return wrapped_handlers
 
 

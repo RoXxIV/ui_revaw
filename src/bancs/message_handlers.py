@@ -6,6 +6,7 @@ import time
 import csv
 import io
 import os
+import json
 import shutil
 from datetime import datetime
 from src.ui.utils import log, is_printer_service_running
@@ -114,6 +115,7 @@ def handle_step_message(payload_str, banc, current_step, csv_file, csv_writer, b
 
             # === GESTION SPÉCIFIQUE DE LA FIN DE TEST (STEP 5) ===
             if new_current_step == 5:
+                log(f"{banc}: *** STEP 5 DETECTE - DEBUT TRAITEMENT ***", level="INFO")
                 log(f"{banc}: Test terminé (Step 5 reçu). Nettoyage et arrêt.", level="INFO")
                 reset_banc_config_func()
                 timestamp_test_done = datetime.now().isoformat()
@@ -121,8 +123,10 @@ def handle_step_message(payload_str, banc, current_step, csv_file, csv_writer, b
                 # Vérification du service d'impression
                 printer_service_ok = False
                 try:
+                    log(f"{banc}: *** VERIFICATION SERVICE IMPRESSION ***", level="INFO")
                     if is_printer_service_running():
                         printer_service_ok = True
+                        log(f"{banc}: *** SERVICE IMPRESSION OK ***", level="INFO")
                     else:
                         log(f"{banc}: AVERTISSEMENT - Service d'impression non détecté (Step 5).", level="WARNING")
                         if client.is_connected():
@@ -142,8 +146,10 @@ def handle_step_message(payload_str, banc, current_step, csv_file, csv_writer, b
 
                 # Envoi des tâches à printer.py si service OK
                 if printer_service_ok:
+                    log(f"{banc}: *** DEBUT ENVOI VERS PRINTER.PY ***", level="INFO")
                     log(f"{banc}: Service d'impression détecté. Envoi des tâches à printer.py.", level="INFO")
                     _send_test_done_to_printer(banc, serial_number, timestamp_test_done, client)
+                    log(f"{banc}: *** FIN ENVOI VERS PRINTER.PY ***", level="INFO")
                 else:
                     log(f"{banc}: Pas de tâches envoyées à printer.py (service inactif ou erreur vérification).",
                         level="WARNING")
@@ -153,7 +159,7 @@ def handle_step_message(payload_str, banc, current_step, csv_file, csv_writer, b
                 _handle_final_cleanup(banc, client)
 
                 log(f"{banc}: Fin du processus (appel à sys.exit(0)).", level="INFO")
-                return new_current_step, True, 0
+                sys.exit(0)
 
             return new_current_step, False, 0
 
@@ -238,17 +244,18 @@ def _send_test_done_to_printer(banc, serial_number, timestamp_test_done, client)
     """
     Envoie la tâche consolidée à printer.py pour la fin de test.
     """
-    import json
-
+    log(f"{banc}: *** ENTREE DANS _send_test_done_to_printer ***", level="INFO")
     topic_test_done = "printer/test_done"
     payload_test_done_dict = {"serial_number": serial_number, "timestamp_test_done": timestamp_test_done}
 
     try:
         payload_test_done_json = json.dumps(payload_test_done_dict)
+        log(f"{banc}: *** PAYLOAD PREPARE: {payload_test_done_json} ***", level="INFO")
         log(f"{banc}: Préparation publish '{topic_test_done}'. Connecté: {client.is_connected()}. Payload: {payload_test_done_json}",
             level="DEBUG")
 
         if client.is_connected():
+            log(f"{banc}: *** CLIENT MQTT CONNECTE - ENVOI EN COURS ***", level="INFO")
             import paho.mqtt.client as mqtt
             publish_result, mid = client.publish(
                 topic_test_done, payload=payload_test_done_json, qos=1)  # QoS 1 pour fiabilité
@@ -304,16 +311,7 @@ def _handle_final_cleanup(banc, client):
     pause_duration = BancConfig.PAUSE_DURATION_FINAL_S
     log(f"{banc}: Pause de {pause_duration}s pour traitement réseau avant déconnexion...", level="DEBUG")
     time.sleep(pause_duration)
-
-    log(f"{banc}: Préparation à la déconnexion finale et à la sortie (sys.exit).", level="INFO")
-    if client.is_connected():
-        try:
-            log(f"{banc}: Appel explicite de client.disconnect()", level="DEBUG")
-            client.disconnect()
-        except Exception as disc_e:
-            log(f"{banc}: ERREUR Inattendue lors de client.disconnect(): {disc_e}", level="ERROR")
-    else:
-        log(f"{banc}: Client déjà déconnecté avant l'appel final à disconnect.", level="WARNING")
+    log(f"{banc}: Nettoyage terminé. sys.exit() va fermer la connexion.", level="INFO")
 
 
 def get_banc_message_handlers():

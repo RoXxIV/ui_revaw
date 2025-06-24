@@ -1,11 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import sys
-import json
-import os
-import time
-import threading
-import socket
+import sys, json, os, time, threading, socket
 from datetime import datetime
 import paho.mqtt.client as mqtt
 from src.ui.utils import (
@@ -23,20 +18,23 @@ from src.bancs import (get_banc_message_handlers, BancConfig, CSVManager, BancCo
 if len(sys.argv) < 3:  # Check le nombre d'arguments (nom_script, banc, serial).
     log("Usage : python banc.py <bancX> <numero_de_serie>", level="ERROR")
     sys.exit(1)
+
 # Récupère le nom du banc et le numéro de série depuis les arguments.
 BANC = sys.argv[1].lower()
 serial_number = sys.argv[2]
+
 # Valide le nom du banc par rapport à la liste dans utils.py
 if BANC not in VALID_BANCS:
     log(f"Nom de banc invalide : {BANC}", level="ERROR")
-    sys.exit(1)  # Quitte le script avec un code d'erreur 1 (indiquant une fin anormale).
+    sys.exit(1)
 
+# Variables globales
 BATTERY_FOLDER_PATH = None
 current_step = 0
 csv_file = None
 csv_writer = None
-# Variable pour la surveillance d'activité BMS
-last_bms_data_received_time = {'time': None}  # Utilisation d'un dict pour la référence
+# Variable pour la surveillance d'activité BMS - Dict pour référence partagée
+last_bms_data_received_time = {'time': time.time()}
 
 
 def on_banc_publish_simple(client, userdata, mid):
@@ -51,30 +49,22 @@ def close_csv():
 
 
 def update_config(new_step):
-    """
-    Met à jour le fichier config.json spécifique à la batterie avec la nouvelle étape.
-    """
+    """Met à jour le fichier config.json spécifique à la batterie avec la nouvelle étape."""
     return BancConfigManager.update_config(BATTERY_FOLDER_PATH, new_step, BANC, update_bancs_config_current_step)
 
 
 def update_config_bms(timestamp, cap_ah, cap_wh):
-    """
-    Met à jour le fichier config.json spécifique à la batterie avec les données BMS.
-    """
+    """Met à jour le fichier config.json spécifique à la batterie avec les données BMS."""
     return BancConfigManager.update_config_bms(BATTERY_FOLDER_PATH, timestamp, cap_ah, cap_wh, BANC)
 
 
 def update_config_ri_results(ri_data):
-    """
-    Met à jour le fichier config.json spécifique à la batterie avec les résultats RI.
-    """
+    """Met à jour le fichier config.json spécifique à la batterie avec les résultats RI."""
     return BancConfigManager.update_config_ri_results(BATTERY_FOLDER_PATH, ri_data, BANC)
 
 
 def reset_banc_config():
-    """
-    Réinitialise les paramètres du banc actuel dans le fichier de configuration principal.
-    """
+    """Réinitialise les paramètres du banc actuel dans le fichier de configuration principal."""
     BancConfigManager.reset_banc_config(BANC, BANC_CONFIG_FILE)
 
 
@@ -82,11 +72,9 @@ def bms_activity_checker_thread_func(client):
     """
     [THREAD SÉPARÉ] Vérifie périodiquement la réception des données BMS.
     Publie sur /security si aucune donnée n'est reçue après BMS_DATA_TIMEOUT_S.
-
-    Args:
-        client (paho.mqtt.client.Client): L'instance du client MQTT pour publier.
     """
-    global last_bms_data_received_time
+    global last_bms_data_received_time  # IMPORTANT: Déclaration globale
+
     log(f"{BANC}: Thread surveillance activité BMS démarré (Timeout: {BancConfig.BMS_DATA_TIMEOUT_S}s, Check: {BancConfig.BMS_CHECK_INTERVAL_S}s).",
         level="INFO")
 
@@ -95,20 +83,23 @@ def bms_activity_checker_thread_func(client):
         # Met le thread en pause pour l'intervalle de vérification défini.
         time.sleep(BancConfig.BMS_CHECK_INTERVAL_S)
         last_known_time = last_bms_data_received_time['time']
+
         if last_known_time is not None:  # Vérifie si on a déjà reçu au moins une donnée BMS.
             now = time.time()
             time_since_last_data = now - last_known_time
-            # Vérifie si le temps écoulé dépasse le seuil de timeout défini. 30s
+
+            # Vérifie si le temps écoulé dépasse le seuil de timeout défini.
             if time_since_last_data > BancConfig.BMS_DATA_TIMEOUT_S:
                 log(f"{BANC}: TIMEOUT - Aucune donnée BMS reçue depuis {time_since_last_data:.0f} secondes!",
                     level="ERROR")
+
                 # Préparation et publication de l'alerte MQTT.
                 security_topic = f"{BANC}/security"
                 security_payload = f"Timeout BMS {BANC}"
                 try:
                     # Utilise l'instance client passée en argument
                     if client and client.is_connected():
-                        client.publish(security_topic, payload=security_payload, qos=1)  # QoS 1 pour fiabilité
+                        client.publish(security_topic, payload=security_payload, qos=1)
                         log(f"{BANC}: Alerte Timeout publiée sur {security_topic}", level="INFO")
                     else:
                         log(f"{BANC}: Client MQTT non connecté, alerte timeout non envoyée.", level="WARNING")
@@ -116,7 +107,7 @@ def bms_activity_checker_thread_func(client):
                     log(f"{BANC}: Erreur publication alerte security: {pub_e}", level="ERROR")
 
                 # Réinitialiser le timer APRÈS avoir envoyé l'alerte
-                last_bms_data_received_time = {'time': None}
+                last_bms_data_received_time['time'] = now
         else:
             # Pas encore reçu de données depuis l'initialisation de ce thread/timer.
             log(f"{BANC}: Surveillance en attente de la première donnée BMS.", level="DEEP_DEBUG")
@@ -176,13 +167,9 @@ def global_mqtt_config(initial_step):
     Configure le client MQTT, s'abonne aux topics nécessaires pour ce banc,
     publie un payload initial, ouvre le fichier CSV pour l'écriture,
     puis lance la boucle principale de réception MQTT (bloquante).
-    args:
-        initial_step (int): Etape initiale du banc.
-    Returns:
-        None: La fonction boucle indéfiniment via loop_forever() ou se termine
-              sur erreur critique.
     """
     global csv_file, csv_writer, BATTERY_FOLDER_PATH, last_bms_data_received_time
+
     if not BATTERY_FOLDER_PATH:
         log(f"{BANC}: ERREUR CRITIQUE - BATTERY_FOLDER_PATH non défini avant init MQTT.", level="ERROR")
         return
@@ -192,10 +179,11 @@ def global_mqtt_config(initial_step):
         client = mqtt.Client(
             client_id=f"banc_script_{BANC}",
             callback_api_version=mqtt.CallbackAPIVersion.VERSION1  # type: ignore [attr-defined]
-        )  # voir stackoverflow pour cette erreur ?
+        )
         client.on_message = on_message
         client.on_publish = on_banc_publish_simple
         client.on_log = on_paho_log
+
         log(f"{BANC}: Connexion à MQTT ({MQTT_BROKER}:{MQTT_PORT})...", level="INFO")
         client.connect(MQTT_BROKER, MQTT_PORT, 60)
 
@@ -208,7 +196,7 @@ def global_mqtt_config(initial_step):
         result, mid = client.subscribe(topics_to_subscribe)
         if result != mqtt.MQTT_ERR_SUCCESS:
             log(f"{BANC}: ERREUR CRITIQUE - Échec abonnement MQTT (Code: {result}). Arrêt.", level="ERROR")
-            return  # Arrêter le script si l'abonnement initial échoue
+            return
 
         log(f"{BANC}: Abonnements MQTT réussis.", level="INFO")
 
@@ -216,8 +204,7 @@ def global_mqtt_config(initial_step):
         config_path = os.path.join(BATTERY_FOLDER_PATH, "config.json")
         config_data = {}
         try:
-            # Ajouter encoding
-            with open(config_path, "r", encoding="utf-8") as file:  # Mode lecture ("r").
+            with open(config_path, "r", encoding="utf-8") as file:
                 loaded_content = json.load(file)
                 if isinstance(loaded_content, dict):
                     config_data = loaded_content
@@ -228,7 +215,7 @@ def global_mqtt_config(initial_step):
 
         # Prépare le dictionnaire (payload) à envoyer à l'ESP32 via /command.
         init_payload = {
-            "current_step": config_data.get("current_step", initial_step),  # Utilise initial_step si absent
+            "current_step": config_data.get("current_step", initial_step),
             "capacity_ah": config_data.get("capacity_ah", 0),
             "capacity_wh": config_data.get("capacity_wh", 0)
         }
@@ -250,22 +237,17 @@ def global_mqtt_config(initial_step):
             return
 
         # Initialisation du timestamp et démarrage du thread de surveillance BMS.
-        last_bms_data_received_time = {'time': time.time()}
+        last_bms_data_received_time['time'] = time.time()
         log(f"{BANC}: Démarrage du thread de surveillance d'activité BMS...", level="INFO")
-        checker_thread = threading.Thread(
-            target=bms_activity_checker_thread_func,  # Fonction cible à executer.
-            args=(client, ),  # Les arguments à passer à la fonction cible (l'instance client MQTT).
-            daemon=True  # Le thread s'arrêtera si le thread principal (celui-ci) se termine.
-        )
-        # Démarre l'exécution du thread de surveillance en parallèle.
+
+        checker_thread = threading.Thread(target=bms_activity_checker_thread_func, args=(client, ), daemon=True)
         checker_thread.start()
+
         # Démarrage de la boucle MQTT (bloquante).
         log(f"{BANC}: Démarrage de la boucle MQTT (loop_forever)...", level="INFO")
-        # Démarre la boucle réseau de paho-mqtt. Bloque l'exécution ici.
-        # Gère la réception des messages et appelle `on_message` quand nécessaire.
-        # Gère aussi l'envoi des pings keepalive.
         client.loop_forever()
         log(f"{BANC}: loop_forever terminée.", level="INFO")
+
     except (socket.timeout, TimeoutError, ConnectionRefusedError, socket.gaierror, OSError) as conn_e:
         log(f"{BANC}: ERREUR CRITIQUE - Erreur de connexion/réseau MQTT: {conn_e}. Arrêt du script.", level="ERROR")
     except Exception as e:
@@ -273,7 +255,7 @@ def global_mqtt_config(initial_step):
     finally:
         log(f"{BANC}: Nettoyage final (fermeture CSV si nécessaire)...", level="DEBUG")
         close_csv()
-        if client and client.is_connected():  # S'assurer que client est défini et encore connecté
+        if client and client.is_connected():
             log(f"{BANC}: Déconnexion du client MQTT dans finally (mesure de sécurité).", level="DEBUG")
             try:
                 client.disconnect()
@@ -287,22 +269,18 @@ def global_mqtt_config(initial_step):
 def main():
     """
     Fonction principale d'exécution du script banc.py.
-    Initialise l'environnement pour un test de batterie spécifique :
-    - Détermine le dossier de données de la batterie (le crée si nécessaire).
-    - Charge ou crée les fichiers config.json et data.csv.
-    - Définit l'état initial (current_step).
-    - Lance la boucle principale MQTT pour ce banc.
+    Initialise l'environnement pour un test de batterie spécifique.
     """
     global BATTERY_FOLDER_PATH, current_step
 
     # Détermine le chemin du dossier pour cette batterie via FileUtils
     battery_folder = FileUtils.find_battery_folder(serial_number, DATA_DIR, BANC)
-    if battery_folder is None:  # Si non trouvé, construit le chemin pour un nouveau dossier
+    if battery_folder is None:
         timestamp = datetime.now().strftime("%d%m%Y")
         battery_folder = os.path.join(DATA_DIR, BANC, f"{timestamp}-{serial_number}")
         log(f"{BANC}: Aucun dossier existant trouvé, utilisera/créera: {battery_folder}", level="INFO")
 
-    BATTERY_FOLDER_PATH = battery_folder  # Définit le chemin global
+    BATTERY_FOLDER_PATH = battery_folder
 
     # Charge la configuration existante ou crée les fichiers par défaut via BancConfigManager
     config = BancConfigManager.load_or_create_config(battery_folder, serial_number, BANC,
@@ -324,6 +302,7 @@ def main():
 
 
 def on_paho_log(client, userdata, level, buf):
+    """Callback pour les logs Paho MQTT."""
     log(f"{BANC}: [PAHO LOG - Level {level}] {buf}", level="DEEP_DEBUG")
 
 
