@@ -378,6 +378,7 @@ TOPIC_HANDLERS = create_topic_handlers()
 def on_connect(client, userdata, flags, rc, properties=None):
     if rc == 0:
         log(f"Connecté au broker MQTT {PrinterConfig.MQTT_BROKER_HOST}:{PrinterConfig.MQTT_BROKER_PORT}", level="INFO")
+        log(f"DEBUG: MQTT_TOPIC_TEST_DONE = '{PrinterConfig.MQTT_TOPIC_TEST_DONE}'", level="INFO")
         client.subscribe([(PrinterConfig.MQTT_TOPIC_CREATE_LABEL, 1),
                           (PrinterConfig.MQTT_TOPIC_REQUEST_FULL_REPRINT, 1),
                           (PrinterConfig.MQTT_TOPIC_UPDATE_SHIPPING_TIMESTAMP, 1),
@@ -400,13 +401,13 @@ def on_message(client, userdata, msg):
 
         # Récupère le handler pour ce topic
         handler = TOPIC_HANDLERS.get(msg.topic)
-
+        log(f"DEBUG: Handler trouvé: {handler is not None}", level="INFO")
         if handler:
             # Appelle le handler approprié
             handler(payload_str)
         else:
             log(f"Topic non reconnu ou non géré: {msg.topic}", level="WARNING")
-
+            log(f"DEBUG: Topics disponibles: {list(TOPIC_HANDLERS.keys())}", level="INFO")
     except UnicodeDecodeError:
         log(f"Impossible de décoder le payload reçu sur {msg.topic}. Est-il en UTF-8?", level="ERROR")
     except Exception as e:
@@ -418,9 +419,8 @@ if __name__ == "__main__":
     log("Démarrage du script d'écoute MQTT v3 (avec vérification statut)...", level="INFO")
     CSVSerialManager.initialize_serial_csv()  # S'assurer que le CSV existe au démarrage principal
 
-    if PrinterConfig.PRINTER_IP == "192.168.1.100":
-        log("!!! ATTENTION: L'adresse IP de l'imprimante n'a peut-être pas été configurée. Vérifiez PRINTER_IP. !!!",
-            level="WARNING")
+    if "192.168.1." in PrinterConfig.PRINTER_IP:
+        log("!!! ATTENTION: IP imprimante semble par défaut. Vérifiez si elle a changé. !!!", level="WARNING")
 
     worker = threading.Thread(target=printer_worker_thread, name="PrinterWorker", daemon=True)
     worker.start()

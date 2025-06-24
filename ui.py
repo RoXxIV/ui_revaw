@@ -14,6 +14,7 @@ from src.ui.ui_components import (update_soc_canvas, create_block_labels, _creat
                                   get_phase_message, _get_balance_color, _get_temp_color, _get_capacity_color,
                                   _get_energy_color)
 from src.ui.email import EmailTemplates, email_config
+from src.ui import get_ui_message_handlers
 from datetime import datetime
 from urllib.parse import urlparse
 import smtplib
@@ -887,189 +888,47 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     """
     Callback exécuté à la réception d'un message sur un topic MQTT souscrit.
+    Utilise les handlers du module ui.message_handlers pour traiter les messages.
     """
     topic = msg.topic.rstrip("/")  # Supprime un éventuel "/" à la fin.
+
     # Vérifie si les données utilisateur (`userdata`) sont valides et contiennent bien l'instance 'app'.
     if not userdata or "app" not in userdata:
         log("UI: Erreur critique - userdata invalide dans on_message", level="ERROR")
         return
     app = userdata["app"]
+
     try:
         payload_str = msg.payload.decode("utf-8")
     except UnicodeDecodeError:
         log(f"UI: Erreur décodage payload (non-UTF8?) pour topic {topic}", level="WARNING")
         return
-    banc_id = topic.split("/")[0]
+
+    # Extraction du banc_id et du topic suffix
+    topic_parts = topic.split("/")
+    if len(topic_parts) < 2:
+        log(f"UI: Topic invalide reçu: {topic}", level="ERROR")
+        return
+
+    banc_id = topic_parts[0]
+    topic_suffix = '/'.join(topic_parts[1:])  # ex: "step", "bms/data", "security"
+
     # Vérifie si l'ID extrait commence bien par "banc" ET s'il existe une entrée correspondante dans `app.banc_widgets`.
     if not banc_id.startswith("banc") or banc_id not in app.banc_widgets:
         log(f"UI: Message reçu pour banc inconnu ou non géré par l'UI: {topic}", level="ERROR")
         return
-    # Message /step (étape de test en cours).
-    if topic.endswith("/step"):
+
+    # Récupération des handlers et traitement du message
+    handlers = get_ui_message_handlers()
+    handler = handlers.get(topic_suffix)
+
+    if handler:
         try:
-            new_step = int(payload_str)
-        except ValueError:
-            log(f"UI: Payload /step invalide pour {banc_id}: {payload_str}", level="WARNING")
-            return  # Ignorer si le step n'est pas un nombre.
-        widgets = app.banc_widgets.get(banc_id)  # Utiliser .get pour éviter KeyError si banc_id invalide.
-        if not widgets:
-            log(f"UI: Widgets non trouvés pour {banc_id} lors réception step {new_step}", level="WARNING")
-            return
-        # Récupère l'étape précédente connue par l'UI AVANT de la mettre à jour.
-        previous_step = widgets.get("current_step", 0)  # Lit l'étape AVANT MAJ.
-        widgets["current_step"] = new_step  # Met à jour l'étape interne UI.
-        # Configure le label phase basé sur new_step (mettra "0/5" si new_step est 9).
-        label_phase_widget = widgets.get("phase")
-        if label_phase_widget:
-            # Utilisation de lambda pour la sécurité thread avec argument mot-clé.
-            app.after(0, lambda w=label_phase_widget, s=new_step: w.configure(text=get_phase_message(s)))
-        if new_step == 6:
-            log(f"UI: Step 6 (Test ÉCHOUÉ) reçu pour {banc_id}. Arrêt timer et MàJ UI.", level="INFO")
-
-            # 1. Finaliser/Stopper l'animation de la phase en cours.
-            app.finalize_previous_phase(banc_id)
-            # 2. Mettre à jour le label du temps restant.
-            label_time_left_step6 = widgets.get("time_left")
-            if label_time_left_step6:
-                app.after(0, lambda w=label_time_left_step6: w.configure(text="Terminé (Échec)"))
-            # 3. Mettre toutes les barres de progression des phases à 100%
-            phase_bar_step6 = widgets.get("progress_bar_phase")
-            if phase_bar_step6:
-                try:
-                    if hasattr(phase_bar_step6, 'progress_ri'):
-                        app.after(0, phase_bar_step6.progress_ri.set, 1.0)
-                    if hasattr(phase_bar_step6, 'progress_phase2'):
-                        app.after(0, phase_bar_step6.progress_phase2.set, 1.0)
-                    if hasattr(phase_bar_step6, 'progress_capa'):
-                        app.after(0, phase_bar_step6.progress_capa.set, 1.0)
-                    if hasattr(phase_bar_step6, 'progress_charge'):
-                        app.after(0, phase_bar_step6.progress_charge.set, 1.0)
-                except Exception as e:
-                    log(f"UI: Erreur lors de la mise à 100% des barres pour step 6 ({banc_id}): {e}", level="ERROR")
-
-            # 4. La bordure du banc :
-            # Assurer une bordure rouge pour l'état "Test Échoué"
-            parent_frame_step6 = widgets.get("parent_frame")
-            if parent_frame_step6:
-                # Assurer une bordure neutre pour l'état "Test Échoué"
-                app.after(
-                    0,
-                    lambda pf=parent_frame_step6: pf.configure(
-                        border_color="white", border_width=app.NORMAL_BORDER_WIDTH))
-
-            log(f"UI: Traitement pour Step 6 (Test Échoué) terminé pour {banc_id}.", level="INFO")
-            return
-        # --- STEP 7 ---
-        if new_step == 7:
-            log(f"UI: Step 7 (Arrêt Sécurité ESP32) reçu pour {banc_id}. Arrêt du timer d'animation UI.", level="INFO")
-            # 1. Stopper l'animation de la phase en cours sans la marquer comme "terminée à 100%"
-            active_timer_info = app.active_phase_timers.get(banc_id)
-            if active_timer_info:
-                active_timer_info["cancel"] = True  # Signale à la boucle d'animation de s'arrêter
-                after_id_to_cancel = active_timer_info.get("after_id")
-                if after_id_to_cancel:
-                    try:
-                        app.after_cancel(after_id_to_cancel)
-                        log(f"UI: Timer d'animation (ID: {after_id_to_cancel}) pour {banc_id} annulé suite à Step 7.",
-                            level="DEBUG")
-                    except ValueError:
-                        log(f"UI: Tentative d'annulation d'un timer d'animation (ID: {after_id_to_cancel}) déjà expiré/invalide pour {banc_id} (Step 7).",
-                            level="WARNING")
-                # Retirer l'entrée du timer pour ce banc pour éviter qu'elle ne soit traitée par la suite
-                app.active_phase_timers.pop(banc_id, None)
-                log(f"UI: Entrée active_phase_timers pour {banc_id} retirée suite à Step 7.", level="DEBUG")
-            # 2. Mettre à jour le label du temps restant
-            label_time_left = widgets.get("time_left")
-            if label_time_left:
-                app.after(0, lambda w=label_time_left: w.configure(text="--:--:--"))  # Ou "Arrêté" ou "Sécurité"
-            return  # Traitement spécifique pour step 7 terminé pour l'UI
-        # --- STEP 8 ---
-        if new_step == 8:
-            log(f"UI: Step 8 (Arrêt) reçu pour {banc_id}. Reset activé pour ce banc.", level="INFO")
-            # Active le flag permettant le reset manuel pour ce banc.
-            app.reset_enabled_for_banc[banc_id] = True
-            app.finalize_previous_phase(banc_id)
-            return  # Ne pas traiter comme une étape normale.
-
-        # --- STEP 9 ---
-        if new_step == 9:
-            log(f"UI: Step 9 reçu pour {banc_id}. Arrêt timer et correction label phase.", level="INFO")
-            # Arrêter l'animation/timer en cours
-            app.finalize_previous_phase(banc_id)
-            # Réinitialiser l'affichage du timer à 0
-            label_time_left = widgets.get("time_left")
-            if label_time_left:
-                app.after(0, lambda w=label_time_left: w.configure(text="00:00:00"))
-            # CORRIGER le label de phase qui a été mis à "0/5" par le bloc initial
-            label_phase = widgets.get("phase")
-            if label_phase:
-                correct_phase_text = get_phase_message(previous_step)
-                app.after(0, lambda w=label_phase, txt=correct_phase_text: w.configure(text=txt))
-                log(f"UI: Label phase corrigé à '{correct_phase_text}' pour {banc_id} après step 9.", level="DEBUG")
-            return
-        log(f"UI: {banc_id} current_step (UI) mis à jour: {new_step}", level="INFO")
-        #--- D'autres étapes ---
-        if new_step == 2 and previous_step == 1:
-            log(f"UI: Étape 2 détectée pour {banc_id}. Planification MAJ Ri/Diffusion UI.", level="INFO")
-            app.after(0, app.update_ri_diffusion_widgets, banc_id)  # mise a jour de ri/diffusion.
-        # Si la nouvelle étape est une phase active à animer (1, 2, 3 ou 4).
-        if new_step in [1, 2, 3, 4]:
-            app.after(0, app.animate_phase_segment, banc_id, new_step)
-        # Si la nouvelle étape est 5 (fin normale du test).
-        elif new_step == 5:
-            app.finalize_previous_phase(banc_id)  # Finaliser la phase precedente.
-            phase_bar = widgets.get("progress_bar_phase")
-            if phase_bar:
-                try:  # Tente de mettre TOUS les segments de la barre à 100% pour indiquer la complétion.
-                    if hasattr(phase_bar, 'progress_ri'):
-                        app.after(0, phase_bar.progress_ri.set, 1.0)
-                    if hasattr(phase_bar, 'progress_phase2'):
-                        app.after(0, phase_bar.progress_phase2.set, 1.0)
-                    if hasattr(phase_bar, 'progress_capa'):
-                        app.after(0, phase_bar.progress_capa.set, 1.0)
-                    if hasattr(phase_bar, 'progress_charge'):
-                        app.after(0, phase_bar.progress_charge.set, 1.0)
-                except Exception as e:
-                    log(f"UI: Erreur mise à 100% barres step 5 pour {banc_id}: {e}", level="ERROR")
-            # Remettre le timer à 0 pour step 5 (avec lambda).
-            label_time_left_step5 = widgets.get("time_left")
-            if label_time_left_step5:
-                app.after(0, lambda w=label_time_left_step5: w.configure(text="00:00:00"))
-            # Mettre la bordure en vert pour step 5 (avec lambda).
-            parent_frame_step5 = widgets.get("parent_frame")
-            if parent_frame_step5:
-                color = "#6EC207"
-                width = app.LARGE_BORDER_WIDTH_ACTIVE
-                app.after(
-                    0, lambda pf=parent_frame_step5, c=color, w=width: pf.configure(border_color=c, border_width=w))
-            log(f"UI:Toutes les phases finalisées pour {banc_id}", level="INFO")
-    # Gestion des autres topics.
-    # --- TOPIC /bms/data ---
-    elif topic.endswith("/bms/data"):
-        data = payload_str.split(",")
-        app.after(0, app.update_banc_data, banc_id, data)
-    # --- TOPIC /security ---
-    elif topic.endswith("/security"):
-        security_message = payload_str
-        app.after(0, app.update_banc_security, banc_id, security_message)
-    # --- TOPIC /ri/results ---
-    elif topic.endswith("/ri/results"):
-        log(f"UI: Résultats RI/Diffusion disponibles pour {banc_id}. (MAJ via step 2)", level="INFO")
-        pass
-    elif topic.endswith("/state"):
-        # Dictionnaire pour mapper les payloads aux actions
-        state_map = {'0': ('nurses', 'off'), '1': ('nurses', 'on'), '2': ('charger', 'off'), '3': ('charger', 'on')}
-        # Récupère l'action correspondante (ex: ('nurses', 'on'))
-        action = state_map.get(payload_str)
-        if action:
-            icon_type, icon_state = action
-            # mettre à jour l'UI
-            app.after(0, app.update_status_icon, banc_id, icon_type, icon_state)
-        else:
-            log(f"UI: Payload non reconnu '{payload_str}' reçu sur le topic {topic}", level="WARNING")
+            handler(payload_str, banc_id, app)
+        except Exception as e:
+            log(f"UI: Erreur dans le handler pour {topic}: {e}", level="ERROR")
     else:
         log(f"UI: Topic non reconnu ou non géré: {topic}", level="WARNING")
-        pass
 
 
 def safe_ui_update(app_instance, msg1, msg2):

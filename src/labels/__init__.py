@@ -14,7 +14,3 @@ from .csv_serial_manager import CSVSerialManager
 from .message_handlers import get_topic_handlers
 
 __all__ = ['LabelTemplates', 'PrinterConfig', 'CSVSerialManager', 'get_topic_handlers']
-
-# Informations du module
-__version__ = '1.0.0'
-__author__ = 'Evan Hermier'

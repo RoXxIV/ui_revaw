@@ -2,11 +2,9 @@
 Package 'ui' pour l'interface utilisateur et la logique associée.
 
 Ce package regroupe tous les composants et la logique liés à l'interface
-graphique, y compris la gestion des scans, l'envoi d'e-mails, et les
-composants graphiques réutilisables.
+graphique, y compris la gestion des scans, l'envoi d'e-mails, les
+composants graphiques réutilisables, et les handlers de messages MQTT.
 """
-__version__ = "1.0.0"
-__author__ = "evan hermier"
 
 # --- Imports depuis les sous-modules ---
 
@@ -20,6 +18,9 @@ from .ui_components import (create_block_labels, update_soc_canvas, MultiColorPr
 from .email.email_templates import EmailTemplates
 from .email.email_config import email_config, EmailConfig
 
+# Depuis les handlers de messages MQTT
+from .message_handlers import get_ui_message_handlers
+
 __all__ = [
     # Exportations de scan et email
     'ScanManager',
@@ -31,4 +32,7 @@ __all__ = [
     'create_block_labels',
     'update_soc_canvas',
     'MultiColorProgress',
+
+    # Handlers MQTT
+    'get_ui_message_handlers',
 ]
