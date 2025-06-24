@@ -1,6 +1,6 @@
 import tkinter as tk
 import customtkinter as ctk
-from src.utils import log
+from src.ui.utils import log
 
 
 def update_soc_canvas(canvas, soc):

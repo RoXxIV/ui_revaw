@@ -1,9 +1,0 @@
-{
-    "GMAIL_USER": "evan@revaw.fr",
-    "GMAIL_PASSWORD": "uogdrmutfwugfhgk",
-    "RECIPIENT_EMAILS": [
-      "evan@revaw.fr", "evan.hermier+banc@gmail.com"
-    ],
-    "GMAIL_SMTP_SERVER": "smtp.gmail.com",
-    "GMAIL_SMTP_PORT": 465
-  }

@@ -1,4 +1,3 @@
-# src/utils/system_utils.py
 """
 Utilitaires système et logging.
 

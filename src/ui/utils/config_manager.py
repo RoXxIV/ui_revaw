@@ -1,4 +1,3 @@
-# src/utils/config_manager.py
 """
 Gestionnaire de configuration pour les bancs de test.
 

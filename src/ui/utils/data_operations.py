@@ -1,4 +1,3 @@
-# src/utils/data_operations.py
 """
 Gestionnaire des opérations sur les données et fichiers.
 

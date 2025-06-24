@@ -1,4 +1,3 @@
-# src/config/email_templates.py
 """
 Templates et configuration pour les emails du système de test de batteries.
 

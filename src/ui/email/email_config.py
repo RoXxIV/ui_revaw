@@ -1,4 +1,3 @@
-# src/config/email_config.py
 """
 Gestionnaire de configuration email pour le système de test de batteries.
 
@@ -9,7 +8,7 @@ offrant une interface propre pour accéder aux paramètres SMTP et destinataires
 import json
 import os
 from typing import List, Optional
-from src.utils import log
+from src.ui.utils import log
 
 
 class EmailConfig:

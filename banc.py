@@ -4,8 +4,16 @@ import sys, json, os, csv, io, time, threading, socket
 from datetime import datetime
 import paho.mqtt.client as mqtt
 import shutil
-from src.utils import (log, is_printer_service_running, VALID_BANCS, DATA_DIR, CONFIG_PATH as BANC_CONFIG_FILE,
-                       MQTT_BROKER, MQTT_PORT)
+from src.ui.utils import (
+    log,
+    is_printer_service_running,
+    VALID_BANCS,
+    DATA_DIR,
+    CONFIG_PATH as BANC_CONFIG_FILE,
+    MQTT_BROKER,
+    MQTT_PORT,
+)
+from src.ui.utils.config_manager import update_bancs_config_current_step
 
 # Traitement des arguments de la ligne de commande.
 if len(sys.argv) < 3:  # Check le nombre d'arguments (nom_script, banc, serial).
@@ -246,7 +254,7 @@ def update_config(new_step):
             json.dump(config, file, indent=2, ensure_ascii=False)
             log(f"{BANC}: Fichier {config_path} mis à jour: current_step={new_step}", level="INFO")
         # Mise à jour du fichier global bancs_config.json
-        from src.utils.config_manager import update_bancs_config_current_step
+
         success = update_bancs_config_current_step(new_step, BANC)
         if not success:
             log(f"{BANC}: Erreur lors de la mise à jour du step dans bancs_config.json", level="ERROR")
@@ -468,75 +476,6 @@ def reset_banc_config():
         except Exception as e:
             log(f"{BANC}: ERREUR CRITIQUE - Erreur inattendue sauvegarde après reset de {BANC_CONFIG_FILE}: {e}",
                 level="ERROR")
-
-
-def update_bancs_config_current_step(new_step):
-    """
-    Met à jour uniquement le champ 'current_step' pour le banc actuel (BANC)
-    dans le fichier de configuration principal (BANC_CONFIG_FILE).
-    Args:
-        new_step (int): La nouvelle étape à enregistrer.
-    Returns:
-        bool: True si la mise à jour et la sauvegarde ont réussi, False sinon.
-    """
-    config_data = None
-    updated = False
-    try:  # Lecture du fichier de configuration principal.
-        with open(BANC_CONFIG_FILE, "r", encoding="utf-8") as file:  # r = read
-            config_data = json.load(file)
-        if not isinstance(config_data, dict):
-            log(f"{BANC}: ERREUR - Contenu de {BANC_CONFIG_FILE} n'est pas un dictionnaire. MAJ step annulée.",
-                level="ERROR")
-            return False
-    except FileNotFoundError:
-        log(f"{BANC}: Fichier config principal {BANC_CONFIG_FILE} non trouvé. Impossible de MAJ step.", level="ERROR")
-        return False
-    except json.JSONDecodeError as e:
-        log(f"{BANC}: Fichier config principal {BANC_CONFIG_FILE} corrompu: {e}. MAJ step annulée.", level="ERROR")
-        return False
-    except OSError as e:
-        log(f"{BANC}: Erreur lecture fichier config principal {BANC_CONFIG_FILE}: {e}. MAJ step annulée.",
-            level="ERROR")
-        return False
-    except Exception as e:
-        log(f"{BANC}: Erreur inattendue lecture {BANC_CONFIG_FILE}: {e}. MAJ step annulée.", level="ERROR")
-        return False
-    try:  # Recherche et Modification de l'étape pour le banc actuel
-        bancs = config_data.get("bancs", [])
-        banc_found = False
-        for banc in bancs:
-            if banc.get("name", "").lower() == BANC.lower():
-                banc["current_step"] = new_step
-                log(f"bancs_config.json mis à jour pour {BANC} avec current_step={new_step}", level="INFO")
-                banc_found = True
-                updated = True
-                break
-        if not banc_found:
-            log(f"{BANC}: Aucune entrée trouvée pour '{BANC}' dans {BANC_CONFIG_FILE}. Aucune MAJ step.", level="ERROR")
-    except Exception as e:
-        log(f"{BANC}: Erreur pendant la recherche/modification step dans config: {e}", level="ERROR")
-        return False
-    # Sauvegarde du fichier de configuration principal (si modifié).
-    if updated:
-        try:
-            with open(BANC_CONFIG_FILE, "w", encoding="utf-8") as file:  # w = write
-                json.dump(config_data, file, indent=4, ensure_ascii=False)
-            log(f"{BANC}: {BANC_CONFIG_FILE} sauvegardé après MAJ step.", level="DEBUG")
-            return True  # Succès
-        except OSError as e:
-            log(f"{BANC}: ERREUR CRITIQUE - Impossible d'écrire MAJ step dans {BANC_CONFIG_FILE}: {e}", level="ERROR")
-            return False
-        except TypeError as e:
-            log(f"{BANC}: ERREUR CRITIQUE - Impossible de sérialiser config après MAJ step pour {BANC_CONFIG_FILE}: {e}",
-                level="ERROR")
-            return False
-        except Exception as e:
-            log(f"{BANC}: ERREUR CRITIQUE - Erreur inattendue sauvegarde après MAJ step de {BANC_CONFIG_FILE}: {e}",
-                level="ERROR")
-            return False
-    else:
-        # Si updated est False (car banc non trouvé), on retourne False pour indiquer qu'aucune MAJ n'a eu lieu
-        return False
 
 
 def close_csv():

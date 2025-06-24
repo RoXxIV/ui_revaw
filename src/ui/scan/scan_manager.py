@@ -3,10 +3,12 @@ import json
 import time
 import os
 import subprocess
+import sys
 from datetime import datetime
-from src.utils import (VALID_BANCS, log, get_banc_info, is_banc_running, get_banc_for_serial, find_battery_folder,
-                       is_past_business_hours, set_banc_status, is_printer_service_running, is_battery_checked,
-                       DATA_DIR)
+from src.ui.utils import (VALID_BANCS, log, get_banc_info, is_banc_running, get_banc_for_serial, find_battery_folder,
+                          is_past_business_hours, set_banc_status, is_printer_service_running, is_battery_checked,
+                          DATA_DIR, reset_specific_banc)
+from src.ui.ui_components import get_phase_message
 
 
 class ScanManager:
@@ -199,7 +201,6 @@ class ScanManager:
 
     def _execute_reset(self):
         """Exécute le reset d'un banc."""
-        from utils import reset_specific_banc
 
         self._cancel_timeout_timer()
 
@@ -325,7 +326,6 @@ class ScanManager:
         if widgets.get("time_left"):
             widgets["time_left"].configure(text="00h00min")
         if widgets.get("phase"):
-            from src.ui_components import get_phase_message
             widgets["phase"].configure(text=get_phase_message(0))
 
     def _setup_battery_folder(self):
@@ -820,9 +820,6 @@ class ScanManager:
     # ========================================================================
     def _launch_test(self):
         """Lance un nouveau test de batterie."""
-        import subprocess
-        import sys
-        import os
 
         self._cancel_timeout_timer()
 

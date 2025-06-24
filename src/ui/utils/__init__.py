@@ -1,7 +1,4 @@
-# src/utils/__init__.py
 """
-Module utilitaires centralisé pour le système de test de batteries.
-
 Ce module regroupe toutes les fonctions utilitaires organisées par famille :
 - config_manager : Gestion des configurations des bancs
 - data_operations : Opérations sur les données et fichiers  
@@ -59,7 +56,3 @@ __all__ = [
     'LOG_LEVELS',
     'CURRENT_LOG_LEVEL'
 ]
-
-# Informations du module
-__version__ = '2.0.0'
-__author__ = 'Revaw Team'

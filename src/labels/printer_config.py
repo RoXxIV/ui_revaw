@@ -1,4 +1,3 @@
-# src/config/labels/printer_config.py
 """
 Configuration pour le service d'impression des étiquettes.
 """

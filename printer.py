@@ -1,124 +1,24 @@
-# print_listener_v3.py
-import paho.mqtt.client as mqtt
+# 1. Imports de la Bibliothèque Standard
 import socket
 import time
 import collections
 import threading
 import re  # Pour l'analyse de la réponse
-import random  # Ajouté
-import string  # Ajouté
+import random
+import string
 import csv
 import os
 from datetime import datetime
 import json
-from src.utils import log
-from src.config import LabelTemplates
-from src.config import LabelTemplates, PrinterConfig
+# 2. Imports de Bibliothèques Tierces
+import paho.mqtt.client as mqtt
+# 3. Imports Locale
+from src.ui.utils import log
+from src.labels import LabelTemplates, PrinterConfig, CSVSerialManager, get_topic_handlers
 
 # --- File d'attente et Verrou ---
 print_queue = collections.deque()
 queue_lock = threading.Lock()
-
-
-def generate_random_code(length=6):
-    """Génère une chaîne alphanumérique aléatoire de la longueur spécifiée."""
-    characters = string.ascii_letters + string.digits
-    return ''.join(random.choice(characters) for i in range(length))
-
-
-def initialize_serial_csv():
-    """Crée le fichier CSV avec les entêtes s'il n'existe pas."""
-    if not os.path.exists(PrinterConfig.SERIAL_CSV_FILE):
-        try:
-            with open(PrinterConfig.SERIAL_CSV_FILE, mode='w', newline='', encoding='utf-8') as f:
-                writer = csv.writer(f)
-                writer.writerow([
-                    "TimestampImpression", "NumeroSerie", "CodeAleatoireQR", "TimestampTestDone", "TimestampExpedition",
-                    "checker_name"
-                ])
-            log(f"Fichier CSV '{PrinterConfig.SERIAL_CSV_FILE}' créé avec succès.", level="INFO")
-        except IOError as e:
-            log(f"Impossible de créer le fichier CSV '{PrinterConfig.SERIAL_CSV_FILE}': {e}", level="ERROR")
-            # Gérer cette erreur critique, peut-être en arrêtant le script ?
-            raise  # Renvoyer l'exception pour arrêter si on ne peut pas créer le CSV
-
-
-def get_last_serial_from_csv():
-    """Lit le CSV et retourne le dernier NumeroSerie enregistré.
-       Retourne None si le fichier est vide, n'existe pas, ou en cas d'erreur."""
-    try:
-        if not os.path.exists(PrinterConfig.SERIAL_CSV_FILE):
-            log(f"Le fichier CSV '{PrinterConfig.SERIAL_CSV_FILE}' n'existe pas. Aucun dernier sérial.", level="INFO")
-            return None
-        with open(PrinterConfig.SERIAL_CSV_FILE, mode='r', newline='', encoding='utf-8') as f:
-            reader = csv.reader(f)
-            header = next(reader, None)  # Lire l'entête
-            if not header:  # Fichier vide après entête (ou juste entête)
-                log(f"Fichier CSV '{PrinterConfig.SERIAL_CSV_FILE}' est vide (ou ne contient que l'entête).",
-                    level="INFO")
-                return None
-
-            last_row = None
-            for row in reader:
-                if row:  # S'assurer que la ligne n'est pas vide
-                    last_row = row
-
-            if last_row and len(last_row) > 1:  # S'assurer qu'il y a assez de colonnes
-                log(f"Dernière ligne lue du CSV: {last_row}", level="DEBUG")
-                return last_row[1]  # Le NumeroSerie est dans la deuxième colonne (index 1)
-            else:
-                log(f"Aucune donnée trouvée dans '{PrinterConfig.SERIAL_CSV_FILE}' après l'entête.", level="INFO")
-                return None
-    except FileNotFoundError:
-        log(f"Le fichier CSV '{PrinterConfig.SERIAL_CSV_FILE}' n'a pas été trouvé lors de la lecture du dernier sérial.",
-            level="INFO")
-        return None
-    except IOError as e:
-        log(f"Erreur d'IO lors de la lecture de '{PrinterConfig.SERIAL_CSV_FILE}': {e}", level="ERROR")
-        return None
-    except Exception as e:
-        log(f"Erreur inattendue lors de la lecture du dernier sérial de '{PrinterConfig.SERIAL_CSV_FILE}': {e}",
-            level="ERROR")
-        return None
-
-
-def generate_next_serial_number():
-    """Génère le prochain NumeroSerie en incrémentant le dernier du CSV."""
-    last_serial = get_last_serial_from_csv()
-
-    if last_serial is None or not last_serial.startswith(PrinterConfig.SERIAL_PREFIX):
-        # Aucun sérial précédent ou format incorrect, commencer à 00000
-        numeric_part_int = 0
-    else:
-        try:
-            numeric_str = last_serial[len(PrinterConfig.SERIAL_PREFIX):]
-            numeric_part_int = int(numeric_str) + 1
-        except ValueError:
-            log(f"Impossible de parser la partie numérique du dernier sérial '{last_serial}'. Réinitialisation à 0.",
-                level="ERROR")
-            numeric_part_int = 0  # Réinitialiser en cas d'erreur
-
-    # Formater la partie numérique avec des zéros initiaux sur la longueur définie
-    next_numeric_part_str = str(numeric_part_int).zfill(PrinterConfig.SERIAL_NUMERIC_LENGTH)
-    next_serial = f"{PrinterConfig.SERIAL_PREFIX}{next_numeric_part_str}"
-    log(f"Prochain NumeroSerie généré: {next_serial}", level="INFO")
-    return next_serial
-
-
-def add_serial_to_csv(timestamp, numero_serie, code_aleatoire_qr, checker_name=""):
-    """Ajoute une nouvelle ligne au fichier CSV des sérials."""
-    try:
-        with open(PrinterConfig.SERIAL_CSV_FILE, mode='a', newline='', encoding='utf-8') as f:
-            writer = csv.writer(f)
-            writer.writerow([timestamp, numero_serie, code_aleatoire_qr, "", "", checker_name])
-        log(f"Ajouté au CSV: {timestamp}, {numero_serie}, {code_aleatoire_qr}, {checker_name}", level="INFO")
-        return True
-    except IOError as e:
-        log(f"Impossible d'écrire dans le fichier CSV '{PrinterConfig.SERIAL_CSV_FILE}': {e}", level="ERROR")
-        return False
-    except Exception as e:
-        log(f"Erreur inattendue lors de l'écriture dans '{PrinterConfig.SERIAL_CSV_FILE}': {e}", level="ERROR")
-        return False
 
 
 def parse_hqes_response(response_str):
@@ -364,172 +264,9 @@ def send_zpl_v1_label_to_printer(serial_number, random_code_for_qr, fabrication_
                 pass
 
 
-def get_details_for_reprint_from_csv(serial_number_to_find):
-    """
-    Cherche un NumeroSerie dans le CSV et retourne NumeroSerie, CodeAleatoireQR, et TimestampImpression.
-    Retourne (None, None, None) si non trouvé.
-    """
-    try:
-        if not os.path.exists(PrinterConfig.SERIAL_CSV_FILE):
-            log(
-                f"Fichier CSV '{PrinterConfig.SERIAL_CSV_FILE}' non trouvé pour la réimpression de {serial_number_to_find}.",
-                level="WARNING",
-            )
-            return None, None, None
-        found_serial = None
-        found_random_code = None
-        found_timestamp_impression = None  # Nouvelle variable
-        with open(PrinterConfig.SERIAL_CSV_FILE, mode='r', newline='', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                if row.get("NumeroSerie") == serial_number_to_find:
-                    found_serial = row["NumeroSerie"]
-                    found_random_code = row.get("CodeAleatoireQR")
-                    found_timestamp_impression = row.get("TimestampImpression")  # Récupérer le timestamp
-        if found_serial and found_random_code and found_timestamp_impression:
-            log(
-                f"Détails trouvés pour réimpression de {serial_number_to_find}: QR Code {found_random_code}, TimestampImpression {found_timestamp_impression}",
-                level="INFO",
-            )
-            return found_serial, found_random_code, found_timestamp_impression
-        else:
-            log(
-                f"Aucun enregistrement complet (S/N, QR, Timestamp) trouvé pour '{serial_number_to_find}' dans '{PrinterConfig.SERIAL_CSV_FILE}' pour réimpression.",
-                level="WARNING",
-            )
-            return None, None, None
-    except Exception as e:
-        log(f"Erreur lors de la recherche de {serial_number_to_find} dans CSV pour réimpression: {e}", level="ERROR")
-        return None, None, None
-
-
-def update_csv_with_test_done_timestamp(serial_number_to_update, timestamp_done):
-    if not os.path.exists(PrinterConfig.SERIAL_CSV_FILE):
-        log(
-            f"Fichier CSV '{PrinterConfig.SERIAL_CSV_FILE}' non trouvé. Impossible de mettre à jour TimestampTestDone pour {serial_number_to_update}.",
-            level="ERROR",
-        )
-        return False
-    rows = []
-    updated = False
-    try:
-        with open(PrinterConfig.SERIAL_CSV_FILE, mode='r', newline='', encoding='utf-8') as f_read:
-            reader = csv.reader(f_read)
-            header = next(reader)
-            rows.append(header)
-            for row in reader:
-                if row and len(row) > 1 and row[1] == serial_number_to_update:
-                    if len(row) > 3:
-                        row[3] = timestamp_done
-                    else:
-                        row.extend([""] * (4 - len(row)))
-                        row[3] = timestamp_done
-                    updated = True
-                    log(
-                        f"Ligne pour {serial_number_to_update} marquée avec TimestampTestDone: {timestamp_done}",
-                        level="INFO",
-                    )
-                rows.append(row)
-        if updated:
-            with open(PrinterConfig.SERIAL_CSV_FILE, mode='w', newline='', encoding='utf-8') as f_write:
-                writer = csv.writer(f_write)
-                writer.writerows(rows)
-            log(
-                f"Fichier CSV '{PrinterConfig.SERIAL_CSV_FILE}' mis à jour avec TimestampTestDone pour {serial_number_to_update}.",
-                level="INFO",
-            )
-            time.sleep(0.1)
-            return True
-        else:
-            log(
-                f"Aucun NumeroSerie correspondant à '{serial_number_to_update}' trouvé dans '{PrinterConfig.SERIAL_CSV_FILE}' pour mettre à jour TimestampTestDone.",
-                level="WARNING",
-            )
-            return False
-    except Exception as e:
-        log(
-            f"Erreur lors de la mise à jour de TimestampTestDone pour {serial_number_to_update} dans CSV: {e}",
-            level="ERROR",
-        )
-        return False
-
-
-def update_csv_with_shipping_timestamp(serial_number_to_update, timestamp_shipping_iso):
-    """
-    Met à jour le TimestampExpedition pour un NumeroSerie donné dans le CSV.
-    """
-    if not os.path.exists(PrinterConfig.SERIAL_CSV_FILE):
-        log(
-            f"Fichier CSV '{PrinterConfig.SERIAL_CSV_FILE}' non trouvé. Impossible de mettre à jour TimestampExpedition pour {serial_number_to_update}.",
-            level="ERROR",
-        )
-        return False
-
-    rows_to_write = []
-    updated_in_memory = False
-    header_indices = {}
-
-    try:
-        with open(PrinterConfig.SERIAL_CSV_FILE, mode='r', newline='', encoding='utf-8') as f_read:
-            reader = csv.reader(f_read)
-            header = next(reader, None)
-            if not header:
-                log(f"Fichier CSV '{PrinterConfig.SERIAL_CSV_FILE}' est vide ou n'a pas d'entête.", level="ERROR")
-                return False
-            rows_to_write.append(header)
-
-            # Créer un dictionnaire pour les indices des colonnes
-            for i, col_name in enumerate(header):
-                header_indices[col_name] = i
-
-            # Vérifier si les colonnes nécessaires sont présentes
-            if "NumeroSerie" not in header_indices or "TimestampExpedition" not in header_indices:
-                log(
-                    f"Les colonnes 'NumeroSerie' ou 'TimestampExpedition' sont manquantes dans l'entête de {PrinterConfig.SERIAL_CSV_FILE}.",
-                    level="ERROR",
-                )
-                return False
-
-            idx_serial = header_indices["NumeroSerie"]
-            idx_shipping_ts = header_indices["TimestampExpedition"]
-
-            for row in reader:
-                if row and len(row) > idx_serial and row[idx_serial] == serial_number_to_update:
-                    # S'assurer que la ligne est assez longue pour l'index de TimestampExpedition
-                    while len(row) <= idx_shipping_ts:
-                        row.append("")  # Ajouter des colonnes vides si nécessaire
-                    row[idx_shipping_ts] = timestamp_shipping_iso
-                    updated_in_memory = True
-                    log(
-                        f"Ligne pour {serial_number_to_update} sera mise à jour avec TimestampExpedition: {timestamp_shipping_iso}",
-                        level="INFO",
-                    )
-                rows_to_write.append(row)
-
-        if updated_in_memory:
-            with open(PrinterConfig.SERIAL_CSV_FILE, mode='w', newline='', encoding='utf-8') as f_write:
-                writer = csv.writer(f_write)
-                writer.writerows(rows_to_write)
-            log(
-                f"Fichier CSV '{PrinterConfig.SERIAL_CSV_FILE}' mis à jour avec TimestampExpedition pour {serial_number_to_update}.",
-                level="INFO",
-            )
-            return True
-        else:
-            log(
-                f"Aucun NumeroSerie correspondant à '{serial_number_to_update}' trouvé dans '{PrinterConfig.SERIAL_CSV_FILE}' pour mettre à jour TimestampExpedition.",
-                level="WARNING",
-            )
-            return False
-    except Exception as e:
-        log(f"Erreur lors de la mise à jour de TimestampExpedition pour {serial_number_to_update} dans CSV: {e}",
-            level="ERROR")
-        return False
-
-
 def printer_worker_thread():
     log("Thread Worker d'impression démarré.", level="INFO")
-    initialize_serial_csv()
+    CSVSerialManager.initialize_serial_csv()
     while True:
         item_to_print = None
         with queue_lock:
@@ -622,9 +359,22 @@ def printer_worker_thread():
             time.sleep(PrinterConfig.POLL_DELAY_WHEN_IDLE_S)
 
 
+def create_topic_handlers():
+    """Crée les handlers MQTT avec accès aux variables globales."""
+    base_handlers = get_topic_handlers()
+
+    # Wrapper qui injecte print_queue et queue_lock dans chaque handler
+    wrapped_handlers = {}
+    for topic, handler_func in base_handlers.items():
+        wrapped_handlers[topic] = lambda payload, h=handler_func: h(payload, print_queue, queue_lock)
+
+    return wrapped_handlers
+
+
+TOPIC_HANDLERS = create_topic_handlers()
+
+
 # --- Callbacks MQTT et Main (identiques à v2) ---
-
-
 def on_connect(client, userdata, flags, rc, properties=None):
     if rc == 0:
         log(f"Connecté au broker MQTT {PrinterConfig.MQTT_BROKER_HOST}:{PrinterConfig.MQTT_BROKER_PORT}", level="INFO")
@@ -641,216 +391,32 @@ def on_connect(client, userdata, flags, rc, properties=None):
 
 
 def on_message(client, userdata, msg):
-    global print_queue
+    """
+    Router simple vers les handlers spécifiques selon le topic.
+    """
     try:
         payload_str = msg.payload.decode("utf-8")
         log(f"Message reçu sur '{msg.topic}': {payload_str}", level="INFO")
 
-        if msg.topic == PrinterConfig.MQTT_TOPIC_CREATE_LABEL:
-            data = json.loads(msg.payload.decode("utf-8"))
-            checker = data.get("checker_name")
-            # -- CHECKER_NAME --
-            if not checker:
-                log("Demande de création reçue sans nom de checkeur. Annulation.", level="WARNING")
-                return
-            # -- SERIAL_NUMBER --
-            next_serial = generate_next_serial_number()
-            if not next_serial:
-                log("Impossible de générer un nouveau numéro de série. Action annulée.", level="ERROR")
-                return
-            random_qr = generate_random_code()
-            dt_impression = datetime.now()
-            timestamp_impression_iso = dt_impression.isoformat()
-            if not add_serial_to_csv(timestamp_impression_iso, next_serial, random_qr, checker):
-                log(f"Échec de l'enregistrement dans le CSV pour {next_serial}. Action d'impression annulée.",
-                    level="ERROR")
-                return
-            # -- ENVOI ZPL --
-            fabrication_date_for_label = dt_impression.strftime("%d/%m/%Y")
-            with queue_lock:
-                print_queue.append(("CREATE_NEW_V1", next_serial, random_qr, fabrication_date_for_label))
-                log(f"'{next_serial}' (validé par {checker}) ajouté à la file d'impression.", level="INFO")
+        # Récupère le handler pour ce topic
+        handler = TOPIC_HANDLERS.get(msg.topic)
 
-        elif msg.topic == PrinterConfig.MQTT_TOPIC_REQUEST_FULL_REPRINT:  # Nouveau bloc pour la réimpression complète
-            serial_to_reprint = payload_str
-            if serial_to_reprint:
-                _serial, random_code, original_ts_iso = get_details_for_reprint_from_csv(serial_to_reprint)  #
-                if _serial and random_code and original_ts_iso:
-                    try:
-                        # Convertir le timestamp ISO original en objet datetime, puis en format DD/MM/YYYY
-                        original_dt_impression = datetime.fromisoformat(original_ts_iso)
-                        fabrication_date_for_v1_reprint = original_dt_impression.strftime("%d/%m/%Y")
+        if handler:
+            # Appelle le handler approprié
+            handler(payload_str)
+        else:
+            log(f"Topic non reconnu ou non géré: {msg.topic}", level="WARNING")
 
-                        with queue_lock:
-                            # 1. Étiquette V1 (avec date de fabrication originale)
-                            print_queue.append(("REPRINT_V1", _serial, random_code, fabrication_date_for_v1_reprint))
-                            # 2. Étiquette principale standard (sans date de fab ni V1)
-                            print_queue.append(("REPRINT_MAIN_QR", _serial, random_code))
-                            # 3. Étiquette d'expédition
-                            print_queue.append(("PRINT_SHIPPING", _serial, None))
-                        log(
-                            f"Demande de réimpression complète pour S/N {_serial} (QR: {random_code}, Date Fab V1: {fabrication_date_for_v1_reprint}) ajoutée à la file. {len(print_queue)} items en attente.",
-                            level="INFO",
-                        )
-                    except ValueError as ve:
-                        log(
-                            f"Erreur de format de date pour TimestampImpression '{original_ts_iso}' du S/N {_serial}: {ve}",
-                            level="ERROR",
-                        )
-                    except Exception as e:
-                        log(
-                            f"Erreur inattendue lors de la préparation de la réimpression complète pour S/N {_serial}: {e}",
-                            level="ERROR",
-                        )
-                else:
-                    log(
-                        f"Impossible de trouver les détails complets (S/N, QR, Timestamp) pour réimprimer S/N {serial_to_reprint}. Non ajouté à la file.",
-                        level="ERROR",
-                    )
-            else:
-                log(f"Payload vide reçu pour {PrinterConfig.MQTT_TOPIC_REQUEST_FULL_REPRINT}", level="ERROR")
-        elif msg.topic == PrinterConfig.MQTT_TOPIC_CREATE_BATCH_LABELS:  # << NOUVEAU BLOC DE TRAITEMENT
-            try:
-                num_repetitions = int(payload_str)
-                if num_repetitions <= 0:
-                    log(f"Nombre de répétitions invalide pour {PrinterConfig.MQTT_TOPIC_CREATE_BATCH_LABELS}: {num_repetitions}. Doit être > 0.",
-                        level="ERROR")
-                    return
-
-                log(f"Demande de création de {num_repetitions} lot(s) complet(s) d'étiquettes via {PrinterConfig.MQTT_TOPIC_CREATE_BATCH_LABELS}.",
-                    level="INFO")
-
-                for i in range(num_repetitions):
-                    log(f"Traitement du lot {i+1}/{num_repetitions}", level="INFO")
-
-                    # --- Partie 1: Simulation de la création d'une nouvelle étiquette V1 ---
-                    next_serial = generate_next_serial_number()
-                    if not next_serial:
-                        log(f"Lot {i+1}: Impossible de générer un nouveau numéro de série. Annulation de ce lot.",
-                            level="ERROR")
-                        continue  # Passer au lot suivant
-
-                    random_qr_code = generate_random_code()  # Renommé pour clarté
-                    dt_impression = datetime.now()
-                    timestamp_impression_iso = dt_impression.isoformat()
-                    fabrication_date_for_label = dt_impression.strftime("%d/%m/%Y")
-
-                    if not add_serial_to_csv(timestamp_impression_iso, next_serial, random_qr_code):
-                        log(f"Lot {i+1}: Échec de l'enregistrement dans le CSV pour {next_serial}. Annulation de ce lot.",
-                            level="ERROR")
-                        continue  # Passer au lot suivant
-
-                    with queue_lock:
-                        print_queue.append(("CREATE_NEW_V1", next_serial, random_qr_code, fabrication_date_for_label))
-                    log(f"Lot {i+1}: Étiquette V1 pour '{next_serial}' (QR: '{random_qr_code}', Date fab: '{fabrication_date_for_label}') ajoutée à la file.",
-                        level="INFO")
-
-                    # --- Partie 2: Simulation des actions de 'test_done' pour ce nouveau serial ---
-                    # Générer un timestamp pour 'test_done' (peut être le même que l'impression ou actuel)
-                    ts_test_done = datetime.now().isoformat()
-
-                    if update_csv_with_test_done_timestamp(next_serial, ts_test_done):
-                        log(f"Lot {i+1}: CSV mis à jour avec TimestampTestDone pour {next_serial}", level="INFO")
-                    else:
-                        # Loggue une erreur mais continue le processus d'ajout à la file d'impression pour ce lot
-                        log(f"Lot {i+1} ÉCHEC: CSV non mis à jour avec TimestampTestDone pour {next_serial}.",
-                            level="ERROR")
-
-                    # Ajouter l'étiquette d'expédition à la file
-                    with queue_lock:
-                        print_queue.append(("PRINT_SHIPPING", next_serial, None))
-                    log(f"Lot {i+1}: Étiquette carton pour '{next_serial}' ajoutée à la file.", level="INFO")
-
-                    # Ajouter l'étiquette QR principale à la file
-                    # Nous utilisons random_qr_code déjà généré et enregistré.
-                    with queue_lock:
-                        print_queue.append(("REPRINT_MAIN_QR", next_serial, random_qr_code))
-                    log(f"Lot {i+1}: Réimpression étiquette QR standard pour '{next_serial}' (QR: '{random_qr_code}') ajoutée à la file.",
-                        level="INFO")
-
-                    log(f"Lot {i+1}/{num_repetitions} traité et ajouté à la file. Taille actuelle de la file: {len(print_queue)}",
-                        level="INFO")
-                    # Optionnel: petite pause si N est très grand pour ne pas surcharger trop vite ou pour la lisibilité des logs.
-                    # time.sleep(0.1)
-
-                log(f"Tous les {num_repetitions} lots ont été ajoutés à la file d'impression.", level="INFO")
-
-            except ValueError:
-                log(f"Payload invalide pour {msg.topic}: '{payload_str}'. Doit être un entier.", level="ERROR")
-            except Exception as e:
-                log(f"Erreur inattendue lors du traitement de {msg.topic} pour le lot: {e}", level="ERROR")
-
-        elif msg.topic == PrinterConfig.MQTT_TOPIC_TEST_DONE:  # Ou directement "printer/test_done"
-            try:
-                payload_str = msg.payload.decode("utf-8")  # Assurez-vous que c'est ici aussi
-                log(f"Message reçu sur '{msg.topic}': {payload_str}",
-                    level="INFO")  # Déplacé ici pour logger tous les messages
-                data = json.loads(payload_str)
-                serial_to_process = data.get("serial_number")
-                ts_test_done = data.get("timestamp_test_done")
-
-                if serial_to_process and ts_test_done:
-                    log(f"Traitement consolidé pour test_done S/N {serial_to_process} à {ts_test_done}", level="INFO")
-
-                    # Action 1: Update CSV with TestDone timestamp
-                    if update_csv_with_test_done_timestamp(serial_to_process, ts_test_done):  #
-                        log(f"Action 1 (test_done): CSV mis à jour pour {serial_to_process}", level="INFO")
-                    else:
-                        log(f"Action 1 (test_done) ÉCHEC: CSV non mis à jour pour {serial_to_process}", level="ERROR")
-
-                    # Action 2: Add shipping label to print queue
-                    with queue_lock:
-                        print_queue.append(("PRINT_SHIPPING", serial_to_process, None))  #
-                    log(f"Action 2 (test_done): Étiquette carton pour '{serial_to_process}' ajoutée à la file. Taille: {len(print_queue)}",
-                        level="INFO")
-
-                    # Action 3: Add main QR label to print queue
-                    _serial_reprint, random_code_reprint, _ = get_details_for_reprint_from_csv(serial_to_process)  #
-                    if _serial_reprint and random_code_reprint:
-                        with queue_lock:
-                            print_queue.append(("REPRINT_MAIN_QR", _serial_reprint, random_code_reprint))  #
-                        log(f"Action 3 (test_done): Réimpression étiquette QR standard pour '{_serial_reprint}' (QR: {random_code_reprint}) ajoutée à la file. Taille: {len(print_queue)}",
-                            level="INFO")
-                    else:
-                        log(f"Action 3 (test_done) ÉCHEC: Impossible de trouver les détails (S/N, QR) pour réimprimer l'étiquette QR standard de {serial_to_process}.",
-                            level="ERROR")
-                else:
-                    log(f"Données manquantes pour traitement consolidé test_done: {payload_str}", level="ERROR")
-            except json.JSONDecodeError:
-                log(f"Payload JSON invalide pour {msg.topic}: {payload_str}",
-                    level="ERROR")  # msg.topic au lieu de MQTT_TOPIC_TEST_DONE
-            except UnicodeDecodeError:  # Ajouté pour être cohérent
-                log(f"Impossible de décoder le payload reçu sur {msg.topic}. Est-il en UTF-8?", level="ERROR")
-            except Exception as e:
-                log(f"Erreur traitement {msg.topic}: {e}", level="ERROR")  # msg.topic au lieu de MQTT_TOPIC_TEST_DONE
-        elif msg.topic == PrinterConfig.MQTT_TOPIC_UPDATE_SHIPPING_TIMESTAMP:  # Nouveau bloc
-            try:
-                data = json.loads(payload_str)
-                serial_to_update = data.get("serial_number")
-                ts_shipping = data.get("timestamp_expedition")
-                if serial_to_update and ts_shipping:
-                    log(
-                        f"Demande de mise à jour TimestampExpedition pour S/N {serial_to_update} à {ts_shipping}",
-                        level="INFO",
-                    )
-                    update_csv_with_shipping_timestamp(serial_to_update, ts_shipping)
-                else:
-                    log(f"Données manquantes pour mise à jour TimestampExpedition: {payload_str}", level="ERROR")
-            except json.JSONDecodeError:
-                log(f"Payload JSON invalide pour {PrinterConfig.MQTT_TOPIC_UPDATE_SHIPPING_TIMESTAMP}: {payload_str}",
-                    level="ERROR")
-            except Exception as e:
-                log(f"Erreur traitement {PrinterConfig.MQTT_TOPIC_UPDATE_SHIPPING_TIMESTAMP}: {e}", level="ERROR")
     except UnicodeDecodeError:
         log(f"Impossible de décoder le payload reçu sur {msg.topic}. Est-il en UTF-8?", level="ERROR")
     except Exception as e:
-        log(f"Erreur lors du traitement du message MQTT: {e}", level="ERROR")
+        log(f"Erreur lors du traitement du message MQTT sur {msg.topic}: {e}", level="ERROR")
 
 
 if __name__ == "__main__":
     # ... (identique à v2) ...
     log("Démarrage du script d'écoute MQTT v3 (avec vérification statut)...", level="INFO")
-    initialize_serial_csv()  # S'assurer que le CSV existe au démarrage principal
+    CSVSerialManager.initialize_serial_csv()  # S'assurer que le CSV existe au démarrage principal
 
     if PrinterConfig.PRINTER_IP == "192.168.1.100":
         log("!!! ATTENTION: L'adresse IP de l'imprimante n'a peut-être pas été configurée. Vérifiez PRINTER_IP. !!!",

@@ -1,4 +1,3 @@
-# src/config/email/__init__.py
 """
 Module de configuration et templates pour les emails.
 """
