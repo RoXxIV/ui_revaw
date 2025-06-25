@@ -54,6 +54,9 @@ def handle_step_message(payload_str, banc_id, app):
     # === ÉTAPES NORMALES ===
     if new_step == 2 and previous_step == 1:
         log(f"UI: Étape 2 détectée pour {banc_id}. Planification MAJ Ri/Diffusion UI.", level="INFO")
+        # DEBUG: Vérifier l'état des widgets avant la mise à jour
+        if hasattr(app, 'ui_updater'):
+            app.ui_updater.debug_widget_state(banc_id)
         app.after(0, app.update_ri_diffusion_widgets, banc_id)
 
     # Si la nouvelle étape est une phase active à animer (1, 2, 3 ou 4)

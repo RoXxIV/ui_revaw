@@ -26,8 +26,33 @@ class CSVSerialManager:
 
     @staticmethod
     def initialize_serial_csv():
-        """Crée le fichier CSV avec les entêtes s'il n'existe pas."""
+        """Crée le fichier CSV avec les entêtes s'il n'existe pas ou s'il est vide."""
+        file_needs_header = False
+
+        # Cas 1: Fichier n'existe pas
         if not os.path.exists(CSVSerialManager.SERIAL_CSV_FILE):
+            file_needs_header = True
+            log(f"Fichier CSV '{CSVSerialManager.SERIAL_CSV_FILE}' n'existe pas, création avec en-têtes.", level="INFO")
+
+        # Cas 2: Fichier existe mais est vide ou n'a pas d'en-tête
+        else:
+            try:
+                with open(CSVSerialManager.SERIAL_CSV_FILE, mode='r', newline='', encoding='utf-8') as f:
+                    content = f.read().strip()
+                    if not content:  # Fichier vide
+                        file_needs_header = True
+                        log(f"Fichier CSV '{CSVSerialManager.SERIAL_CSV_FILE}' est vide, ajout des en-têtes.",
+                            level="INFO")
+                    elif not content.startswith("TimestampImpression"):  # Pas d'en-tête
+                        file_needs_header = True
+                        log(f"Fichier CSV '{CSVSerialManager.SERIAL_CSV_FILE}' sans en-têtes, ajout des en-têtes.",
+                            level="INFO")
+            except Exception as e:
+                log(f"Erreur vérification CSV '{CSVSerialManager.SERIAL_CSV_FILE}': {e}. Recréation.", level="WARNING")
+                file_needs_header = True
+
+        # Écrire les en-têtes si nécessaire
+        if file_needs_header:
             try:
                 with open(CSVSerialManager.SERIAL_CSV_FILE, mode='w', newline='', encoding='utf-8') as f:
                     writer = csv.writer(f)
@@ -35,9 +60,10 @@ class CSVSerialManager:
                         "TimestampImpression", "NumeroSerie", "CodeAleatoireQR", "TimestampTestDone",
                         "TimestampExpedition", "checker_name"
                     ])
-                log(f"Fichier CSV '{CSVSerialManager.SERIAL_CSV_FILE}' créé avec succès.", level="INFO")
+                log(f"En-têtes CSV ajoutés dans '{CSVSerialManager.SERIAL_CSV_FILE}'.", level="INFO")
             except IOError as e:
-                log(f"Impossible de créer le fichier CSV '{CSVSerialManager.SERIAL_CSV_FILE}': {e}", level="ERROR")
+                log(f"Impossible de créer/modifier le fichier CSV '{CSVSerialManager.SERIAL_CSV_FILE}': {e}",
+                    level="ERROR")
                 raise
 
     @staticmethod
@@ -105,6 +131,9 @@ class CSVSerialManager:
     @staticmethod
     def add_serial_to_csv(timestamp, numero_serie, code_aleatoire_qr, checker_name=""):
         """Ajoute une nouvelle ligne au fichier CSV des sérials."""
+        # Initialisation du CSV si besoin
+        log("DEBUG: Début de add_serial_to_csv()", level="INFO")
+        CSVSerialManager.initialize_serial_csv()
         try:
             with open(CSVSerialManager.SERIAL_CSV_FILE, mode='a', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f)

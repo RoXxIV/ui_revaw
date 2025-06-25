@@ -191,7 +191,7 @@ class BancConfigManager:
             return False
 
     @staticmethod
-    def update_config_bms(battery_folder_path, timestamp, cap_ah, cap_wh, banc):
+    def update_config_from_bms(battery_folder_path, timestamp, cap_ah, cap_wh, banc):
         """
         Met à jour le fichier config.json spécifique à la batterie avec le timestamp,
         la capacité (Ah) et l'énergie (Wh) les plus récents.
@@ -207,7 +207,7 @@ class BancConfigManager:
             bool: True si la mise à jour a réussi, False sinon.
         """
         if not battery_folder_path or not os.path.isdir(battery_folder_path):
-            log(f"{banc}: Erreur - BATTERY_FOLDER_PATH non valide dans update_config_bms: {battery_folder_path}",
+            log(f"{banc}: Erreur - BATTERY_FOLDER_PATH non valide dans update_config_from_bms: {battery_folder_path}",
                 level="ERROR")
             return False
         config_path = os.path.join(battery_folder_path, "config.json")
@@ -221,19 +221,20 @@ class BancConfigManager:
                     level="ERROR")
                 return False
         except FileNotFoundError:
-            log(f"{banc}: ERREUR - Fichier {config_path} non trouvé lors de update_config_bms. Mise à jour annulée.",
+            log(f"{banc}: ERREUR - Fichier {config_path} non trouvé lors de update_config_from_bms. Mise à jour annulée.",
                 level="ERROR")
             return False
         except json.JSONDecodeError as e:
-            log(f"{banc}: ERREUR - Fichier {config_path} corrompu (JSON invalide) lors de update_config_bms: {e}. Mise à jour annulée.",
+            log(f"{banc}: ERREUR - Fichier {config_path} corrompu (JSON invalide) lors de update_config_from_bms: {e}. Mise à jour annulée.",
                 level="ERROR")
             return False
         except OSError as e:
-            log(f"{banc}: ERREUR - Impossible de lire {config_path} lors de update_config_bms: {e}. Mise à jour annulée.",
+            log(f"{banc}: ERREUR - Impossible de lire {config_path} lors de update_config_from_bms: {e}. Mise à jour annulée.",
                 level="ERROR")
             return False
         except Exception as e:
-            log(f"{banc}: ERREUR - Erreur inattendue lecture {config_path} dans update_config_bms: {e}", level="ERROR")
+            log(f"{banc}: ERREUR - Erreur inattendue lecture {config_path} dans update_config_from_bms: {e}",
+                level="ERROR")
             return False
         # Modification des données BMS en mémoire.
         try:  # Met à jour les clés "timestamp_last_update", "capacity_ah" et "capacity_wh".

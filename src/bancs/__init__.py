@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Ce module regroupe :
-- Les handlers pour les messages MQTT des bancs
 - La configuration et les constantes des bancs
+- Les handlers pour les messages MQTT des bancs
 - Les utilitaires de gestion des bancs
 - La gestion des fichiers CSV et de configuration
 - Les utilitaires de manipulation de fichiers

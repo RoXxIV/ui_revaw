@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Utilitaires pour la gestion des fichiers et dossiers des bancs de test.
-"""
 import os
 from src.ui.system_utils import log
 

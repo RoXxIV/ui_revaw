@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Gestionnaire pour les fichiers CSV des bancs de test.
-"""
 import csv
 import os
 from src.ui.system_utils import log

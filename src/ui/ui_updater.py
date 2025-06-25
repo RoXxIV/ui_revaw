@@ -84,6 +84,31 @@ class UIUpdater:
         # Récupération du chemin du dossier
         battery_folder = widgets.get("battery_folder_path")
         if not battery_folder:
+            log(f"UIUpdater: 'battery_folder_path' non trouvé dans widgets pour {banc_id}, tentative de reconstruction...",
+                level="WARNING")
+
+            # Récupérer le serial depuis le label banc
+            banc_label = widgets.get("banc")
+            if banc_label:
+                banc_text = banc_label.cget("text")
+                # Extraire le serial du format "Banc1 - RW-48v2710029"
+                if " - " in banc_text and "RW-48v271" in banc_text:
+                    serial_number = banc_text.split(" - ")[1]
+                    # Importer find_battery_folder
+                    from .data_operations import find_battery_folder
+                    battery_folder = find_battery_folder(serial_number)
+
+                    if battery_folder:
+                        # Stocker le chemin récupéré dans les widgets pour éviter de refaire cette recherche
+                        widgets["battery_folder_path"] = battery_folder
+                        log(f"UIUpdater: Chemin battery_folder_path récupéré et stocké: {battery_folder}", level="INFO")
+                    else:
+                        log(f"UIUpdater: Impossible de trouver le dossier pour le serial {serial_number}",
+                            level="ERROR")
+                else:
+                    log(f"UIUpdater: Format du label banc invalide pour extraire le serial: {banc_text}", level="ERROR")
+
+        if not battery_folder:
             log(f"UIUpdater: Chemin 'battery_folder_path' non trouvé pour {banc_id}", level="ERROR")
             self._set_widgets_to_na(widgets, ["ri", "diffusion"])
             return
@@ -432,3 +457,20 @@ class UIUpdater:
                     self.app.after_cancel(timer_id)
                 except ValueError:
                     pass
+
+    def debug_widget_state(self, banc_id):
+        """Méthode de debug pour vérifier l'état des widgets d'un banc."""
+        widgets = self.app.banc_widgets.get(banc_id)
+        if not widgets:
+            log(f"DEBUG: Aucun widget trouvé pour {banc_id}", level="DEBUG")
+            return
+
+        log(f"DEBUG: État des widgets pour {banc_id}:", level="DEBUG")
+        log(f"  - battery_folder_path: {widgets.get('battery_folder_path', 'NON DÉFINI')}", level="DEBUG")
+        log(f"  - current_step: {widgets.get('current_step', 'NON DÉFINI')}", level="DEBUG")
+
+        banc_label = widgets.get("banc")
+        if banc_label:
+            log(f"  - banc label text: {banc_label.cget('text')}", level="DEBUG")
+        else:
+            log(f"  - banc label: NON TROUVÉ", level="DEBUG")

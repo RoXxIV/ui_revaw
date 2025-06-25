@@ -48,9 +48,9 @@ def update_config(new_step):
     return BancConfigManager.update_config(BATTERY_FOLDER_PATH, new_step, BANC, update_bancs_config_current_step)
 
 
-def update_config_bms(timestamp, cap_ah, cap_wh):
+def update_config_from_bms(timestamp, cap_ah, cap_wh):
     """Met à jour le fichier config.json spécifique à la batterie avec les données BMS."""
-    return BancConfigManager.update_config_bms(BATTERY_FOLDER_PATH, timestamp, cap_ah, cap_wh, BANC)
+    return BancConfigManager.update_config_from_bms(BATTERY_FOLDER_PATH, timestamp, cap_ah, cap_wh, BANC)
 
 
 def update_config_ri_results(ri_data):
@@ -137,16 +137,16 @@ def on_message(client, userdata, msg):
 
         # Traitement selon le type de handler
         if topic_suffix == 'step':
-            new_current_step, should_exit, exit_code = handler(payload_str, BANC, current_step, csv_file, csv_writer,
-                                                               BATTERY_FOLDER_PATH, serial_number, client, close_csv,
-                                                               reset_banc_config, update_config)
+            new_current_step, should_exit, exit_code = handler(payload_str, BANC, current_step, BATTERY_FOLDER_PATH,
+                                                               serial_number, client, close_csv, reset_banc_config,
+                                                               update_config)
             current_step = new_current_step
             if should_exit:
                 sys.exit(exit_code)
 
         elif topic_suffix == 'bms/data':
             handler(payload_str, BANC, current_step, csv_writer, csv_file, last_bms_data_received_time,
-                    update_config_bms)
+                    update_config_from_bms)
 
         elif topic_suffix == 'ri/results':
             handler(payload_str, BANC, update_config_ri_results)

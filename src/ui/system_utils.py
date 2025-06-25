@@ -16,7 +16,7 @@ MQTT_BROKER = "localhost"
 MQTT_PORT = 1883
 
 # Configuration du logging
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOG_FILE = os.path.join(PROJECT_ROOT, "logs.log")
 LOG_LEVELS = ["DEEP_DEBUG", "DEBUG", "INFO", "ERROR", "WARNING"]
 CURRENT_LOG_LEVEL = "DEBUG"

@@ -6,7 +6,8 @@ import os
 import subprocess
 import sys
 from datetime import datetime
-from .config_manager import (VALID_BANCS, get_banc_info, get_banc_for_serial, set_banc_status, reset_specific_banc)
+from .config_manager import (VALID_BANCS, get_banc_info, get_banc_for_serial, set_banc_status, reset_specific_banc,
+                             DATA_DIR)
 from .data_operations import (find_battery_folder, is_battery_checked, DATA_DIR)
 from .system_utils import (log, is_banc_running, is_printer_service_running, is_past_business_hours)
 from .ui_components import get_phase_message
@@ -335,6 +336,10 @@ class ScanManager:
             return
 
         try:
+            # Importer DATA_DIR depuis le bon module
+            from .config_manager import DATA_DIR
+            from .data_operations import find_battery_folder
+
             # Vérification que DATA_DIR est bien une string
             if not isinstance(DATA_DIR, str):
                 raise ValueError("DATA_DIR must be a string")
@@ -348,6 +353,8 @@ class ScanManager:
 
             # Si aucun dossier existant, créer le chemin pour un nouveau
             if determined_path is None:  # Explicitement vérifier None
+                from datetime import datetime
+                import os
                 timestamp = datetime.now().strftime("%d%m%Y")
                 # S'assurer que tous les arguments de join sont des strings
                 determined_path = os.path.join(

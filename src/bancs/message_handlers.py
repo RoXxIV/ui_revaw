@@ -12,11 +12,10 @@ import shutil
 from datetime import datetime
 from src.ui.system_utils import log, is_printer_service_running
 from .banc_config import BancConfig
-from .config_manager import BancConfigManager
 
 
-def handle_step_message(payload_str, banc, current_step, csv_file, csv_writer, battery_folder_path, serial_number,
-                        client, close_csv_func, reset_banc_config_func, update_config_func):
+def handle_step_message(payload_str, banc, current_step, battery_folder_path, serial_number, client, close_csv_func,
+                        reset_banc_config_func, update_config_func):
     """
     Gère les messages MQTT sur le topic /step.
     
@@ -24,8 +23,6 @@ def handle_step_message(payload_str, banc, current_step, csv_file, csv_writer, b
         payload_str (str): Le payload du message MQTT
         banc (str): Nom du banc (ex: "banc1")
         current_step (int): Étape actuelle stockée globalement
-        csv_file: Fichier CSV ouvert
-        csv_writer: Writer CSV
         battery_folder_path (str): Chemin du dossier batterie
         serial_number (str): Numéro de série de la batterie
         client: Client MQTT
@@ -116,18 +113,17 @@ def handle_step_message(payload_str, banc, current_step, csv_file, csv_writer, b
 
             # === GESTION SPÉCIFIQUE DE LA FIN DE TEST (STEP 5) ===
             if new_current_step == 5:
-                log(f"{banc}: *** STEP 5 DETECTE - DEBUT TRAITEMENT ***", level="INFO")
-                log(f"{banc}: Test terminé (Step 5 reçu). Nettoyage et arrêt.", level="INFO")
+                log(f"{banc}: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***", level="INFO")
                 reset_banc_config_func()
                 timestamp_test_done = datetime.now().isoformat()
 
                 # Vérification du service d'impression
                 printer_service_ok = False
                 try:
-                    log(f"{banc}: *** VERIFICATION SERVICE IMPRESSION ***", level="INFO")
+                    log(f"{banc}: *** VERIFICATION SERVICE IMPRESSION ***", level="DEBUG")
                     if is_printer_service_running():
                         printer_service_ok = True
-                        log(f"{banc}: *** SERVICE IMPRESSION OK ***", level="INFO")
+                        log(f"{banc}: *** SERVICE IMPRESSION OK ***", level="DEBUG")
                     else:
                         log(f"{banc}: AVERTISSEMENT - Service d'impression non détecté (Step 5).", level="WARNING")
                         if client.is_connected():
@@ -177,7 +173,7 @@ def handle_step_message(payload_str, banc, current_step, csv_file, csv_writer, b
 
 
 def handle_bms_data_message(payload_str, banc, current_step, csv_writer, csv_file, last_bms_data_received_time_dict,
-                            update_config_bms_func):
+                            update_config_from_bms_func):
     """
     Gère les messages MQTT sur le topic /bms/data.
     
@@ -188,7 +184,7 @@ def handle_bms_data_message(payload_str, banc, current_step, csv_writer, csv_fil
         csv_writer: Writer CSV
         csv_file: Fichier CSV
         last_bms_data_received_time_dict (dict): Dictionnaire contenant le timestamp
-        update_config_bms_func: Fonction pour mettre à jour config BMS
+        update_config_from_bms_func: Fonction pour mettre à jour config BMS
     """
     # Met à jour le timestamp de la dernière réception de données BMS
     last_bms_data_received_time_dict['time'] = time.time()
@@ -228,7 +224,7 @@ def handle_bms_data_message(payload_str, banc, current_step, csv_writer, csv_fil
             try:
                 capacity_val = float(bms_values[8])
                 energy_val = float(bms_values[9])
-                update_config_bms_func(timestamp, capacity_val, energy_val)
+                update_config_from_bms_func(timestamp, capacity_val, energy_val)
             except (IndexError, ValueError, TypeError) as bms_upd_e:
                 log(f"{banc}: Erreur conversion/index lors de la préparation MAJ config (BMS): {bms_upd_e}. Ligne: {bms_values}",
                     level="ERROR")
@@ -245,7 +241,7 @@ def _send_test_done_to_printer(banc, serial_number, timestamp_test_done, client)
     """
     Envoie la tâche consolidée à printer.py pour la fin de test.
     """
-    log(f"{banc}: *** ENTREE DANS _send_test_done_to_printer ***", level="INFO")
+    log(f"{banc}: *** ENTREE DANS _send_test_done_to_printer ***", level="DEBUG")
     topic_test_done = "printer/test_done"
     payload_test_done_dict = {"serial_number": serial_number, "timestamp_test_done": timestamp_test_done}
 

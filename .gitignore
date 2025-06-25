@@ -4,4 +4,5 @@ logs.log
 data/
 bancs_config.json
 printed_serials.csv
-src/config/email_config.json
+src/ui/email/email_config.json
+/ignore
