@@ -7,7 +7,8 @@ Ce module centralise toutes les fonctions utilitaires liées au système :
 - Gestion des processus
 - Logique métier temporelle
 """
-
+import logging
+import logging.handlers
 import os
 import psutil
 from datetime import datetime, timedelta
@@ -17,56 +18,92 @@ MQTT_PORT = 1883
 
 # Configuration du logging
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LOG_FILE = os.path.join(PROJECT_ROOT, "logs.log")
+LOGS_DIR = os.path.join(PROJECT_ROOT, "logs")
+LOG_FILE = os.path.join(LOGS_DIR, "banc_test.log")
 LOG_LEVELS = ["DEEP_DEBUG", "DEBUG", "INFO", "ERROR", "WARNING"]
-CURRENT_LOG_LEVEL = "DEBUG"
+CURRENT_LOG_LEVEL = "INFO"
+LEVEL_MAPPING = {"DEEP_DEBUG": 5, "DEBUG": 10, "INFO": 20, "WARNING": 30, "ERROR": 40}
+
+# =============================================================================
+# STRUCTURE PROPRE AVEC DOSSIER logs/
+# =============================================================================
+
+import logging
+import logging.handlers
+import os
+
+# Configuration avec dossier logs/
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+LOGS_DIR = os.path.join(PROJECT_ROOT, "logs")  # Nouveau dossier logs/
+LOG_FILE = os.path.join(LOGS_DIR, "banc_test.log")  # logs/banc_test.log
+
+# Vos niveaux
+LOG_LEVELS = ["DEEP_DEBUG", "DEBUG", "INFO", "ERROR", "WARNING"]
+CURRENT_LOG_LEVEL = "INFO"
+
+
+def setup_logging():
+    """Configuration avec structure propre dans logs/"""
+    logger = logging.getLogger("banc_test")
+
+    if logger.handlers:
+        return logger
+
+    # IMPORTANT: Créer le dossier logs/ s'il n'existe pas
+    os.makedirs(LOGS_DIR, exist_ok=True)
+
+    logger.setLevel(logging.DEBUG)
+
+    formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+
+    # Handler fichier avec rotation dans logs/
+    file_handler = logging.handlers.RotatingFileHandler(
+        LOG_FILE,  # logs/banc_test.log
+        maxBytes=10 * 1024 * 1024,  # 10MB
+        backupCount=5,  # Garde 5 anciens
+        encoding='utf-8')
+    file_handler.setFormatter(formatter)
+    file_handler.setLevel(logging.DEBUG)
+
+    # Handler console
+    console_handler = logging.StreamHandler()
+    console_handler.setFormatter(formatter)
+    console_handler.setLevel(logging.DEBUG)
+
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
+
+    return logger
+
+
+_logger = setup_logging()
 
 
 def log(*args, level="INFO"):
-    """
-    Enregistre un message formaté dans la console et dans un fichier log.
-    Prend en charge différents niveaux de log (DEBUG, INFO, WARNING, ERROR).
-    N'enregistre que les messages dont le niveau est égal ou supérieur
-    au niveau défini par la constante globale CURRENT_LOG_LEVEL.
-    
-    Args:
-        *args: Une séquence d'arguments qui seront convertis en chaîne
-               de caractères et concaténés pour former le message.
-        level (str, optional): Le niveau de log du message.
-                               Doit être une des valeurs dans LOG_LEVELS.
-                               Par défaut "INFO".
-    Returns:
-        None
-    """
-    # Validation du niveau de log
-    if level not in LOG_LEVELS:
-        print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] [ERROR] [log] Niveau de log invalide utilisé: {level}")
-        level = "INFO"
-
-    # Vérifie si le niveau du message est suffisant pour être loggué
+    """Fonction log avec filtrage par niveau"""
+    # Filtrage selon votre CURRENT_LOG_LEVEL
     try:
-        level_index = LOG_LEVELS.index(level)
         current_level_index = LOG_LEVELS.index(CURRENT_LOG_LEVEL)
-        if level_index < current_level_index:
+        message_level_index = LOG_LEVELS.index(level)
+
+        if message_level_index < current_level_index:
             return
     except ValueError:
-        print(
-            f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] [ERROR] [log] Erreur interne de niveau: {level} ou {CURRENT_LOG_LEVEL}"
-        )
-        return
+        pass
 
-    # Formatage du message
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     message = " ".join(str(arg) for arg in args)
-    formatted = f"[{now}] [{level}] {message}"
-    print(formatted)
 
-    # Ouvre et ferme le fichier à chaque appel
-    try:
-        with open(LOG_FILE, "a", encoding="utf-8") as f:
-            f.write(formatted + "\n")
-    except Exception as e:
-        print(f"[log] Erreur d'écriture dans le fichier log : {e}")
+    # Mapping vers niveaux Python
+    if level in ["DEEP_DEBUG", "DEBUG"]:
+        _logger.debug(f"[{level}] {message}")
+    elif level == "INFO":
+        _logger.info(message)
+    elif level == "WARNING":
+        _logger.warning(message)
+    elif level == "ERROR":
+        _logger.error(message)
+    else:
+        _logger.info(message)
 
 
 def is_banc_running(banc_name):
