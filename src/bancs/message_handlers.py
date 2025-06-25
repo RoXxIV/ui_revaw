@@ -14,6 +14,200 @@ from src.ui.system_utils import log, is_printer_service_running
 from .banc_config import BancConfig
 
 
+def _handle_step_special_stop(step_value, banc, close_csv_func, reset_banc_config_func, client):
+    """
+    Gère les steps spéciaux d'arrêt (8, 9).
+    
+    Args:
+        step_value (int): Valeur du step (8 ou 9)
+        banc (str): Nom du banc
+        close_csv_func: Fonction pour fermer le CSV
+        reset_banc_config_func: Fonction pour reset config banc
+        client: Client MQTT
+        
+    Returns:
+        tuple: (new_current_step, should_exit, exit_code)
+    """
+    if step_value == 8:
+        log_reason = "d'arrêt demandé (Step 8)"
+    else:  # step_value == 9
+        log_reason = "d'arrêt manuel (Step 9)"
+
+    log(f"{banc}: Commande {log_reason} reçue via MQTT.", level="INFO")
+    close_csv_func()
+    log(f"{banc}: Fichier CSV fermé suite à la commande {log_reason}.", level="INFO")
+    log(f"{banc}: Arrêt du processus demandé par Step {step_value}.", level="INFO")
+    return 0, True, 0  # current_step non modifié, terminer proprement
+
+
+def _handle_step_security_stop(banc, close_csv_func, client):
+    """
+    Gère le step 7 (arrêt de sécurité ESP32).
+    
+    Args:
+        banc (str): Nom du banc
+        close_csv_func: Fonction pour fermer le CSV
+        client: Client MQTT
+        
+    Returns:
+        tuple: (new_current_step, should_exit, exit_code)
+    """
+    log(f"{banc}: ESP32 a signalé un arrêt de sécurité (Step 7).", level="ERROR")
+    log(f"{banc}: Arrêt du script banc.py. La configuration du banc est conservée pour une éventuelle reprise.",
+        level="INFO")
+
+    close_csv_func()
+    log(f"{banc}: Fichier CSV fermé suite à Step 7.", level="INFO")
+
+    try:
+        if client and client.is_connected():
+            client.disconnect()
+    except Exception as e:
+        log(f"{banc}: Exception lors de la déconnexion MQTT (Step 7): {e}", level="ERROR")
+
+    log(f"{banc}: Fin du script banc.py demandée par Step 7.", level="INFO")
+    return 0, True, 0  # current_step non modifié, terminer proprement
+
+
+def _handle_step_test_failed(banc, battery_folder_path, close_csv_func, reset_banc_config_func, client):
+    """
+    Gère le step 6 (test échoué).
+    
+    Args:
+        banc (str): Nom du banc
+        battery_folder_path (str): Chemin du dossier batterie
+        close_csv_func: Fonction pour fermer le CSV
+        reset_banc_config_func: Fonction pour reset config banc
+        client: Client MQTT
+        
+    Returns:
+        tuple: (new_current_step, should_exit, exit_code)
+    """
+    log(f"{banc}: Test ÉCHOUÉ signalé par ESP32 (Step 6).", level="ERROR")
+    log(f"{banc}: Finalisation du test pour gestion nourrice, puis archivage des données et reset du banc.",
+        level="INFO")
+
+    close_csv_func()
+    log(f"{banc}: Fichier CSV fermé pour test échoué.", level="INFO")
+
+    # Archiver le dossier du test échoué
+    if battery_folder_path and os.path.isdir(battery_folder_path):
+        try:
+            os.makedirs(BancConfig.FAILS_ARCHIVE_DIR, exist_ok=True)
+            folder_name = os.path.basename(battery_folder_path)
+            destination_path = os.path.join(BancConfig.FAILS_ARCHIVE_DIR, folder_name)
+
+            # Gérer le cas où un dossier du même nom existerait déjà dans l'archive
+            if os.path.exists(destination_path):
+                timestamp_suffix = datetime.now().strftime("_%Y%m%d%H%M%S")
+                destination_path += timestamp_suffix
+                log(f"{banc}: Dossier {folder_name} existe déjà dans l'archive. Nouveau nom: {os.path.basename(destination_path)}",
+                    level="WARNING")
+
+            shutil.move(battery_folder_path, destination_path)
+            log(f"{banc}: Dossier de test {battery_folder_path} archivé dans {destination_path}", level="INFO")
+        except Exception as e:
+            log(f"{banc}: ERREUR lors de l'archivage du dossier {battery_folder_path}: {e}", level="ERROR")
+    else:
+        log(f"{banc}: BATTERY_FOLDER_PATH non valide ou dossier inexistant, archivage impossible.", level="WARNING")
+
+    reset_banc_config_func()  # Remet le banc à "available"
+    log(f"{banc}: Configuration du banc réinitialisée dans bancs_config.json après échec.", level="INFO")
+
+    try:
+        if client and client.is_connected():
+            client.disconnect()
+    except Exception as e:
+        log(f"{banc}: Exception lors de la déconnexion MQTT (Step 6): {e}", level="ERROR")
+
+    log(f"{banc}: Fin du script banc.py suite à Step 6 (Test Échoué).", level="INFO")
+    return 0, True, 0  # current_step non modifié, terminer proprement
+
+
+def _handle_step_test_completed(banc, serial_number, client, close_csv_func, reset_banc_config_func,
+                                update_config_func):
+    """
+    Gère le step 5 (test terminé avec succès).
+    
+    Args:
+        banc (str): Nom du banc
+        serial_number (str): Numéro de série de la batterie
+        client: Client MQTT
+        close_csv_func: Fonction pour fermer le CSV
+        reset_banc_config_func: Fonction pour reset config banc
+        update_config_func: Fonction pour mettre à jour config
+        
+    Returns:
+        tuple: (new_current_step, should_exit, exit_code)
+    """
+    log(f"{banc}: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***", level="INFO")
+
+    # Mise à jour de la config avec le nouveau step
+    new_current_step = 5
+    update_config_func(new_current_step)
+
+    reset_banc_config_func()
+    timestamp_test_done = datetime.now().isoformat()
+
+    # Vérification du service d'impression
+    printer_service_ok = False
+    try:
+        log(f"{banc}: *** VERIFICATION SERVICE IMPRESSION ***", level="DEBUG")
+        if is_printer_service_running():
+            printer_service_ok = True
+            log(f"{banc}: *** SERVICE IMPRESSION OK ***", level="DEBUG")
+        else:
+            log(f"{banc}: AVERTISSEMENT - Service d'impression non détecté (Step 5).", level="WARNING")
+            if client.is_connected():
+                try:
+                    client.publish(f"{banc}/security", "Service impression INACTIF! Actions fin compromises.", qos=0)
+                except Exception as alert_pub_e:
+                    log(f"{banc}: ERREUR envoi alerte 'Service impression INACTIF': {alert_pub_e}", level="ERROR")
+    except Exception as check_e:
+        log(f"{banc}: ERREUR vérification service impression: {check_e}", level="ERROR")
+        if client.is_connected():
+            try:
+                client.publish(f"{banc}/security", "Erreur vérification service impression!", qos=0)
+            except Exception:
+                pass
+
+    # Envoi des tâches à printer.py si service OK
+    if printer_service_ok:
+        log(f"{banc}: *** DEBUT ENVOI VERS PRINTER.PY ***", level="INFO")
+        log(f"{banc}: Service d'impression détecté. Envoi des tâches à printer.py.", level="INFO")
+        _send_test_done_to_printer(banc, serial_number, timestamp_test_done, client)
+        log(f"{banc}: *** FIN ENVOI VERS PRINTER.PY ***", level="INFO")
+    else:
+        log(f"{banc}: Pas de tâches envoyées à printer.py (service inactif ou erreur vérification).", level="WARNING")
+
+    close_csv_func()
+    log(f"{banc}: Fichier CSV fermé après envoi des données.", level="INFO")
+
+    # Désabonnement et nettoyage final
+    _handle_final_cleanup(banc, client)
+
+    log(f"{banc}: Fin du processus (appel à sys.exit(0)).", level="INFO")
+    sys.exit(0)
+
+
+def _handle_step_normal_phases(step_value, banc, update_config_func):
+    """
+    Gère les steps normaux des phases (1, 2, 3, 4).
+    
+    Args:
+        step_value (int): Valeur du step (1-4)
+        banc (str): Nom du banc
+        update_config_func: Fonction pour mettre à jour config
+        
+    Returns:
+        tuple: (new_current_step, should_exit, exit_code)
+    """
+    log(f"Current step mis à jour: {step_value}, pour {banc}", level="INFO")
+    new_current_step = step_value
+    update_config_func(new_current_step)
+    return new_current_step, False, 0
+
+
 def handle_step_message(payload_str, banc, current_step, battery_folder_path, serial_number, client, close_csv_func,
                         reset_banc_config_func, update_config_func):
     """
@@ -37,130 +231,27 @@ def handle_step_message(payload_str, banc, current_step, battery_folder_path, se
         step_value = int(payload_str.strip())
 
         # === GESTION DES ÉTAPES SPÉCIALES D'ARRÊT ===
-        if step_value == 8 or step_value == 9:
-            log_reason = "d'arrêt demandé (Step 8)" if step_value == 8 else "d'arrêt manuel (Step 9)"
-            log(f"{banc}: Commande {log_reason} reçue via MQTT.", level="INFO")
-            close_csv_func()
-            log(f"{banc}: Fichier CSV fermé suite à la commande {log_reason}.", level="INFO")
-            log(f"{banc}: Arrêt du processus demandé par Step {step_value}.", level="INFO")
-            return current_step, True, 0  # Terminer proprement
+        if step_value in [8, 9]:
+            return _handle_step_special_stop(step_value, banc, close_csv_func, reset_banc_config_func, client)
 
         # === CAS SPÉCIFIQUE POUR STEP 7 ===
-        if step_value == 7:
-            log(f"{banc}: ESP32 a signalé un arrêt de sécurité (Step 7).", level="ERROR")
-            log(f"{banc}: Arrêt du script banc.py. La configuration du banc est conservée pour une éventuelle reprise au step {current_step}.",
-                level="INFO")
-            close_csv_func()
-            log(f"{banc}: Fichier CSV fermé suite à Step 7.", level="INFO")
-
-            try:
-                if client and client.is_connected():
-                    client.disconnect()
-            except Exception as e:
-                log(f"{banc}: Exception lors de la déconnexion MQTT (Step 7): {e}", level="ERROR")
-
-            log(f"{banc}: Fin du script banc.py demandée par Step 7.", level="INFO")
-            return current_step, True, 0
+        elif step_value == 7:
+            return _handle_step_security_stop(banc, close_csv_func, client)
 
         # === STEP 6 - TEST ÉCHOUÉ ===
         elif step_value == 6:
-            log(f"{banc}: Test ÉCHOUÉ signalé par ESP32 (Step 6).", level="ERROR")
-            log(f"{banc}: Finalisation du test pour gestion nourrice, puis archivage des données et reset du banc.",
-                level="INFO")
+            return _handle_step_test_failed(banc, battery_folder_path, close_csv_func, reset_banc_config_func, client)
 
-            close_csv_func()
-            log(f"{banc}: Fichier CSV fermé pour test échoué.", level="INFO")
+        # === GESTION SPÉCIFIQUE DE LA FIN DE TEST (STEP 5) ===
+        elif step_value == 5:
+            return _handle_step_test_completed(banc, serial_number, client, close_csv_func, reset_banc_config_func,
+                                               update_config_func)
 
-            # Archiver le dossier du test échoué
-            if battery_folder_path and os.path.isdir(battery_folder_path):
-                try:
-                    os.makedirs(BancConfig.FAILS_ARCHIVE_DIR, exist_ok=True)
-                    folder_name = os.path.basename(battery_folder_path)
-                    destination_path = os.path.join(BancConfig.FAILS_ARCHIVE_DIR, folder_name)
+        # === VALIDATION ET TRAITEMENT DES ÉTAPES NORMALES (1 à 4) ===
+        elif step_value in [1, 2, 3, 4]:
+            return _handle_step_normal_phases(step_value, banc, update_config_func)
 
-                    # Gérer le cas où un dossier du même nom existerait déjà dans l'archive
-                    if os.path.exists(destination_path):
-                        timestamp_suffix = datetime.now().strftime("_%Y%m%d%H%M%S")
-                        destination_path += timestamp_suffix
-                        log(f"{banc}: Dossier {folder_name} existe déjà dans l'archive. Nouveau nom: {os.path.basename(destination_path)}",
-                            level="WARNING")
-
-                    shutil.move(battery_folder_path, destination_path)
-                    log(f"{banc}: Dossier de test {battery_folder_path} archivé dans {destination_path}", level="INFO")
-                except Exception as e:
-                    log(f"{banc}: ERREUR lors de l'archivage du dossier {battery_folder_path}: {e}", level="ERROR")
-            else:
-                log(f"{banc}: BATTERY_FOLDER_PATH non valide ou dossier inexistant, archivage impossible.",
-                    level="WARNING")
-
-            reset_banc_config_func()  # Remet le banc à "available"
-            log(f"{banc}: Configuration du banc réinitialisée dans bancs_config.json après échec.", level="INFO")
-
-            try:
-                if client and client.is_connected():
-                    client.disconnect()
-            except Exception as e:
-                log(f"{banc}: Exception lors de la déconnexion MQTT (Step 6): {e}", level="ERROR")
-
-            log(f"{banc}: Fin du script banc.py suite à Step 6 (Test Échoué).", level="INFO")
-            return current_step, True, 0
-
-        # === VALIDATION ET TRAITEMENT DES ÉTAPES NORMALES (1 à 5) ===
-        elif step_value in [1, 2, 3, 4, 5]:
-            log(f"Current step mis à jour: {step_value}, pour {banc}", level="INFO")
-            new_current_step = step_value
-            update_config_func(new_current_step)
-
-            # === GESTION SPÉCIFIQUE DE LA FIN DE TEST (STEP 5) ===
-            if new_current_step == 5:
-                log(f"{banc}: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***", level="INFO")
-                reset_banc_config_func()
-                timestamp_test_done = datetime.now().isoformat()
-
-                # Vérification du service d'impression
-                printer_service_ok = False
-                try:
-                    log(f"{banc}: *** VERIFICATION SERVICE IMPRESSION ***", level="DEBUG")
-                    if is_printer_service_running():
-                        printer_service_ok = True
-                        log(f"{banc}: *** SERVICE IMPRESSION OK ***", level="DEBUG")
-                    else:
-                        log(f"{banc}: AVERTISSEMENT - Service d'impression non détecté (Step 5).", level="WARNING")
-                        if client.is_connected():
-                            try:
-                                client.publish(
-                                    f"{banc}/security", "Service impression INACTIF! Actions fin compromises.", qos=0)
-                            except Exception as alert_pub_e:
-                                log(f"{banc}: ERREUR envoi alerte 'Service impression INACTIF': {alert_pub_e}",
-                                    level="ERROR")
-                except Exception as check_e:
-                    log(f"{banc}: ERREUR vérification service impression: {check_e}", level="ERROR")
-                    if client.is_connected():
-                        try:
-                            client.publish(f"{banc}/security", "Erreur vérification service impression!", qos=0)
-                        except Exception:
-                            pass
-
-                # Envoi des tâches à printer.py si service OK
-                if printer_service_ok:
-                    log(f"{banc}: *** DEBUT ENVOI VERS PRINTER.PY ***", level="INFO")
-                    log(f"{banc}: Service d'impression détecté. Envoi des tâches à printer.py.", level="INFO")
-                    _send_test_done_to_printer(banc, serial_number, timestamp_test_done, client)
-                    log(f"{banc}: *** FIN ENVOI VERS PRINTER.PY ***", level="INFO")
-                else:
-                    log(f"{banc}: Pas de tâches envoyées à printer.py (service inactif ou erreur vérification).",
-                        level="WARNING")
-                close_csv_func()
-                log(f"{banc}: Fichier CSV fermé après envoi des données.", level="INFO")
-                # Désabonnement et nettoyage final
-                _handle_final_cleanup(banc, client)
-
-                log(f"{banc}: Fin du processus (appel à sys.exit(0)).", level="INFO")
-                sys.exit(0)
-
-            return new_current_step, False, 0
-
-        else:  # Si la valeur reçue n'est ni 8, 9, ni 1-5
+        else:  # Si la valeur reçue n'est dans aucune des catégories
             log(f"Étape inconnue/invalide reçue sur /step : {step_value} — ignorée.", level="ERROR")
             return current_step, False, 0
 

@@ -12,104 +12,141 @@ class BancConfigManager:
     """
 
     @staticmethod
-    def load_or_create_config(battery_folder, serial_number, banc, create_data_csv_func):
+    def load_config(config_path, banc):
         """
-        Charge la configuration depuis config.json dans battery_folder s'il existe et est valide.
-        Sinon, crée le battery_folder (si nécessaire), crée un fichier config.json
-        par défaut avec les informations initiales (step 1, timestamps, etc.),
-        crée le data.csv via create_data_csv, et retourne la configuration créée.
+        Charge la configuration depuis config.json dans le dossier spécifié.
         
         Args:
-            battery_folder (str): Chemin complet du dossier où config.json doit se trouver/être créé.
-            serial_number (str): Numéro de série de la batterie pour la config par défaut.
+            config_path (str): Chemin complet vers le fichier config.json
+            banc (str): Nom du banc pour les logs
+            
+        Returns:
+            dict | None: Le dictionnaire de configuration chargé, ou None si erreur/inexistant
+        """
+        if not os.path.exists(config_path):
+            log(f"{banc}: Fichier config.json non trouvé: {config_path}", level="DEBUG")
+            return None
+
+        try:
+            with open(config_path, "r", encoding="utf-8") as file:
+                config_data = json.load(file)
+
+            if not isinstance(config_data, dict):
+                log(f"{banc}: Fichier config.json ({config_path}) ne contient pas un objet JSON valide.", level="ERROR")
+                return None
+
+            log(f"{banc}: Configuration existante chargée depuis {config_path}", level="INFO")
+            return config_data
+
+        except json.JSONDecodeError as e:
+            log(f"{banc}: Erreur parsing JSON ({config_path}): {e}. Fichier corrompu.", level="ERROR")
+            return None
+        except Exception as e:
+            log(f"{banc}: Erreur lecture config ({config_path}): {e}", level="ERROR")
+            return None
+
+    @staticmethod
+    def create_config(battery_folder, serial_number, banc, create_data_csv_func):
+        """
+        Crée un nouveau fichier config.json avec les valeurs par défaut.
+        
+        Args:
+            battery_folder (str): Chemin complet du dossier où créer le fichier
+            serial_number (str): Numéro de série de la batterie
             banc (str): Nom du banc pour les logs
             create_data_csv_func: Fonction pour créer le CSV
             
         Returns:
-            dict: Le dictionnaire de configuration (chargé ou nouvellement créé).
-                  Retourne le défaut même si un fichier existant est corrompu (il sera écrasé).
-                  Peut lever une exception si la création du dossier/fichier par défaut échoue.
+            dict: Le dictionnaire de configuration créé
+            
+        Raises:
+            OSError: Si impossible de créer le dossier ou le fichier
         """
+        log(f"{banc}: Création config.json par défaut dans {battery_folder}", level="INFO")
 
-        # Construit le chemin vers le fichier config.json attendu dans le dossier de la batterie.
+        # Création des dossiers si nécessaire
+        try:
+            data_dir_existed_before = os.path.isdir(DATA_DIR)
+            banc_path = os.path.join(DATA_DIR, banc)
+            banc_dir_existed_before = os.path.isdir(banc_path)
+
+            os.makedirs(battery_folder, exist_ok=True)
+            log(f"{banc}: Structure de dossier vérifiée/créée pour {battery_folder}", level="DEBUG")
+
+            # Log de création conditionnel
+            if not data_dir_existed_before and os.path.isdir(DATA_DIR):
+                log(f"{banc}: Répertoire principal '{DATA_DIR}' créé.", level="INFO")
+            if not banc_dir_existed_before and os.path.isdir(banc_path):
+                log(f"{banc}: Sous-répertoire '{banc_path}' créé.", level="INFO")
+
+        except OSError as e:
+            log(f"{banc}: ERREUR CRITIQUE - Impossible de créer dossier {battery_folder}: {e}", level="ERROR")
+            raise
+
+        # Création du contenu de configuration par défaut
+        timestamp = datetime.now().isoformat()
+        default_config = {
+            "battery_serial": serial_number,
+            "banc": banc,
+            "current_step": 1,
+            "first_handle": timestamp,
+            "timestamp_last_update": timestamp,
+            "capacity_ah": 0,
+            "capacity_wh": 0,
+            "ri_discharge_average": 0,
+            "ri_charge_average": 0,
+            "diffusion_discharge_average": 0,
+            "diffusion_charge_average": 0
+        }
+
+        # Écriture du fichier config.json
         config_path = os.path.join(battery_folder, "config.json")
-        config_data = None
+        try:
+            with open(config_path, "w", encoding="utf-8") as file:
+                json.dump(default_config, file, indent=2, ensure_ascii=False)
+            log(f"{banc}: Fichier config.json créé avec succès.", level="INFO")
 
-        if os.path.exists(config_path):
-            try:
-                with open(config_path, "r", encoding="utf-8") as file:
-                    config_data = json.load(file)
-                    if not isinstance(config_data, dict):
-                        log(f"{banc}: Fichier config.json ({config_path}) ne contient pas un objet JSON valide. Recréation.",
-                            level="ERROR")
-                        config_data = None  # Forcer la recréation.
-                    else:
-                        log(f"{banc}: Configuration existante chargée depuis {config_path}", level="INFO")
-                        create_data_csv_func(battery_folder)
-                        return config_data
-            except Exception as e:
-                log(f"{banc}: Erreur lecture/parsing config existante ({config_path}): {e}. Recréation fichier par défaut.",
-                    level="ERROR")
-                config_data = None  # Assurer qu'on passe à la création.
+            # Création du CSV
+            create_data_csv_func(battery_folder)
 
-        # Si le fichier n'existait pas OU si la lecture a échoué.
-        if config_data is None:
-            log(f"{banc}: Création config.json par défaut et/ou dossier(s) nécessaire(s) dans {battery_folder}",
-                level="INFO")
-            try:
-                # Vérification/Création des dossiers
-                data_dir_existed_before = os.path.isdir(DATA_DIR)  # Verifier si le dossier principal existe.
-                banc_path = os.path.join(DATA_DIR,
-                                         banc)  # Construit le chemin vers le sous-dossier du banc (ex: "data/banc1").
-                # Crée le dossier final `battery_folder` ainsi que tous les dossiers parents nécessaires.
-                # `exist_ok=True` évite une erreur si les dossiers existent déjà.
-                banc_dir_existed_before = os.path.isdir(banc_path)
-                os.makedirs(battery_folder, exist_ok=True)
-                log(f"{banc}: Vérification/Création de la structure de dossier pour {battery_folder} terminée.",
-                    level="DEBUG")
+            return default_config
 
-                # Log de création conditionnel
-                # Si le dossier DATA_DIR n'existait pas avant mais existe maintenant.
-                if not data_dir_existed_before and os.path.isdir(DATA_DIR):
-                    log(f"{banc}: Répertoire principal '{DATA_DIR}' créé.", level="INFO")
-                # Si le dossier du banc n'existait pas avant mais existe maintenant.
-                if not banc_dir_existed_before and os.path.isdir(banc_path):
-                    log(f"{banc}: Sous-répertoire '{banc_path}' créé.", level="INFO")
+        except OSError as e:
+            log(f"{banc}: ERREUR CRITIQUE - Impossible d'écrire config.json ({config_path}): {e}", level="ERROR")
+            raise
+        except Exception as e:
+            log(f"{banc}: ERREUR CRITIQUE - Erreur inattendue création config ({config_path}): {e}", level="ERROR")
+            raise
 
-                # Création du contenu de la configuration par défaut.
-                timestamp = datetime.now().isoformat()
-                default_config = {
-                    "battery_serial": serial_number,
-                    "banc": banc,
-                    "current_step": 1,
-                    "first_handle": timestamp,
-                    "timestamp_last_update": timestamp,
-                    "capacity_ah": 0,
-                    "capacity_wh": 0,
-                    "ri_discharge_average": 0,
-                    "ri_charge_average": 0,
-                    "diffusion_discharge_average": 0,
-                    "diffusion_charge_average": 0
-                }
-                config_data = default_config
+    @staticmethod
+    def load_or_create_config(battery_folder, serial_number, banc, create_data_csv_func):
+        """
+        Charge la configuration existante ou en crée une nouvelle si nécessaire.
+        
+        Args:
+            battery_folder (str): Chemin complet du dossier où config.json doit se trouver/être créé
+            serial_number (str): Numéro de série de la batterie pour la config par défaut
+            banc (str): Nom du banc pour les logs
+            create_data_csv_func: Fonction pour créer le CSV
+            
+        Returns:
+            dict: Le dictionnaire de configuration (chargé ou nouvellement créé)
+            
+        Raises:
+            Exception: Si la création du dossier/fichier par défaut échoue
+        """
+        config_path = os.path.join(battery_folder, "config.json")
 
-                # Écriture du fichier config.json par défaut.
-                with open(config_path, "w", encoding="utf-8") as file:
-                    # `indent=2` pour une meilleure lisibilité (indentation de 2 espaces).
-                    # `ensure_ascii=False` pour permettre les caractères non-ASCII (comme les accents) sans les échapper.
-                    json.dump(config_data, file, indent=2, ensure_ascii=False)
-                log(f"{banc}: Fichier config.json créé avec succès.", level="INFO")
-                create_data_csv_func(battery_folder)
-            except OSError as e:
-                log(f"{banc}: ERREUR CRITIQUE - Impossible de créer dossier/écrire config.json par défaut ({config_path}): {e}",
-                    level="ERROR")
-                raise  # Relance l'exception pour arrêter le script principal (main)
-            except Exception as e:
-                log(f"{banc}: ERREUR CRITIQUE - Erreur inattendue création config par défaut ({config_path}): {e}",
-                    level="ERROR")
-                raise
-        # Retourne la config (chargée ou nouvellement créée)
-        return config_data
+        # Tentative de chargement
+        config_data = BancConfigManager.load_config(config_path, banc)
+
+        if config_data is not None:
+            # Configuration existante trouvée, s'assurer que data.csv existe
+            create_data_csv_func(battery_folder)
+            return config_data
+
+        # Aucune configuration valide trouvée, création d'une nouvelle
+        return BancConfigManager.create_config(battery_folder, serial_number, banc, create_data_csv_func)
 
     @staticmethod
     def update_config(battery_folder_path, new_step, banc, update_bancs_config_current_step_func):
