@@ -9,7 +9,6 @@ from .ui_components import get_phase_message
 def handle_step_message(payload_str, banc_id, app):
     """
     Gère les messages MQTT sur le topic /{banc}/step.
-    
     Args:
         payload_str (str): Le payload du message MQTT
         banc_id (str): ID du banc (ex: "banc1")
@@ -70,7 +69,6 @@ def handle_step_message(payload_str, banc_id, app):
 def handle_bms_data_message(payload_str, banc_id, app):
     """
     Gère les messages MQTT sur le topic /{banc}/bms/data.
-    
     Args:
         payload_str (str): Le payload du message MQTT
         banc_id (str): ID du banc
@@ -83,7 +81,6 @@ def handle_bms_data_message(payload_str, banc_id, app):
 def handle_security_message(payload_str, banc_id, app):
     """
     Gère les messages MQTT sur le topic /{banc}/security.
-    
     Args:
         payload_str (str): Le payload du message MQTT
         banc_id (str): ID du banc
@@ -96,7 +93,6 @@ def handle_security_message(payload_str, banc_id, app):
 def handle_ri_results_message(payload_str, banc_id, app):
     """
     Gère les messages MQTT sur le topic /{banc}/ri/results.
-    
     Args:
         payload_str (str): Le payload du message MQTT
         banc_id (str): ID du banc
@@ -109,7 +105,6 @@ def handle_ri_results_message(payload_str, banc_id, app):
 def handle_state_message(payload_str, banc_id, app):
     """
     Gère les messages MQTT sur le topic /{banc}/state.
-    
     Args:
         payload_str (str): Le payload du message MQTT
         banc_id (str): ID du banc
@@ -129,8 +124,6 @@ def handle_state_message(payload_str, banc_id, app):
 
 
 # === FONCTIONS PRIVÉES POUR LES STEPS SPÉCIAUX ===
-
-
 def _handle_step_6_failed_test(banc_id, app, widgets):
     """Gère le step 6 (test échoué)."""
     log(f"UI: Step 6 (Test ÉCHOUÉ) reçu pour {banc_id}. Arrêt timer et MàJ UI.", level="INFO")

@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Utilitaires système et logging.
-
-Ce module centralise toutes les fonctions utilitaires liées au système :
-- Logging centralisé
-- Gestion des processus
-- Logique métier temporelle
 """
 import logging
 import logging.handlers
@@ -15,7 +10,6 @@ from datetime import datetime, timedelta
 
 MQTT_BROKER = "localhost"
 MQTT_PORT = 1883
-
 # Configuration du logging
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOGS_DIR = os.path.join(PROJECT_ROOT, "logs")
@@ -23,10 +17,6 @@ LOG_FILE = os.path.join(LOGS_DIR, "banc_test.log")
 LOG_LEVELS = ["DEEP_DEBUG", "DEBUG", "INFO", "ERROR", "WARNING"]
 CURRENT_LOG_LEVEL = "INFO"
 LEVEL_MAPPING = {"DEEP_DEBUG": 5, "DEBUG": 10, "INFO": 20, "WARNING": 30, "ERROR": 40}
-
-# =============================================================================
-# STRUCTURE PROPRE AVEC DOSSIER logs/
-# =============================================================================
 
 import logging
 import logging.handlers
@@ -36,7 +26,6 @@ import os
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOGS_DIR = os.path.join(PROJECT_ROOT, "logs")  # Nouveau dossier logs/
 LOG_FILE = os.path.join(LOGS_DIR, "banc_test.log")  # logs/banc_test.log
-
 # Vos niveaux
 LOG_LEVELS = ["DEEP_DEBUG", "DEBUG", "INFO", "ERROR", "WARNING"]
 CURRENT_LOG_LEVEL = "INFO"
@@ -110,8 +99,7 @@ def is_banc_running(banc_name):
     """
     Vérifie si un processus correspondant à 'python ... banc.py [banc_name] ...'
     est actuellement en cours d'exécution.
-    Utilise psutil pour itérer sur les processus et examiner leur ligne de commande.
-    
+    Utilise psutil pour itérer sur les processus et examiner leur ligne de commande.  
     Args:
         banc_name (str): Le nom du banc (ex: "banc1") à rechercher dans les
                          arguments de la ligne de commande.
@@ -144,7 +132,6 @@ def is_printer_service_running():
     """
     Vérifie si un processus correspondant à 'python ... printer.py ...'
     est actuellement en cours d'exécution.
-    
     Returns:
         bool: True si le service d'impression est actif, False sinon.
     """
@@ -185,7 +172,6 @@ def is_past_business_hours(last_update):
     plus un certain nombre d'heures ouvrées (par défaut 48).
     Retourne True si plus de 48h ouvrées se sont écoulées depuis last_update.
     Retourne False si moins de 48h se sont écoulées, ou si last_update est invalide.
-    
     Args:
         last_update (str): Le timestamp de départ au format ISO (ex: "YYYY-MM-DDTHH:MM:SS.ffffff").
     Returns:
@@ -206,7 +192,6 @@ def add_business_hours(start_time, hours):
     Ajoute un nombre d'heures ouvrées (lundi-vendredi, 24h/24) à une date/heure donnée.
     Ignore les heures tombant le samedi (weekday 5) ou le dimanche (weekday 6).
     Si start_time est un week-end, le calcul commence au lundi suivant à 00:00.
-    
     Args:
         start_time (datetime): Le moment de départ du calcul.
         hours (int): Le nombre d'heures ouvrées à ajouter.

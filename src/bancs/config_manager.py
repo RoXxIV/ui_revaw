@@ -15,11 +15,9 @@ class BancConfigManager:
     def load_config(config_path, banc):
         """
         Charge la configuration depuis config.json dans le dossier spécifié.
-        
         Args:
             config_path (str): Chemin complet vers le fichier config.json
             banc (str): Nom du banc pour les logs
-            
         Returns:
             dict | None: Le dictionnaire de configuration chargé, ou None si erreur/inexistant
         """
@@ -49,16 +47,13 @@ class BancConfigManager:
     def create_config(battery_folder, serial_number, banc, create_data_csv_func):
         """
         Crée un nouveau fichier config.json avec les valeurs par défaut.
-        
         Args:
             battery_folder (str): Chemin complet du dossier où créer le fichier
             serial_number (str): Numéro de série de la batterie
             banc (str): Nom du banc pour les logs
-            create_data_csv_func: Fonction pour créer le CSV
-            
+            create_data_csv_func: Fonction pour créer le CSV 
         Returns:
             dict: Le dictionnaire de configuration créé
-            
         Raises:
             OSError: Si impossible de créer le dossier ou le fichier
         """
@@ -122,16 +117,13 @@ class BancConfigManager:
     def load_or_create_config(battery_folder, serial_number, banc, create_data_csv_func):
         """
         Charge la configuration existante ou en crée une nouvelle si nécessaire.
-        
         Args:
             battery_folder (str): Chemin complet du dossier où config.json doit se trouver/être créé
             serial_number (str): Numéro de série de la batterie pour la config par défaut
             banc (str): Nom du banc pour les logs
             create_data_csv_func: Fonction pour créer le CSV
-            
         Returns:
             dict: Le dictionnaire de configuration (chargé ou nouvellement créé)
-            
         Raises:
             Exception: Si la création du dossier/fichier par défaut échoue
         """
@@ -154,13 +146,11 @@ class BancConfigManager:
         Met à jour le fichier config.json spécifique à la batterie avec la nouvelle étape
         et le timestamp actuel. Appelle également la fonction pour mettre à jour
         l'étape dans le fichier de configuration global bancs_config.json.
-        
         Args:
             battery_folder_path (str): Chemin du dossier batterie
             new_step (int): La nouvelle étape (phase) à enregistrer.
             banc (str): Nom du banc pour les logs
             update_bancs_config_current_step_func: Fonction pour MAJ config globale
-            
         Returns:
             bool: True si la mise à jour du fichier config.json spécifique a réussi,
                   False en cas d'erreur de lecture ou d'écriture.
@@ -232,14 +222,12 @@ class BancConfigManager:
         """
         Met à jour le fichier config.json spécifique à la batterie avec le timestamp,
         la capacité (Ah) et l'énergie (Wh) les plus récents.
-        
         Args:
             battery_folder_path (str): Chemin du dossier batterie
             timestamp (str): Le timestamp ISO de la dernière mise à jour.
             cap_ah (float | int): La dernière valeur de capacité (Ampère-heure).
             cap_wh (float | int): La dernière valeur d'énergie (Watt-heure).
             banc (str): Nom du banc pour les logs
-            
         Returns:
             bool: True si la mise à jour a réussi, False sinon.
         """
@@ -384,7 +372,6 @@ class BancConfigManager:
         """
         Réinitialise les paramètres ('serial-pending', 'status', 'current_step')
         pour le banc actuel dans le fichier de configuration principal.
-        
         Args:
             banc (str): Nom du banc
             banc_config_file (str): Chemin du fichier config principal

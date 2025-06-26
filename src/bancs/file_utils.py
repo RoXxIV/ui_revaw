@@ -13,12 +13,10 @@ class FileUtils:
         """
         Recherche le dossier correspondant à un numéro de série spécifique
         UNIQUEMENT dans le sous-dossier du banc actuel.
-        
         Args:
             serial_number (str): Le numéro de série à rechercher.
             data_dir (str): Répertoire de données principal
             banc (str): Nom du banc
-            
         Returns:
             str | None: Le chemin complet du dossier trouvé, ou None s'il n'existe pas
                         dans le dossier de ce banc.

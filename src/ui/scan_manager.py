@@ -16,7 +16,6 @@ from .ui_components import get_phase_message
 class ScanManager:
     """
     Gestionnaire centralisé pour toutes les opérations de scan dans l'interface.
-    
     Cette classe encapsule la logique de scan pour :
     - Scanner les bancs
     - Scanner les numéros de série  

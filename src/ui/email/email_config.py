@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Gestionnaire de configuration email pour le système de test de batteries.
-
-Ce module centralise le chargement et la gestion de la configuration email,
-offrant une interface propre pour accéder aux paramètres SMTP et destinataires.
 """
 
 import json
@@ -15,7 +12,6 @@ from ..system_utils import log
 class EmailConfig:
     """
     Gestionnaire de configuration email avec chargement automatique et fallback.
-    
     Cette classe encapsule le chargement de la configuration email depuis
     le fichier JSON et fournit des valeurs par défaut sécurisées en cas d'erreur.
     """
@@ -31,7 +27,6 @@ class EmailConfig:
     def _load_config(self) -> None:
         """
         Charge la configuration email depuis le fichier JSON.
-        
         En cas d'erreur, les propriétés retourneront des valeurs par défaut vides
         et un log d'erreur sera émis.
         """
@@ -55,7 +50,6 @@ class EmailConfig:
     def gmail_user(self) -> str:
         """
         Retourne l'adresse email Gmail utilisée pour l'envoi.
-        
         Returns:
             str: L'adresse email ou chaîne vide si non configurée
         """
@@ -65,7 +59,6 @@ class EmailConfig:
     def gmail_password(self) -> str:
         """
         Retourne le mot de passe d'application Gmail.
-        
         Returns:
             str: Le mot de passe ou chaîne vide si non configuré
         """
@@ -75,7 +68,6 @@ class EmailConfig:
     def recipient_emails(self) -> List[str]:
         """
         Retourne la liste des destinataires pour les emails.
-        
         Returns:
             List[str]: Liste des adresses email destinataires (vide si non configurée)
         """
@@ -89,7 +81,6 @@ class EmailConfig:
     def smtp_server(self) -> str:
         """
         Retourne l'adresse du serveur SMTP.
-        
         Returns:
             str: L'adresse du serveur SMTP (par défaut: smtp.gmail.com)
         """
@@ -99,7 +90,6 @@ class EmailConfig:
     def smtp_port(self) -> int:
         """
         Retourne le port du serveur SMTP.
-        
         Returns:
             int: Le port SMTP (par défaut: 465 pour SSL)
         """
@@ -113,7 +103,6 @@ class EmailConfig:
     def is_configured(self) -> bool:
         """
         Vérifie si la configuration email est complète et utilisable.
-        
         Returns:
             bool: True si la configuration est complète, False sinon
         """
@@ -123,7 +112,6 @@ class EmailConfig:
     def get_missing_config_items(self) -> List[str]:
         """
         Retourne la liste des éléments de configuration manquants.
-        
         Returns:
             List[str]: Liste des clés de configuration manquantes ou invalides
         """
@@ -145,7 +133,6 @@ class EmailConfig:
     def reload_config(self) -> None:
         """
         Recharge la configuration depuis le fichier.
-        
         Utile si le fichier de configuration a été modifié pendant l'exécution.
         """
         log("EmailConfig: Rechargement de la configuration email...", level="INFO")

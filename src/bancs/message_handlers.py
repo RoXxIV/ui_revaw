@@ -17,14 +17,12 @@ from .banc_config import BancConfig
 def _handle_step_special_stop(step_value, banc, close_csv_func, reset_banc_config_func, client):
     """
     Gère les steps spéciaux d'arrêt (8, 9).
-    
     Args:
         step_value (int): Valeur du step (8 ou 9)
         banc (str): Nom du banc
         close_csv_func: Fonction pour fermer le CSV
         reset_banc_config_func: Fonction pour reset config banc
         client: Client MQTT
-        
     Returns:
         tuple: (new_current_step, should_exit, exit_code)
     """
@@ -43,12 +41,10 @@ def _handle_step_special_stop(step_value, banc, close_csv_func, reset_banc_confi
 def _handle_step_security_stop(banc, close_csv_func, client):
     """
     Gère le step 7 (arrêt de sécurité ESP32).
-    
     Args:
         banc (str): Nom du banc
         close_csv_func: Fonction pour fermer le CSV
-        client: Client MQTT
-        
+        client: Client MQTT  
     Returns:
         tuple: (new_current_step, should_exit, exit_code)
     """
@@ -72,14 +68,12 @@ def _handle_step_security_stop(banc, close_csv_func, client):
 def _handle_step_test_failed(banc, battery_folder_path, close_csv_func, reset_banc_config_func, client):
     """
     Gère le step 6 (test échoué).
-    
     Args:
         banc (str): Nom du banc
         battery_folder_path (str): Chemin du dossier batterie
         close_csv_func: Fonction pour fermer le CSV
         reset_banc_config_func: Fonction pour reset config banc
         client: Client MQTT
-        
     Returns:
         tuple: (new_current_step, should_exit, exit_code)
     """
@@ -128,7 +122,6 @@ def _handle_step_test_completed(banc, serial_number, client, close_csv_func, res
                                 update_config_func):
     """
     Gère le step 5 (test terminé avec succès).
-    
     Args:
         banc (str): Nom du banc
         serial_number (str): Numéro de série de la batterie
@@ -136,7 +129,6 @@ def _handle_step_test_completed(banc, serial_number, client, close_csv_func, res
         close_csv_func: Fonction pour fermer le CSV
         reset_banc_config_func: Fonction pour reset config banc
         update_config_func: Fonction pour mettre à jour config
-        
     Returns:
         tuple: (new_current_step, should_exit, exit_code)
     """
@@ -193,12 +185,10 @@ def _handle_step_test_completed(banc, serial_number, client, close_csv_func, res
 def _handle_step_normal_phases(step_value, banc, update_config_func):
     """
     Gère les steps normaux des phases (1, 2, 3, 4).
-    
     Args:
         step_value (int): Valeur du step (1-4)
         banc (str): Nom du banc
         update_config_func: Fonction pour mettre à jour config
-        
     Returns:
         tuple: (new_current_step, should_exit, exit_code)
     """
@@ -212,7 +202,6 @@ def handle_step_message(payload_str, banc, current_step, battery_folder_path, se
                         reset_banc_config_func, update_config_func):
     """
     Gère les messages MQTT sur le topic /step.
-    
     Args:
         payload_str (str): Le payload du message MQTT
         banc (str): Nom du banc (ex: "banc1")
@@ -222,8 +211,7 @@ def handle_step_message(payload_str, banc, current_step, battery_folder_path, se
         client: Client MQTT
         close_csv_func: Fonction pour fermer le CSV
         reset_banc_config_func: Fonction pour reset config banc
-        update_config_func: Fonction pour mettre à jour config
-        
+        update_config_func: Fonction pour mettre à jour config 
     Returns:
         tuple: (new_current_step, should_exit, exit_code)
     """
@@ -267,7 +255,6 @@ def handle_bms_data_message(payload_str, banc, current_step, csv_writer, csv_fil
                             update_config_from_bms_func):
     """
     Gère les messages MQTT sur le topic /bms/data.
-    
     Args:
         payload_str (str): Le payload du message MQTT
         banc (str): Nom du banc
@@ -360,7 +347,6 @@ def _send_test_done_to_printer(banc, serial_number, timestamp_test_done, client)
 def handle_ri_results_message(payload_str, banc, update_config_ri_results_func):
     """
     Gère les messages MQTT sur le topic /ri/results.
-    
     Args:
         payload_str (str): Le payload du message MQTT
         banc (str): Nom du banc
@@ -405,7 +391,6 @@ def _handle_final_cleanup(banc, client):
 def get_banc_message_handlers():
     """
     Retourne un dictionnaire des handlers par topic pour les bancs.
-    
     Returns:
         dict: Dictionnaire topic -> fonction handler
     """

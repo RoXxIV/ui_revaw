@@ -5,7 +5,6 @@ Templates et configuration pour les emails du système de test de batteries.
 Ce module centralise tous les templates d'email utilisés par l'application,
 permettant une maintenance et une personnalisation plus faciles.
 """
-
 from datetime import datetime
 from typing import List
 
@@ -19,17 +18,11 @@ class EmailTemplates:
     présentation de la logique métier.
     """
 
-    # ========================================================================
     # CONFIGURATION DES SIGNATURES
-    # ========================================================================
-
     SENDER_NAME = "Evan Hermier"
     COMPANY_NAME = "L'équipe Revaw"
 
-    # ========================================================================
     # TEMPLATES EMAIL EXPÉDITION
-    # ========================================================================
-
     @staticmethod
     def generate_expedition_email_content(serial_numbers: List[str], timestamp_expedition: str) -> tuple[str, str]:
         """

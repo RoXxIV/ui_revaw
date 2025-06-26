@@ -51,7 +51,6 @@ class App(ctk.CTk):
         self.columnconfigure((0, 1), weight=1, uniform="col")
         self.bind("<Return>", self.handle_prompt)
         self.bind("<F11>", lambda e: self.attributes("-fullscreen", True))
-
         # === CHARGEMENT DES ICÔNES ===
         try:
             self.status_icons = {
@@ -63,7 +62,6 @@ class App(ctk.CTk):
         except FileNotFoundError as e:
             log(f"UI: Icône manquante: {e}", level="ERROR")
             self.status_icons = {}
-
         # === CRÉATION DES WIDGETS BANCS ===
         self.config_path = "bancs_config.json"
         config = load_bancs_config(self.config_path)
@@ -97,42 +95,32 @@ class App(ctk.CTk):
             except Exception as e:
                 log(f"UI: ERREUR CRITIQUE lors de l'initialisation de l'interface pour {banc_id}: {e}", level="ERROR")
                 pass
-
         # === INITIALISATION DE L'ÉTAT DES BANCS ===
         self.init_banc_status(config)
         self.mqtt_client = None
-
         # === ZONE SCAN PRINCIPALE (layout 3/4 + 1/4) ===
         self.frame_scan = ctk.CTkFrame(self, corner_radius=10)
         self.frame_scan.grid(row=2, column=0, columnspan=2, padx=5, pady=5, sticky="nsew")
-
         # Configuration colonnes
         self.frame_scan.columnconfigure(0, weight=3)  # 3/4 scan
         self.frame_scan.columnconfigure(1, weight=1)  # 1/4 système
-
         # Zone scan gauche (3/4)
         self.frame_scan_left = ctk.CTkFrame(self.frame_scan, fg_color="transparent")
         self.frame_scan_left.grid(row=0, column=0, padx=(0, 5), sticky="nsew")
         self.frame_scan_left.columnconfigure(0, weight=1)
-
         self.label_response1 = ctk.CTkLabel(self.frame_scan_left, text="- ", font=("Helvetica", 16, "bold"))
         self.label_response1.grid(row=0, column=0, padx=10, pady=(10, 5), sticky="w")
-
         self.label_response2 = ctk.CTkLabel(self.frame_scan_left, text="- ", font=("Helvetica", 16, "bold"))
         self.label_response2.grid(row=1, column=0, padx=10, pady=5, sticky="w")
-
         self.entry_prompt = ctk.CTkEntry(self.frame_scan_left, placeholder_text="Saisissez ici", font=("Helvetica", 16))
         self.entry_prompt.grid(row=2, column=0, padx=10, pady=(5, 10), sticky="ew")
-
         # === ZONE SYSTÈME (1/4 droite) ===
         self.frame_system = ctk.CTkFrame(self.frame_scan, corner_radius=5, border_width=1, border_color="#404040")
         self.frame_system.grid(row=0, column=1, padx=(5, 0), pady=5, sticky="nsew")
-
         # Titre principal système
         self.system_title = ctk.CTkLabel(
             self.frame_system, text="🔧 SYSTÈME", font=("Helvetica", 12, "bold"), text_color="#B0B0B0")
         self.system_title.pack(pady=(2, 2))
-
         # Statut système général
         self.system_status_label = ctk.CTkLabel(
             self.frame_system,
@@ -142,12 +130,10 @@ class App(ctk.CTk):
             wraplength=150,
             justify="left")
         self.system_status_label.pack(pady=(2, 2), padx=8, fill="x")
-
         # Titre imprimante
         self.printer_title = ctk.CTkLabel(
             self.frame_system, text="🖨️ IMPRIMANTE", font=("Helvetica", 12, "bold"), text_color="#B0B0B0")
         self.printer_title.pack(pady=(2, 2))
-
         # Statut imprimante
         self.printer_status_label = ctk.CTkLabel(
             self.frame_system,
@@ -157,15 +143,12 @@ class App(ctk.CTk):
             wraplength=150,
             justify="left")
         self.printer_status_label.pack(pady=2, padx=8, fill="x")
-
         # === GESTIONNAIRES SPÉCIALISÉS ===
         self.animation_manager = AnimationManager(self)
         self.ui_updater = UIUpdater(self)
-
         # === INITIALISATION DU GESTIONNAIRE DE SCAN ===
         self.scan_manager = ScanManager(self)
         log("UI: ScanManager initialisé", level="INFO")
-
         # === INITIALISATION FINALE ===
         for banc_id_init, widgets_init in self.banc_widgets.items():
             canvas_init = widgets_init.get("soc_canvas")
@@ -502,7 +485,6 @@ def on_connect(client, userdata, flags, rc):
             log(f"UI: Abonnements MQTT terminés.", level="INFO")
             msg1 = "Système Prêt."
             msg2 = "Veuillez scanner pour commencer..."
-            # ✅ MODIFICATION : Statuts séparés
             app.after(
                 0,
                 lambda: safe_ui_update(
@@ -629,7 +611,6 @@ def on_message(client, userdata, msg):
 def safe_ui_update(app_instance, msg1, msg2, msg_system=None, color_system=None, msg_printer=None, color_printer=None):
     """
     Met à jour les labels de réponse de l'UI via app.after pour thread-safety.
-    
     Args:
         app_instance: Instance de l'application
         msg1: Message pour label_response1 (None = pas de mise à jour)
@@ -643,22 +624,18 @@ def safe_ui_update(app_instance, msg1, msg2, msg_system=None, color_system=None,
         return
 
     try:
-        # Mise à jour msg1 si fourni
         if msg1 is not None and hasattr(app_instance, 'label_response1') and app_instance.label_response1:
             app_instance.label_response1.configure(text=msg1)
 
-        # Mise à jour msg2 si fourni
         if msg2 is not None and hasattr(app_instance, 'label_response2') and app_instance.label_response2:
             app_instance.label_response2.configure(text=msg2)
 
-        # Mise à jour msg_system si fourni
         if msg_system is not None and hasattr(app_instance, 'system_status_label') and app_instance.system_status_label:
             kwargs = {"text": msg_system}
             if color_system:
                 kwargs["text_color"] = color_system
             app_instance.system_status_label.configure(**kwargs)
 
-        # ✅ AJOUT : Mise à jour msg_printer si fourni
         if msg_printer is not None and hasattr(app_instance,
                                                'printer_status_label') and app_instance.printer_status_label:
             kwargs = {"text": msg_printer}

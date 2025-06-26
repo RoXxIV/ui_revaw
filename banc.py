@@ -17,7 +17,6 @@ if len(sys.argv) < 3:  # Check le nombre d'arguments (nom_script, banc, serial).
 # Récupère le nom du banc et le numéro de série depuis les arguments.
 BANC = sys.argv[1].lower()
 serial_number = sys.argv[2]
-
 # Valide le nom du banc par rapport à la liste dans utils.py
 if BANC not in VALID_BANCS:
     log(f"Nom de banc invalide : {BANC}", level="ERROR")

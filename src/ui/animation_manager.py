@@ -1,11 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Gestionnaire des animations de l'interface utilisateur.
-
-Ce module centralise la logique d'animation des barres de progression
-et de gestion du temps pour les phases de test.
-"""
-
 import time
 from .system_utils import log
 from .phase_calculator import PhaseCalculator
@@ -14,7 +7,6 @@ from .phase_calculator import PhaseCalculator
 class AnimationManager:
     """
     Classe responsable de la gestion des animations de l'interface.
-    
     Cette classe gère les animations des barres de progression et les timers
     pour chaque phase de test, séparant cette logique de la classe App principale.
     """
@@ -25,7 +17,6 @@ class AnimationManager:
     def __init__(self, app):
         """
         Initialise le gestionnaire d'animation.
-        
         Args:
             app: Instance de l'application UI
         """
@@ -35,7 +26,6 @@ class AnimationManager:
     def start_phase_animation(self, banc_id, phase_step):
         """
         Démarre l'animation pour une phase donnée.
-        
         Args:
             banc_id (str): Identifiant du banc (ex: "banc1")
             phase_step (int): Numéro de la phase (1-4)
@@ -83,7 +73,6 @@ class AnimationManager:
     def finalize_previous_phase(self, banc_id):
         """
         Finalise l'animation de la phase précédente.
-        
         Args:
             banc_id (str): Identifiant du banc
         """
@@ -115,11 +104,9 @@ class AnimationManager:
     def _get_target_progress_bar(self, phase_bar, phase_step):
         """
         Retourne la barre de progression cible pour une phase donnée.
-        
         Args:
             phase_bar: Widget MultiColorProgress
             phase_step (int): Numéro de la phase
-            
         Returns:
             CTkProgressBar: Barre de progression cible ou None
         """
@@ -139,11 +126,9 @@ class AnimationManager:
     def _calculate_phase_duration(self, widgets, phase_step):
         """
         Calcule la durée de la phase en utilisant PhaseCalculator.
-        
         Args:
             widgets (dict): Widgets du banc
             phase_step (int): Numéro de la phase
-            
         Returns:
             int: Durée en secondes
         """
@@ -158,7 +143,6 @@ class AnimationManager:
     def _start_animation_loop(self, banc_id, target_bar, label_time_left, duration, phase_step):
         """
         Démarre la boucle d'animation récursive.
-        
         Args:
             banc_id (str): Identifiant du banc
             target_bar: Barre de progression cible
@@ -212,7 +196,6 @@ class AnimationManager:
     def _update_ui_elements(self, label_time_left, target_bar, remaining_seconds, progress):
         """
         Met à jour les éléments de l'interface (temps et barre de progression).
-        
         Args:
             label_time_left: Label du temps restant
             target_bar: Barre de progression
@@ -232,7 +215,6 @@ class AnimationManager:
     def _finalize_progress_bar(self, phase_bar, old_phase):
         """
         Finalise la barre de progression de la phase précédente à 100%.
-        
         Args:
             phase_bar: Widget MultiColorProgress
             old_phase (int): Numéro de la phase précédente
@@ -258,7 +240,6 @@ class AnimationManager:
     def cancel_all_animations(self, banc_id):
         """
         Annule toutes les animations pour un banc donné.
-        
         Args:
             banc_id (str): Identifiant du banc
         """

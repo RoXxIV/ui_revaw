@@ -44,12 +44,10 @@ class CSVManager:
     def close_csv(csv_file, csv_writer, banc):
         """
         Ferme le fichier CSV actif s'il est ouvert et réinitialise les variables.
-        
         Args:
             csv_file: Fichier CSV ouvert
             csv_writer: Writer CSV
             banc (str): Nom du banc pour les logs
-            
         Returns:
             tuple: (None, None) pour réinitialiser les variables globales
         """
@@ -70,11 +68,9 @@ class CSVManager:
     def open_csv_for_append(battery_folder_path, banc):
         """
         Ouvre le fichier CSV en mode append pour l'écriture.
-        
         Args:
             battery_folder_path (str): Chemin du dossier batterie
             banc (str): Nom du banc pour les logs
-            
         Returns:
             tuple: (csv_file, csv_writer) ou (None, None) en cas d'erreur
         """

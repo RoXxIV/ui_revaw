@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Gestionnaire des mises à jour de l'interface utilisateur.
-
-Ce module centralise toutes les fonctions de mise à jour de l'UI,
-séparant cette logique de la classe App principale.
+Gestionnaire des mises à jour de l'UI.
 """
 
 from .system_utils import log
@@ -17,7 +14,6 @@ import os
 class UIUpdater:
     """
     Classe responsable des mises à jour de l'interface utilisateur.
-    
     Cette classe centralise toute la logique de mise à jour des widgets,
     permettant une meilleure organisation du code de l'interface.
     """
@@ -32,7 +28,6 @@ class UIUpdater:
     def __init__(self, app):
         """
         Initialise le gestionnaire de mise à jour UI.
-        
         Args:
             app: Instance de l'application UI
         """
@@ -41,7 +36,6 @@ class UIUpdater:
     def update_banc_data(self, banc_id, data):
         """
         Met à jour les widgets d'un banc avec les données BMS reçues via MQTT.
-        
         Args:
             banc_id (str): Identifiant du banc
             data (list): Données BMS sous forme de liste
@@ -70,7 +64,6 @@ class UIUpdater:
     def update_ri_diffusion_widgets(self, banc_id):
         """
         Met à jour les widgets Ri et Diffusion depuis le fichier config.json.
-        
         Args:
             banc_id (str): Identifiant du banc
         """
@@ -125,7 +118,6 @@ class UIUpdater:
     def update_banc_security(self, banc_id, security_message):
         """
         Affiche un message de sécurité temporaire.
-        
         Args:
             banc_id (str): Identifiant du banc
             security_message (str): Message de sécurité à afficher
@@ -146,7 +138,6 @@ class UIUpdater:
     def hide_security_display(self, banc_id):
         """
         Cache le label de sécurité rouge et réinitialise la bordure.
-        
         Args:
             banc_id (str): Identifiant du banc
         """
@@ -173,7 +164,6 @@ class UIUpdater:
     def update_status_icon(self, banc_id, icon_type, state):
         """
         Met à jour l'image d'une icône de statut.
-        
         Args:
             banc_id (str): Identifiant du banc
             icon_type (str): Type d'icône ("charger" ou "nurses")

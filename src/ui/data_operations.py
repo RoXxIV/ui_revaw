@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Gestionnaire des opérations sur les données et fichiers.
-
-Ce module centralise toutes les opérations liées aux données :
-- Recherche et validation des batteries
-- Chargement des profils et coefficients
-- Calculs de durée et température
 """
 
 import json
@@ -14,13 +9,12 @@ import csv
 import bisect
 from .system_utils import log
 from .config_manager import DATA_DIR
-# Constantes
 
+# Constantes
 SERIALS_CSV_PATH = "printed_serials.csv"
 MODULE_DIR = os.path.dirname(__file__)
 CHARGE_PROFILE_PATH = os.path.join(MODULE_DIR, "charge_profile.csv")
 TEMP_COEFF_PATH = os.path.join(MODULE_DIR, "temperature_coefficients.json")
-
 # Variables globales pour les profils chargés
 _charge_profile_voltage = []
 _charge_profile_duration = []
@@ -115,7 +109,6 @@ def find_battery_folder(serial_number, data_dir=DATA_DIR, valid_bancs=None):
     Recherche le dossier d'une batterie via son numéro de série dans tous les
     sous-dossiers des bancs valides.
     Le nom du dossier doit se terminer par "-{serial_number}".
-
     Args:
         serial_number (str): Numéro de série de la batterie à rechercher.
         data_dir (str, optional): Le chemin du répertoire de données principal.
@@ -149,11 +142,9 @@ def find_battery_folder(serial_number, data_dir=DATA_DIR, valid_bancs=None):
 
 def is_battery_checked(serial_to_check):
     """
-    Vérifie si une batterie a un 'checker_name' dans le fichier printed_serials.csv.
-    
+    Vérifie si une batterie a un 'checker_name' dans le fichier printed_serials.csv. 
     Args:
         serial_to_check (str): Le numéro de série de la batterie à vérifier.
-
     Returns:
         bool: True si la batterie a été validée (checkeur présent), False sinon.
     """
@@ -189,7 +180,6 @@ def get_charge_duration(volts):
     """
     Estime la durée restante de charge en secondes à partir d'une tension,
     en utilisant une interpolation linéaire sur le profil de charge pré-chargé.
-    
     Args:
         volts (float | str): La tension actuelle pour laquelle estimer la durée.
                              Sera convertie en float.
@@ -247,7 +237,6 @@ def get_temperature_coefficient(temp):
     Retourne le coefficient de température correspondant à une température donnée.
     Convertit l'entrée en float, arrondit à l'entier le plus proche, puis
     recherche cet entier comme clé dans le dictionnaire global TEMP_COEFFS.
-    
     Args:
         temp (float | int | str): La température d'entrée.
     Returns:

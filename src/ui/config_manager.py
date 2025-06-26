@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Gestionnaire de configuration pour les bancs de test.
-
-Ce module centralise toutes les opérations liées à la configuration
-des bancs de test : chargement, sauvegarde, modification des statuts.
 """
 
 import json
@@ -24,7 +21,6 @@ def create_default_config(path):
     Crée un fichier de configuration JSON par défaut pour les bancs à l'emplacement spécifié.
     Le fichier contiendra une liste de N bancs avec des
     valeurs par défaut pour leur nom, statut, etc.
-    
     Args:
         path (str): Le chemin complet du fichier où la configuration par défaut
                     doit être écrite.
@@ -62,10 +58,9 @@ def load_bancs_config(config_path=CONFIG_PATH):
     et retourne la configuration par défaut.
     Si le fichier existe mais est corrompu ou illisible, log une erreur
     et retourne la configuration par défaut comme solution de secours.
-    
     Args:
         config_path (str, optional): Le chemin vers le fichier de configuration.
-                                     Utilise la constante globale CONFIG_PATH par défaut.
+                              Utilise la constante globale CONFIG_PATH par défaut.
     Returns:
         dict: Le dictionnaire de configuration chargé depuis le fichier, ou
               la configuration par défaut en cas d'absence de fichier ou d'erreur.
@@ -100,7 +95,6 @@ def save_bancs_config(config, config_path=CONFIG_PATH):
     """
     Sauvegarde un dictionnaire de configuration donné dans un fichier JSON.
     Écrase le contenu précédent du fichier.
-    
     Args:
         config (dict): Le dictionnaire Python à sauvegarder.
         config_path (str, optional): Chemin complet du fichier où sauvegarder.
@@ -135,7 +129,6 @@ def get_banc_info(banc_name, config_path=CONFIG_PATH):
     Retourne le dictionnaire de configuration complet pour un banc spécifique,
     en le cherchant par son nom dans la configuration principale.
     La recherche est insensible à la casse (ex: "Banc1" et "banc1" correspondent).
-    
     Args:
         banc_name (str): Nom du banc à rechercher (ex: "banc1").
         config_path (str, optional): Chemin vers le fichier de configuration principal.
@@ -158,7 +151,6 @@ def set_banc_status(banc_name, status, serial_pending=None, current_step=None, c
     Charge la configuration actuelle, trouve le banc par son nom (insensible à la casse),
     met à jour les champs 'status', 'serial-pending' (si fourni), et 'current_step' (si fourni),
     puis sauvegarde la configuration modifiée.
-    
     Args:
         banc_name (str): Nom du banc à mettre à jour (ex: "banc1").
         status (str): Le nouveau statut à définir (ex: "occupied").
@@ -207,7 +199,6 @@ def update_bancs_config_current_step(new_step, banc_name, config_path=CONFIG_PAT
     """
     Met à jour uniquement le champ 'current_step' pour le banc spécifié
     dans le fichier de configuration principal.
-    
     Args:
         new_step (int): La nouvelle étape à enregistrer.
         banc_name (str): Nom du banc à mettre à jour.
@@ -256,7 +247,6 @@ def get_banc_for_serial(serial_number, config_path=CONFIG_PATH):
     """
     Recherche dans la configuration principale si un banc attend spécifiquement
     une batterie avec le numéro de série donné (via la clé "serial-pending").
-    
     Args:
         serial_number (str): Le numéro de série de la batterie à rechercher.
         config_path (str, optional): Chemin vers le fichier de configuration principal.
@@ -277,7 +267,6 @@ def reset_specific_banc(banc_id, config_path=CONFIG_PATH):
     """
     Réinitialise le statut d'un banc spécifique dans bancs_config.json.
     Met status='available', serial-pending=None, current_step=None.
-    
     Args:
         banc_id (str): L'identifiant du banc à réinitialiser (ex: "banc1").
         config_path (str, optional): Chemin vers le fichier de configuration.
