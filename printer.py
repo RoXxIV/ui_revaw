@@ -9,6 +9,8 @@ import paho.mqtt.client as mqtt
 from src.ui.system_utils import log
 from src.labels import LabelTemplates, PrinterConfig, CSVSerialManager, get_topic_handlers
 
+mqtt_client = None
+last_printer_status = None
 # --- File d'attente et Verrou ---
 print_queue = collections.deque()
 queue_lock = threading.Lock()
@@ -155,6 +157,29 @@ def check_printer_status(printer_ip, printer_port):
     return status
 
 
+def publish_printer_status(client, status):
+    """
+    Publie le statut de l'imprimante sur MQTT (on/off).
+    Évite le spam en ne publiant que si le statut change.
+    """
+    global last_printer_status
+
+    # Conversion statut -> on/off
+    if status == PrinterConfig.STATUS_OK:
+        mqtt_status = "on"
+    else:
+        mqtt_status = "off"
+
+    # Publier seulement si le statut a changé
+    if last_printer_status != mqtt_status:
+        try:
+            client.publish("printer/status", mqtt_status, qos=1, retain=True)
+            log(f"Statut imprimante publié: {mqtt_status} (était: {last_printer_status})", level="INFO")
+            last_printer_status = mqtt_status
+        except Exception as e:
+            log(f"Erreur publication statut imprimante: {e}", level="ERROR")
+
+
 def send_zpl_shipping_label_to_printer(serial_number_to_print, printer_ip, printer_port):
     """
     Envoie la commande ZPL pour l'étiquette simplifiée (carton).
@@ -258,6 +283,7 @@ def send_zpl_v1_label_to_printer(serial_number, random_code_for_qr, fabrication_
 
 
 def printer_worker_thread():
+    global mqtt_client
     log("Thread Worker d'impression démarré.", level="INFO")
     CSVSerialManager.initialize_serial_csv()
     while True:
@@ -294,7 +320,9 @@ def printer_worker_thread():
                 level="INFO",
             )
             current_status = check_printer_status(PrinterConfig.PRINTER_IP, PrinterConfig.PRINTER_PORT)
-
+            # Publication du statut
+            if mqtt_client:
+                publish_printer_status(mqtt_client, current_status)
             if current_status == PrinterConfig.STATUS_OK:
                 log(f"Statut imprimante OK. Tentative d'impression ZPL pour {serial_number}.", level="INFO")
                 success = False
@@ -349,6 +377,9 @@ def printer_worker_thread():
                 log(f"Statut non géré: {current_status}", level="WARNING")
                 time.sleep(PrinterConfig.RETRY_DELAY_ON_ERROR_S)
         else:
+            if mqtt_client:
+                current_status = check_printer_status(PrinterConfig.PRINTER_IP, PrinterConfig.PRINTER_PORT)
+                publish_printer_status(mqtt_client, current_status)
             time.sleep(PrinterConfig.POLL_DELAY_WHEN_IDLE_S)
 
 
@@ -410,8 +441,7 @@ def on_message(client, userdata, msg):
 
 
 if __name__ == "__main__":
-    # ... (identique à v2) ...
-    log("Démarrage du script d'écoute MQTT v3 (avec vérification statut)...", level="INFO")
+    log("Démarrage du script d'écoute MQTT", level="INFO")
     CSVSerialManager.initialize_serial_csv()  # S'assurer que le CSV existe au démarrage principal
 
     if "192.168.1." in PrinterConfig.PRINTER_IP:
@@ -421,6 +451,7 @@ if __name__ == "__main__":
     worker.start()
 
     client = mqtt.Client(client_id="raspberrypi_printer_listener_csv")
+    mqtt_client = client
     client.on_connect = on_connect
     client.on_message = on_message
 

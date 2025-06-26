@@ -50,6 +50,7 @@ class App(ctk.CTk):
         self.rowconfigure(3, weight=1)
         self.columnconfigure((0, 1), weight=1, uniform="col")
         self.bind("<Return>", self.handle_prompt)
+        self.bind("<F11>", lambda e: self.attributes("-fullscreen", True))
 
         # === CHARGEMENT DES ICÔNES ===
         try:
@@ -101,8 +102,7 @@ class App(ctk.CTk):
         self.init_banc_status(config)
         self.mqtt_client = None
 
-        # === ZONE SCAN (layout 3/4 + 1/4) ===
-
+        # === ZONE SCAN PRINCIPALE (layout 3/4 + 1/4) ===
         self.frame_scan = ctk.CTkFrame(self, corner_radius=10)
         self.frame_scan.grid(row=2, column=0, columnspan=2, padx=5, pady=5, sticky="nsew")
 
@@ -110,7 +110,7 @@ class App(ctk.CTk):
         self.frame_scan.columnconfigure(0, weight=3)  # 3/4 scan
         self.frame_scan.columnconfigure(1, weight=1)  # 1/4 système
 
-        # Zone scan existante (déplacer tes widgets dans frame_scan_left)
+        # Zone scan gauche (3/4)
         self.frame_scan_left = ctk.CTkFrame(self.frame_scan, fg_color="transparent")
         self.frame_scan_left.grid(row=0, column=0, padx=(0, 5), sticky="nsew")
         self.frame_scan_left.columnconfigure(0, weight=1)
@@ -128,10 +128,12 @@ class App(ctk.CTk):
         self.frame_system = ctk.CTkFrame(self.frame_scan, corner_radius=5, border_width=1, border_color="#404040")
         self.frame_system.grid(row=0, column=1, padx=(5, 0), pady=5, sticky="nsew")
 
+        # Titre principal système
         self.system_title = ctk.CTkLabel(
             self.frame_system, text="🔧 SYSTÈME", font=("Helvetica", 12, "bold"), text_color="#B0B0B0")
-        self.system_title.pack(pady=(8, 5))
+        self.system_title.pack(pady=(2, 2))
 
+        # Statut système général
         self.system_status_label = ctk.CTkLabel(
             self.frame_system,
             text="🔄 Vérification...",
@@ -139,7 +141,22 @@ class App(ctk.CTk):
             text_color="#FFA500",
             wraplength=150,
             justify="left")
-        self.system_status_label.pack(pady=5, padx=8, fill="x")
+        self.system_status_label.pack(pady=(2, 2), padx=8, fill="x")
+
+        # Titre imprimante
+        self.printer_title = ctk.CTkLabel(
+            self.frame_system, text="🖨️ IMPRIMANTE", font=("Helvetica", 12, "bold"), text_color="#B0B0B0")
+        self.printer_title.pack(pady=(2, 2))
+
+        # Statut imprimante
+        self.printer_status_label = ctk.CTkLabel(
+            self.frame_system,
+            text="🖨️ Vérification...",
+            font=("Helvetica", 10),
+            text_color="#FFA500",
+            wraplength=150,
+            justify="left")
+        self.printer_status_label.pack(pady=2, padx=8, fill="x")
 
         # === GESTIONNAIRES SPÉCIALISÉS ===
         self.animation_manager = AnimationManager(self)
@@ -295,122 +312,149 @@ class App(ctk.CTk):
                                delay_between_retries=10):
         """
         Envoie un e-mail récapitulatif des batteries expédiées avec logique de réessai.
-        
-        Version refactorisée utilisant la configuration et les templates centralisés.
-        
-        Args:
-            serial_numbers_expedies (List[str]): Liste des numéros de série expédiés
-            timestamp_expedition_str (str): Timestamp d'expédition au format ISO
-            retry_attempts (int): Nombre de tentatives de réessai
-            delay_between_retries (int): Délai entre les tentatives en secondes
-            
-        Returns:
-            bool: True si l'envoi a réussi, False sinon
+        Version non-bloquante pour éviter le freeze de l'UI.
         """
-        # Vérification de la configuration email
-        if not email_config.is_configured():
-            missing_items = email_config.get_missing_config_items()
-            log(f"UI: Configuration email incomplète. Éléments manquants: {missing_items}. Envoi de l'email annulé.",
+        # Appel de la fonction interne avec attempt=0
+        self._send_email_attempt(
+            serial_numbers_expedies, timestamp_expedition_str, retry_attempts, delay_between_retries, attempt=0)
+
+    def _send_email_attempt(self, serial_numbers_expedies, timestamp_expedition_str, retry_attempts,
+                            delay_between_retries, attempt):
+        """
+        Fonction interne récursive pour les tentatives d'envoi d'email.
+        Utilise self.after() au lieu de time.sleep() pour éviter le freeze.
+        """
+
+        # ⚠️ Cette fonction ne doit être appelée qu'au premier attempt
+        if attempt == 0:
+            # Vérification de la configuration email
+            if not email_config.is_configured():
+                missing_items = email_config.get_missing_config_items()
+                log(f"UI: Configuration email incomplète. Éléments manquants: {missing_items}. Envoi de l'email annulé.",
+                    level="ERROR")
+                self.after(
+                    0, lambda: safe_ui_update(self, None, "Config email manquante",
+                                              "❌ Le dernier mail n'a pas été envoyé", "red"))
+                return
+
+            if not serial_numbers_expedies:
+                log("UI: Aucune batterie à inclure dans l'email d'expédition.", level="INFO")
+                self.after(
+                    0, lambda: safe_ui_update(self, None, "Aucune batterie à expédier", "ℹ️ Aucun email nécessaire",
+                                              "#808080"))
+                return
+
+            # Génération du contenu via les templates
+            try:
+                self.email_subject = EmailTemplates.generate_expedition_subject(timestamp_expedition_str)
+                text_content, html_content = EmailTemplates.generate_expedition_email_content(
+                    serial_numbers_expedies, timestamp_expedition_str)
+
+                # Stockage pour les réessais
+                self.email_text_content = text_content
+                self.email_html_content = html_content
+                self.email_serial_count = len(serial_numbers_expedies)
+
+            except Exception as template_error:
+                log(f"UI: Erreur lors de la génération du template email: {template_error}", level="ERROR")
+                self.after(
+                    0, lambda: safe_ui_update(self, None, "Erreur template", "❌ Le dernier mail n'a pas été envoyé",
+                                              "red"))
+                return
+
+            # Indication du début de l'envoi
+            self.after(0, lambda: safe_ui_update(self, None, None, "📧 Envoi email...", "#FFA500"))
+
+        # Mise à jour du statut pour les tentatives multiples
+        if attempt > 0:
+            self.after(
+                0,
+                lambda a=attempt, r=retry_attempts: safe_ui_update(self, None, None, f"📧 Tentative {a + 1}/{r}...",
+                                                                   "#FFA500"))
+
+        log(f"UI: Tentative d'envoi de l'email d'expédition (Tentative {attempt + 1}/{retry_attempts})...",
+            level="INFO")
+
+        try:
+            # Création du message MIME
+            message = MIMEMultipart("alternative")
+            message["Subject"] = self.email_subject
+            message["From"] = email_config.gmail_user
+            message["To"] = ", ".join(email_config.recipient_emails)
+
+            # Ajout des parties texte et HTML
+            part_text = MIMEText(self.email_text_content, "plain")
+            part_html = MIMEText(self.email_html_content, "html")
+            message.attach(part_text)
+            message.attach(part_html)
+
+            # Connexion et envoi
+            server = smtplib.SMTP_SSL(email_config.smtp_server, email_config.smtp_port)
+            server.ehlo()
+            server.login(email_config.gmail_user, email_config.gmail_password)
+            server.sendmail(email_config.gmail_user, email_config.recipient_emails, message.as_string())
+            server.close()
+
+            # ✅ SUCCÈS
+            log(f"UI: Email d'expédition envoyé avec succès à {', '.join(email_config.recipient_emails)} !",
+                level="INFO")
+            self.after(
+                0,
+                lambda count=self.email_serial_count: safe_ui_update(self, None, f"Email envoyé ({count} batteries)",
+                                                                     "✅ Email envoyé", "green"))
+
+        except smtplib.SMTPAuthenticationError:
+            log(f"UI: Erreur d'authentification SMTP pour Gmail (Tentative {attempt + 1}/{retry_attempts}).",
                 level="ERROR")
             self.after(
-                0, lambda: safe_ui_update(self, None, "Config email manquante", "❌ Le dernier mail n'a pas été envoyé",
-                                          "red"))
-            return False
+                0,
+                lambda: safe_ui_update(self, None, "Erreur auth email", "❌ Le dernier mail n'a pas été envoyé", "red"))
 
-        if not serial_numbers_expedies:
-            log("UI: Aucune batterie à inclure dans l'email d'expédition.", level="INFO")
-            self.after(
-                0, lambda: safe_ui_update(self, None, "Aucune batterie à expédier", "ℹ️ Aucun email nécessaire",
-                                          "#808080"))
-            return True
+        except (socket.gaierror, OSError) as e:
+            log(f"UI: ERREUR RÉSEAU lors de la connexion SMTP (Tentative {attempt + 1}/{retry_attempts}) : {e}",
+                level="ERROR")
 
-        # Génération du contenu via les templates
-        try:
-            subject = EmailTemplates.generate_expedition_subject(timestamp_expedition_str)
-            text_content, html_content = EmailTemplates.generate_expedition_email_content(
-                serial_numbers_expedies, timestamp_expedition_str)
-        except Exception as template_error:
-            log(f"UI: Erreur lors de la génération du template email: {template_error}", level="ERROR")
-            self.after(
-                0, lambda: safe_ui_update(self, None, "Erreur template", "❌ Le dernier mail n'a pas été envoyé", "red"))
-            return False
-
-        # Création du message MIME
-        message = MIMEMultipart("alternative")
-        message["Subject"] = subject
-        message["From"] = email_config.gmail_user
-        message["To"] = ", ".join(email_config.recipient_emails)
-
-        # Ajout des parties texte et HTML
-        part_text = MIMEText(text_content, "plain")
-        part_html = MIMEText(html_content, "html")
-        message.attach(part_text)
-        message.attach(part_html)
-        # Indication du début de l'envoi
-        self.after(0, lambda: safe_ui_update(self, None, None, "📧 Envoi email...", "#FFA500"))
-
-        # Tentatives d'envoi avec logique de réessai
-        for attempt in range(retry_attempts):
-            try:
-                log(f"UI: Tentative d'envoi de l'email d'expédition à {', '.join(email_config.recipient_emails)} (Tentative {attempt + 1}/{retry_attempts})...",
-                    level="INFO")
-                # Mise à jour du statut pour les tentatives multiples
-                if attempt > 0:
-                    self.after(
-                        0,
-                        lambda a=attempt: safe_ui_update(self, None, None, f"📧 Tentative {a + 1}/{retry_attempts}...",
-                                                         "#FFA500"))
-                # Connexion et envoi
-                server = smtplib.SMTP_SSL(email_config.smtp_server, email_config.smtp_port)
-                server.ehlo()
-                server.login(email_config.gmail_user, email_config.gmail_password)
-                server.sendmail(email_config.gmail_user, email_config.recipient_emails, message.as_string())
-                server.close()
-
-                log(f"UI: Email d'expédition envoyé avec succès à {', '.join(email_config.recipient_emails)} !",
-                    level="INFO")
+            if attempt < retry_attempts - 1:
+                # ✅ SOLUTION : Utiliser self.after() au lieu de time.sleep()
+                log(f"UI: Réessai de l'envoi de l'email dans {delay_between_retries} secondes...", level="INFO")
                 self.after(
                     0,
-                    lambda count=len(serial_numbers_expedies): safe_ui_update(
-                        self, None, f"Email envoyé ({count} batteries)", "✅ Email envoyé", "green"))
-                return True
+                    lambda a=attempt, r=retry_attempts: safe_ui_update(
+                        self, None, f"Erreur réseau, réessai dans {delay_between_retries}s", f"⚠️ Réseau {a + 1}/{r}",
+                        "orange"))
 
-            except smtplib.SMTPAuthenticationError:
-                log(f"UI: Erreur d'authentification SMTP pour Gmail (Tentative {attempt + 1}/{retry_attempts}). Vérifiez la configuration email.",
+                # 🔑 CLEF : Planifier le prochain essai avec self.after()
+                self.after(
+                    delay_between_retries * 1000,  # Conversion en millisecondes
+                    lambda: self._send_email_attempt(serial_numbers_expedies, timestamp_expedition_str, retry_attempts,
+                                                     delay_between_retries, attempt + 1))
+            else:
+                log(f"UI: Échec de l'envoi de l'email après {retry_attempts} tentatives pour cause d'erreur réseau/DNS.",
                     level="ERROR")
                 self.after(
-                    0, lambda: safe_ui_update(self, None, "Erreur auth email", "❌ Le dernier mail n'a pas été envoyé",
-                                              "red"))
-                return False
+                    0, lambda: safe_ui_update(self, None, "Erreur réseau finale",
+                                              "❌ Le dernier mail n'a pas été envoyé", "red"))
 
-            except (socket.gaierror, OSError) as e:
-                log(f"UI: ERREUR RÉSEAU lors de la connexion SMTP (Tentative {attempt + 1}/{retry_attempts}) : {e}. Vérifiez la connexion internet et le DNS.",
-                    level="ERROR")
-                if attempt < retry_attempts - 1:
-                    log(f"UI: Réessai de l'envoi de l'email dans {delay_between_retries} secondes...", level="INFO")
-                    self.after(
-                        0,
-                        lambda a=attempt, r=retry_attempts: safe_ui_update(self, None, "Erreur réseau/DNS",
-                                                                           f"⚠️ Réseau {a + 1}/{r}", "orange"))
-                    time.sleep(delay_between_retries)
-                else:
-                    log(f"UI: Échec de l'envoi de l'email après {retry_attempts} tentatives pour cause d'erreur réseau/DNS.",
-                        level="ERROR")
-                    self.after(
-                        0, lambda: safe_ui_update(self, None, "Erreur réseau finale",
-                                                  "❌ Le dernier mail n'a pas été envoyé", "red"))
-                    return False
+        except Exception as e:
+            log(f"UI: Erreur inattendue lors de l'envoi de l'email d'expédition (Tentative {attempt + 1}/{retry_attempts}) : {e}",
+                level="ERROR")
 
-            except Exception as e:
-                log(f"UI: Erreur inattendue lors de l'envoi de l'email d'expédition (Tentative {attempt + 1}/{retry_attempts}) : {e}",
-                    level="ERROR")
+            if attempt < retry_attempts - 1:
+                # Réessai pour erreurs inattendues aussi
                 self.after(
-                    0, lambda: safe_ui_update(self, None, "Erreur réseau/DNS", "❌ Le dernier mail n'a pas été envoyé",
+                    0,
+                    lambda a=attempt, r=retry_attempts: safe_ui_update(
+                        self, None, f"Erreur inattendue, réessai dans {delay_between_retries}s",
+                        f"⚠️ Erreur {a + 1}/{r}", "orange"))
+
+                self.after(
+                    delay_between_retries * 1000,
+                    lambda: self._send_email_attempt(serial_numbers_expedies, timestamp_expedition_str, retry_attempts,
+                                                     delay_between_retries, attempt + 1))
+            else:
+                self.after(
+                    0, lambda: safe_ui_update(self, None, "Erreur inattendue", "❌ Le dernier mail n'a pas été envoyé",
                                               "red"))
-                return False
-        self.after(
-            0, lambda: safe_ui_update(self, None, "❌ Email échec final", "❌ Le dernier mail n'a pas été envoyé", "red"))
-        return False
 
 
 def on_connect(client, userdata, flags, rc):
@@ -444,24 +488,64 @@ def on_connect(client, userdata, flags, rc):
             except Exception as sub_e:
                 log(f"UI: Exception abonnement {banc_id_str}: {sub_e}", level="ERROR")
                 all_subscriptions_successful = False
+        # Abonnement au statut imprimante
+        try:
+            result, mid = client.subscribe("printer/status", 0)
+            if result != mqtt.MQTT_ERR_SUCCESS:
+                all_subscriptions_successful = False
+                log(f"UI: ERREUR abonnement printer/status. Code: {result}", level="ERROR")
+        except Exception as sub_e:
+            log(f"UI: Exception abonnement printer/status: {sub_e}", level="ERROR")
+            all_subscriptions_successful = False
 
         if all_subscriptions_successful:
             log(f"UI: Abonnements MQTT terminés.", level="INFO")
             msg1 = "Système Prêt."
             msg2 = "Veuillez scanner pour commencer..."
-            app.after(0, lambda: safe_ui_update(app, msg1, msg2, "✅ Système OK", "green"))
+            # ✅ MODIFICATION : Statuts séparés
+            app.after(
+                0,
+                lambda: safe_ui_update(
+                    app,
+                    msg1,
+                    msg2,
+                    "✅ systeme ok",
+                    "green",  # Système
+                    "🖨️ Attente statut...",
+                    "#FFA500"  # Imprimante
+                ))
         else:
             log(f"UI: Échec d'au moins un abonnement MQTT.", level="ERROR")
             msg1 = "Erreur MQTT"
             msg2 = "Échec abonnements. Vérifier logs."
-            app.after(0, lambda: safe_ui_update(app, msg1, msg2, "❌ Erreur MQTT", "red"))
+            app.after(
+                0,
+                lambda: safe_ui_update(
+                    app,
+                    msg1,
+                    msg2,
+                    "❌ Erreur MQTT",
+                    "red",  # Système
+                    "⚠️ Statut inconnu",
+                    "orange"  # Imprimante
+                ))
     else:
         log(f"UI: Connexion MQTT échouée (Code: {rc}).", level="WARNING")
         msg1 = "Erreur Connexion MQTT"
         msg2 = f"Code: {rc}. Vérifier broker/réseau."
         if userdata and "app" in userdata and userdata["app"]:
             app = userdata["app"]
-            app.after(0, lambda: safe_ui_update(app, msg1, msg2, "⚠️ Connexion échouée", "orange"))
+            app.after(
+                0,
+                lambda: safe_ui_update(
+                    app,
+                    msg1,
+                    msg2,
+                    "⚠️ Connexion échouée",
+                    "orange",  # Système
+                    "❓ Hors ligne",
+                    "#808080"  # Imprimante
+                ))
 
 
 @staticmethod
@@ -481,6 +565,39 @@ def on_message(client, userdata, msg):
         payload_str = msg.payload.decode("utf-8")
     except UnicodeDecodeError:
         log(f"UI: Erreur décodage payload (non-UTF8?) pour topic {topic}", level="WARNING")
+        return
+
+    # Gestion du topic printer/status
+    if topic == "printer/status":
+        log(f"UI: Statut imprimante reçu: {payload_str}", level="INFO")
+
+        if payload_str.strip().lower() == "on":
+            app.after(
+                0,
+                lambda: safe_ui_update(
+                    app,
+                    None,
+                    None,
+                    None,
+                    None,  # Pas de changement système
+                    "🖨️ Connectée",
+                    "green"  # Imprimante OK
+                ))
+        elif payload_str.strip().lower() == "off":
+            app.after(
+                0,
+                lambda: safe_ui_update(
+                    app,
+                    None,
+                    None,
+                    None,
+                    None,  # Pas de changement système  
+                    "❌ Non détectée",
+                    "red"  # Imprimante HS
+                ))
+        else:
+            log(f"UI: Statut imprimante invalide: {payload_str}", level="WARNING")
+            app.after(0, lambda: safe_ui_update(app, None, None, None, None, "⚠️ Statut invalide", "orange"))
         return
 
     # Extraction du banc_id et du topic suffix
@@ -509,7 +626,7 @@ def on_message(client, userdata, msg):
         log(f"UI: Topic non reconnu ou non géré: {topic}", level="WARNING")
 
 
-def safe_ui_update(app_instance, msg1, msg2, msg_system=None, color_system=None):
+def safe_ui_update(app_instance, msg1, msg2, msg_system=None, color_system=None, msg_printer=None, color_printer=None):
     """
     Met à jour les labels de réponse de l'UI via app.after pour thread-safety.
     
@@ -519,6 +636,8 @@ def safe_ui_update(app_instance, msg1, msg2, msg_system=None, color_system=None)
         msg2: Message pour label_response2 (None = pas de mise à jour)  
         msg_system: Message pour system_status_label (None = pas de mise à jour)
         color_system: Couleur pour system_status_label (optionnel)
+        msg_printer: Message pour printer_status_label (None = pas de mise à jour)
+        color_printer: Couleur pour printer_status_label (optionnel)
     """
     if not app_instance:
         return
@@ -538,6 +657,14 @@ def safe_ui_update(app_instance, msg1, msg2, msg_system=None, color_system=None)
             if color_system:
                 kwargs["text_color"] = color_system
             app_instance.system_status_label.configure(**kwargs)
+
+        # ✅ AJOUT : Mise à jour msg_printer si fourni
+        if msg_printer is not None and hasattr(app_instance,
+                                               'printer_status_label') and app_instance.printer_status_label:
+            kwargs = {"text": msg_printer}
+            if color_printer:
+                kwargs["text_color"] = color_printer
+            app_instance.printer_status_label.configure(**kwargs)
 
     except Exception as ui_e:
         log(f"UI: Erreur interne lors de la mise à jour UI via 'after': {ui_e}", level="WARNING")

@@ -573,3 +573,422 @@
 [2025-06-26 16:34:50] [ERROR] UI: ERREUR RÉSEAU lors de la connexion SMTP (Tentative 3/3) : [Errno 11001] getaddrinfo failed. Vérifiez la connexion internet et le DNS.
 [2025-06-26 16:34:50] [ERROR] UI: Échec de l'envoi de l'email après 3 tentatives pour cause d'erreur réseau/DNS.
 [2025-06-26 17:45:53] [INFO] UI: Application terminée.
+[2025-06-26 17:49:41] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 17:49:41] [INFO] Démarrage du script d'écoute MQTT v3 (avec vérification statut)...
+[2025-06-26 17:49:41] [WARNING] !!! ATTENTION: IP imprimante semble par défaut. Vérifiez si elle a changé. !!!
+[2025-06-26 17:49:41] [INFO] Thread Worker d'impression démarré.
+[2025-06-26 17:49:41] [INFO] Tentative de connexion au broker MQTT: localhost:1883
+[2025-06-26 17:49:41] [INFO] Démarrage de la boucle MQTT (écoute en continu)...
+[2025-06-26 17:49:41] [INFO] Connecté au broker MQTT localhost:1883
+[2025-06-26 17:49:41] [INFO] DEBUG: MQTT_TOPIC_TEST_DONE = 'printer/test_done'
+[2025-06-26 17:49:41] [INFO] Abonné aux topics: create, update_test_done, shipping, reprint_main, request_full_reprint, update_shipping_timestamp
+[2025-06-26 17:49:47] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 17:49:48] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 17:49:48] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 17:49:48] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 17:49:48] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 17:49:48] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 17:49:48] [INFO] ScanManager initialisé
+[2025-06-26 17:49:48] [INFO] UI: ScanManager initialisé
+[2025-06-26 17:49:48] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 17:49:48] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 17:49:48] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 17:49:48] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 17:49:48] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 17:49:48] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 17:49:54] [INFO] UI: Prompt reçu: expedition
+[2025-06-26 17:49:54] [INFO] ScanManager: Traitement scan 'expedition' dans état 0
+[2025-06-26 17:49:56] [INFO] UI: Prompt reçu: RW-48v2710008
+[2025-06-26 17:49:56] [INFO] ScanManager: Traitement scan 'RW-48v2710008' dans état 8
+[2025-06-26 17:50:00] [INFO] UI: Prompt reçu: expedition
+[2025-06-26 17:50:00] [INFO] ScanManager: Traitement scan 'expedition' dans état 8
+[2025-06-26 17:50:00] [INFO] ScanManager: Confirmation expédition pour 1 batteries
+[2025-06-26 17:50:00] [INFO] Message reçu sur 'printer/update_shipping_timestamp': {"serial_number": "RW-48v2710008", "timestamp_expedition": "2025-06-26T17:50:00.722404"}
+[2025-06-26 17:50:00] [INFO] DEBUG: Handler trouvé: True
+[2025-06-26 17:50:00] [INFO] UI: Tentative d'envoi de l'email d'expédition (Tentative 1/3)...
+[2025-06-26 17:50:00] [INFO] Demande de mise à jour TimestampExpedition pour S/N RW-48v2710008 à 2025-06-26T17:50:00.722404
+[2025-06-26 17:50:00] [INFO] Ligne pour RW-48v2710008 sera mise à jour avec TimestampExpedition: 2025-06-26T17:50:00.722404
+[2025-06-26 17:50:00] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampExpedition pour RW-48v2710008.
+[2025-06-26 17:50:00] [ERROR] UI: ERREUR RÉSEAU lors de la connexion SMTP (Tentative 1/3) : [Errno 11001] getaddrinfo failed
+[2025-06-26 17:50:00] [INFO] UI: Réessai de l'envoi de l'email dans 10 secondes...
+[2025-06-26 17:50:10] [INFO] UI: Tentative d'envoi de l'email d'expédition (Tentative 2/3)...
+[2025-06-26 17:50:10] [ERROR] UI: ERREUR RÉSEAU lors de la connexion SMTP (Tentative 2/3) : [Errno 11001] getaddrinfo failed
+[2025-06-26 17:50:10] [INFO] UI: Réessai de l'envoi de l'email dans 10 secondes...
+[2025-06-26 17:50:20] [INFO] UI: Tentative d'envoi de l'email d'expédition (Tentative 3/3)...
+[2025-06-26 17:50:20] [ERROR] UI: ERREUR RÉSEAU lors de la connexion SMTP (Tentative 3/3) : [Errno 11001] getaddrinfo failed
+[2025-06-26 17:50:20] [ERROR] UI: Échec de l'envoi de l'email après 3 tentatives pour cause d'erreur réseau/DNS.
+[2025-06-26 17:51:29] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 17:51:29] [INFO] Démarrage du script d'écoute MQTT v3 (avec vérification statut)...
+[2025-06-26 17:51:29] [WARNING] !!! ATTENTION: IP imprimante semble par défaut. Vérifiez si elle a changé. !!!
+[2025-06-26 17:51:29] [INFO] Thread Worker d'impression démarré.
+[2025-06-26 17:51:29] [INFO] Tentative de connexion au broker MQTT: localhost:1883
+[2025-06-26 17:51:29] [INFO] Démarrage de la boucle MQTT (écoute en continu)...
+[2025-06-26 17:51:29] [INFO] Connecté au broker MQTT localhost:1883
+[2025-06-26 17:51:29] [INFO] DEBUG: MQTT_TOPIC_TEST_DONE = 'printer/test_done'
+[2025-06-26 17:51:29] [INFO] Abonné aux topics: create, update_test_done, shipping, reprint_main, request_full_reprint, update_shipping_timestamp
+[2025-06-26 17:51:33] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 17:51:33] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 17:51:33] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 17:51:33] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 17:51:33] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 17:51:33] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 17:51:33] [INFO] ScanManager initialisé
+[2025-06-26 17:51:33] [INFO] UI: ScanManager initialisé
+[2025-06-26 17:51:33] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 17:51:33] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 17:51:33] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 17:51:33] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 17:51:33] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 17:51:33] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 17:51:43] [INFO] UI: Prompt reçu: expedition
+[2025-06-26 17:51:43] [INFO] ScanManager: Traitement scan 'expedition' dans état 0
+[2025-06-26 17:51:46] [INFO] UI: Prompt reçu: RW-48v2710008
+[2025-06-26 17:51:46] [INFO] ScanManager: Traitement scan 'RW-48v2710008' dans état 8
+[2025-06-26 17:51:53] [INFO] UI: Prompt reçu: expedition
+[2025-06-26 17:51:53] [INFO] ScanManager: Traitement scan 'expedition' dans état 8
+[2025-06-26 17:51:54] [INFO] ScanManager: Confirmation expédition pour 1 batteries
+[2025-06-26 17:51:54] [INFO] Message reçu sur 'printer/update_shipping_timestamp': {"serial_number": "RW-48v2710008", "timestamp_expedition": "2025-06-26T17:51:54.337457"}
+[2025-06-26 17:51:54] [INFO] DEBUG: Handler trouvé: True
+[2025-06-26 17:51:54] [INFO] UI: Tentative d'envoi de l'email d'expédition (Tentative 1/3)...
+[2025-06-26 17:51:54] [INFO] Demande de mise à jour TimestampExpedition pour S/N RW-48v2710008 à 2025-06-26T17:51:54.337457
+[2025-06-26 17:51:54] [INFO] Ligne pour RW-48v2710008 sera mise à jour avec TimestampExpedition: 2025-06-26T17:51:54.337457
+[2025-06-26 17:51:54] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampExpedition pour RW-48v2710008.
+[2025-06-26 17:51:55] [INFO] UI: Email d'expédition envoyé avec succès à evan@revaw.fr, evan.hermier+banc@gmail.com !
+[2025-06-26 17:53:22] [INFO] UI: Application terminée.
+[2025-06-26 18:18:29] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 18:18:29] [INFO] Démarrage du script d'écoute MQTT
+[2025-06-26 18:18:29] [WARNING] !!! ATTENTION: IP imprimante semble par défaut. Vérifiez si elle a changé. !!!
+[2025-06-26 18:18:29] [INFO] Thread Worker d'impression démarré.
+[2025-06-26 18:18:29] [INFO] Tentative de connexion au broker MQTT: localhost:1883
+[2025-06-26 18:18:29] [INFO] Démarrage de la boucle MQTT (écoute en continu)...
+[2025-06-26 18:18:29] [INFO] Connecté au broker MQTT localhost:1883
+[2025-06-26 18:18:29] [INFO] DEBUG: MQTT_TOPIC_TEST_DONE = 'printer/test_done'
+[2025-06-26 18:18:29] [INFO] Abonné aux topics: create, update_test_done, shipping, reprint_main, request_full_reprint, update_shipping_timestamp
+[2025-06-26 18:18:32] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:18:32] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:18:32] [INFO] Statut imprimante publié: off (était: None)
+[2025-06-26 18:18:32] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 18:18:32] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 18:18:32] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 18:18:32] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 18:18:32] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 18:18:33] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 18:18:33] [INFO] ScanManager initialisé
+[2025-06-26 18:18:33] [INFO] UI: ScanManager initialisé
+[2025-06-26 18:18:33] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 18:18:33] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 18:18:33] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 18:18:33] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 18:18:33] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 18:18:33] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 18:18:33] [INFO] UI: Statut imprimante reçu: off
+[2025-06-26 18:18:36] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:18:36] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:18:40] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:18:40] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:18:44] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:18:44] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:18:48] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:18:48] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:18:52] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:18:52] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:18:56] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:18:56] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:18:59] [INFO] UI: Application terminée.
+[2025-06-26 18:19:00] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:00] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:04] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:04] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:08] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:08] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:12] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:12] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:16] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:16] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:20] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:20] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:24] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 18:19:24] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 18:19:24] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 18:19:24] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 18:19:24] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:24] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:24] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 18:19:24] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 18:19:24] [INFO] ScanManager initialisé
+[2025-06-26 18:19:24] [INFO] UI: ScanManager initialisé
+[2025-06-26 18:19:24] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 18:19:24] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 18:19:24] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 18:19:24] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 18:19:24] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 18:19:24] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 18:19:24] [INFO] UI: Statut imprimante reçu: off
+[2025-06-26 18:19:28] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:28] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:30] [INFO] UI: Application terminée.
+[2025-06-26 18:19:32] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:32] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:36] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:36] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:40] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:40] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:44] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:44] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:48] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:48] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:52] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:52] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:19:56] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:19:56] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:00] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:00] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:04] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:04] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:08] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:08] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:12] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:12] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:16] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:16] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:20] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:20] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:24] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:24] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:26] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 18:20:26] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 18:20:26] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 18:20:26] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 18:20:26] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 18:20:26] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 18:20:26] [INFO] ScanManager initialisé
+[2025-06-26 18:20:26] [INFO] UI: ScanManager initialisé
+[2025-06-26 18:20:26] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 18:20:26] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 18:20:26] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 18:20:26] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 18:20:26] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 18:20:26] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 18:20:26] [INFO] UI: Statut imprimante reçu: off
+[2025-06-26 18:20:28] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:28] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:32] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:32] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:36] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:36] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:38] [INFO] UI: Application terminée.
+[2025-06-26 18:20:40] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:40] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:44] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:44] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:48] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:48] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:52] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:52] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:20:56] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:20:56] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:00] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:00] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:04] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:04] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:08] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:08] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:12] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:12] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:16] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:16] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:20] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:20] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:24] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:24] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:28] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:28] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:31] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 18:21:31] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 18:21:31] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 18:21:31] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 18:21:31] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 18:21:31] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 18:21:31] [INFO] ScanManager initialisé
+[2025-06-26 18:21:31] [INFO] UI: ScanManager initialisé
+[2025-06-26 18:21:31] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 18:21:31] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 18:21:32] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 18:21:32] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 18:21:32] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 18:21:32] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 18:21:32] [INFO] UI: Statut imprimante reçu: off
+[2025-06-26 18:21:32] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:32] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:36] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:36] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:40] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:40] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:43] [INFO] UI: Application terminée.
+[2025-06-26 18:21:44] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:44] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:48] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:48] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:52] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:52] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:21:56] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:21:56] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:22:00] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:22:00] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:22:04] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:22:04] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:22:08] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:22:08] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:22:12] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:22:12] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:22:16] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:22:16] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:22:17] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 18:22:17] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 18:22:17] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 18:22:17] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 18:22:17] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 18:22:17] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 18:22:17] [INFO] ScanManager initialisé
+[2025-06-26 18:22:17] [INFO] UI: ScanManager initialisé
+[2025-06-26 18:22:17] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 18:22:17] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 18:22:18] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 18:22:18] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 18:22:18] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 18:22:18] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 18:22:18] [INFO] UI: Statut imprimante reçu: off
+[2025-06-26 18:22:20] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:22:20] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:22:24] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:22:24] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:22:26] [INFO] UI: Prompt reçu: create toto
+[2025-06-26 18:22:26] [INFO] ScanManager: Traitement scan 'create toto' dans état 0
+[2025-06-26 18:22:27] [INFO] Message reçu sur 'printer/create_label': {"checker_name": "toto"}
+[2025-06-26 18:22:27] [INFO] DEBUG: Handler trouvé: True
+[2025-06-26 18:22:27] [INFO] Prochain NumeroSerie généré: RW-48v2710009
+[2025-06-26 18:22:27] [INFO] DEBUG: Début de add_serial_to_csv()
+[2025-06-26 18:22:27] [INFO] Ajouté au CSV: 2025-06-26T18:22:27.704200, RW-48v2710009, g6t2Ra, toto
+[2025-06-26 18:22:27] [INFO] 'RW-48v2710009' (validé par toto) ajouté à la file d'impression.
+[2025-06-26 18:22:28] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:22:28] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:22:29] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:22:32] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:22:32] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:22:32] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:22:42] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:22:45] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:22:45] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:22:45] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:22:55] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:22:58] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:22:58] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:22:58] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:23:08] [INFO] UI: Application terminée.
+[2025-06-26 18:23:08] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:23:11] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:23:11] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:23:11] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:23:21] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:23:24] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:23:24] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:23:24] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:23:34] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:23:37] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:23:37] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:23:37] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:23:47] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:23:50] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:23:50] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:23:50] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:23:55] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 18:23:55] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 18:23:55] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 18:23:56] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 18:23:56] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 18:23:56] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 18:23:56] [INFO] ScanManager initialisé
+[2025-06-26 18:23:56] [INFO] UI: ScanManager initialisé
+[2025-06-26 18:23:56] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 18:23:56] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 18:23:56] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 18:23:56] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 18:23:56] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 18:23:56] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 18:23:56] [INFO] UI: Statut imprimante reçu: off
+[2025-06-26 18:24:00] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:24:03] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:24:03] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:24:03] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:24:13] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:24:16] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:24:16] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:24:16] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:24:26] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:24:29] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:24:29] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:24:29] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:24:39] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:24:42] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:24:42] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:24:42] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:24:52] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:24:55] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:24:55] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:24:55] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:25:05] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:25:08] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:25:08] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:25:08] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:25:18] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:25:21] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:25:21] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:25:21] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:25:31] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:25:34] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:25:34] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:25:34] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:25:44] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:25:47] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:25:47] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:25:47] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:25:57] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:26:00] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:26:00] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:26:00] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:26:10] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:26:13] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:26:13] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:26:13] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:26:23] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:26:25] [INFO] UI: Application terminée.
+[2025-06-26 18:26:26] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:26:26] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:26:26] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:26:28] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 18:26:28] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 18:26:28] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 18:26:28] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 18:26:28] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 18:26:28] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 18:26:28] [INFO] ScanManager initialisé
+[2025-06-26 18:26:28] [INFO] UI: ScanManager initialisé
+[2025-06-26 18:26:28] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 18:26:28] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 18:26:28] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 18:26:28] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 18:26:28] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 18:26:28] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 18:26:29] [INFO] UI: Statut imprimante reçu: off
+[2025-06-26 18:26:36] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:26:39] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:26:39] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:26:39] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:26:49] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:26:52] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:26:52] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:26:52] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 18:27:02] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710009. QR: g6t2Ra, DateFab: 26/06/2025. File=1
+[2025-06-26 18:27:05] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 18:27:06] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 18:27:06] [WARNING] Impossible de vérifier statut pour RW-48v2710009 (CREATE_NEW_V1) (Erreur Comm). Retenté.
