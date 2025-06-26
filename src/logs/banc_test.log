@@ -389,3 +389,187 @@
 [2025-06-26 10:14:17] [INFO] UI: Connecté avec le code 0 
 [2025-06-26 10:14:17] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
 [2025-06-26 10:14:17] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 15:57:55] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 15:57:55] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 15:57:55] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 15:57:55] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 15:57:55] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 15:57:55] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 15:57:55] [INFO] ScanManager initialisé
+[2025-06-26 15:57:55] [INFO] UI: ScanManager initialisé
+[2025-06-26 15:57:55] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 15:57:55] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 15:57:55] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 15:57:55] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 15:57:55] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 15:57:55] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 15:58:09] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 15:58:09] [INFO] Démarrage du script d'écoute MQTT v3 (avec vérification statut)...
+[2025-06-26 15:58:09] [WARNING] !!! ATTENTION: IP imprimante semble par défaut. Vérifiez si elle a changé. !!!
+[2025-06-26 15:58:09] [INFO] Thread Worker d'impression démarré.
+[2025-06-26 15:58:09] [INFO] Tentative de connexion au broker MQTT: localhost:1883
+[2025-06-26 15:58:09] [INFO] Démarrage de la boucle MQTT (écoute en continu)...
+[2025-06-26 15:58:09] [INFO] Connecté au broker MQTT localhost:1883
+[2025-06-26 15:58:09] [INFO] DEBUG: MQTT_TOPIC_TEST_DONE = 'printer/test_done'
+[2025-06-26 15:58:09] [INFO] Abonné aux topics: create, update_test_done, shipping, reprint_main, request_full_reprint, update_shipping_timestamp
+[2025-06-26 15:58:19] [INFO] UI: Prompt reçu: create popo
+[2025-06-26 15:58:19] [INFO] ScanManager: Traitement scan 'create popo' dans état 0
+[2025-06-26 15:58:20] [INFO] Message reçu sur 'printer/create_label': {"checker_name": "popo"}
+[2025-06-26 15:58:20] [INFO] DEBUG: Handler trouvé: True
+[2025-06-26 15:58:20] [INFO] Prochain NumeroSerie généré: RW-48v2710008
+[2025-06-26 15:58:20] [INFO] DEBUG: Début de add_serial_to_csv()
+[2025-06-26 15:58:20] [INFO] Ajouté au CSV: 2025-06-26T15:58:20.420263, RW-48v2710008, 2nq01S, popo
+[2025-06-26 15:58:20] [INFO] 'RW-48v2710008' (validé par popo) ajouté à la file d'impression.
+[2025-06-26 15:58:21] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710008. QR: 2nq01S, DateFab: 26/06/2025. File=1
+[2025-06-26 15:58:24] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 15:58:24] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 15:58:24] [WARNING] Impossible de vérifier statut pour RW-48v2710008 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 15:58:34] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710008. QR: 2nq01S, DateFab: 26/06/2025. File=1
+[2025-06-26 15:58:36] [INFO] UI: Application terminée.
+[2025-06-26 15:58:37] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 15:58:37] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 15:58:37] [WARNING] Impossible de vérifier statut pour RW-48v2710008 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 15:58:47] [INFO] Traitement de la file: CREATE_NEW_V1 pour RW-48v2710008. QR: 2nq01S, DateFab: 26/06/2025. File=1
+[2025-06-26 15:58:50] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-26 15:58:50] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-26 15:58:50] [WARNING] Impossible de vérifier statut pour RW-48v2710008 (CREATE_NEW_V1) (Erreur Comm). Retenté.
+[2025-06-26 15:59:46] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 15:59:46] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 15:59:46] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 15:59:46] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 15:59:47] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 15:59:47] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 15:59:47] [INFO] ScanManager initialisé
+[2025-06-26 15:59:47] [INFO] UI: ScanManager initialisé
+[2025-06-26 15:59:47] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 15:59:47] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 15:59:47] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 15:59:47] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 15:59:47] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 15:59:47] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 15:59:57] [INFO] UI: Application terminée.
+[2025-06-26 16:06:20] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 16:06:20] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 16:06:20] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 16:06:20] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 16:06:21] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 16:06:21] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 16:06:21] [INFO] ScanManager initialisé
+[2025-06-26 16:06:21] [INFO] UI: ScanManager initialisé
+[2025-06-26 16:06:21] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 16:06:21] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 16:06:21] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 16:06:21] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 16:06:21] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 16:06:21] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 16:06:40] [INFO] UI: Application terminée.
+[2025-06-26 16:15:30] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 16:15:30] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 16:15:30] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 16:15:30] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 16:15:30] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 16:15:30] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 16:15:31] [INFO] ScanManager initialisé
+[2025-06-26 16:15:31] [INFO] UI: ScanManager initialisé
+[2025-06-26 16:15:31] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 16:15:31] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 16:15:31] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 16:15:31] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 16:15:31] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 16:15:31] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 16:15:39] [INFO] UI: Application terminée.
+[2025-06-26 16:16:00] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 16:16:00] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 16:16:00] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 16:16:00] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 16:16:01] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 16:16:01] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 16:16:01] [INFO] ScanManager initialisé
+[2025-06-26 16:16:01] [INFO] UI: ScanManager initialisé
+[2025-06-26 16:16:01] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 16:16:01] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 16:16:01] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 16:16:01] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 16:16:01] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 16:16:01] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 16:16:08] [INFO] UI: Application terminée.
+[2025-06-26 16:20:04] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 16:20:04] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 16:20:04] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 16:20:04] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 16:20:04] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 16:20:04] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 16:20:04] [INFO] ScanManager initialisé
+[2025-06-26 16:20:04] [INFO] UI: ScanManager initialisé
+[2025-06-26 16:20:04] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 16:20:04] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 16:20:04] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 16:20:04] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 16:20:04] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 16:20:04] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 16:20:13] [INFO] UI: Application terminée.
+[2025-06-26 16:31:35] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 16:31:35] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 16:31:35] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 16:31:35] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 16:31:35] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 16:31:35] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 16:31:35] [INFO] ScanManager initialisé
+[2025-06-26 16:31:35] [INFO] UI: ScanManager initialisé
+[2025-06-26 16:31:35] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 16:31:35] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 16:31:36] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 16:31:36] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 16:31:36] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 16:31:36] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 16:31:40] [INFO] UI: Application terminée.
+[2025-06-26 16:34:07] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 16:34:07] [INFO] Démarrage du script d'écoute MQTT v3 (avec vérification statut)...
+[2025-06-26 16:34:07] [WARNING] !!! ATTENTION: IP imprimante semble par défaut. Vérifiez si elle a changé. !!!
+[2025-06-26 16:34:07] [INFO] Thread Worker d'impression démarré.
+[2025-06-26 16:34:07] [INFO] Tentative de connexion au broker MQTT: localhost:1883
+[2025-06-26 16:34:07] [INFO] Démarrage de la boucle MQTT (écoute en continu)...
+[2025-06-26 16:34:07] [INFO] Connecté au broker MQTT localhost:1883
+[2025-06-26 16:34:07] [INFO] DEBUG: MQTT_TOPIC_TEST_DONE = 'printer/test_done'
+[2025-06-26 16:34:07] [INFO] Abonné aux topics: create, update_test_done, shipping, reprint_main, request_full_reprint, update_shipping_timestamp
+[2025-06-26 16:34:11] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 16:34:11] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 16:34:11] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 16:34:11] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 16:34:11] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 16:34:11] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 16:34:11] [INFO] ScanManager initialisé
+[2025-06-26 16:34:11] [INFO] UI: ScanManager initialisé
+[2025-06-26 16:34:11] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 16:34:11] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 16:34:11] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 16:34:11] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 16:34:11] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 16:34:11] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 16:34:16] [INFO] UI: Prompt reçu: banc1
+[2025-06-26 16:34:16] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-26 16:34:17] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 16:34:19] [INFO] UI: Prompt reçu: j^j
+[2025-06-26 16:34:19] [INFO] ScanManager: Traitement scan 'j^j' dans état 1
+[2025-06-26 16:34:24] [INFO] UI: Prompt reçu: expedition
+[2025-06-26 16:34:24] [INFO] ScanManager: Traitement scan 'expedition' dans état 0
+[2025-06-26 16:34:26] [INFO] UI: Prompt reçu: RW-48v2710008
+[2025-06-26 16:34:26] [INFO] ScanManager: Traitement scan 'RW-48v2710008' dans état 8
+[2025-06-26 16:34:30] [INFO] UI: Prompt reçu: expedition
+[2025-06-26 16:34:30] [INFO] ScanManager: Traitement scan 'expedition' dans état 8
+[2025-06-26 16:34:30] [INFO] ScanManager: Confirmation expédition pour 1 batteries
+[2025-06-26 16:34:30] [INFO] Message reçu sur 'printer/update_shipping_timestamp': {"serial_number": "RW-48v2710008", "timestamp_expedition": "2025-06-26T16:34:30.696634"}
+[2025-06-26 16:34:30] [INFO] DEBUG: Handler trouvé: True
+[2025-06-26 16:34:30] [INFO] Demande de mise à jour TimestampExpedition pour S/N RW-48v2710008 à 2025-06-26T16:34:30.696634
+[2025-06-26 16:34:30] [INFO] UI: Tentative d'envoi de l'email d'expédition à evan@revaw.fr, evan.hermier+banc@gmail.com (Tentative 1/3)...
+[2025-06-26 16:34:30] [INFO] Ligne pour RW-48v2710008 sera mise à jour avec TimestampExpedition: 2025-06-26T16:34:30.696634
+[2025-06-26 16:34:30] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampExpedition pour RW-48v2710008.
+[2025-06-26 16:34:30] [ERROR] UI: ERREUR RÉSEAU lors de la connexion SMTP (Tentative 1/3) : [Errno 11001] getaddrinfo failed. Vérifiez la connexion internet et le DNS.
+[2025-06-26 16:34:30] [INFO] UI: Réessai de l'envoi de l'email dans 10 secondes...
+[2025-06-26 16:34:40] [INFO] UI: Tentative d'envoi de l'email d'expédition à evan@revaw.fr, evan.hermier+banc@gmail.com (Tentative 2/3)...
+[2025-06-26 16:34:40] [ERROR] UI: ERREUR RÉSEAU lors de la connexion SMTP (Tentative 2/3) : [Errno 11001] getaddrinfo failed. Vérifiez la connexion internet et le DNS.
+[2025-06-26 16:34:40] [INFO] UI: Réessai de l'envoi de l'email dans 10 secondes...
+[2025-06-26 16:34:50] [INFO] UI: Tentative d'envoi de l'email d'expédition à evan@revaw.fr, evan.hermier+banc@gmail.com (Tentative 3/3)...
+[2025-06-26 16:34:50] [ERROR] UI: ERREUR RÉSEAU lors de la connexion SMTP (Tentative 3/3) : [Errno 11001] getaddrinfo failed. Vérifiez la connexion internet et le DNS.
+[2025-06-26 16:34:50] [ERROR] UI: Échec de l'envoi de l'email après 3 tentatives pour cause d'erreur réseau/DNS.
+[2025-06-26 17:45:53] [INFO] UI: Application terminée.

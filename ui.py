@@ -101,21 +101,45 @@ class App(ctk.CTk):
         self.init_banc_status(config)
         self.mqtt_client = None
 
-        # === CRÉATION DE LA ZONE DE SCAN ===
+        # === ZONE SCAN (layout 3/4 + 1/4) ===
+
         self.frame_scan = ctk.CTkFrame(self, corner_radius=10)
         self.frame_scan.grid(row=2, column=0, columnspan=2, padx=5, pady=5, sticky="nsew")
-        self.label_response1 = ctk.CTkLabel(self.frame_scan, text="- ", font=("Helvetica", 16, "bold"))
-        self.label_response1.grid(row=0, column=0, padx=10, pady=(10, 5), sticky="w")
-        self.label_response2 = ctk.CTkLabel(self.frame_scan, text="- ", font=("Helvetica", 16, "bold"))
-        self.label_response2.grid(row=1, column=0, padx=10, pady=5, sticky="w")
-        self.entry_prompt = ctk.CTkEntry(self.frame_scan, placeholder_text="Saisissez ici", font=("Helvetica", 16))
-        self.entry_prompt.grid(row=2, column=0, padx=10, pady=(5, 10), sticky="ew")
-        self.frame_scan.columnconfigure(0, weight=1)
 
-        # === VARIABLES D'ÉTAT DE L'INTERFACE ===
-        self.security_active = {f"banc{i+1}": False for i in range(NUM_BANCS)}
-        self.reset_enabled_for_banc = {f"banc{i+1}": False for i in range(NUM_BANCS)}
-        self._security_timers = {}
+        # Configuration colonnes
+        self.frame_scan.columnconfigure(0, weight=3)  # 3/4 scan
+        self.frame_scan.columnconfigure(1, weight=1)  # 1/4 système
+
+        # Zone scan existante (déplacer tes widgets dans frame_scan_left)
+        self.frame_scan_left = ctk.CTkFrame(self.frame_scan, fg_color="transparent")
+        self.frame_scan_left.grid(row=0, column=0, padx=(0, 5), sticky="nsew")
+        self.frame_scan_left.columnconfigure(0, weight=1)
+
+        self.label_response1 = ctk.CTkLabel(self.frame_scan_left, text="- ", font=("Helvetica", 16, "bold"))
+        self.label_response1.grid(row=0, column=0, padx=10, pady=(10, 5), sticky="w")
+
+        self.label_response2 = ctk.CTkLabel(self.frame_scan_left, text="- ", font=("Helvetica", 16, "bold"))
+        self.label_response2.grid(row=1, column=0, padx=10, pady=5, sticky="w")
+
+        self.entry_prompt = ctk.CTkEntry(self.frame_scan_left, placeholder_text="Saisissez ici", font=("Helvetica", 16))
+        self.entry_prompt.grid(row=2, column=0, padx=10, pady=(5, 10), sticky="ew")
+
+        # === ZONE SYSTÈME (1/4 droite) ===
+        self.frame_system = ctk.CTkFrame(self.frame_scan, corner_radius=5, border_width=1, border_color="#404040")
+        self.frame_system.grid(row=0, column=1, padx=(5, 0), pady=5, sticky="nsew")
+
+        self.system_title = ctk.CTkLabel(
+            self.frame_system, text="🔧 SYSTÈME", font=("Helvetica", 12, "bold"), text_color="#B0B0B0")
+        self.system_title.pack(pady=(8, 5))
+
+        self.system_status_label = ctk.CTkLabel(
+            self.frame_system,
+            text="🔄 Vérification...",
+            font=("Helvetica", 11),
+            text_color="#FFA500",
+            wraplength=150,
+            justify="left")
+        self.system_status_label.pack(pady=5, padx=8, fill="x")
 
         # === GESTIONNAIRES SPÉCIALISÉS ===
         self.animation_manager = AnimationManager(self)
@@ -288,11 +312,16 @@ class App(ctk.CTk):
             missing_items = email_config.get_missing_config_items()
             log(f"UI: Configuration email incomplète. Éléments manquants: {missing_items}. Envoi de l'email annulé.",
                 level="ERROR")
-            self.label_response2.configure(text=self.label_response2.cget("text") + " (Config email manquante)")
+            self.after(
+                0, lambda: safe_ui_update(self, None, "Config email manquante", "❌ Le dernier mail n'a pas été envoyé",
+                                          "red"))
             return False
 
         if not serial_numbers_expedies:
             log("UI: Aucune batterie à inclure dans l'email d'expédition.", level="INFO")
+            self.after(
+                0, lambda: safe_ui_update(self, None, "Aucune batterie à expédier", "ℹ️ Aucun email nécessaire",
+                                          "#808080"))
             return True
 
         # Génération du contenu via les templates
@@ -302,7 +331,8 @@ class App(ctk.CTk):
                 serial_numbers_expedies, timestamp_expedition_str)
         except Exception as template_error:
             log(f"UI: Erreur lors de la génération du template email: {template_error}", level="ERROR")
-            self.label_response2.configure(text=self.label_response2.cget("text") + " (Erreur template)")
+            self.after(
+                0, lambda: safe_ui_update(self, None, "Erreur template", "❌ Le dernier mail n'a pas été envoyé", "red"))
             return False
 
         # Création du message MIME
@@ -316,13 +346,20 @@ class App(ctk.CTk):
         part_html = MIMEText(html_content, "html")
         message.attach(part_text)
         message.attach(part_html)
+        # Indication du début de l'envoi
+        self.after(0, lambda: safe_ui_update(self, None, None, "📧 Envoi email...", "#FFA500"))
 
         # Tentatives d'envoi avec logique de réessai
         for attempt in range(retry_attempts):
             try:
                 log(f"UI: Tentative d'envoi de l'email d'expédition à {', '.join(email_config.recipient_emails)} (Tentative {attempt + 1}/{retry_attempts})...",
                     level="INFO")
-
+                # Mise à jour du statut pour les tentatives multiples
+                if attempt > 0:
+                    self.after(
+                        0,
+                        lambda a=attempt: safe_ui_update(self, None, None, f"📧 Tentative {a + 1}/{retry_attempts}...",
+                                                         "#FFA500"))
                 # Connexion et envoi
                 server = smtplib.SMTP_SSL(email_config.smtp_server, email_config.smtp_port)
                 server.ehlo()
@@ -332,33 +369,47 @@ class App(ctk.CTk):
 
                 log(f"UI: Email d'expédition envoyé avec succès à {', '.join(email_config.recipient_emails)} !",
                     level="INFO")
-                self.label_response2.configure(text=f"Email envoyé ({len(serial_numbers_expedies)} batteries)")
+                self.after(
+                    0,
+                    lambda count=len(serial_numbers_expedies): safe_ui_update(
+                        self, None, f"Email envoyé ({count} batteries)", "✅ Email envoyé", "green"))
                 return True
 
             except smtplib.SMTPAuthenticationError:
                 log(f"UI: Erreur d'authentification SMTP pour Gmail (Tentative {attempt + 1}/{retry_attempts}). Vérifiez la configuration email.",
                     level="ERROR")
-                self.label_response2.configure(text=self.label_response2.cget("text") + " (Erreur auth email)")
+                self.after(
+                    0, lambda: safe_ui_update(self, None, "Erreur auth email", "❌ Le dernier mail n'a pas été envoyé",
+                                              "red"))
                 return False
 
             except (socket.gaierror, OSError) as e:
                 log(f"UI: ERREUR RÉSEAU lors de la connexion SMTP (Tentative {attempt + 1}/{retry_attempts}) : {e}. Vérifiez la connexion internet et le DNS.",
                     level="ERROR")
-                self.label_response2.configure(text=self.label_response2.cget("text") + " (Erreur réseau/DNS)")
                 if attempt < retry_attempts - 1:
                     log(f"UI: Réessai de l'envoi de l'email dans {delay_between_retries} secondes...", level="INFO")
+                    self.after(
+                        0,
+                        lambda a=attempt, r=retry_attempts: safe_ui_update(self, None, "Erreur réseau/DNS",
+                                                                           f"⚠️ Réseau {a + 1}/{r}", "orange"))
                     time.sleep(delay_between_retries)
                 else:
                     log(f"UI: Échec de l'envoi de l'email après {retry_attempts} tentatives pour cause d'erreur réseau/DNS.",
                         level="ERROR")
+                    self.after(
+                        0, lambda: safe_ui_update(self, None, "Erreur réseau finale",
+                                                  "❌ Le dernier mail n'a pas été envoyé", "red"))
                     return False
 
             except Exception as e:
                 log(f"UI: Erreur inattendue lors de l'envoi de l'email d'expédition (Tentative {attempt + 1}/{retry_attempts}) : {e}",
                     level="ERROR")
-                self.label_response2.configure(text=self.label_response2.cget("text") + " (Erreur envoi email)")
+                self.after(
+                    0, lambda: safe_ui_update(self, None, "Erreur réseau/DNS", "❌ Le dernier mail n'a pas été envoyé",
+                                              "red"))
                 return False
-
+        self.after(
+            0, lambda: safe_ui_update(self, None, "❌ Email échec final", "❌ Le dernier mail n'a pas été envoyé", "red"))
         return False
 
 
@@ -398,32 +449,19 @@ def on_connect(client, userdata, flags, rc):
             log(f"UI: Abonnements MQTT terminés.", level="INFO")
             msg1 = "Système Prêt."
             msg2 = "Veuillez scanner pour commencer..."
-            try:
-                app.after(0, lambda w=app.label_response1, m=msg1: w.configure(text=m))
-                app.after(0, lambda w=app.label_response2, m=msg2: w.configure(text=m))
-                log(f"UI: Labels initiaux mis à jour.", level="DEBUG")
-            except Exception as e:
-                log(f"UI: Erreur maj labels initiaux: {e}", level="ERROR")
+            app.after(0, lambda: safe_ui_update(app, msg1, msg2, "✅ Système OK", "green"))
         else:
             log(f"UI: Échec d'au moins un abonnement MQTT.", level="ERROR")
             msg1 = "Erreur MQTT"
             msg2 = "Échec abonnements. Vérifier logs."
-            try:
-                app.after(0, lambda w=app.label_response1, m=msg1: w.configure(text=m))
-                app.after(0, lambda w=app.label_response2, m=msg2: w.configure(text=m))
-            except Exception as e_label:
-                log(f"UI: Erreur maj labels (échec abo): {e_label}", level="ERROR")
+            app.after(0, lambda: safe_ui_update(app, msg1, msg2, "❌ Erreur MQTT", "red"))
     else:
         log(f"UI: Connexion MQTT échouée (Code: {rc}).", level="WARNING")
         msg1 = "Erreur Connexion MQTT"
         msg2 = f"Code: {rc}. Vérifier broker/réseau."
         if userdata and "app" in userdata and userdata["app"]:
             app = userdata["app"]
-            try:
-                app.after(0, lambda w=app.label_response1, m=msg1: w.configure(text=m))
-                app.after(0, lambda w=app.label_response2, m=msg2: w.configure(text=m))
-            except Exception as e_label_conn:
-                log(f"UI: Erreur maj labels (échec connexion): {e_label_conn}", level="ERROR")
+            app.after(0, lambda: safe_ui_update(app, msg1, msg2, "⚠️ Connexion échouée", "orange"))
 
 
 @staticmethod
@@ -471,16 +509,38 @@ def on_message(client, userdata, msg):
         log(f"UI: Topic non reconnu ou non géré: {topic}", level="WARNING")
 
 
-def safe_ui_update(app_instance, msg1, msg2):
-    """Met à jour les labels de réponse de l'UI via app.after pour thread-safety."""
-    if app_instance:
-        try:
-            if hasattr(app_instance, 'label_response1') and app_instance.label_response1:
-                app_instance.label_response1.configure(text=msg1)
-            if hasattr(app_instance, 'label_response2') and app_instance.label_response2:
-                app_instance.label_response2.configure(text=msg2)
-        except Exception as ui_e:
-            log(f"UI: Erreur interne lors de la mise à jour UI via 'after': {ui_e}", level="WARNING")
+def safe_ui_update(app_instance, msg1, msg2, msg_system=None, color_system=None):
+    """
+    Met à jour les labels de réponse de l'UI via app.after pour thread-safety.
+    
+    Args:
+        app_instance: Instance de l'application
+        msg1: Message pour label_response1 (None = pas de mise à jour)
+        msg2: Message pour label_response2 (None = pas de mise à jour)  
+        msg_system: Message pour system_status_label (None = pas de mise à jour)
+        color_system: Couleur pour system_status_label (optionnel)
+    """
+    if not app_instance:
+        return
+
+    try:
+        # Mise à jour msg1 si fourni
+        if msg1 is not None and hasattr(app_instance, 'label_response1') and app_instance.label_response1:
+            app_instance.label_response1.configure(text=msg1)
+
+        # Mise à jour msg2 si fourni
+        if msg2 is not None and hasattr(app_instance, 'label_response2') and app_instance.label_response2:
+            app_instance.label_response2.configure(text=msg2)
+
+        # Mise à jour msg_system si fourni
+        if msg_system is not None and hasattr(app_instance, 'system_status_label') and app_instance.system_status_label:
+            kwargs = {"text": msg_system}
+            if color_system:
+                kwargs["text_color"] = color_system
+            app_instance.system_status_label.configure(**kwargs)
+
+    except Exception as ui_e:
+        log(f"UI: Erreur interne lors de la mise à jour UI via 'after': {ui_e}", level="WARNING")
 
 
 def mqtt_thread(app_instance):
@@ -506,7 +566,7 @@ def mqtt_thread(app_instance):
                     app.mqtt_client = None
                     msg1 = "MQTT Déconnecté"
                     msg2 = "Tentative de reconnexion..."
-                    app.after(0, lambda a=app, m1=msg1, m2=msg2: safe_ui_update(a, m1, m2))
+                    app.after(0, lambda: safe_ui_update(app, msg1, msg2, "❌ MQTT Déconnecté", "red"))
 
         client.on_disconnect = on_disconnect
     except Exception as client_e:
@@ -518,6 +578,7 @@ def mqtt_thread(app_instance):
     while True:
         try:
             log("UI: Tentative de connexion au broker MQTT...", level="INFO")
+            app_instance.after(0, lambda: safe_ui_update(app_instance, None, None, "🔄 Connexion...", "#FFA500"))
             client.connect(MQTT_BROKER, MQTT_PORT, 60)
             app_instance.mqtt_client = client
             log("UI: Connexion MQTT établie. Démarrage boucle de réception.", level="INFO")
@@ -528,12 +589,12 @@ def mqtt_thread(app_instance):
             log(f"UI: Erreur de connexion/réseau MQTT: {conn_e}", level="WARNING")
             msg1 = "Erreur Réseau MQTT"
             msg2 = f"Vérifier broker ({MQTT_BROKER}:{MQTT_PORT}) et réseau."
-            app_instance.after(0, lambda app=app_instance, m1=msg1, m2=msg2: safe_ui_update(app, m1, m2))
+            app_instance.after(0, lambda: safe_ui_update(app_instance, msg1, msg2, "❌ Erreur réseau", "red"))
         except Exception as e:
             log(f"UI: Erreur inattendue dans la boucle MQTT: {e}", level="WARNING")
             msg1 = "Erreur MQTT"
             msg2 = "Erreur interne. Tentative de reconnexion."
-            app_instance.after(0, lambda app=app_instance, m1=msg1, m2=msg2: safe_ui_update(app, m1, m2))
+            app_instance.after(0, lambda: safe_ui_update(app_instance, msg1, msg2, "⚠️ Erreur interne", "orange"))
 
         log(f"UI: Prochaine tentative de connexion MQTT dans 5 secondes...", level="INFO")
         time.sleep(5)
