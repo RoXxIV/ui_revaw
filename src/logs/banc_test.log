@@ -236,3 +236,156 @@
 [2025-06-25 20:01:40] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
 [2025-06-25 20:01:40] [INFO] Statut Imprimante déterminé: ERROR_COMM
 [2025-06-25 20:01:40] [WARNING] Impossible de vérifier statut pour RW-48v2710002 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-25 20:28:20] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-25 20:28:20] [INFO] Démarrage du script d'écoute MQTT v3 (avec vérification statut)...
+[2025-06-25 20:28:20] [WARNING] !!! ATTENTION: IP imprimante semble par défaut. Vérifiez si elle a changé. !!!
+[2025-06-25 20:28:20] [INFO] Thread Worker d'impression démarré.
+[2025-06-25 20:28:20] [INFO] Tentative de connexion au broker MQTT: localhost:1883
+[2025-06-25 20:28:20] [INFO] Démarrage de la boucle MQTT (écoute en continu)...
+[2025-06-25 20:28:20] [INFO] Connecté au broker MQTT localhost:1883
+[2025-06-25 20:28:20] [INFO] DEBUG: MQTT_TOPIC_TEST_DONE = 'printer/test_done'
+[2025-06-25 20:28:20] [INFO] Abonné aux topics: create, update_test_done, shipping, reprint_main, request_full_reprint, update_shipping_timestamp
+[2025-06-25 20:28:25] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-25 20:28:25] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-25 20:28:25] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-25 20:28:25] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-25 20:28:25] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-25 20:28:25] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-25 20:28:25] [INFO] ScanManager initialisé
+[2025-06-25 20:28:25] [INFO] UI: ScanManager initialisé
+[2025-06-25 20:28:25] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-25 20:28:25] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-25 20:28:25] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-25 20:28:25] [INFO] UI: Connecté avec le code 0 
+[2025-06-25 20:28:25] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-25 20:28:25] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-25 20:29:45] [INFO] UI: Application terminée.
+[2025-06-26 09:29:43] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 09:29:43] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:29:43] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 09:29:43] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 09:29:43] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 09:29:43] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 09:29:43] [INFO] ScanManager initialisé
+[2025-06-26 09:29:43] [INFO] UI: ScanManager initialisé
+[2025-06-26 09:29:43] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 09:29:43] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 09:29:43] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 09:29:43] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 09:29:43] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 09:29:43] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 09:29:50] [INFO] UI: Prompt reçu: banc1
+[2025-06-26 09:29:50] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-26 09:29:51] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:30:05] [INFO] UI: Application terminée.
+[2025-06-26 09:30:57] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 09:30:57] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:30:57] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 09:30:57] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 09:30:57] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 09:30:57] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 09:30:57] [INFO] ScanManager initialisé
+[2025-06-26 09:30:57] [INFO] UI: ScanManager initialisé
+[2025-06-26 09:30:58] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 09:30:58] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 09:30:58] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 09:30:58] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 09:30:58] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 09:30:58] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-26 09:31:02] [INFO] UI: Prompt reçu: banc1
+[2025-06-26 09:31:02] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-26 09:31:03] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:31:04] [INFO] UI: Prompt reçu: RW-48v2710000
+[2025-06-26 09:31:04] [INFO] ScanManager: Traitement scan 'RW-48v2710000' dans état 1
+[2025-06-26 09:31:04] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:31:04] [INFO] DataOps: Batterie RW-48v2710000 validée par 'toto'.
+[2025-06-26 09:31:04] [INFO] ScanManager: Batterie RW-48v2710000 validée pour banc libre
+[2025-06-26 09:31:07] [INFO] UI: Prompt reçu: banc1
+[2025-06-26 09:31:07] [INFO] ScanManager: Traitement scan 'banc1' dans état 2
+[2025-06-26 09:31:07] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:31:07] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:31:07] [INFO] ScanManager: Chemin batterie stocké pour banc1: data\banc1\26062025-RW-48v2710000
+[2025-06-26 09:31:07] [INFO] ScanManager: Lancement subprocess: C:\Users\RoXx\AppData\Local\Programs\Python\Python311\python.exe C:\Users\RoXx\Desktop\Banc_final_pi\banc.py banc1 RW-48v2710000
+[2025-06-26 09:31:08] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 09:31:08] [INFO] banc1: Aucun dossier existant trouvé, utilisera/créera: data\banc1\26062025-RW-48v2710000
+[2025-06-26 09:31:08] [INFO] banc1: Création config.json par défaut dans data\banc1\26062025-RW-48v2710000
+[2025-06-26 09:31:08] [INFO] banc1: Fichier config.json créé avec succès.
+[2025-06-26 09:31:08] [INFO] banc1: Le fichier data\banc1\26062025-RW-48v2710000\data.csv n'existe pas, tentative de création.
+[2025-06-26 09:31:08] [INFO] banc1: Fichier data\banc1\26062025-RW-48v2710000\data.csv créé avec succès.
+[2025-06-26 09:31:08] [INFO] banc1: Prêt à démarrer pour RW-48v2710000 dans data\banc1\26062025-RW-48v2710000
+[2025-06-26 09:31:08] [INFO] banc1: Étape initiale (depuis config): 1
+[2025-06-26 09:31:08] [INFO] banc1: Connexion à MQTT (localhost:1883)...
+[2025-06-26 09:31:08] [INFO] banc1: Abonnements MQTT réussis.
+[2025-06-26 09:31:08] [INFO] banc1: État initial publié sur banc1/command: {"current_step": 1, "capacity_ah": 0, "capacity_wh": 0}
+[2025-06-26 09:31:08] [INFO] banc1: Ouverture du fichier CSV en mode append: data\banc1\26062025-RW-48v2710000\data.csv
+[2025-06-26 09:31:08] [INFO] banc1: Démarrage du thread de surveillance d'activité BMS...
+[2025-06-26 09:31:08] [INFO] banc1: Thread surveillance activité BMS démarré (Timeout: 30s, Check: 20s).
+[2025-06-26 09:31:08] [INFO] banc1: Démarrage de la boucle MQTT (loop_forever)...
+[2025-06-26 09:31:19] [INFO] Current step mis à jour: 1, pour banc1
+[2025-06-26 09:31:19] [INFO] UI: banc1 current_step (UI) mis à jour: 1
+[2025-06-26 09:31:19] [INFO] AnimationManager: Démarrage animation phase 1 pour banc1
+[2025-06-26 09:31:19] [INFO] banc1: Fichier data\banc1\26062025-RW-48v2710000\config.json mis à jour: current_step=1
+[2025-06-26 09:31:19] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:31:19] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=1
+[2025-06-26 09:31:22] [INFO] Current step mis à jour: 2, pour banc1
+[2025-06-26 09:31:22] [INFO] UI: banc1 current_step (UI) mis à jour: 2
+[2025-06-26 09:31:22] [INFO] UI: Étape 2 détectée pour banc1. Planification MAJ Ri/Diffusion UI.
+[2025-06-26 09:31:22] [INFO] DataOps: Chargement à la demande des coefficients de température...
+[2025-06-26 09:31:22] [INFO] banc1: Fichier data\banc1\26062025-RW-48v2710000\config.json mis à jour: current_step=2
+[2025-06-26 09:31:22] [INFO] DataOps: Coefficients température chargés : 31 valeurs
+[2025-06-26 09:31:22] [INFO] UIUpdater: Ri/Diffusion mis à jour pour banc1: Ri=0.00 mΩ, Diff=0.00 mΩ
+[2025-06-26 09:31:22] [INFO] AnimationManager: Démarrage animation phase 2 pour banc1
+[2025-06-26 09:31:22] [INFO] DataOps: Chargement à la demande du profil de charge...
+[2025-06-26 09:31:22] [INFO] DataOps: 1001 lignes lues depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\charge_profile.csv.
+[2025-06-26 09:31:22] [INFO] DataOps: Profil de charge trié et chargé (1001 points valides).
+[2025-06-26 09:31:22] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:31:22] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=2
+[2025-06-26 09:31:24] [INFO] Current step mis à jour: 3, pour banc1
+[2025-06-26 09:31:24] [INFO] UI: banc1 current_step (UI) mis à jour: 3
+[2025-06-26 09:31:24] [INFO] AnimationManager: Démarrage animation phase 3 pour banc1
+[2025-06-26 09:31:24] [INFO] banc1: Fichier data\banc1\26062025-RW-48v2710000\config.json mis à jour: current_step=3
+[2025-06-26 09:31:24] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:31:24] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=3
+[2025-06-26 09:31:25] [INFO] AnimationManager: Phase 3 animation terminée pour banc1
+[2025-06-26 09:31:26] [INFO] Current step mis à jour: 4, pour banc1
+[2025-06-26 09:31:26] [INFO] UI: banc1 current_step (UI) mis à jour: 4
+[2025-06-26 09:31:26] [INFO] AnimationManager: Démarrage animation phase 4 pour banc1
+[2025-06-26 09:31:26] [INFO] banc1: Fichier data\banc1\26062025-RW-48v2710000\config.json mis à jour: current_step=4
+[2025-06-26 09:31:26] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:31:26] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=4
+[2025-06-26 09:31:29] [INFO] banc1: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***
+[2025-06-26 09:31:29] [INFO] UI: Toutes les phases finalisées pour banc1
+[2025-06-26 09:31:29] [INFO] banc1: Fichier data\banc1\26062025-RW-48v2710000\config.json mis à jour: current_step=5
+[2025-06-26 09:31:29] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:31:29] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=5
+[2025-06-26 09:31:29] [INFO] banc1 réinitialisé dans bancs_config.json
+[2025-06-26 09:31:29] [WARNING] banc1: AVERTISSEMENT - Service d'impression non détecté (Step 5).
+[2025-06-26 09:31:29] [WARNING] banc1: Pas de tâches envoyées à printer.py (service inactif ou erreur vérification).
+[2025-06-26 09:31:29] [INFO] banc1: Fichier CSV fermé.
+[2025-06-26 09:31:29] [INFO] banc1: Fichier CSV fermé après envoi des données.
+[2025-06-26 09:31:34] [INFO] banc1: Nettoyage terminé. sys.exit() va fermer la connexion.
+[2025-06-26 09:31:34] [INFO] banc1: Fin du processus (appel à sys.exit(0)).
+[2025-06-26 09:31:34] [ERROR] banc1: *** FIN DU BLOC FINALLY. global_mqtt_config VA RETOURNER. ***
+[2025-06-26 09:31:58] [INFO] UI: Prompt reçu: banc1
+[2025-06-26 09:31:58] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-26 09:31:58] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:32:02] [INFO] UI: Prompt reçu: RW-48v2710001
+[2025-06-26 09:32:02] [INFO] ScanManager: Traitement scan 'RW-48v2710001' dans état 1
+[2025-06-26 09:32:02] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 09:32:02] [INFO] DataOps: Batterie RW-48v2710001 validée par 'toto'.
+[2025-06-26 09:32:02] [INFO] ScanManager: Batterie RW-48v2710001 validée pour banc libre
+[2025-06-26 09:32:08] [INFO] UI: Application terminée.
+[2025-06-26 10:14:17] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-26 10:14:17] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-26 10:14:17] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-26 10:14:17] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-26 10:14:17] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-26 10:14:17] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-26 10:14:17] [INFO] ScanManager initialisé
+[2025-06-26 10:14:17] [INFO] UI: ScanManager initialisé
+[2025-06-26 10:14:17] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-26 10:14:17] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-26 10:14:17] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-26 10:14:17] [INFO] UI: Connecté avec le code 0 
+[2025-06-26 10:14:17] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-26 10:14:17] [INFO] UI: Abonnements MQTT terminés.

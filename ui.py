@@ -36,6 +36,7 @@ class App(ctk.CTk):
         initialise leur état visuel et met en place la zone de scan.
         """
         super().__init__()
+        self._last_ui_update = {}
         # === CONFIGURATION DE LA FENÊTRE ===
         self.title("Revaw")
         self.geometry("1920x1080")
@@ -175,6 +176,13 @@ class App(ctk.CTk):
 
     def update_banc_data(self, banc_id, data):
         """Met à jour les widgets d'un banc avec les données BMS reçues via MQTT."""
+        # Throttling : max 1 update/seconde par banc
+        now = time.time()
+        if banc_id in self._last_ui_update:
+            if now - self._last_ui_update[banc_id] < 1.0:  # ✅ Évite spam UI
+                return
+
+        self._last_ui_update[banc_id] = now
         self.ui_updater.update_banc_data(banc_id, data)
 
     def update_ri_diffusion_widgets(self, banc_id):

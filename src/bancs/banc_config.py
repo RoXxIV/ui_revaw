@@ -5,7 +5,7 @@ class BancConfig:
     """
 
     BMS_DATA_TIMEOUT_S = 30  # Délai d'inactivité BMS avant alerte (secondes)
-    BMS_CHECK_INTERVAL_S = 10  # Intervalle de vérification du timeout (secondes)
+    BMS_CHECK_INTERVAL_S = 20  # Intervalle de vérification du timeout (secondes)
     NUM_CELLS = 15  # Nombre de cellules pour header CSV
 
     # repertoire de sauvegarde des testsfails
