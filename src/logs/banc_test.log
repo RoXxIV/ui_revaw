@@ -1,0 +1,55 @@
+[2025-06-27 00:05:57] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 00:05:58] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 00:05:58] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-27 00:05:58] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-27 00:05:58] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-27 00:05:58] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-27 00:05:58] [INFO] ScanManager initialisé
+[2025-06-27 00:05:58] [INFO] UI: ScanManager initialisé
+[2025-06-27 00:05:58] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-27 00:05:58] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-27 00:05:58] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-27 00:05:58] [INFO] UI: Connecté avec le code 0 
+[2025-06-27 00:05:58] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-27 00:05:58] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-27 00:05:59] [INFO] UI: Statut imprimante reçu: off
+[2025-06-27 00:06:50] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:06:51] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:06:52] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:06:53] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:06:54] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:06:55] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:06:56] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:06:57] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:06:58] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:06:59] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:01] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:02] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:03] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:04] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:06] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:07] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:08] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:09] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:10] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:11] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:13] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:14] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:15] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:16] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:18] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:19] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:21] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:22] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:23] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:24] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:25] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:26] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:27] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:28] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:29] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:30] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:31] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:32] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:07:33] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
+[2025-06-27 00:33:44] [INFO] UI: Application terminée.

@@ -2,6 +2,7 @@
 """
 Templates ZPL pour les étiquettes d'impression.
 """
+from .printer_config import PrinterConfig
 
 
 class LabelTemplates:
@@ -116,7 +117,7 @@ class LabelTemplates:
 ^LS0
 ^FT202,73^A0N,28,28^FH\\^CI28^FDNumero de serie : {serial_number}^FS^CI27
 ^FT267,348^A0N,28,28^FH\\^CI28^FDFabriqué le : {fabrication_date_str}^FS^CI27
-^FT11,36^A0N,28,28^FH\\^CI28^FDV1^FS^CI27
+^FT11,36^A0N,28,28^FH\\^CI28^FD{PrinterConfig.SOFTWARE_VERSION}^FS^CI27
 ^FT306,322^BQN,2,7
 ^FH\\^FDLA,{serial_number}^FS
 ^PQ1,0,1,Y
@@ -157,7 +158,7 @@ class LabelTemplates:
 ^PW815
 ^LL400
 ^LS0
-^FT40,343^A0N,45,46^FH\\^CI28^FD{serial_number} - V1^FS^CI27
+^FT40,343^A0N,45,46^FH\\^CI28^FD{serial_number} - {PrinterConfig.SOFTWARE_VERSION}^FS^CI27
 ^FT40,67^A0N,28,28^FH\\^CI28^FDNe pas stocker en exterieur.^FS^CI27
 ^FT40,115^A0N,28,28^FH\\^CI28^FD48V 271Ah 13KWh^FS^CI27
 ^FT40,164^A0N,28,28^FH\\^CI28^FD115 kg | 610*460*250mm^FS^CI27

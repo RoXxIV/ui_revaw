@@ -7,6 +7,7 @@ import os
 import random
 import string
 from src.ui.system_utils import log
+from .printer_config import PrinterConfig
 
 
 class CSVSerialManager:
@@ -58,7 +59,7 @@ class CSVSerialManager:
                     writer = csv.writer(f)
                     writer.writerow([
                         "TimestampImpression", "NumeroSerie", "CodeAleatoireQR", "TimestampTestDone",
-                        "TimestampExpedition", "checker_name"
+                        "TimestampExpedition", "checker_name", "version"
                     ])
                 log(f"En-têtes CSV ajoutés dans '{CSVSerialManager.SERIAL_CSV_FILE}'.", level="INFO")
             except IOError as e:
@@ -137,8 +138,10 @@ class CSVSerialManager:
         try:
             with open(CSVSerialManager.SERIAL_CSV_FILE, mode='a', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f)
-                writer.writerow([timestamp, numero_serie, code_aleatoire_qr, "", "", checker_name])
-            log(f"Ajouté au CSV: {timestamp}, {numero_serie}, {code_aleatoire_qr}, {checker_name}", level="INFO")
+                writer.writerow(
+                    [timestamp, numero_serie, code_aleatoire_qr, "", "", checker_name, PrinterConfig.SOFTWARE_VERSION])
+            log(f"Ajouté au CSV: {timestamp}, {numero_serie}, {code_aleatoire_qr}, {checker_name}, {PrinterConfig.SOFTWARE_VERSION}",
+                level="INFO")
             return True
         except IOError as e:
             log(f"Impossible d'écrire dans le fichier CSV '{CSVSerialManager.SERIAL_CSV_FILE}': {e}", level="ERROR")
@@ -170,9 +173,14 @@ class CSVSerialManager:
                         else:
                             row.extend([""] * (4 - len(row)))
                             row[3] = timestamp_done
+                        if len(row) > 6:
+                            row[6] = PrinterConfig.SOFTWARE_VERSION
+                        else:
+                            row.extend([""] * (7 - len(row)))
+                            row[6] = PrinterConfig.SOFTWARE_VERSION
                         updated = True
                         log(
-                            f"Ligne pour {serial_number_to_update} marquée avec TimestampTestDone: {timestamp_done}",
+                            f"Ligne pour {serial_number_to_update} marquée avec TimestampTestDone: {timestamp_done} et version: {PrinterConfig.SOFTWARE_VERSION}",
                             level="INFO",
                         )
                     rows.append(row)
@@ -181,7 +189,7 @@ class CSVSerialManager:
                     writer = csv.writer(f_write)
                     writer.writerows(rows)
                 log(
-                    f"Fichier CSV '{CSVSerialManager.SERIAL_CSV_FILE}' mis à jour avec TimestampTestDone pour {serial_number_to_update}.",
+                    f"Fichier CSV '{CSVSerialManager.SERIAL_CSV_FILE}' mis à jour avec TimestampTestDone et version pour {serial_number_to_update}.",
                     level="INFO",
                 )
                 return True

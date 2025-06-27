@@ -21,6 +21,8 @@ class PrinterConfig:
     # --- Configuration Imprimante ---
     PRINTER_IP = "192.168.1.100"  # ip de l'imprimante
     PRINTER_PORT = 9100
+    # --- Configuration Version Software ---
+    SOFTWARE_VERSION = "1.01"  # Version dynamique du software
     # --- Intervalles et Timeouts (secondes) ---
     RETRY_DELAY_ON_ERROR_S = 10
     POLL_DELAY_WHEN_IDLE_S = 1

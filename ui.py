@@ -24,10 +24,6 @@ ctk.set_appearance_mode("dark")
 class App(ctk.CTk):
     BANC_STATUS_AVAILABLE = "available"
     BANC_STATUS_OCCUPIED = "occupied"
-    LARGE_BORDER_WIDTH_ACTIVE = 50
-    NORMAL_BORDER_WIDTH = 1
-    SCAN_CONFIRM_TIMEOUT_S = 15
-    SERIAL_PATTERN = r"RW-48v271[A-Za-z0-9]{4}"
 
     def __init__(self):
         """
@@ -42,7 +38,7 @@ class App(ctk.CTk):
         self.geometry("1920x1080")
         self.attributes("-fullscreen", True)
         self.bind("<Escape>", lambda e: self.attributes("-fullscreen", False))
-
+        self.bind("<F11>", lambda e: self.attributes("-fullscreen", True))
         # === CONFIGURATION DE LA GRILLE ===
         self.rowconfigure(0, weight=5)
         self.rowconfigure(1, weight=5)
@@ -50,7 +46,6 @@ class App(ctk.CTk):
         self.rowconfigure(3, weight=1)
         self.columnconfigure((0, 1), weight=1, uniform="col")
         self.bind("<Return>", self.handle_prompt)
-        self.bind("<F11>", lambda e: self.attributes("-fullscreen", True))
         # === CHARGEMENT DES ICÔNES ===
         try:
             self.status_icons = {
@@ -119,7 +114,7 @@ class App(ctk.CTk):
         self.frame_system.grid(row=0, column=1, padx=(5, 0), pady=5, sticky="nsew")
         # Titre principal système
         self.system_title = ctk.CTkLabel(
-            self.frame_system, text="🔧 SYSTÈME", font=("Helvetica", 12, "bold"), text_color="#B0B0B0")
+            self.frame_system, text="🔧 STATUS SYSTÈME", font=("Helvetica", 12, "bold"), text_color="#B0B0B0")
         self.system_title.pack(pady=(2, 2))
         # Statut système général
         self.system_status_label = ctk.CTkLabel(
@@ -132,7 +127,7 @@ class App(ctk.CTk):
         self.system_status_label.pack(pady=(2, 2), padx=8, fill="x")
         # Titre imprimante
         self.printer_title = ctk.CTkLabel(
-            self.frame_system, text="🖨️ IMPRIMANTE", font=("Helvetica", 12, "bold"), text_color="#B0B0B0")
+            self.frame_system, text="🖨️ STATUS IMPRIMANTE", font=("Helvetica", 12, "bold"), text_color="#B0B0B0")
         self.printer_title.pack(pady=(2, 2))
         # Statut imprimante
         self.printer_status_label = ctk.CTkLabel(
@@ -154,26 +149,38 @@ class App(ctk.CTk):
             canvas_init = widgets_init.get("soc_canvas")
             if canvas_init:
                 self.after(500, lambda c=canvas_init: update_soc_canvas(c, 0))
-
+        # === FOCUS SUR L'ENTRÉE DE SAISIE ===
         self.after(100, lambda: self.entry_prompt.focus_set())
 
     def init_banc_status(self, config):
         """
         Initialise l'affichage du statut de chaque banc au démarrage.
         Pré-remplit également la barre de progression si un test est déjà en cours.
+        Args:
+            config: Configuration des bancs
         """
-        bancs = config.get("bancs", [])
+        bancs = config.get("bancs", [])  # récupère la liste des bancs de la configuration
+
         for i in range(NUM_BANCS):
-            banc_id = f"banc{i+1}"
-            widgets = self.banc_widgets.get(banc_id)
+            banc_id = f"banc{i+1}"  # Construction de l'ID : banc1, banc2, etc.
+
+            widgets = self.banc_widgets.get(banc_id)  # Récupération des widgets UI associés à ce banc
             if widgets:
+                # === RÉCUPÉRATION DES DONNÉES DE CONFIGURATION ===
                 banc_data = bancs[i]
                 status = banc_data.get("status", self.BANC_STATUS_AVAILABLE)
+
+                # === CAS 1: BANC LIBRE ===
                 if status == self.BANC_STATUS_AVAILABLE:
                     widgets["banc"].configure(text=f"{bancs[i]['name']} - Libre")
+
+                # === CAS 2: BANC OCCUPÉ (test en cours) ===
                 elif status == self.BANC_STATUS_OCCUPIED:
                     serial = bancs[i].get("serial-pending", "")
+
+                    # --- GESTION DE L'ÉTAPE ACTUELLE DU TEST ---
                     starting_phase_raw = banc_data.get("current_step")
+
                     if isinstance(starting_phase_raw, int):
                         starting_phase = starting_phase_raw
                     else:
@@ -182,10 +189,15 @@ class App(ctk.CTk):
                                 level="WARNING")
                         starting_phase = 0
 
+                    # --- MISE À JOUR DE L'INTERFACE ---
+                    # stockage de l'Étape actuelle dans les widgets
                     widgets["current_step"] = starting_phase
+                    # Affichage du titre : "Banc1 - RW-48v2710001"
                     widgets["banc"].configure(text=f"{bancs[i]['name']} - {serial}")
-                    progress_bar = widgets.get("progress_bar_phase")
 
+                    # --- RESTAURATION DE LA BARRE DE PROGRESSION ---
+                    # Si un test est en cours, on remet les phases précédentes à 100%
+                    progress_bar = widgets.get("progress_bar_phase")
                     if progress_bar:
                         if starting_phase >= 2:
                             progress_bar.progress_ri.set(1.0)
@@ -193,48 +205,118 @@ class App(ctk.CTk):
                             progress_bar.progress_phase2.set(1.0)
                         if starting_phase >= 4:
                             progress_bar.progress_capa.set(1.0)
-
+                # === CAS 3: STATUT INCONNU ===
                 else:
                     log(f"Statut inconnu '{status}' pour {banc_id} dans la config.", level="WARNING")
                     widgets["banc"].configure(text=f"{banc_data['name']} - Statut Inconnu")
 
     def update_banc_data(self, banc_id, data):
-        """Met à jour les widgets d'un banc avec les données BMS reçues via MQTT."""
+        """
+        Met à jour les widgets d'un banc avec les données BMS reçues via MQTT.
+        Args:
+            banc_id (str): Identifiant du banc (ex: "banc1")
+            data (list): Données BMS sous forme de liste (voltage, current, soc, temp, etc.)
+        """
         # Throttling : max 1 update/seconde par banc
         now = time.time()
+        # Vérification si ce banc a déjà été mis à jour récemment
         if banc_id in self._last_ui_update:
-            if now - self._last_ui_update[banc_id] < 1.0:  # ✅ Évite spam UI
+            # Si moins d'1 seconde s'est écoulée, on ignore cette mise à jour
+            if now - self._last_ui_update[banc_id] < 1.0:
                 return
-
+        # === ENREGISTREMENT DU TIMESTAMP ===
         self._last_ui_update[banc_id] = now
+        # === DÉLÉGATION À L'UI UPDATER ===
+        # Transfert vers le gestionnaire spécialisé qui s'occupe de :
+        # - Validation des données BMS
+        # - Extraction des valeurs (tension, courant, SOC, température, etc.)
+        # - Mise à jour des widgets correspondants
+        # - Gestion des couleurs conditionnelles
+        # - Mise à jour du canvas SOC et des barres de progression
         self.ui_updater.update_banc_data(banc_id, data)
 
     def update_ri_diffusion_widgets(self, banc_id):
-        """Met à jour les widgets Ri et Diffusion."""
+        """
+    Met à jour les widgets Ri et Diffusion depuis les données de configuration.
+    Args:
+        banc_id (str): Identifiant du banc (ex: "banc1")
+    Note:
+        Cette méthode est appelée après réception des résultats de mesure RI
+        via le topic MQTT /{banc}/ri/results. Elle lit le fichier config.json
+        de la batterie pour calculer et afficher les valeurs moyennes.
+    """
         self.ui_updater.update_ri_diffusion_widgets(banc_id)
 
     def update_banc_security(self, banc_id, security_message):
-        """Affiche un message de sécurité temporaire."""
+        """
+        Affiche un message de sécurité temporaire en surimpression.
+        Args:
+            banc_id (str): Identifiant du banc concerné
+            security_message (str): Message d'alerte à afficher (ex: "Timeout BMS")
+    Note:
+        Déclenché par les messages MQTT sur /{banc}/security.
+        L'affichage disparaît automatiquement après 5 secondes.
+    """
         self.ui_updater.update_banc_security(banc_id, security_message)
 
     def hide_security_display(self, banc_id):
-        """Cache le label de sécurité rouge."""
+        """
+    Cache le label de sécurité rouge et restaure l'affichage normal.
+    Args:
+        banc_id (str): Identifiant du banc  
+    Note:
+        Appelée automatiquement par un timer pour masquer
+        l'alerte de sécurité et remettre la bordure dans son état normal.
+    """
         self.ui_updater.hide_security_display(banc_id)
 
     def animate_phase_segment(self, banc_id, phase_step):
-        """Démarre l'animation de la barre de progression."""
+        """
+    Démarre l'animation de progression pour une phase de test spécifique.
+    Args:
+        banc_id (str): Identifiant du banc
+        phase_step (int): Numéro de la phase (1=RI, 2=Charge, 3=Décharge, 4=Charge finale)  
+    Note:
+        Appelée lors de la réception des messages /{banc}/step.
+        L'animation calcule la durée estimée et met à jour progressivement
+        la barre de progression et le timer affiché.
+    """
         self.animation_manager.start_phase_animation(banc_id, phase_step)
 
     def finalize_previous_phase(self, banc_id):
-        """Finalise l'animation de la phase précédente."""
+        """
+    Finalise l'animation de la phase précédente en la mettant à 100%.
+    Args:
+        banc_id (str): Identifiant du banc  
+    Note:
+        Utilisée lors des transitions de phase pour s'assurer que
+        la phase précédente est visuellement complète avant de
+        démarrer l'animation de la phase suivante.
+    """
         self.animation_manager.finalize_previous_phase(banc_id)
 
     def update_status_icon(self, banc_id, icon_type, state):
-        """Met à jour l'image d'une icône de statut."""
+        """
+    Met à jour l'image d'une icône de statut (chargeur ou nourrices).
+    Args:
+        banc_id (str): Identifiant du banc
+        icon_type (str): Type d'icône ("charger" ou "nurses unb")
+        state (str): État ("on" ou "off")  
+    Note:
+        Appelée lors de la réception des messages /{banc}/state.
+        Change visuellement l'icône pour refléter l'état des équipements.
+    """
         self.ui_updater.update_status_icon(banc_id, icon_type, state)
 
     def handle_prompt(self, event=None):
-        """Gère l'entrée utilisateur via le gestionnaire de scan."""
+        """
+    Gère l'entrée utilisateur via le champ de saisie (scan ou commande).
+    Args:
+        event: Événement Tkinter (optionnel, pour binding clavier)   
+    Note:
+        Point d'entrée principal pour toutes les interactions utilisateur :
+        scan de bancs, numéros de série, commandes spéciales (reset, create, etc.)
+    """
         text = self.entry_prompt.get().strip()
         if not text:
             return
