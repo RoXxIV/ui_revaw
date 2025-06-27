@@ -188,30 +188,55 @@ class UIUpdater:
     # === MÉTHODES PRIVÉES ===
 
     def _validate_bms_data(self, banc_id, data):
-        """Valide les données BMS reçues."""
-        if not isinstance(data, list) or len(data) < self.MIN_EXPECTED_BMS_FIELDS:
-            log(
-                f"UIUpdater: Données BMS invalides pour {banc_id}. "
-                f"Attendu: liste d'au moins {self.MIN_EXPECTED_BMS_FIELDS} éléments, "
-                f"Reçu: {type(data)}, len: {len(data) if isinstance(data, list) else 'N/A'}",
-                level="WARNING")
+        """Valide les données BMS reçues avec vérifications robustes."""
+
+        if not isinstance(data, list):
+            log(f"UIUpdater: Données BMS invalides pour {banc_id}. Attendu: liste, Reçu: {type(data)}", level="ERROR")
             return False
+
+        if len(data) < self.MIN_EXPECTED_BMS_FIELDS:
+            log(
+                f"UIUpdater: Données BMS incomplètes pour {banc_id}. "
+                f"Attendu: >= {self.MIN_EXPECTED_BMS_FIELDS} champs, Reçu: {len(data)}",
+                level="WARNING")
+
+            # Tolérer si on a au moins les champs essentiels (voltage, current, soc, temp)
+            if len(data) < 4:
+                log(f"UIUpdater: Données BMS critiquement insuffisantes pour {banc_id}. Rejet.", level="ERROR")
+                return False
+            else:
+                log(f"UIUpdater: Données BMS partielles acceptées pour {banc_id}. Mode dégradé.", level="WARNING")
+                return True
+
         return True
 
     def _extract_bms_data(self, data):
         """Extrait et convertit les données BMS essentielles."""
+        # validation - Longueur minimale
+        if len(data) < 10:
+            log(f"UIUpdater: Données BMS trop courtes: {len(data)} < 10 champs minimum", level="ERROR")
+            return None
         try:
-            return {
-                'voltage': float(data[0]),
-                'current': float(data[1]),
-                'soc_raw': data[2],
-                'temperature': float(data[3]),
-                'max_cell_v': int(data[5]),
-                'min_cell_v': int(data[7]),
-                'discharge_capacity': float(data[8]) / 1000,
-                'discharge_energy': float(data[9]) / 1000,
-                'average_nurse_soc': float(data[26]) if len(data) > 26 else 0.0
+            # Fonction helper pour conversion sécurisée
+            def safe_float(value, default=0.0):
+                try:
+                    return float(value) if value else default
+                except (ValueError, TypeError):
+                    return default
+
+            # Extraction sécurisée avec fallbacks
+            extracted_data = {
+                'voltage': safe_float(data[0]),
+                'current': safe_float(data[1]),
+                'soc_raw': data[2] if len(data) > 2 else 0,
+                'temperature': safe_float(data[3]) if len(data) > 3 else 25.0,
+                'max_cell_v': int(safe_float(data[5])) if len(data) > 5 else 0,
+                'min_cell_v': int(safe_float(data[7])) if len(data) > 7 else 0,
+                'discharge_capacity': safe_float(data[8]) / 1000 if len(data) > 8 else 0.0,
+                'discharge_energy': safe_float(data[9]) / 1000 if len(data) > 9 else 0.0,
+                'average_nurse_soc': safe_float(data[26]) if len(data) > 26 else 0.0
             }
+            return extracted_data
         except (IndexError, ValueError, TypeError) as e:
             log(f"UIUpdater: Erreur extraction données BMS: {e}", level="ERROR")
             return None

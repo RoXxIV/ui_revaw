@@ -24,6 +24,10 @@ ctk.set_appearance_mode("dark")
 class App(ctk.CTk):
     BANC_STATUS_AVAILABLE = "available"
     BANC_STATUS_OCCUPIED = "occupied"
+    LARGE_BORDER_WIDTH_ACTIVE = 50
+    NORMAL_BORDER_WIDTH = 1
+    SCAN_CONFIRM_TIMEOUT_S = 15
+    SERIAL_PATTERN = r"RW-48v271[A-Za-z0-9]{4}"
 
     def __init__(self):
         """
@@ -145,6 +149,8 @@ class App(ctk.CTk):
         self.scan_manager = ScanManager(self)
         log("UI: ScanManager initialisé", level="INFO")
         # === INITIALISATION FINALE ===
+        self.security_active = {f"banc{i+1}": False for i in range(NUM_BANCS)}
+        self.reset_enabled_for_banc = {f"banc{i+1}": False for i in range(NUM_BANCS)}
         for banc_id_init, widgets_init in self.banc_widgets.items():
             canvas_init = widgets_init.get("soc_canvas")
             if canvas_init:

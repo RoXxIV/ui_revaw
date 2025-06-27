@@ -34,7 +34,7 @@
 
 ```bash
 # Simuler changement d'étape
-mosquitto_pub -h localhost -t "banc1/step" -m "2"
+mosquitto_pub -h localhost -t "banc1/step" -m "1"
 
 # Simuler données BMS
 mosquitto_pub -h localhost -t "banc1/bms/data" -m "48.5,2.1,85,25,0,3450,0,3420,271000,13000,3435,3430,3445,3425,3440,3435,3430,3445,3425,3440,3435,3430,3445,3425,3440,1,85.5"

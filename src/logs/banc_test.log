@@ -1,55 +1,1724 @@
-[2025-06-27 00:05:57] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
-[2025-06-27 00:05:58] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
-[2025-06-27 00:05:58] [INFO] UI: Interface pour banc1 créée avec succès.
-[2025-06-27 00:05:58] [INFO] UI: Interface pour banc2 créée avec succès.
-[2025-06-27 00:05:58] [INFO] UI: Interface pour banc3 créée avec succès.
-[2025-06-27 00:05:58] [INFO] UI: Interface pour banc4 créée avec succès.
-[2025-06-27 00:05:58] [INFO] ScanManager initialisé
-[2025-06-27 00:05:58] [INFO] UI: ScanManager initialisé
-[2025-06-27 00:05:58] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
-[2025-06-27 00:05:58] [INFO] UI: Tentative de connexion au broker MQTT...
-[2025-06-27 00:05:58] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
-[2025-06-27 00:05:58] [INFO] UI: Connecté avec le code 0 
-[2025-06-27 00:05:58] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
-[2025-06-27 00:05:58] [INFO] UI: Abonnements MQTT terminés.
-[2025-06-27 00:05:59] [INFO] UI: Statut imprimante reçu: off
-[2025-06-27 00:06:50] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:06:51] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:06:52] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:06:53] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:06:54] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:06:55] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:06:56] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:06:57] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:06:58] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:06:59] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:01] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:02] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:03] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:04] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:06] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:07] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:08] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:09] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:10] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:11] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:13] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:14] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:15] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:16] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:18] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:19] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:21] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:22] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:23] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:24] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:25] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:26] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:27] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:28] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:29] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:30] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:31] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:32] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:07:33] [ERROR] UIUpdater: Erreur mise à jour données BMS pour banc1: '_tkinter.tkapp' object has no attribute 'security_active'
-[2025-06-27 00:33:44] [INFO] UI: Application terminée.
+[2025-06-27 12:05:38] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:05:38] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:05:38] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-27 12:05:38] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-27 12:05:38] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-27 12:05:38] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-27 12:05:39] [INFO] ScanManager initialisé
+[2025-06-27 12:05:39] [INFO] UI: ScanManager initialisé
+[2025-06-27 12:05:39] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-27 12:05:39] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-27 12:05:39] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-27 12:05:39] [INFO] UI: Connecté avec le code 0 
+[2025-06-27 12:05:39] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-27 12:05:39] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-27 12:05:39] [INFO] UI: Statut imprimante reçu: off
+[2025-06-27 12:05:48] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:05:48] [INFO] Démarrage du script d'écoute MQTT
+[2025-06-27 12:05:48] [WARNING] !!! ATTENTION: IP imprimante semble par défaut. Vérifiez si elle a changé. !!!
+[2025-06-27 12:05:48] [INFO] Thread Worker d'impression démarré.
+[2025-06-27 12:05:48] [INFO] Tentative de connexion au broker MQTT: localhost:1883
+[2025-06-27 12:05:48] [INFO] Démarrage de la boucle MQTT (écoute en continu)...
+[2025-06-27 12:05:48] [INFO] Connecté au broker MQTT localhost:1883
+[2025-06-27 12:05:48] [INFO] DEBUG: MQTT_TOPIC_TEST_DONE = 'printer/test_done'
+[2025-06-27 12:05:48] [INFO] Abonné aux topics: create, update_test_done, shipping, reprint_main, request_full_reprint, update_shipping_timestamp
+[2025-06-27 12:05:51] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:05:51] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:05:51] [INFO] UI: Statut imprimante reçu: off
+[2025-06-27 12:05:51] [INFO] Statut imprimante publié: off (était: None)
+[2025-06-27 12:05:55] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:05:55] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:05:59] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:05:59] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:03] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:03] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:07] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:06:07] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-27 12:06:07] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:07] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:08] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:06:09] [INFO] UI: Prompt reçu: RW-48v2710010
+[2025-06-27 12:06:09] [INFO] ScanManager: Traitement scan 'RW-48v2710010' dans état 1
+[2025-06-27 12:06:09] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:06:09] [INFO] DataOps: Batterie RW-48v2710010 validée par 'evan'.
+[2025-06-27 12:06:09] [INFO] ScanManager: Batterie RW-48v2710010 validée pour banc libre
+[2025-06-27 12:06:11] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:11] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:13] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:06:13] [INFO] ScanManager: Traitement scan 'banc1' dans état 2
+[2025-06-27 12:06:13] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:06:13] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:06:13] [INFO] ScanManager: Chemin batterie stocké pour banc1: data\banc1\27062025-RW-48v2710010
+[2025-06-27 12:06:13] [INFO] ScanManager: Lancement subprocess: C:\Users\RoXx\AppData\Local\Programs\Python\Python311\python.exe C:\Users\RoXx\Desktop\Banc_final_pi\banc.py banc1 RW-48v2710010
+[2025-06-27 12:06:13] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:06:13] [INFO] banc1: Aucun dossier existant trouvé, utilisera/créera: data\banc1\27062025-RW-48v2710010
+[2025-06-27 12:06:13] [INFO] banc1: Création config.json par défaut dans data\banc1\27062025-RW-48v2710010
+[2025-06-27 12:06:13] [INFO] banc1: Fichier config.json créé avec succès.
+[2025-06-27 12:06:13] [INFO] banc1: Le fichier data\banc1\27062025-RW-48v2710010\data.csv n'existe pas, tentative de création.
+[2025-06-27 12:06:13] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710010\data.csv créé avec succès.
+[2025-06-27 12:06:13] [INFO] banc1: Prêt à démarrer pour RW-48v2710010 dans data\banc1\27062025-RW-48v2710010
+[2025-06-27 12:06:13] [INFO] banc1: Étape initiale (depuis config): 1
+[2025-06-27 12:06:13] [INFO] banc1: Connexion à MQTT (localhost:1883)...
+[2025-06-27 12:06:13] [INFO] banc1: Abonnements MQTT réussis.
+[2025-06-27 12:06:13] [INFO] banc1: État initial publié sur banc1/command: {"current_step": 1, "capacity_ah": 0, "capacity_wh": 0}
+[2025-06-27 12:06:13] [INFO] banc1: Ouverture du fichier CSV en mode append: data\banc1\27062025-RW-48v2710010\data.csv
+[2025-06-27 12:06:13] [INFO] banc1: Démarrage du thread de surveillance d'activité BMS...
+[2025-06-27 12:06:13] [INFO] banc1: Thread surveillance activité BMS démarré (Timeout: 30s, Check: 20s).
+[2025-06-27 12:06:13] [INFO] banc1: Démarrage de la boucle MQTT (loop_forever)...
+[2025-06-27 12:06:15] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:15] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:19] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:19] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:19] [INFO] Current step mis à jour: 1, pour banc1
+[2025-06-27 12:06:19] [INFO] UI: banc1 current_step (UI) mis à jour: 1
+[2025-06-27 12:06:19] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710010\config.json mis à jour: current_step=1
+[2025-06-27 12:06:19] [INFO] AnimationManager: Démarrage animation phase 1 pour banc1
+[2025-06-27 12:06:19] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:06:19] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=1
+[2025-06-27 12:06:23] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:23] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:27] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:27] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:31] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:31] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:32] [INFO] UI: Résultats RI/Diffusion disponibles pour banc1. (MAJ via step 2)
+[2025-06-27 12:06:32] [INFO] banc1: Données RI reçues: {'ri_discharge_average': 0.24781, 'diffusion_discharge_average': 0.213292, 'ri_charge_average': 0.30423, 'diffusion_charge_average': 0.20282, 'delta_ri_cells': [0.00012, 0.00013, 0.00011, 0.00012, 0.00014, 0.00013, 0.00012, 0.00015, 0.00011, 0.00012, 0.00013, 0.00014, 0.00012, 0.00013, 0.00011], 'delta_diffusion_cells': [5e-05, 6e-05, 5e-05, 5e-05, 6e-05, 7e-05, 5e-05, 6e-05, 5e-05, 5e-05, 6e-05, 6e-05, 5e-05, 5e-05, 4e-05]}
+[2025-06-27 12:06:32] [INFO] banc1: config.json mis à jour avec les résultats RI: ['ri_discharge_average', 'ri_charge_average', 'diffusion_discharge_average', 'diffusion_charge_average', 'delta_ri_cells', 'delta_diffusion_cells']
+[2025-06-27 12:06:35] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:35] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:39] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:39] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:43] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:43] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:47] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:47] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:50] [INFO] Current step mis à jour: 2, pour banc1
+[2025-06-27 12:06:50] [INFO] UI: banc1 current_step (UI) mis à jour: 2
+[2025-06-27 12:06:50] [INFO] UI: Étape 2 détectée pour banc1. Planification MAJ Ri/Diffusion UI.
+[2025-06-27 12:06:50] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710010\config.json mis à jour: current_step=2
+[2025-06-27 12:06:50] [ERROR] UIUpdater: Erreur JSON dans config.json pour banc1
+[2025-06-27 12:06:50] [INFO] AnimationManager: Démarrage animation phase 2 pour banc1
+[2025-06-27 12:06:50] [INFO] DataOps: Chargement à la demande du profil de charge...
+[2025-06-27 12:06:50] [INFO] DataOps: 1001 lignes lues depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\charge_profile.csv.
+[2025-06-27 12:06:50] [INFO] DataOps: Profil de charge trié et chargé (1001 points valides).
+[2025-06-27 12:06:50] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:06:50] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=2
+[2025-06-27 12:06:51] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:51] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:53] [INFO] Current step mis à jour: 3, pour banc1
+[2025-06-27 12:06:53] [INFO] UI: banc1 current_step (UI) mis à jour: 3
+[2025-06-27 12:06:53] [INFO] AnimationManager: Démarrage animation phase 3 pour banc1
+[2025-06-27 12:06:53] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710010\config.json mis à jour: current_step=3
+[2025-06-27 12:06:53] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:06:53] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=3
+[2025-06-27 12:06:55] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:55] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:06:57] [INFO] Current step mis à jour: 4, pour banc1
+[2025-06-27 12:06:57] [INFO] UI: banc1 current_step (UI) mis à jour: 4
+[2025-06-27 12:06:57] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710010\config.json mis à jour: current_step=4
+[2025-06-27 12:06:57] [INFO] AnimationManager: Démarrage animation phase 4 pour banc1
+[2025-06-27 12:06:57] [ERROR] PhaseCalculator: ATTENTION - Durée négative calculée (-94.9 min) car SOC batterie (83.0%) > référence (10.0). Durée forcée à 0.
+[2025-06-27 12:06:57] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:06:57] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=4
+[2025-06-27 12:06:59] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:06:59] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:01] [ERROR] banc1: Test ÉCHOUÉ signalé par ESP32 (Step 6).
+[2025-06-27 12:07:01] [INFO] UI: Step 6 (Test ÉCHOUÉ) reçu pour banc1. Arrêt timer et MàJ UI.
+[2025-06-27 12:07:01] [INFO] banc1: Finalisation du test pour gestion nourrice, puis archivage des données et reset du banc.
+[2025-06-27 12:07:01] [INFO] banc1: Fichier CSV fermé.
+[2025-06-27 12:07:01] [INFO] banc1: Fichier CSV fermé pour test échoué.
+[2025-06-27 12:07:01] [INFO] banc1: Dossier de test data\banc1\27062025-RW-48v2710010 archivé dans data/archive_fails\27062025-RW-48v2710010
+[2025-06-27 12:07:01] [INFO] banc1 réinitialisé dans bancs_config.json
+[2025-06-27 12:07:01] [INFO] banc1: Configuration du banc réinitialisée dans bancs_config.json après échec.
+[2025-06-27 12:07:01] [INFO] banc1: Fin du script banc.py suite à Step 6 (Test Échoué).
+[2025-06-27 12:07:01] [ERROR] banc1: *** FIN DU BLOC FINALLY. global_mqtt_config VA RETOURNER. ***
+[2025-06-27 12:07:01] [INFO] UI: Traitement pour Step 6 (Test Échoué) terminé pour banc1.
+[2025-06-27 12:07:03] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:03] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:07] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:07] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:11] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:11] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:15] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:15] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:17] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:07:17] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-27 12:07:18] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:07:19] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:19] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:19] [INFO] UI: Prompt reçu: RW-48v2710011
+[2025-06-27 12:07:19] [INFO] ScanManager: Traitement scan 'RW-48v2710011' dans état 1
+[2025-06-27 12:07:19] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:07:19] [INFO] DataOps: Batterie RW-48v2710011 validée par 'evan'.
+[2025-06-27 12:07:19] [INFO] ScanManager: Batterie RW-48v2710011 validée pour banc libre
+[2025-06-27 12:07:23] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:07:23] [INFO] ScanManager: Traitement scan 'banc1' dans état 2
+[2025-06-27 12:07:23] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:23] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:23] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:07:23] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:07:23] [INFO] ScanManager: Chemin batterie stocké pour banc1: data\banc1\27062025-RW-48v2710011
+[2025-06-27 12:07:23] [INFO] ScanManager: Lancement subprocess: C:\Users\RoXx\AppData\Local\Programs\Python\Python311\python.exe C:\Users\RoXx\Desktop\Banc_final_pi\banc.py banc1 RW-48v2710011
+[2025-06-27 12:07:23] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:07:23] [INFO] banc1: Aucun dossier existant trouvé, utilisera/créera: data\banc1\27062025-RW-48v2710011
+[2025-06-27 12:07:23] [INFO] banc1: Création config.json par défaut dans data\banc1\27062025-RW-48v2710011
+[2025-06-27 12:07:23] [INFO] banc1: Fichier config.json créé avec succès.
+[2025-06-27 12:07:23] [INFO] banc1: Le fichier data\banc1\27062025-RW-48v2710011\data.csv n'existe pas, tentative de création.
+[2025-06-27 12:07:23] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710011\data.csv créé avec succès.
+[2025-06-27 12:07:23] [INFO] banc1: Prêt à démarrer pour RW-48v2710011 dans data\banc1\27062025-RW-48v2710011
+[2025-06-27 12:07:23] [INFO] banc1: Étape initiale (depuis config): 1
+[2025-06-27 12:07:23] [INFO] banc1: Connexion à MQTT (localhost:1883)...
+[2025-06-27 12:07:23] [INFO] banc1: Abonnements MQTT réussis.
+[2025-06-27 12:07:23] [INFO] banc1: État initial publié sur banc1/command: {"current_step": 1, "capacity_ah": 0, "capacity_wh": 0}
+[2025-06-27 12:07:23] [INFO] banc1: Ouverture du fichier CSV en mode append: data\banc1\27062025-RW-48v2710011\data.csv
+[2025-06-27 12:07:23] [INFO] banc1: Démarrage du thread de surveillance d'activité BMS...
+[2025-06-27 12:07:23] [INFO] banc1: Thread surveillance activité BMS démarré (Timeout: 30s, Check: 20s).
+[2025-06-27 12:07:23] [INFO] banc1: Démarrage de la boucle MQTT (loop_forever)...
+[2025-06-27 12:07:27] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:27] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:28] [INFO] Current step mis à jour: 1, pour banc1
+[2025-06-27 12:07:28] [INFO] UI: banc1 current_step (UI) mis à jour: 1
+[2025-06-27 12:07:28] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710011\config.json mis à jour: current_step=1
+[2025-06-27 12:07:28] [INFO] AnimationManager: Démarrage animation phase 1 pour banc1
+[2025-06-27 12:07:28] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:07:28] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=1
+[2025-06-27 12:07:31] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:31] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:33] [INFO] UI: Résultats RI/Diffusion disponibles pour banc1. (MAJ via step 2)
+[2025-06-27 12:07:33] [INFO] banc1: Données RI reçues: {'ri_discharge_average': 0.24781, 'diffusion_discharge_average': 0.213292, 'ri_charge_average': 0.30423, 'diffusion_charge_average': 0.20282, 'delta_ri_cells': [0.00012, 0.00013, 0.00011, 0.00012, 0.00014, 0.00013, 0.00012, 0.00015, 0.00011, 0.00012, 0.00013, 0.00014, 0.00012, 0.00013, 0.00011], 'delta_diffusion_cells': [5e-05, 6e-05, 5e-05, 5e-05, 6e-05, 7e-05, 5e-05, 6e-05, 5e-05, 5e-05, 6e-05, 6e-05, 5e-05, 5e-05, 4e-05]}
+[2025-06-27 12:07:33] [INFO] banc1: config.json mis à jour avec les résultats RI: ['ri_discharge_average', 'ri_charge_average', 'diffusion_discharge_average', 'diffusion_charge_average', 'delta_ri_cells', 'delta_diffusion_cells']
+[2025-06-27 12:07:35] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:35] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:38] [INFO] Current step mis à jour: 2, pour banc1
+[2025-06-27 12:07:38] [INFO] UI: banc1 current_step (UI) mis à jour: 2
+[2025-06-27 12:07:38] [INFO] UI: Étape 2 détectée pour banc1. Planification MAJ Ri/Diffusion UI.
+[2025-06-27 12:07:38] [INFO] DataOps: Chargement à la demande des coefficients de température...
+[2025-06-27 12:07:38] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710011\config.json mis à jour: current_step=2
+[2025-06-27 12:07:38] [INFO] DataOps: Coefficients température chargés : 31 valeurs
+[2025-06-27 12:07:38] [INFO] UIUpdater: Ri/Diffusion mis à jour pour banc1: Ri=276.02 mΩ, Diff=214.30 mΩ
+[2025-06-27 12:07:38] [INFO] AnimationManager: Démarrage animation phase 2 pour banc1
+[2025-06-27 12:07:38] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:07:38] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=2
+[2025-06-27 12:07:39] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:39] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:41] [INFO] Current step mis à jour: 3, pour banc1
+[2025-06-27 12:07:41] [INFO] UI: banc1 current_step (UI) mis à jour: 3
+[2025-06-27 12:07:41] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710011\config.json mis à jour: current_step=3
+[2025-06-27 12:07:41] [INFO] AnimationManager: Démarrage animation phase 3 pour banc1
+[2025-06-27 12:07:41] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:07:41] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=3
+[2025-06-27 12:07:43] [INFO] Current step mis à jour: 4, pour banc1
+[2025-06-27 12:07:43] [INFO] UI: banc1 current_step (UI) mis à jour: 4
+[2025-06-27 12:07:43] [INFO] AnimationManager: Démarrage animation phase 4 pour banc1
+[2025-06-27 12:07:43] [ERROR] PhaseCalculator: ATTENTION - Durée négative calculée (-96.2 min) car SOC batterie (84.0%) > référence (10.0). Durée forcée à 0.
+[2025-06-27 12:07:43] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:07:43] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=4
+[2025-06-27 12:07:43] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:43] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:45] [INFO] banc1: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***
+[2025-06-27 12:07:45] [INFO] UI: banc1 current_step (UI) mis à jour: 5
+[2025-06-27 12:07:45] [INFO] UI: Toutes les phases finalisées pour banc1
+[2025-06-27 12:07:45] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710011\config.json mis à jour: current_step=5
+[2025-06-27 12:07:45] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:07:45] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=5
+[2025-06-27 12:07:45] [INFO] banc1 réinitialisé dans bancs_config.json
+[2025-06-27 12:07:46] [INFO] banc1: *** DEBUT ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:07:46] [INFO] banc1: Service d'impression détecté. Envoi des tâches à printer.py.
+[2025-06-27 12:07:46] [INFO] banc1: *** PAYLOAD PREPARE: {"serial_number": "RW-48v2710011", "timestamp_test_done": "2025-06-27T12:07:45.672324"} ***
+[2025-06-27 12:07:46] [INFO] banc1: *** CLIENT MQTT CONNECTE - ENVOI EN COURS ***
+[2025-06-27 12:07:46] [INFO] banc1: Résultat publish tâche consolidée (printer/test_done): 0, MID: 3
+[2025-06-27 12:07:46] [INFO] banc1: *** FIN ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:07:46] [INFO] banc1: Fichier CSV fermé.
+[2025-06-27 12:07:46] [INFO] banc1: Fichier CSV fermé après envoi des données.
+[2025-06-27 12:07:47] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:47] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:51] [INFO] banc1: Nettoyage terminé. sys.exit() va fermer la connexion.
+[2025-06-27 12:07:51] [INFO] banc1: Fin du processus (appel à sys.exit(0)).
+[2025-06-27 12:07:51] [ERROR] banc1: *** FIN DU BLOC FINALLY. global_mqtt_config VA RETOURNER. ***
+[2025-06-27 12:07:51] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:51] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:55] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:55] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:07:59] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:07:59] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:08:03] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:08:03] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:37:07] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:37:07] [INFO] Démarrage du script d'écoute MQTT
+[2025-06-27 12:37:07] [WARNING] !!! ATTENTION: IP imprimante semble par défaut. Vérifiez si elle a changé. !!!
+[2025-06-27 12:37:07] [INFO] Thread Worker d'impression démarré.
+[2025-06-27 12:37:07] [INFO] Tentative de connexion au broker MQTT: localhost:1883
+[2025-06-27 12:37:07] [INFO] Démarrage de la boucle MQTT (écoute en continu)...
+[2025-06-27 12:37:07] [INFO] Connecté au broker MQTT localhost:1883
+[2025-06-27 12:37:07] [INFO] DEBUG: MQTT_TOPIC_TEST_DONE = 'printer/test_done'
+[2025-06-27 12:37:07] [INFO] Abonné aux topics: create, update_test_done, shipping, reprint_main, request_full_reprint, update_shipping_timestamp
+[2025-06-27 12:37:15] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:37:16] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:37:16] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-27 12:37:16] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-27 12:37:16] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-27 12:37:16] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-27 12:37:16] [INFO] ScanManager initialisé
+[2025-06-27 12:37:16] [INFO] UI: ScanManager initialisé
+[2025-06-27 12:37:16] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-27 12:37:16] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-27 12:37:16] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-27 12:37:16] [INFO] UI: Connecté avec le code 0 
+[2025-06-27 12:37:16] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-27 12:37:16] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-27 12:37:16] [INFO] UI: Statut imprimante reçu: off
+[2025-06-27 12:37:28] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:37:28] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-27 12:37:28] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:37:30] [INFO] UI: Prompt reçu: RW-48v2710011
+[2025-06-27 12:37:30] [INFO] ScanManager: Traitement scan 'RW-48v2710011' dans état 1
+[2025-06-27 12:37:30] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:37:30] [INFO] DataOps: Batterie RW-48v2710011 validée par 'evan'.
+[2025-06-27 12:37:30] [INFO] ScanManager: Batterie RW-48v2710011 validée pour banc libre
+[2025-06-27 12:37:33] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:37:33] [INFO] ScanManager: Traitement scan 'banc1' dans état 2
+[2025-06-27 12:37:33] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:37:33] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:37:33] [INFO] ScanManager: Chemin batterie stocké pour banc1: data\banc1\27062025-RW-48v2710011
+[2025-06-27 12:37:33] [INFO] ScanManager: Lancement subprocess: C:\Users\RoXx\AppData\Local\Programs\Python\Python311\python.exe C:\Users\RoXx\Desktop\Banc_final_pi\banc.py banc1 RW-48v2710011
+[2025-06-27 12:37:33] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:37:33] [INFO] banc1: Aucun dossier existant trouvé, utilisera/créera: data\banc1\27062025-RW-48v2710011
+[2025-06-27 12:37:33] [INFO] banc1: Création config.json par défaut dans data\banc1\27062025-RW-48v2710011
+[2025-06-27 12:37:33] [INFO] banc1: Répertoire principal 'data' créé.
+[2025-06-27 12:37:33] [INFO] banc1: Sous-répertoire 'data\banc1' créé.
+[2025-06-27 12:37:33] [INFO] banc1: Fichier config.json créé avec succès.
+[2025-06-27 12:37:33] [INFO] banc1: Le fichier data\banc1\27062025-RW-48v2710011\data.csv n'existe pas, tentative de création.
+[2025-06-27 12:37:33] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710011\data.csv créé avec succès.
+[2025-06-27 12:37:33] [INFO] banc1: Prêt à démarrer pour RW-48v2710011 dans data\banc1\27062025-RW-48v2710011
+[2025-06-27 12:37:33] [INFO] banc1: Étape initiale (depuis config): 1
+[2025-06-27 12:37:33] [INFO] banc1: Connexion à MQTT (localhost:1883)...
+[2025-06-27 12:37:33] [INFO] banc1: Abonnements MQTT réussis.
+[2025-06-27 12:37:33] [INFO] banc1: État initial publié sur banc1/command: {"current_step": 1, "capacity_ah": 0, "capacity_wh": 0}
+[2025-06-27 12:37:33] [INFO] banc1: Ouverture du fichier CSV en mode append: data\banc1\27062025-RW-48v2710011\data.csv
+[2025-06-27 12:37:33] [INFO] banc1: Démarrage du thread de surveillance d'activité BMS...
+[2025-06-27 12:37:33] [INFO] banc1: Thread surveillance activité BMS démarré (Timeout: 30s, Check: 20s).
+[2025-06-27 12:37:33] [INFO] banc1: Démarrage de la boucle MQTT (loop_forever)...
+[2025-06-27 12:37:39] [INFO] Current step mis à jour: 1, pour banc1
+[2025-06-27 12:37:39] [INFO] UI: banc1 current_step (UI) mis à jour: 1
+[2025-06-27 12:37:39] [INFO] AnimationManager: Démarrage animation phase 1 pour banc1
+[2025-06-27 12:37:39] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710011\config.json mis à jour: current_step=1
+[2025-06-27 12:37:39] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:37:39] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=1
+[2025-06-27 12:37:43] [INFO] UI: Résultats RI/Diffusion disponibles pour banc1. (MAJ via step 2)
+on_discharge_average': 0.213292, 'ri_charge_average': 0.30423, 'diffusion_charge_average': 0.20282, 'delta_ri_cells': [0.00012, 0.00013, 0.00011, 0.00012, 0.00014, 0.00013, 0.00012, 0.00015, 0.00011, 0.00012, 0.00013, 0.00014, 0.00012, 0.00013, 0.00011], 'delta_diffusion_cells': [5e-05, 6e-05, 5e-05, 5e-05, 6e-05, 7e-05, 5e-05, 6e-05, 5e-05, 5e-05, 6e-05, 6e-05, 5e-05, 5e-05, 4e-05]}
+[2025-06-27 12:37:43] [INFO] banc1: config.json mis à jour avec les résultats RI: ['ri_discharge_average', 'ri_charge_average', 'diffusion_discharge_average', 'diffusion_charge_average', 'delta_ri_cells', 'delta_diffusion_cells']
+[2025-06-27 12:37:46] [INFO] Current step mis à jour: 2, pour banc1
+[2025-06-27 12:37:46] [INFO] UI: banc1 current_step (UI) mis à jour: 2
+[2025-06-27 12:37:46] [INFO] UI: Étape 2 détectée pour banc1. Planification MAJ Ri/Diffusion UI.
+[2025-06-27 12:37:46] [INFO] DataOps: Chargement à la demande des coefficients de température...
+[2025-06-27 12:37:46] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710011\config.json mis à jour: current_step=2
+[2025-06-27 12:37:46] [INFO] DataOps: Coefficients température chargés : 31 valeurs
+[2025-06-27 12:37:46] [INFO] UIUpdater: Ri/Diffusion mis à jour pour banc1: Ri=276.02 mΩ, Diff=210.14 mΩ
+[2025-06-27 12:37:46] [INFO] AnimationManager: Démarrage animation phase 2 pour banc1
+[2025-06-27 12:37:46] [INFO] DataOps: Chargement à la demande du profil de charge...
+[2025-06-27 12:37:46] [INFO] DataOps: 1001 lignes lues depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\charge_profile.csv.
+[2025-06-27 12:37:46] [INFO] DataOps: Profil de charge trié et chargé (1001 points valides).
+[2025-06-27 12:37:46] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:37:46] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=2
+[2025-06-27 12:37:48] [INFO] Current step mis à jour: 3, pour banc1
+[2025-06-27 12:37:48] [INFO] UI: banc1 current_step (UI) mis à jour: 3
+[2025-06-27 12:37:48] [INFO] AnimationManager: Démarrage animation phase 3 pour banc1
+[2025-06-27 12:37:48] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710011\config.json mis à jour: current_step=3
+[2025-06-27 12:37:48] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:37:48] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=3
+[2025-06-27 12:37:51] [INFO] Current step mis à jour: 4, pour banc1
+[2025-06-27 12:37:51] [INFO] UI: banc1 current_step (UI) mis à jour: 4
+[2025-06-27 12:37:51] [INFO] AnimationManager: Démarrage animation phase 4 pour banc1
+[2025-06-27 12:37:51] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710011\config.json mis à jour: current_step=4
+[2025-06-27 12:37:51] [ERROR] PhaseCalculator: ATTENTION - Durée négative calculée (-81.9 min) car SOC batterie (73.0%) > référence (10.0). Durée forcée à 0.
+[2025-06-27 12:37:51] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:37:51] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=4
+[2025-06-27 12:37:56] [INFO] banc1: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***
+[2025-06-27 12:37:56] [INFO] UI: banc1 current_step (UI) mis à jour: 5
+[2025-06-27 12:37:56] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710011\config.json mis à jour: current_step=5
+[2025-06-27 12:37:56] [INFO] UI: Toutes les phases finalisées pour banc1
+[2025-06-27 12:37:56] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:37:56] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=5
+[2025-06-27 12:37:56] [INFO] banc1 réinitialisé dans bancs_config.json
+[2025-06-27 12:37:56] [INFO] banc1: *** DEBUT ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:37:56] [INFO] banc1: Service d'impression détecté. Envoi des tâches à printer.py.
+[2025-06-27 12:37:56] [INFO] banc1: *** PAYLOAD PREPARE: {"serial_number": "RW-48v2710011", "timestamp_test_done": "2025-06-27T12:37:56.108695"} ***
+[2025-06-27 12:37:56] [INFO] banc1: *** CLIENT MQTT CONNECTE - ENVOI EN COURS ***
+[2025-06-27 12:37:56] [INFO] banc1: Résultat publish tâche consolidée (printer/test_done): 0, MID: 3
+[2025-06-27 12:37:56] [INFO] banc1: *** FIN ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:37:56] [INFO] banc1: Fichier CSV fermé.
+[2025-06-27 12:37:56] [INFO] banc1: Fichier CSV fermé après envoi des données.
+[2025-06-27 12:38:01] [INFO] banc1: Nettoyage terminé. sys.exit() va fermer la connexion.
+[2025-06-27 12:38:01] [INFO] banc1: Fin du processus (appel à sys.exit(0)).
+[2025-06-27 12:38:01] [ERROR] banc1: *** FIN DU BLOC FINALLY. global_mqtt_config VA RETOURNER. ***
+[2025-06-27 12:38:53] [INFO] UI: Application terminée.
+[2025-06-27 12:40:05] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:40:05] [INFO] Démarrage du script d'écoute MQTT
+[2025-06-27 12:40:05] [WARNING] !!! ATTENTION: IP imprimante semble par défaut. Vérifiez si elle a changé. !!!
+[2025-06-27 12:40:05] [INFO] Thread Worker d'impression démarré.
+[2025-06-27 12:40:05] [INFO] Tentative de connexion au broker MQTT: localhost:1883
+[2025-06-27 12:40:05] [INFO] Démarrage de la boucle MQTT (écoute en continu)...
+[2025-06-27 12:40:05] [INFO] Connecté au broker MQTT localhost:1883
+[2025-06-27 12:40:05] [INFO] DEBUG: MQTT_TOPIC_TEST_DONE = 'printer/test_done'
+[2025-06-27 12:40:05] [INFO] Abonné aux topics: create, update_test_done, shipping, reprint_main, request_full_reprint, update_shipping_timestamp
+[2025-06-27 12:40:09] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:40:09] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:40:09] [INFO] UI: Interface pour banc1 créée avec succès.
+[2025-06-27 12:40:09] [INFO] UI: Interface pour banc2 créée avec succès.
+[2025-06-27 12:40:09] [INFO] UI: Interface pour banc3 créée avec succès.
+[2025-06-27 12:40:09] [INFO] UI: Interface pour banc4 créée avec succès.
+[2025-06-27 12:40:10] [INFO] ScanManager initialisé
+[2025-06-27 12:40:10] [INFO] UI: ScanManager initialisé
+[2025-06-27 12:40:10] [INFO] UI: Démarrage de la boucle principale Tkinter (mainloop).
+[2025-06-27 12:40:10] [INFO] UI: Tentative de connexion au broker MQTT...
+[2025-06-27 12:40:10] [INFO] UI: Connexion MQTT établie. Démarrage boucle de réception.
+[2025-06-27 12:40:10] [INFO] UI: Connecté avec le code 0 
+[2025-06-27 12:40:10] [INFO] UI: Connexion MQTT réussie. Tentative d'abonnements...
+[2025-06-27 12:40:10] [INFO] UI: Abonnements MQTT terminés.
+[2025-06-27 12:40:10] [INFO] UI: Statut imprimante reçu: off
+[2025-06-27 12:40:15] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:40:15] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-27 12:40:15] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:40:24] [INFO] UI: Prompt reçu: RW-48v2710010
+[2025-06-27 12:40:24] [INFO] ScanManager: Traitement scan 'RW-48v2710010' dans état 1
+[2025-06-27 12:40:24] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:40:24] [INFO] DataOps: Batterie RW-48v2710010 validée par 'evan'.
+[2025-06-27 12:40:24] [INFO] ScanManager: Batterie RW-48v2710010 validée pour banc libre
+[2025-06-27 12:40:26] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:40:26] [INFO] ScanManager: Traitement scan 'banc1' dans état 2
+[2025-06-27 12:40:27] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:40:27] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:40:27] [INFO] ScanManager: Chemin batterie stocké pour banc1: data\banc1\27062025-RW-48v2710010
+[2025-06-27 12:40:27] [INFO] ScanManager: Lancement subprocess: C:\Users\RoXx\AppData\Local\Programs\Python\Python311\python.exe C:\Users\RoXx\Desktop\Banc_final_pi\banc.py banc1 RW-48v2710010
+[2025-06-27 12:40:27] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:40:27] [INFO] banc1: Aucun dossier existant trouvé, utilisera/créera: data\banc1\27062025-RW-48v2710010
+[2025-06-27 12:40:27] [INFO] banc1: Création config.json par défaut dans data\banc1\27062025-RW-48v2710010
+[2025-06-27 12:40:27] [INFO] banc1: Fichier config.json créé avec succès.
+[2025-06-27 12:40:27] [INFO] banc1: Le fichier data\banc1\27062025-RW-48v2710010\data.csv n'existe pas, tentative de création.
+[2025-06-27 12:40:27] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710010\data.csv créé avec succès.
+[2025-06-27 12:40:27] [INFO] banc1: Prêt à démarrer pour RW-48v2710010 dans data\banc1\27062025-RW-48v2710010
+[2025-06-27 12:40:27] [INFO] banc1: Étape initiale (depuis config): 1
+[2025-06-27 12:40:27] [INFO] banc1: Connexion à MQTT (localhost:1883)...
+[2025-06-27 12:40:27] [INFO] banc1: Abonnements MQTT réussis.
+[2025-06-27 12:40:27] [INFO] banc1: État initial publié sur banc1/command: {"current_step": 1, "capacity_ah": 0, "capacity_wh": 0}
+[2025-06-27 12:40:27] [INFO] banc1: Ouverture du fichier CSV en mode append: data\banc1\27062025-RW-48v2710010\data.csv
+[2025-06-27 12:40:27] [INFO] banc1: Démarrage du thread de surveillance d'activité BMS...
+[2025-06-27 12:40:27] [INFO] banc1: Thread surveillance activité BMS démarré (Timeout: 30s, Check: 20s).
+[2025-06-27 12:40:27] [INFO] banc1: Démarrage de la boucle MQTT (loop_forever)...
+[2025-06-27 12:40:31] [INFO] Current step mis à jour: 1, pour banc1
+[2025-06-27 12:40:31] [INFO] UI: banc1 current_step (UI) mis à jour: 1
+[2025-06-27 12:40:31] [INFO] AnimationManager: Démarrage animation phase 1 pour banc1
+[2025-06-27 12:40:31] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710010\config.json mis à jour: current_step=1
+[2025-06-27 12:40:31] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:40:31] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=1
+[2025-06-27 12:40:34] [INFO] Current step mis à jour: 2, pour banc1
+[2025-06-27 12:40:34] [INFO] UI: banc1 current_step (UI) mis à jour: 2
+[2025-06-27 12:40:34] [INFO] UI: Étape 2 détectée pour banc1. Planification MAJ Ri/Diffusion UI.
+[2025-06-27 12:40:34] [INFO] DataOps: Chargement à la demande des coefficients de température...
+[2025-06-27 12:40:34] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710010\config.json mis à jour: current_step=2
+[2025-06-27 12:40:34] [INFO] DataOps: Coefficients température chargés : 31 valeurs
+[2025-06-27 12:40:34] [INFO] UIUpdater: Ri/Diffusion mis à jour pour banc1: Ri=0.00 mΩ, Diff=0.00 mΩ
+[2025-06-27 12:40:34] [INFO] AnimationManager: Démarrage animation phase 2 pour banc1
+[2025-06-27 12:40:34] [INFO] DataOps: Chargement à la demande du profil de charge...
+[2025-06-27 12:40:34] [INFO] DataOps: 1001 lignes lues depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\charge_profile.csv.
+[2025-06-27 12:40:34] [INFO] DataOps: Profil de charge trié et chargé (1001 points valides).
+[2025-06-27 12:40:34] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:40:34] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=2
+[2025-06-27 12:40:36] [INFO] Current step mis à jour: 3, pour banc1
+[2025-06-27 12:40:36] [INFO] UI: banc1 current_step (UI) mis à jour: 3
+[2025-06-27 12:40:36] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710010\config.json mis à jour: current_step=3
+[2025-06-27 12:40:36] [INFO] AnimationManager: Démarrage animation phase 3 pour banc1
+[2025-06-27 12:40:36] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:40:36] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=3
+[2025-06-27 12:40:38] [INFO] Current step mis à jour: 4, pour banc1
+[2025-06-27 12:40:38] [INFO] UI: banc1 current_step (UI) mis à jour: 4
+[2025-06-27 12:40:38] [INFO] AnimationManager: Démarrage animation phase 4 pour banc1
+[2025-06-27 12:40:38] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710010\config.json mis à jour: current_step=4
+[2025-06-27 12:40:38] [ERROR] PhaseCalculator: ATTENTION - Durée négative calculée (-61.1 min) car SOC batterie (57.0%) > référence (10.0). Durée forcée à 0.
+[2025-06-27 12:40:39] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:40:39] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=4
+[2025-06-27 12:40:41] [INFO] banc1: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***
+[2025-06-27 12:40:41] [INFO] UI: banc1 current_step (UI) mis à jour: 5
+[2025-06-27 12:40:41] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710010\config.json mis à jour: current_step=5
+[2025-06-27 12:40:41] [INFO] UI: Toutes les phases finalisées pour banc1
+[2025-06-27 12:40:41] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:40:41] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=5
+[2025-06-27 12:40:41] [INFO] banc1 réinitialisé dans bancs_config.json
+[2025-06-27 12:40:42] [INFO] banc1: *** DEBUT ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:40:42] [INFO] banc1: Service d'impression détecté. Envoi des tâches à printer.py.
+[2025-06-27 12:40:42] [INFO] banc1: *** PAYLOAD PREPARE: {"serial_number": "RW-48v2710010", "timestamp_test_done": "2025-06-27T12:40:41.503326"} ***
+[2025-06-27 12:40:42] [INFO] banc1: *** CLIENT MQTT CONNECTE - ENVOI EN COURS ***
+[2025-06-27 12:40:42] [INFO] banc1: Résultat publish tâche consolidée (printer/test_done): 0, MID: 3
+[2025-06-27 12:40:42] [INFO] banc1: *** FIN ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:40:42] [INFO] banc1: Fichier CSV fermé.
+[2025-06-27 12:40:42] [INFO] banc1: Fichier CSV fermé après envoi des données.
+[2025-06-27 12:40:47] [INFO] banc1: Nettoyage terminé. sys.exit() va fermer la connexion.
+[2025-06-27 12:40:47] [INFO] banc1: Fin du processus (appel à sys.exit(0)).
+[2025-06-27 12:40:47] [ERROR] banc1: *** FIN DU BLOC FINALLY. global_mqtt_config VA RETOURNER. ***
+[2025-06-27 12:40:47] [INFO] [DEBUG] Message MQTT reçu: topic='printer/test_done'
+[2025-06-27 12:40:47] [INFO] Message reçu sur 'printer/test_done': {"serial_number": "RW-48v2710010", "timestamp_test_done": "2025-06-27T12:40:41.503326"}
+[2025-06-27 12:40:47] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:40:47] [INFO] Traitement consolidé pour test_done S/N RW-48v2710010 à 2025-06-27T12:40:41.503326
+[2025-06-27 12:40:47] [INFO] Ligne pour RW-48v2710010 marquée avec TimestampTestDone: 2025-06-27T12:40:41.503326 et version: 1.01
+[2025-06-27 12:40:47] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampTestDone et version pour RW-48v2710010.
+[2025-06-27 12:40:47] [INFO] Action 1 (test_done): CSV mis à jour pour RW-48v2710010
+[2025-06-27 12:40:47] [INFO] Action 2 (test_done): Étiquette carton pour 'RW-48v2710010' ajoutée à la file. Taille: 1
+[2025-06-27 12:40:47] [INFO] Détails trouvés pour réimpression de RW-48v2710010: QR Code c4QbTV, TimestampImpression 2025-06-27T11:34:38.677791
+[2025-06-27 12:40:47] [INFO] Action 3 (test_done): Réimpression étiquette QR standard pour 'RW-48v2710010' (QR: c4QbTV) ajoutée à la file. Taille: 2
+[2025-06-27 12:40:47] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=2
+[2025-06-27 12:40:50] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:40:50] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:40:50] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:41:00] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=2
+[2025-06-27 12:41:03] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:41:03] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:41:03] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:41:04] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:41:04] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-27 12:41:04] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:41:10] [INFO] UI: Prompt reçu: RW-48v2710009
+[2025-06-27 12:41:10] [INFO] ScanManager: Traitement scan 'RW-48v2710009' dans état 1
+[2025-06-27 12:41:10] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:41:10] [INFO] DataOps: Batterie RW-48v2710009 validée par 'toto'.
+[2025-06-27 12:41:10] [INFO] ScanManager: Batterie RW-48v2710009 validée pour banc libre
+[2025-06-27 12:41:13] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:41:13] [INFO] ScanManager: Traitement scan 'banc1' dans état 2
+[2025-06-27 12:41:13] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=2
+[2025-06-27 12:41:13] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:41:13] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:41:13] [INFO] ScanManager: Chemin batterie stocké pour banc1: data\banc1\27062025-RW-48v2710009
+[2025-06-27 12:41:13] [INFO] ScanManager: Lancement subprocess: C:\Users\RoXx\AppData\Local\Programs\Python\Python311\python.exe C:\Users\RoXx\Desktop\Banc_final_pi\banc.py banc1 RW-48v2710009
+[2025-06-27 12:41:13] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:41:14] [INFO] banc1: Aucun dossier existant trouvé, utilisera/créera: data\banc1\27062025-RW-48v2710009
+[2025-06-27 12:41:14] [INFO] banc1: Création config.json par défaut dans data\banc1\27062025-RW-48v2710009
+[2025-06-27 12:41:14] [INFO] banc1: Fichier config.json créé avec succès.
+[2025-06-27 12:41:14] [INFO] banc1: Le fichier data\banc1\27062025-RW-48v2710009\data.csv n'existe pas, tentative de création.
+[2025-06-27 12:41:14] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710009\data.csv créé avec succès.
+[2025-06-27 12:41:14] [INFO] banc1: Prêt à démarrer pour RW-48v2710009 dans data\banc1\27062025-RW-48v2710009
+[2025-06-27 12:41:14] [INFO] banc1: Étape initiale (depuis config): 1
+[2025-06-27 12:41:14] [INFO] banc1: Connexion à MQTT (localhost:1883)...
+[2025-06-27 12:41:14] [INFO] banc1: Abonnements MQTT réussis.
+[2025-06-27 12:41:14] [INFO] banc1: État initial publié sur banc1/command: {"current_step": 1, "capacity_ah": 0, "capacity_wh": 0}
+[2025-06-27 12:41:14] [INFO] banc1: Ouverture du fichier CSV en mode append: data\banc1\27062025-RW-48v2710009\data.csv
+[2025-06-27 12:41:14] [INFO] banc1: Démarrage du thread de surveillance d'activité BMS...
+[2025-06-27 12:41:14] [INFO] banc1: Thread surveillance activité BMS démarré (Timeout: 30s, Check: 20s).
+[2025-06-27 12:41:14] [INFO] banc1: Démarrage de la boucle MQTT (loop_forever)...
+[2025-06-27 12:41:16] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:41:16] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:41:16] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:41:19] [INFO] Current step mis à jour: 1, pour banc1
+[2025-06-27 12:41:19] [INFO] UI: banc1 current_step (UI) mis à jour: 1
+[2025-06-27 12:41:19] [INFO] AnimationManager: Démarrage animation phase 1 pour banc1
+[2025-06-27 12:41:19] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710009\config.json mis à jour: current_step=1
+[2025-06-27 12:41:19] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:41:19] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=1
+[2025-06-27 12:41:23] [INFO] UI: Résultats RI/Diffusion disponibles pour banc1. (MAJ via step 2)
+[2025-06-27 12:41:23] [INFO] banc1: Données RI reçues: {'ri_discharge_average': 0.24781, 'diffusion_discharge_average': 0.213292, 'ri_charge_average': 0.30423, 'diffusion_charge_average': 0.20282, 'delta_ri_cells': [0.00012, 0.00013, 0.00011, 0.00012, 0.00014, 0.00013, 0.00012, 0.00015, 0.00011, 0.00012, 0.00013, 0.00014, 0.00012, 0.00013, 0.00011], 'delta_diffusion_cells': [5e-05, 6e-05, 5e-05, 5e-05, 6e-05, 7e-05, 5e-05, 6e-05, 5e-05, 5e-05, 6e-05, 6e-05, 5e-05, 5e-05, 4e-05]}
+[2025-06-27 12:41:23] [INFO] banc1: config.json mis à jour avec les résultats RI: ['ri_discharge_average', 'ri_charge_average', 'diffusion_discharge_average', 'diffusion_charge_average', 'delta_ri_cells', 'delta_diffusion_cells']
+[2025-06-27 12:41:26] [INFO] Current step mis à jour: 2, pour banc1
+[2025-06-27 12:41:26] [INFO] UI: banc1 current_step (UI) mis à jour: 2
+[2025-06-27 12:41:26] [INFO] UI: Étape 2 détectée pour banc1. Planification MAJ Ri/Diffusion UI.
+[2025-06-27 12:41:26] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710009\config.json mis à jour: current_step=2
+[2025-06-27 12:41:26] [ERROR] UIUpdater: Erreur JSON dans config.json pour banc1
+[2025-06-27 12:41:26] [INFO] AnimationManager: Démarrage animation phase 2 pour banc1
+[2025-06-27 12:41:26] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:41:26] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=2
+[2025-06-27 12:41:26] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=2
+[2025-06-27 12:41:28] [INFO] Current step mis à jour: 3, pour banc1
+[2025-06-27 12:41:28] [INFO] UI: banc1 current_step (UI) mis à jour: 3
+[2025-06-27 12:41:28] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710009\config.json mis à jour: current_step=3
+[2025-06-27 12:41:28] [INFO] AnimationManager: Démarrage animation phase 3 pour banc1
+[2025-06-27 12:41:28] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:41:28] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=3
+[2025-06-27 12:41:29] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:41:29] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:41:29] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:41:30] [INFO] Current step mis à jour: 4, pour banc1
+[2025-06-27 12:41:30] [INFO] UI: banc1 current_step (UI) mis à jour: 4
+[2025-06-27 12:41:30] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710009\config.json mis à jour: current_step=4
+[2025-06-27 12:41:30] [INFO] AnimationManager: Démarrage animation phase 4 pour banc1
+[2025-06-27 12:41:30] [ERROR] PhaseCalculator: ATTENTION - Durée négative calculée (-65.0 min) car SOC batterie (60.0%) > référence (10.0). Durée forcée à 0.
+[2025-06-27 12:41:30] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:41:30] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=4
+[2025-06-27 12:41:35] [INFO] AnimationManager: Phase 4 animation terminée pour banc1
+[2025-06-27 12:41:37] [INFO] banc1: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***
+[2025-06-27 12:41:37] [INFO] UI: banc1 current_step (UI) mis à jour: 5
+[2025-06-27 12:41:37] [INFO] UI: Toutes les phases finalisées pour banc1
+[2025-06-27 12:41:37] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710009\config.json mis à jour: current_step=5
+[2025-06-27 12:41:37] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:41:37] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=5
+[2025-06-27 12:41:37] [INFO] banc1 réinitialisé dans bancs_config.json
+[2025-06-27 12:41:38] [INFO] banc1: *** DEBUT ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:41:38] [INFO] banc1: Service d'impression détecté. Envoi des tâches à printer.py.
+[2025-06-27 12:41:38] [INFO] banc1: *** PAYLOAD PREPARE: {"serial_number": "RW-48v2710009", "timestamp_test_done": "2025-06-27T12:41:37.838985"} ***
+[2025-06-27 12:41:38] [INFO] banc1: *** CLIENT MQTT CONNECTE - ENVOI EN COURS ***
+[2025-06-27 12:41:38] [INFO] banc1: Résultat publish tâche consolidée (printer/test_done): 0, MID: 3
+[2025-06-27 12:41:38] [INFO] banc1: *** FIN ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:41:38] [INFO] banc1: Fichier CSV fermé.
+[2025-06-27 12:41:38] [INFO] banc1: Fichier CSV fermé après envoi des données.
+[2025-06-27 12:41:39] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=2
+[2025-06-27 12:41:42] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:41:42] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:41:42] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:41:43] [INFO] banc1: Nettoyage terminé. sys.exit() va fermer la connexion.
+[2025-06-27 12:41:43] [INFO] banc1: Fin du processus (appel à sys.exit(0)).
+[2025-06-27 12:41:43] [ERROR] banc1: *** FIN DU BLOC FINALLY. global_mqtt_config VA RETOURNER. ***
+[2025-06-27 12:41:52] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=2
+[2025-06-27 12:41:55] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:41:55] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:41:55] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:42:03] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:42:03] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-27 12:42:04] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:42:05] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=2
+[2025-06-27 12:42:06] [INFO] UI: Prompt reçu: RW-48v2710006
+[2025-06-27 12:42:06] [INFO] ScanManager: Traitement scan 'RW-48v2710006' dans état 1
+[2025-06-27 12:42:06] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:42:06] [INFO] DataOps: Batterie RW-48v2710006 validée par 'toto'.
+[2025-06-27 12:42:06] [INFO] ScanManager: Batterie RW-48v2710006 validée pour banc libre
+[2025-06-27 12:42:08] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:42:08] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:42:08] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:42:08] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:42:08] [INFO] ScanManager: Traitement scan 'banc1' dans état 2
+[2025-06-27 12:42:09] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:42:09] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:42:09] [INFO] ScanManager: Chemin batterie stocké pour banc1: data\banc1\27062025-RW-48v2710006
+[2025-06-27 12:42:09] [INFO] ScanManager: Lancement subprocess: C:\Users\RoXx\AppData\Local\Programs\Python\Python311\python.exe C:\Users\RoXx\Desktop\Banc_final_pi\banc.py banc1 RW-48v2710006
+[2025-06-27 12:42:09] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:42:09] [INFO] banc1: Aucun dossier existant trouvé, utilisera/créera: data\banc1\27062025-RW-48v2710006
+[2025-06-27 12:42:09] [INFO] banc1: Création config.json par défaut dans data\banc1\27062025-RW-48v2710006
+[2025-06-27 12:42:09] [INFO] banc1: Fichier config.json créé avec succès.
+[2025-06-27 12:42:09] [INFO] banc1: Le fichier data\banc1\27062025-RW-48v2710006\data.csv n'existe pas, tentative de création.
+[2025-06-27 12:42:09] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710006\data.csv créé avec succès.
+[2025-06-27 12:42:09] [INFO] banc1: Prêt à démarrer pour RW-48v2710006 dans data\banc1\27062025-RW-48v2710006
+[2025-06-27 12:42:09] [INFO] banc1: Étape initiale (depuis config): 1
+[2025-06-27 12:42:09] [INFO] banc1: Connexion à MQTT (localhost:1883)...
+[2025-06-27 12:42:09] [INFO] banc1: Abonnements MQTT réussis.
+[2025-06-27 12:42:09] [INFO] banc1: État initial publié sur banc1/command: {"current_step": 1, "capacity_ah": 0, "capacity_wh": 0}
+[2025-06-27 12:42:09] [INFO] banc1: Ouverture du fichier CSV en mode append: data\banc1\27062025-RW-48v2710006\data.csv
+[2025-06-27 12:42:09] [INFO] banc1: Démarrage du thread de surveillance d'activité BMS...
+[2025-06-27 12:42:09] [INFO] banc1: Thread surveillance activité BMS démarré (Timeout: 30s, Check: 20s).
+[2025-06-27 12:42:09] [INFO] banc1: Démarrage de la boucle MQTT (loop_forever)...
+[2025-06-27 12:42:14] [INFO] Current step mis à jour: 1, pour banc1
+[2025-06-27 12:42:14] [INFO] UI: banc1 current_step (UI) mis à jour: 1
+[2025-06-27 12:42:14] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710006\config.json mis à jour: current_step=1
+[2025-06-27 12:42:14] [INFO] AnimationManager: Démarrage animation phase 1 pour banc1
+[2025-06-27 12:42:14] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:42:14] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=1
+[2025-06-27 12:42:16] [INFO] Current step mis à jour: 2, pour banc1
+[2025-06-27 12:42:16] [INFO] UI: banc1 current_step (UI) mis à jour: 2
+[2025-06-27 12:42:16] [INFO] UI: Étape 2 détectée pour banc1. Planification MAJ Ri/Diffusion UI.
+[2025-06-27 12:42:16] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710006\config.json mis à jour: current_step=2
+[2025-06-27 12:42:16] [INFO] UIUpdater: Ri/Diffusion mis à jour pour banc1: Ri=0.00 mΩ, Diff=0.00 mΩ
+[2025-06-27 12:42:16] [INFO] AnimationManager: Démarrage animation phase 2 pour banc1
+[2025-06-27 12:42:16] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:42:16] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=2
+[2025-06-27 12:42:18] [INFO] Current step mis à jour: 3, pour banc1
+[2025-06-27 12:42:18] [INFO] UI: banc1 current_step (UI) mis à jour: 3
+[2025-06-27 12:42:18] [INFO] AnimationManager: Démarrage animation phase 3 pour banc1
+[2025-06-27 12:42:18] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710006\config.json mis à jour: current_step=3
+[2025-06-27 12:42:18] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:42:18] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=3
+[2025-06-27 12:42:18] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=2
+[2025-06-27 12:42:20] [INFO] Current step mis à jour: 4, pour banc1
+[2025-06-27 12:42:20] [INFO] UI: banc1 current_step (UI) mis à jour: 4
+[2025-06-27 12:42:20] [INFO] AnimationManager: Démarrage animation phase 4 pour banc1
+[2025-06-27 12:42:20] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710006\config.json mis à jour: current_step=4
+[2025-06-27 12:42:20] [ERROR] PhaseCalculator: ATTENTION - Durée négative calculée (-61.1 min) car SOC batterie (57.0%) > référence (10.0). Durée forcée à 0.
+[2025-06-27 12:42:20] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:42:20] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=4
+[2025-06-27 12:42:21] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:42:21] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:42:21] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:42:24] [INFO] banc1: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***
+[2025-06-27 12:42:24] [INFO] UI: banc1 current_step (UI) mis à jour: 5
+[2025-06-27 12:42:24] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710006\config.json mis à jour: current_step=5
+[2025-06-27 12:42:24] [INFO] UI: Toutes les phases finalisées pour banc1
+[2025-06-27 12:42:24] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:42:24] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=5
+[2025-06-27 12:42:24] [INFO] banc1 réinitialisé dans bancs_config.json
+[2025-06-27 12:42:24] [INFO] banc1: *** DEBUT ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:42:24] [INFO] banc1: Service d'impression détecté. Envoi des tâches à printer.py.
+[2025-06-27 12:42:24] [INFO] banc1: *** PAYLOAD PREPARE: {"serial_number": "RW-48v2710006", "timestamp_test_done": "2025-06-27T12:42:24.283851"} ***
+[2025-06-27 12:42:24] [INFO] banc1: *** CLIENT MQTT CONNECTE - ENVOI EN COURS ***
+[2025-06-27 12:42:24] [INFO] banc1: Résultat publish tâche consolidée (printer/test_done): 0, MID: 3
+[2025-06-27 12:42:24] [INFO] banc1: *** FIN ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:42:24] [INFO] banc1: Fichier CSV fermé.
+[2025-06-27 12:42:24] [INFO] banc1: Fichier CSV fermé après envoi des données.
+[2025-06-27 12:42:29] [INFO] banc1: Nettoyage terminé. sys.exit() va fermer la connexion.
+[2025-06-27 12:42:29] [INFO] banc1: Fin du processus (appel à sys.exit(0)).
+[2025-06-27 12:42:29] [ERROR] banc1: *** FIN DU BLOC FINALLY. global_mqtt_config VA RETOURNER. ***
+[2025-06-27 12:42:29] [INFO] [DEBUG] Message MQTT reçu: topic='printer/test_done'
+[2025-06-27 12:42:29] [INFO] Message reçu sur 'printer/test_done': {"serial_number": "RW-48v2710006", "timestamp_test_done": "2025-06-27T12:42:24.283851"}
+[2025-06-27 12:42:29] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:42:29] [INFO] Traitement consolidé pour test_done S/N RW-48v2710006 à 2025-06-27T12:42:24.283851
+[2025-06-27 12:42:29] [INFO] Ligne pour RW-48v2710006 marquée avec TimestampTestDone: 2025-06-27T12:42:24.283851 et version: 1.01
+[2025-06-27 12:42:29] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampTestDone et version pour RW-48v2710006.
+[2025-06-27 12:42:29] [INFO] Action 1 (test_done): CSV mis à jour pour RW-48v2710006
+[2025-06-27 12:42:29] [INFO] Action 2 (test_done): Étiquette carton pour 'RW-48v2710006' ajoutée à la file. Taille: 3
+[2025-06-27 12:42:29] [INFO] Détails trouvés pour réimpression de RW-48v2710006: QR Code WzCqgA, TimestampImpression 2025-06-26T14:02:04.839549
+[2025-06-27 12:42:29] [INFO] Action 3 (test_done): Réimpression étiquette QR standard pour 'RW-48v2710006' (QR: WzCqgA) ajoutée à la file. Taille: 4
+[2025-06-27 12:42:31] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=4
+[2025-06-27 12:42:34] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:42:34] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:42:34] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:42:44] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=4
+[2025-06-27 12:42:44] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:42:44] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-27 12:42:45] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:42:46] [INFO] UI: Prompt reçu: RW-48v2710006
+[2025-06-27 12:42:46] [INFO] ScanManager: Traitement scan 'RW-48v2710006' dans état 1
+[2025-06-27 12:42:46] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:42:46] [INFO] DataOps: Batterie RW-48v2710006 validée par 'toto'.
+[2025-06-27 12:42:46] [INFO] ScanManager: Batterie RW-48v2710006 validée pour banc libre
+[2025-06-27 12:42:46] [INFO] DataOps: Item correspondant trouvé (dossier ou fichier): data\banc1\27062025-RW-48v2710006
+[2025-06-27 12:42:47] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:42:47] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:42:47] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:42:50] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:42:50] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-27 12:42:51] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:42:55] [INFO] UI: Prompt reçu: RW-48v2710005
+[2025-06-27 12:42:55] [INFO] ScanManager: Traitement scan 'RW-48v2710005' dans état 1
+[2025-06-27 12:42:55] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:42:55] [INFO] DataOps: Batterie RW-48v2710005 validée par 'momo'.
+[2025-06-27 12:42:55] [INFO] ScanManager: Batterie RW-48v2710005 validée pour banc libre
+[2025-06-27 12:42:57] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=4
+[2025-06-27 12:42:57] [INFO] UI: Prompt reçu: banc
+[2025-06-27 12:42:57] [INFO] ScanManager: Traitement scan 'banc' dans état 2
+[2025-06-27 12:43:00] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:43:00] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:43:00] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:43:03] [INFO] UI: banc1 current_step (UI) mis à jour: 1
+[2025-06-27 12:43:03] [INFO] AnimationManager: Démarrage animation phase 1 pour banc1
+[2025-06-27 12:43:05] [INFO] UI: banc1 current_step (UI) mis à jour: 2
+[2025-06-27 12:43:05] [INFO] UI: Étape 2 détectée pour banc1. Planification MAJ Ri/Diffusion UI.
+[2025-06-27 12:43:05] [INFO] UIUpdater: Ri/Diffusion mis à jour pour banc1: Ri=0.00 mΩ, Diff=0.00 mΩ
+[2025-06-27 12:43:05] [INFO] AnimationManager: Démarrage animation phase 2 pour banc1
+[2025-06-27 12:43:06] [INFO] UI: banc1 current_step (UI) mis à jour: 3
+[2025-06-27 12:43:06] [INFO] AnimationManager: Démarrage animation phase 3 pour banc1
+[2025-06-27 12:43:08] [INFO] UI: banc1 current_step (UI) mis à jour: 4
+[2025-06-27 12:43:08] [INFO] AnimationManager: Démarrage animation phase 4 pour banc1
+[2025-06-27 12:43:08] [ERROR] PhaseCalculator: ATTENTION - Durée négative calculée (-66.3 min) car SOC batterie (61.0%) > référence (10.0). Durée forcée à 0.
+[2025-06-27 12:43:10] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=4
+[2025-06-27 12:43:10] [INFO] UI: banc1 current_step (UI) mis à jour: 5
+[2025-06-27 12:43:10] [INFO] UI: Toutes les phases finalisées pour banc1
+[2025-06-27 12:43:13] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:43:13] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:43:13] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:43:23] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=4
+[2025-06-27 12:43:26] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:43:26] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:43:26] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:43:36] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=4
+[2025-06-27 12:43:39] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:43:39] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:43:39] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:43:49] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=4
+[2025-06-27 12:43:52] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:43:52] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:43:52] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:43:53] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:43:53] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-27 12:43:54] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:43:56] [INFO] UI: Prompt reçu: RW-48v2710005
+[2025-06-27 12:43:56] [INFO] ScanManager: Traitement scan 'RW-48v2710005' dans état 1
+[2025-06-27 12:43:56] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:43:56] [INFO] DataOps: Batterie RW-48v2710005 validée par 'momo'.
+[2025-06-27 12:43:56] [INFO] ScanManager: Batterie RW-48v2710005 validée pour banc libre
+[2025-06-27 12:43:59] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:43:59] [INFO] ScanManager: Traitement scan 'banc1' dans état 2
+[2025-06-27 12:44:00] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:00] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:00] [INFO] ScanManager: Chemin batterie stocké pour banc1: data\banc1\27062025-RW-48v2710005
+[2025-06-27 12:44:00] [INFO] ScanManager: Lancement subprocess: C:\Users\RoXx\AppData\Local\Programs\Python\Python311\python.exe C:\Users\RoXx\Desktop\Banc_final_pi\banc.py banc1 RW-48v2710005
+[2025-06-27 12:44:00] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:44:00] [INFO] banc1: Aucun dossier existant trouvé, utilisera/créera: data\banc1\27062025-RW-48v2710005
+[2025-06-27 12:44:00] [INFO] banc1: Création config.json par défaut dans data\banc1\27062025-RW-48v2710005
+[2025-06-27 12:44:00] [INFO] banc1: Fichier config.json créé avec succès.
+[2025-06-27 12:44:00] [INFO] banc1: Le fichier data\banc1\27062025-RW-48v2710005\data.csv n'existe pas, tentative de création.
+[2025-06-27 12:44:00] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710005\data.csv créé avec succès.
+[2025-06-27 12:44:00] [INFO] banc1: Prêt à démarrer pour RW-48v2710005 dans data\banc1\27062025-RW-48v2710005
+[2025-06-27 12:44:00] [INFO] banc1: Étape initiale (depuis config): 1
+[2025-06-27 12:44:00] [INFO] banc1: Connexion à MQTT (localhost:1883)...
+[2025-06-27 12:44:00] [INFO] banc1: Abonnements MQTT réussis.
+[2025-06-27 12:44:00] [INFO] banc1: État initial publié sur banc1/command: {"current_step": 1, "capacity_ah": 0, "capacity_wh": 0}
+[2025-06-27 12:44:00] [INFO] banc1: Ouverture du fichier CSV en mode append: data\banc1\27062025-RW-48v2710005\data.csv
+[2025-06-27 12:44:00] [INFO] banc1: Démarrage du thread de surveillance d'activité BMS...
+[2025-06-27 12:44:00] [INFO] banc1: Thread surveillance activité BMS démarré (Timeout: 30s, Check: 20s).
+[2025-06-27 12:44:00] [INFO] banc1: Démarrage de la boucle MQTT (loop_forever)...
+[2025-06-27 12:44:02] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=4
+[2025-06-27 12:44:04] [INFO] Current step mis à jour: 1, pour banc1
+[2025-06-27 12:44:04] [INFO] UI: banc1 current_step (UI) mis à jour: 1
+[2025-06-27 12:44:04] [INFO] AnimationManager: Démarrage animation phase 1 pour banc1
+[2025-06-27 12:44:04] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710005\config.json mis à jour: current_step=1
+[2025-06-27 12:44:04] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:04] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=1
+[2025-06-27 12:44:05] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:44:05] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:44:05] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:44:06] [INFO] Current step mis à jour: 2, pour banc1
+[2025-06-27 12:44:06] [INFO] UI: banc1 current_step (UI) mis à jour: 2
+[2025-06-27 12:44:06] [INFO] UI: Étape 2 détectée pour banc1. Planification MAJ Ri/Diffusion UI.
+[2025-06-27 12:44:06] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710005\config.json mis à jour: current_step=2
+[2025-06-27 12:44:06] [ERROR] UIUpdater: Erreur JSON dans config.json pour banc1
+[2025-06-27 12:44:06] [INFO] AnimationManager: Démarrage animation phase 2 pour banc1
+[2025-06-27 12:44:06] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:06] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=2
+[2025-06-27 12:44:08] [INFO] Current step mis à jour: 3, pour banc1
+[2025-06-27 12:44:08] [INFO] UI: banc1 current_step (UI) mis à jour: 3
+[2025-06-27 12:44:08] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710005\config.json mis à jour: current_step=3
+[2025-06-27 12:44:08] [INFO] AnimationManager: Démarrage animation phase 3 pour banc1
+[2025-06-27 12:44:08] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:08] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=3
+[2025-06-27 12:44:09] [INFO] Current step mis à jour: 4, pour banc1
+[2025-06-27 12:44:09] [INFO] UI: banc1 current_step (UI) mis à jour: 4
+[2025-06-27 12:44:09] [INFO] AnimationManager: Démarrage animation phase 4 pour banc1
+[2025-06-27 12:44:09] [ERROR] PhaseCalculator: ATTENTION - Durée négative calculée (-62.4 min) car SOC batterie (58.0%) > référence (10.0). Durée forcée à 0.
+[2025-06-27 12:44:10] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710005\config.json mis à jour: current_step=4
+[2025-06-27 12:44:10] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:10] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=4
+[2025-06-27 12:44:12] [INFO] banc1: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***
+[2025-06-27 12:44:12] [INFO] UI: banc1 current_step (UI) mis à jour: 5
+[2025-06-27 12:44:12] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710005\config.json mis à jour: current_step=5
+[2025-06-27 12:44:12] [INFO] UI: Toutes les phases finalisées pour banc1
+[2025-06-27 12:44:12] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:12] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=5
+[2025-06-27 12:44:12] [INFO] banc1 réinitialisé dans bancs_config.json
+[2025-06-27 12:44:13] [INFO] banc1: *** DEBUT ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:44:13] [INFO] banc1: Service d'impression détecté. Envoi des tâches à printer.py.
+[2025-06-27 12:44:13] [INFO] banc1: *** PAYLOAD PREPARE: {"serial_number": "RW-48v2710005", "timestamp_test_done": "2025-06-27T12:44:12.470292"} ***
+[2025-06-27 12:44:13] [INFO] banc1: *** CLIENT MQTT CONNECTE - ENVOI EN COURS ***
+[2025-06-27 12:44:13] [INFO] banc1: Résultat publish tâche consolidée (printer/test_done): 0, MID: 3
+[2025-06-27 12:44:13] [INFO] banc1: *** FIN ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:44:13] [INFO] banc1: Fichier CSV fermé.
+[2025-06-27 12:44:13] [INFO] banc1: Fichier CSV fermé après envoi des données.
+[2025-06-27 12:44:15] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=4
+[2025-06-27 12:44:18] [INFO] banc1: Nettoyage terminé. sys.exit() va fermer la connexion.
+[2025-06-27 12:44:18] [INFO] banc1: Fin du processus (appel à sys.exit(0)).
+[2025-06-27 12:44:18] [ERROR] banc1: *** FIN DU BLOC FINALLY. global_mqtt_config VA RETOURNER. ***
+[2025-06-27 12:44:18] [INFO] [DEBUG] Message MQTT reçu: topic='printer/test_done'
+[2025-06-27 12:44:18] [INFO] Message reçu sur 'printer/test_done': {"serial_number": "RW-48v2710005", "timestamp_test_done": "2025-06-27T12:44:12.470292"}
+[2025-06-27 12:44:18] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:44:18] [INFO] Traitement consolidé pour test_done S/N RW-48v2710005 à 2025-06-27T12:44:12.470292
+[2025-06-27 12:44:18] [INFO] Ligne pour RW-48v2710005 marquée avec TimestampTestDone: 2025-06-27T12:44:12.470292 et version: 1.01
+[2025-06-27 12:44:18] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampTestDone et version pour RW-48v2710005.
+[2025-06-27 12:44:18] [INFO] Action 1 (test_done): CSV mis à jour pour RW-48v2710005
+[2025-06-27 12:44:18] [INFO] Action 2 (test_done): Étiquette carton pour 'RW-48v2710005' ajoutée à la file. Taille: 5
+[2025-06-27 12:44:18] [INFO] Détails trouvés pour réimpression de RW-48v2710005: QR Code 9iaBHg, TimestampImpression 2025-06-26T13:53:38.531639
+[2025-06-27 12:44:18] [INFO] Action 3 (test_done): Réimpression étiquette QR standard pour 'RW-48v2710005' (QR: 9iaBHg) ajoutée à la file. Taille: 6
+[2025-06-27 12:44:18] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:44:18] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:44:18] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:44:27] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:44:27] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-27 12:44:27] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:28] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=6
+[2025-06-27 12:44:28] [INFO] UI: Prompt reçu: RW-48v2710004
+[2025-06-27 12:44:28] [INFO] ScanManager: Traitement scan 'RW-48v2710004' dans état 1
+[2025-06-27 12:44:28] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:28] [INFO] DataOps: Batterie RW-48v2710004 validée par 'tata'.
+[2025-06-27 12:44:28] [INFO] ScanManager: Batterie RW-48v2710004 validée pour banc libre
+[2025-06-27 12:44:31] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:44:31] [INFO] ScanManager: Traitement scan 'banc1' dans état 2
+[2025-06-27 12:44:31] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:44:31] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:44:31] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:44:31] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:32] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:32] [INFO] ScanManager: Chemin batterie stocké pour banc1: data\banc1\27062025-RW-48v2710004
+[2025-06-27 12:44:32] [INFO] ScanManager: Lancement subprocess: C:\Users\RoXx\AppData\Local\Programs\Python\Python311\python.exe C:\Users\RoXx\Desktop\Banc_final_pi\banc.py banc1 RW-48v2710004
+[2025-06-27 12:44:32] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:44:32] [INFO] banc1: Aucun dossier existant trouvé, utilisera/créera: data\banc1\27062025-RW-48v2710004
+[2025-06-27 12:44:32] [INFO] banc1: Création config.json par défaut dans data\banc1\27062025-RW-48v2710004
+[2025-06-27 12:44:32] [INFO] banc1: Fichier config.json créé avec succès.
+[2025-06-27 12:44:32] [INFO] banc1: Le fichier data\banc1\27062025-RW-48v2710004\data.csv n'existe pas, tentative de création.
+[2025-06-27 12:44:32] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710004\data.csv créé avec succès.
+[2025-06-27 12:44:32] [INFO] banc1: Prêt à démarrer pour RW-48v2710004 dans data\banc1\27062025-RW-48v2710004
+[2025-06-27 12:44:32] [INFO] banc1: Étape initiale (depuis config): 1
+[2025-06-27 12:44:32] [INFO] banc1: Connexion à MQTT (localhost:1883)...
+[2025-06-27 12:44:32] [INFO] banc1: Abonnements MQTT réussis.
+[2025-06-27 12:44:32] [INFO] banc1: État initial publié sur banc1/command: {"current_step": 1, "capacity_ah": 0, "capacity_wh": 0}
+[2025-06-27 12:44:32] [INFO] banc1: Ouverture du fichier CSV en mode append: data\banc1\27062025-RW-48v2710004\data.csv
+[2025-06-27 12:44:32] [INFO] banc1: Démarrage du thread de surveillance d'activité BMS...
+[2025-06-27 12:44:32] [INFO] banc1: Thread surveillance activité BMS démarré (Timeout: 30s, Check: 20s).
+[2025-06-27 12:44:32] [INFO] banc1: Démarrage de la boucle MQTT (loop_forever)...
+[2025-06-27 12:44:36] [INFO] Current step mis à jour: 1, pour banc1
+[2025-06-27 12:44:36] [INFO] UI: banc1 current_step (UI) mis à jour: 1
+[2025-06-27 12:44:36] [INFO] AnimationManager: Démarrage animation phase 1 pour banc1
+[2025-06-27 12:44:36] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710004\config.json mis à jour: current_step=1
+[2025-06-27 12:44:37] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:37] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=1
+[2025-06-27 12:44:40] [INFO] UI: Résultats RI/Diffusion disponibles pour banc1. (MAJ via step 2)
+[2025-06-27 12:44:40] [INFO] banc1: Données RI reçues: {'ri_discharge_average': 0.24781, 'diffusion_discharge_average': 0.213292, 'ri_charge_average': 0.30423, 'diffusion_charge_average': 0.20282, 'delta_ri_cells': [0.00012, 0.00013, 0.00011, 0.00012, 0.00014, 0.00013, 0.00012, 0.00015, 0.00011, 0.00012, 0.00013, 0.00014, 0.00012, 0.00013, 0.00011], 'delta_diffusion_cells': [5e-05, 6e-05, 5e-05, 5e-05, 6e-05, 7e-05, 5e-05, 6e-05, 5e-05, 5e-05, 6e-05, 6e-05, 5e-05, 5e-05, 4e-05]}
+[2025-06-27 12:44:40] [INFO] banc1: config.json mis à jour avec les résultats RI: ['ri_discharge_average', 'ri_charge_average', 'diffusion_discharge_average', 'diffusion_charge_average', 'delta_ri_cells', 'delta_diffusion_cells']
+[2025-06-27 12:44:41] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=6
+[2025-06-27 12:44:43] [INFO] Current step mis à jour: 2, pour banc1
+[2025-06-27 12:44:43] [INFO] UI: banc1 current_step (UI) mis à jour: 2
+[2025-06-27 12:44:43] [INFO] UI: Étape 2 détectée pour banc1. Planification MAJ Ri/Diffusion UI.
+[2025-06-27 12:44:43] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710004\config.json mis à jour: current_step=2
+[2025-06-27 12:44:43] [INFO] UIUpdater: Ri/Diffusion mis à jour pour banc1: Ri=276.02 mΩ, Diff=208.06 mΩ
+[2025-06-27 12:44:43] [INFO] AnimationManager: Démarrage animation phase 2 pour banc1
+[2025-06-27 12:44:43] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:43] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=2
+[2025-06-27 12:44:44] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:44:44] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:44:44] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:44:45] [INFO] Current step mis à jour: 3, pour banc1
+[2025-06-27 12:44:45] [INFO] UI: banc1 current_step (UI) mis à jour: 3
+[2025-06-27 12:44:45] [INFO] AnimationManager: Démarrage animation phase 3 pour banc1
+[2025-06-27 12:44:45] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710004\config.json mis à jour: current_step=3
+[2025-06-27 12:44:45] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:45] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=3
+[2025-06-27 12:44:47] [INFO] Current step mis à jour: 4, pour banc1
+[2025-06-27 12:44:47] [INFO] UI: banc1 current_step (UI) mis à jour: 4
+[2025-06-27 12:44:47] [INFO] AnimationManager: Démarrage animation phase 4 pour banc1
+[2025-06-27 12:44:47] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710004\config.json mis à jour: current_step=4
+[2025-06-27 12:44:47] [ERROR] PhaseCalculator: ATTENTION - Durée négative calculée (-62.4 min) car SOC batterie (58.0%) > référence (10.0). Durée forcée à 0.
+[2025-06-27 12:44:47] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:47] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=4
+[2025-06-27 12:44:50] [INFO] banc1: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***
+[2025-06-27 12:44:50] [INFO] UI: banc1 current_step (UI) mis à jour: 5
+[2025-06-27 12:44:50] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710004\config.json mis à jour: current_step=5
+[2025-06-27 12:44:50] [INFO] UI: Toutes les phases finalisées pour banc1
+[2025-06-27 12:44:50] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:44:50] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=5
+[2025-06-27 12:44:50] [INFO] banc1 réinitialisé dans bancs_config.json
+[2025-06-27 12:44:51] [INFO] banc1: *** DEBUT ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:44:51] [INFO] banc1: Service d'impression détecté. Envoi des tâches à printer.py.
+[2025-06-27 12:44:51] [INFO] banc1: *** PAYLOAD PREPARE: {"serial_number": "RW-48v2710004", "timestamp_test_done": "2025-06-27T12:44:50.596549"} ***
+[2025-06-27 12:44:51] [INFO] banc1: *** CLIENT MQTT CONNECTE - ENVOI EN COURS ***
+[2025-06-27 12:44:51] [INFO] banc1: Résultat publish tâche consolidée (printer/test_done): 0, MID: 3
+[2025-06-27 12:44:51] [INFO] banc1: *** FIN ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:44:51] [INFO] banc1: Fichier CSV fermé.
+[2025-06-27 12:44:51] [INFO] banc1: Fichier CSV fermé après envoi des données.
+[2025-06-27 12:44:54] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=6
+[2025-06-27 12:44:56] [INFO] banc1: Nettoyage terminé. sys.exit() va fermer la connexion.
+[2025-06-27 12:44:56] [INFO] banc1: Fin du processus (appel à sys.exit(0)).
+[2025-06-27 12:44:56] [ERROR] banc1: *** FIN DU BLOC FINALLY. global_mqtt_config VA RETOURNER. ***
+[2025-06-27 12:44:56] [INFO] [DEBUG] Message MQTT reçu: topic='printer/test_done'
+[2025-06-27 12:44:56] [INFO] Message reçu sur 'printer/test_done': {"serial_number": "RW-48v2710004", "timestamp_test_done": "2025-06-27T12:44:50.596549"}
+[2025-06-27 12:44:56] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:44:56] [INFO] Traitement consolidé pour test_done S/N RW-48v2710004 à 2025-06-27T12:44:50.596549
+[2025-06-27 12:44:56] [INFO] Ligne pour RW-48v2710004 marquée avec TimestampTestDone: 2025-06-27T12:44:50.596549 et version: 1.01
+[2025-06-27 12:44:56] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampTestDone et version pour RW-48v2710004.
+[2025-06-27 12:44:56] [INFO] Action 1 (test_done): CSV mis à jour pour RW-48v2710004
+[2025-06-27 12:44:56] [INFO] Action 2 (test_done): Étiquette carton pour 'RW-48v2710004' ajoutée à la file. Taille: 7
+[2025-06-27 12:44:56] [INFO] Détails trouvés pour réimpression de RW-48v2710004: QR Code 7AK6FP, TimestampImpression 2025-06-26T13:49:29.870429
+[2025-06-27 12:44:56] [INFO] Action 3 (test_done): Réimpression étiquette QR standard pour 'RW-48v2710004' (QR: 7AK6FP) ajoutée à la file. Taille: 8
+[2025-06-27 12:44:57] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:44:57] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:44:57] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:45:07] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:45:10] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:45:10] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:45:10] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:45:14] [INFO] UI: Prompt reçu: banc2
+[2025-06-27 12:45:14] [INFO] ScanManager: Traitement scan 'banc2' dans état 0
+[2025-06-27 12:45:15] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:45:16] [INFO] UI: Prompt reçu: RW-48v2710003
+[2025-06-27 12:45:16] [INFO] ScanManager: Traitement scan 'RW-48v2710003' dans état 1
+[2025-06-27 12:45:16] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:45:16] [INFO] DataOps: Batterie RW-48v2710003 validée par 'toto'.
+[2025-06-27 12:45:16] [INFO] ScanManager: Batterie RW-48v2710003 validée pour banc libre
+[2025-06-27 12:45:20] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:45:21] [INFO] UI: Prompt reçu: banc2
+[2025-06-27 12:45:21] [INFO] ScanManager: Traitement scan 'banc2' dans état 2
+[2025-06-27 12:45:21] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:45:21] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:45:21] [INFO] ScanManager: Chemin batterie stocké pour banc2: data\banc2\27062025-RW-48v2710003
+[2025-06-27 12:45:21] [INFO] ScanManager: Lancement subprocess: C:\Users\RoXx\AppData\Local\Programs\Python\Python311\python.exe C:\Users\RoXx\Desktop\Banc_final_pi\banc.py banc2 RW-48v2710003
+[2025-06-27 12:45:21] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:45:21] [INFO] banc2: Aucun dossier existant trouvé, utilisera/créera: data\banc2\27062025-RW-48v2710003
+[2025-06-27 12:45:21] [INFO] banc2: Création config.json par défaut dans data\banc2\27062025-RW-48v2710003
+[2025-06-27 12:45:21] [INFO] banc2: Sous-répertoire 'data\banc2' créé.
+[2025-06-27 12:45:21] [INFO] banc2: Fichier config.json créé avec succès.
+[2025-06-27 12:45:21] [INFO] banc2: Le fichier data\banc2\27062025-RW-48v2710003\data.csv n'existe pas, tentative de création.
+[2025-06-27 12:45:21] [INFO] banc2: Fichier data\banc2\27062025-RW-48v2710003\data.csv créé avec succès.
+[2025-06-27 12:45:21] [INFO] banc2: Prêt à démarrer pour RW-48v2710003 dans data\banc2\27062025-RW-48v2710003
+[2025-06-27 12:45:21] [INFO] banc2: Étape initiale (depuis config): 1
+[2025-06-27 12:45:21] [INFO] banc2: Connexion à MQTT (localhost:1883)...
+[2025-06-27 12:45:21] [INFO] banc2: Abonnements MQTT réussis.
+[2025-06-27 12:45:21] [INFO] banc2: État initial publié sur banc2/command: {"current_step": 1, "capacity_ah": 0, "capacity_wh": 0}
+[2025-06-27 12:45:21] [INFO] banc2: Ouverture du fichier CSV en mode append: data\banc2\27062025-RW-48v2710003\data.csv
+[2025-06-27 12:45:21] [INFO] banc2: Démarrage du thread de surveillance d'activité BMS...
+[2025-06-27 12:45:21] [INFO] banc2: Thread surveillance activité BMS démarré (Timeout: 30s, Check: 20s).
+[2025-06-27 12:45:21] [INFO] banc2: Démarrage de la boucle MQTT (loop_forever)...
+[2025-06-27 12:45:23] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:45:23] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:45:23] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:45:30] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:45:30] [INFO] ScanManager: Traitement scan 'banc1' dans état 0
+[2025-06-27 12:45:31] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:45:32] [INFO] UI: Prompt reçu: RW-48v2710002
+[2025-06-27 12:45:32] [INFO] ScanManager: Traitement scan 'RW-48v2710002' dans état 1
+[2025-06-27 12:45:32] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:45:32] [INFO] DataOps: Batterie RW-48v2710002 validée par 'toto'.
+[2025-06-27 12:45:32] [INFO] ScanManager: Batterie RW-48v2710002 validée pour banc libre
+[2025-06-27 12:45:33] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:45:34] [INFO] UI: Prompt reçu: banc1
+[2025-06-27 12:45:34] [INFO] ScanManager: Traitement scan 'banc1' dans état 2
+[2025-06-27 12:45:35] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:45:35] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:45:35] [INFO] ScanManager: Chemin batterie stocké pour banc1: data\banc1\27062025-RW-48v2710002
+[2025-06-27 12:45:35] [INFO] ScanManager: Lancement subprocess: C:\Users\RoXx\AppData\Local\Programs\Python\Python311\python.exe C:\Users\RoXx\Desktop\Banc_final_pi\banc.py banc1 RW-48v2710002
+[2025-06-27 12:45:35] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:45:35] [INFO] banc1: Aucun dossier existant trouvé, utilisera/créera: data\banc1\27062025-RW-48v2710002
+[2025-06-27 12:45:35] [INFO] banc1: Création config.json par défaut dans data\banc1\27062025-RW-48v2710002
+[2025-06-27 12:45:35] [INFO] banc1: Fichier config.json créé avec succès.
+[2025-06-27 12:45:35] [INFO] banc1: Le fichier data\banc1\27062025-RW-48v2710002\data.csv n'existe pas, tentative de création.
+[2025-06-27 12:45:35] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710002\data.csv créé avec succès.
+[2025-06-27 12:45:35] [INFO] banc1: Prêt à démarrer pour RW-48v2710002 dans data\banc1\27062025-RW-48v2710002
+[2025-06-27 12:45:35] [INFO] banc1: Étape initiale (depuis config): 1
+[2025-06-27 12:45:35] [INFO] banc1: Connexion à MQTT (localhost:1883)...
+[2025-06-27 12:45:35] [INFO] banc1: Abonnements MQTT réussis.
+[2025-06-27 12:45:35] [INFO] banc1: État initial publié sur banc1/command: {"current_step": 1, "capacity_ah": 0, "capacity_wh": 0}
+[2025-06-27 12:45:35] [INFO] banc1: Ouverture du fichier CSV en mode append: data\banc1\27062025-RW-48v2710002\data.csv
+[2025-06-27 12:45:35] [INFO] banc1: Démarrage du thread de surveillance d'activité BMS...
+[2025-06-27 12:45:35] [INFO] banc1: Thread surveillance activité BMS démarré (Timeout: 30s, Check: 20s).
+[2025-06-27 12:45:35] [INFO] banc1: Démarrage de la boucle MQTT (loop_forever)...
+[2025-06-27 12:45:36] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:45:36] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:45:36] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:45:44] [INFO] UI: Prompt reçu: banc3
+[2025-06-27 12:45:44] [INFO] ScanManager: Traitement scan 'banc3' dans état 0
+[2025-06-27 12:45:45] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:45:46] [INFO] UI: Prompt reçu: RW-48v2710001
+[2025-06-27 12:45:46] [INFO] ScanManager: Traitement scan 'RW-48v2710001' dans état 1
+[2025-06-27 12:45:46] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:45:46] [INFO] DataOps: Batterie RW-48v2710001 validée par 'toto'.
+[2025-06-27 12:45:46] [INFO] ScanManager: Batterie RW-48v2710001 validée pour banc libre
+[2025-06-27 12:45:46] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:45:48] [INFO] UI: Prompt reçu: banc3
+[2025-06-27 12:45:48] [INFO] ScanManager: Traitement scan 'banc3' dans état 2
+[2025-06-27 12:45:49] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:45:49] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:45:49] [INFO] ScanManager: Chemin batterie stocké pour banc3: data\banc3\27062025-RW-48v2710001
+[2025-06-27 12:45:49] [INFO] ScanManager: Lancement subprocess: C:\Users\RoXx\AppData\Local\Programs\Python\Python311\python.exe C:\Users\RoXx\Desktop\Banc_final_pi\banc.py banc3 RW-48v2710001
+[2025-06-27 12:45:49] [INFO] EmailConfig: Configuration email chargée depuis C:\Users\RoXx\Desktop\Banc_final_pi\src\ui\email\email_config.json
+[2025-06-27 12:45:49] [INFO] banc3: Aucun dossier existant trouvé, utilisera/créera: data\banc3\27062025-RW-48v2710001
+[2025-06-27 12:45:49] [INFO] banc3: Création config.json par défaut dans data\banc3\27062025-RW-48v2710001
+[2025-06-27 12:45:49] [INFO] banc3: Sous-répertoire 'data\banc3' créé.
+[2025-06-27 12:45:49] [INFO] banc3: Fichier config.json créé avec succès.
+[2025-06-27 12:45:49] [INFO] banc3: Le fichier data\banc3\27062025-RW-48v2710001\data.csv n'existe pas, tentative de création.
+[2025-06-27 12:45:49] [INFO] banc3: Fichier data\banc3\27062025-RW-48v2710001\data.csv créé avec succès.
+[2025-06-27 12:45:49] [INFO] banc3: Prêt à démarrer pour RW-48v2710001 dans data\banc3\27062025-RW-48v2710001
+[2025-06-27 12:45:49] [INFO] banc3: Étape initiale (depuis config): 1
+[2025-06-27 12:45:49] [INFO] banc3: Connexion à MQTT (localhost:1883)...
+[2025-06-27 12:45:49] [INFO] banc3: Abonnements MQTT réussis.
+[2025-06-27 12:45:49] [INFO] banc3: État initial publié sur banc3/command: {"current_step": 1, "capacity_ah": 0, "capacity_wh": 0}
+[2025-06-27 12:45:49] [INFO] banc3: Ouverture du fichier CSV en mode append: data\banc3\27062025-RW-48v2710001\data.csv
+[2025-06-27 12:45:49] [INFO] banc3: Démarrage du thread de surveillance d'activité BMS...
+[2025-06-27 12:45:49] [INFO] banc3: Thread surveillance activité BMS démarré (Timeout: 30s, Check: 20s).
+[2025-06-27 12:45:49] [INFO] banc3: Démarrage de la boucle MQTT (loop_forever)...
+[2025-06-27 12:45:49] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:45:49] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:45:49] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:45:59] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:46:01] [ERROR] banc2: TIMEOUT - Aucune donnée BMS reçue depuis 40 secondes!
+[2025-06-27 12:46:01] [INFO] banc2: Alerte Timeout publiée sur banc2/security
+[2025-06-27 12:46:02] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:46:02] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:46:02] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:46:12] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:46:15] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:46:15] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:46:15] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:46:25] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:46:28] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:46:28] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:46:28] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:46:29] [ERROR] banc3: TIMEOUT - Aucune donnée BMS reçue depuis 40 secondes!
+[2025-06-27 12:46:29] [INFO] banc3: Alerte Timeout publiée sur banc3/security
+[2025-06-27 12:46:38] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:46:41] [ERROR] banc2: TIMEOUT - Aucune donnée BMS reçue depuis 40 secondes!
+[2025-06-27 12:46:41] [INFO] banc2: Alerte Timeout publiée sur banc2/security
+[2025-06-27 12:46:41] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:46:41] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:46:41] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:46:44] [INFO] Current step mis à jour: 1, pour banc1
+[2025-06-27 12:46:44] [INFO] UI: banc1 current_step (UI) mis à jour: 1
+[2025-06-27 12:46:44] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710002\config.json mis à jour: current_step=1
+[2025-06-27 12:46:44] [INFO] AnimationManager: Démarrage animation phase 1 pour banc1
+[2025-06-27 12:46:44] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:46:44] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=1
+[2025-06-27 12:46:44] [INFO] Current step mis à jour: 1, pour banc2
+[2025-06-27 12:46:44] [INFO] UI: banc2 current_step (UI) mis à jour: 1
+[2025-06-27 12:46:44] [INFO] AnimationManager: Démarrage animation phase 1 pour banc2
+[2025-06-27 12:46:44] [INFO] banc2: Fichier data\banc2\27062025-RW-48v2710003\config.json mis à jour: current_step=1
+[2025-06-27 12:46:45] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:46:45] [INFO] ConfigManager: bancs_config.json mis à jour pour banc2 avec current_step=1
+[2025-06-27 12:46:45] [INFO] Current step mis à jour: 1, pour banc3
+[2025-06-27 12:46:45] [INFO] UI: banc3 current_step (UI) mis à jour: 1
+[2025-06-27 12:46:45] [INFO] banc3: Fichier data\banc3\27062025-RW-48v2710001\config.json mis à jour: current_step=1
+[2025-06-27 12:46:46] [INFO] AnimationManager: Démarrage animation phase 1 pour banc3
+[2025-06-27 12:46:46] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:46:46] [INFO] ConfigManager: bancs_config.json mis à jour pour banc3 avec current_step=1
+[2025-06-27 12:46:51] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:46:54] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:46:54] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:46:54] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:47:04] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:47:07] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:47:07] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:47:07] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:47:09] [ERROR] banc3: TIMEOUT - Aucune donnée BMS reçue depuis 40 secondes!
+[2025-06-27 12:47:09] [INFO] banc3: Alerte Timeout publiée sur banc3/security
+[2025-06-27 12:47:17] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:47:19] [INFO] UI: Résultats RI/Diffusion disponibles pour banc1. (MAJ via step 2)
+[2025-06-27 12:47:19] [INFO] banc1: Données RI reçues: {'ri_discharge_average': 0.24781, 'diffusion_discharge_average': 0.213292, 'ri_charge_average': 0.30423, 'diffusion_charge_average': 0.20282, 'delta_ri_cells': [0.00012, 0.00013, 0.00011, 0.00012, 0.00014, 0.00013, 0.00012, 0.00015, 0.00011, 0.00012, 0.00013, 0.00014, 0.00012, 0.00013, 0.00011], 'delta_diffusion_cells': [5e-05, 6e-05, 5e-05, 5e-05, 6e-05, 7e-05, 5e-05, 6e-05, 5e-05, 5e-05, 6e-05, 6e-05, 5e-05, 5e-05, 4e-05]}
+[2025-06-27 12:47:19] [INFO] banc1: config.json mis à jour avec les résultats RI: ['ri_discharge_average', 'ri_charge_average', 'diffusion_discharge_average', 'diffusion_charge_average', 'delta_ri_cells', 'delta_diffusion_cells']
+[2025-06-27 12:47:20] [ERROR] banc2: Erreur décodage JSON pour /ri/results: Expecting value: line 1 column 1 (char 0). Payload: ''{ "ri_discharge_average": 0.24781, "diffusion_discharge_average": 0.213292, "ri_charge_average": 0.30423, "diffusion_charge_average": 0.20282, "delta_ri_cells": [0.00012, 0.00013, 0.00011, 0.00012, 0.00014, 0.00013, 0.00012, 0.00015, 0.00011, 0.00012, 0.00013, 0.00014, 0.00012, 0.00013, 0.00011], "delta_diffusion_cells": [0.00005, 0.00006, 0.00005, 0.00005, 0.00006, 0.00007, 0.00005, 0.00006, 0.00005, 0.00005, 0.00006, 0.00006, 0.00005, 0.00005, 0.00004] }' '
+[2025-06-27 12:47:20] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:47:20] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:47:20] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:47:21] [ERROR] banc2: TIMEOUT - Aucune donnée BMS reçue depuis 40 secondes!
+[2025-06-27 12:47:21] [INFO] banc2: Alerte Timeout publiée sur banc2/security
+[2025-06-27 12:47:21] [INFO] UI: Résultats RI/Diffusion disponibles pour banc3. (MAJ via step 2)
+[2025-06-27 12:47:21] [ERROR] banc3: Erreur décodage JSON pour /ri/results: Expecting value: line 1 column 1 (char 0). Payload: ''{ "ri_discharge_average": 0.24781, "diffusion_discharge_average": 0.213292, "ri_charge_average": 0.30423, "diffusion_charge_average": 0.20282, "delta_ri_cells": [0.00012, 0.00013, 0.00011, 0.00012, 0.00014, 0.00013, 0.00012, 0.00015, 0.00011, 0.00012, 0.00013, 0.00014, 0.00012, 0.00013, 0.00011], "delta_diffusion_cells": [0.00005, 0.00006, 0.00005, 0.00005, 0.00006, 0.00007, 0.00005, 0.00006, 0.00005, 0.00005, 0.00006, 0.00006, 0.00005, 0.00005, 0.00004] }' '
+[2025-06-27 12:47:30] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:47:33] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:47:33] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:47:33] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:47:43] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:47:46] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:47:46] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:47:46] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:47:47] [INFO] Current step mis à jour: 2, pour banc1
+[2025-06-27 12:47:47] [INFO] UI: banc1 current_step (UI) mis à jour: 2
+[2025-06-27 12:47:47] [INFO] UI: Étape 2 détectée pour banc1. Planification MAJ Ri/Diffusion UI.
+[2025-06-27 12:47:47] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710002\config.json mis à jour: current_step=2
+[2025-06-27 12:47:47] [INFO] UIUpdater: Ri/Diffusion mis à jour pour banc1: Ri=276.02 mΩ, Diff=210.14 mΩ
+[2025-06-27 12:47:47] [INFO] AnimationManager: Démarrage animation phase 2 pour banc1
+[2025-06-27 12:47:47] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:47:47] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=2
+[2025-06-27 12:47:48] [INFO] Current step mis à jour: 2, pour banc2
+[2025-06-27 12:47:48] [INFO] UI: banc2 current_step (UI) mis à jour: 2
+[2025-06-27 12:47:48] [INFO] UI: Étape 2 détectée pour banc2. Planification MAJ Ri/Diffusion UI.
+[2025-06-27 12:47:48] [INFO] banc2: Fichier data\banc2\27062025-RW-48v2710003\config.json mis à jour: current_step=2
+[2025-06-27 12:47:48] [ERROR] UIUpdater: Erreur JSON dans config.json pour banc2
+[2025-06-27 12:47:48] [INFO] AnimationManager: Démarrage animation phase 2 pour banc2
+[2025-06-27 12:47:48] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:47:48] [INFO] ConfigManager: bancs_config.json mis à jour pour banc2 avec current_step=2
+[2025-06-27 12:47:49] [ERROR] banc3: TIMEOUT - Aucune donnée BMS reçue depuis 40 secondes!
+[2025-06-27 12:47:49] [INFO] banc3: Alerte Timeout publiée sur banc3/security
+[2025-06-27 12:47:49] [INFO] Current step mis à jour: 2, pour banc3
+[2025-06-27 12:47:49] [INFO] UI: banc3 current_step (UI) mis à jour: 2
+[2025-06-27 12:47:49] [INFO] UI: Étape 2 détectée pour banc3. Planification MAJ Ri/Diffusion UI.
+[2025-06-27 12:47:49] [INFO] banc3: Fichier data\banc3\27062025-RW-48v2710001\config.json mis à jour: current_step=2
+[2025-06-27 12:47:49] [ERROR] UIUpdater: Erreur JSON dans config.json pour banc3
+[2025-06-27 12:47:49] [INFO] AnimationManager: Démarrage animation phase 2 pour banc3
+[2025-06-27 12:47:49] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:47:49] [INFO] ConfigManager: bancs_config.json mis à jour pour banc3 avec current_step=2
+[2025-06-27 12:47:56] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:47:59] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:47:59] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:47:59] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:48:01] [INFO] Current step mis à jour: 3, pour banc1
+[2025-06-27 12:48:01] [INFO] UI: banc1 current_step (UI) mis à jour: 3
+[2025-06-27 12:48:01] [INFO] AnimationManager: Démarrage animation phase 3 pour banc1
+[2025-06-27 12:48:01] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710002\config.json mis à jour: current_step=3
+[2025-06-27 12:48:01] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:48:01] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=3
+[2025-06-27 12:48:01] [INFO] Current step mis à jour: 3, pour banc2
+[2025-06-27 12:48:01] [INFO] UI: banc2 current_step (UI) mis à jour: 3
+[2025-06-27 12:48:01] [INFO] banc2: Fichier data\banc2\27062025-RW-48v2710003\config.json mis à jour: current_step=3
+[2025-06-27 12:48:01] [INFO] AnimationManager: Démarrage animation phase 3 pour banc2
+[2025-06-27 12:48:01] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:48:01] [INFO] ConfigManager: bancs_config.json mis à jour pour banc2 avec current_step=3
+[2025-06-27 12:48:01] [ERROR] banc2: TIMEOUT - Aucune donnée BMS reçue depuis 40 secondes!
+[2025-06-27 12:48:01] [INFO] banc2: Alerte Timeout publiée sur banc2/security
+[2025-06-27 12:48:02] [INFO] Current step mis à jour: 3, pour banc3
+[2025-06-27 12:48:02] [INFO] UI: banc3 current_step (UI) mis à jour: 3
+[2025-06-27 12:48:02] [INFO] AnimationManager: Démarrage animation phase 3 pour banc3
+[2025-06-27 12:48:02] [INFO] banc3: Fichier data\banc3\27062025-RW-48v2710001\config.json mis à jour: current_step=3
+[2025-06-27 12:48:02] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:48:02] [INFO] ConfigManager: bancs_config.json mis à jour pour banc3 avec current_step=3
+[2025-06-27 12:48:02] [INFO] AnimationManager: Phase 3 animation terminée pour banc2
+[2025-06-27 12:48:03] [INFO] AnimationManager: Phase 3 animation terminée pour banc3
+[2025-06-27 12:48:09] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:48:12] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:48:12] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:48:12] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:48:14] [INFO] Current step mis à jour: 4, pour banc1
+[2025-06-27 12:48:14] [INFO] UI: banc1 current_step (UI) mis à jour: 4
+[2025-06-27 12:48:14] [INFO] AnimationManager: Démarrage animation phase 4 pour banc1
+[2025-06-27 12:48:14] [ERROR] PhaseCalculator: ATTENTION - Durée négative calculée (-35.1 min) car SOC batterie (37.0%) > référence (10.0). Durée forcée à 0.
+[2025-06-27 12:48:14] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710002\config.json mis à jour: current_step=4
+[2025-06-27 12:48:15] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:48:15] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=4
+[2025-06-27 12:48:15] [INFO] Current step mis à jour: 4, pour banc2
+[2025-06-27 12:48:15] [INFO] UI: banc2 current_step (UI) mis à jour: 4
+[2025-06-27 12:48:15] [INFO] AnimationManager: Démarrage animation phase 4 pour banc2
+[2025-06-27 12:48:15] [INFO] banc2: Fichier data\banc2\27062025-RW-48v2710003\config.json mis à jour: current_step=4
+[2025-06-27 12:48:15] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:48:15] [INFO] ConfigManager: bancs_config.json mis à jour pour banc2 avec current_step=4
+[2025-06-27 12:48:16] [INFO] Current step mis à jour: 4, pour banc3
+[2025-06-27 12:48:16] [INFO] UI: banc3 current_step (UI) mis à jour: 4
+[2025-06-27 12:48:16] [INFO] AnimationManager: Démarrage animation phase 4 pour banc3
+[2025-06-27 12:48:16] [INFO] banc3: Fichier data\banc3\27062025-RW-48v2710001\config.json mis à jour: current_step=4
+[2025-06-27 12:48:16] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:48:16] [INFO] ConfigManager: bancs_config.json mis à jour pour banc3 avec current_step=4
+[2025-06-27 12:48:20] [INFO] AnimationManager: Phase 4 animation terminée pour banc1
+[2025-06-27 12:48:22] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=8
+[2025-06-27 12:48:25] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:48:25] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:48:25] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:48:29] [ERROR] banc3: TIMEOUT - Aucune donnée BMS reçue depuis 40 secondes!
+[2025-06-27 12:48:29] [INFO] banc3: Alerte Timeout publiée sur banc3/security
+[2025-06-27 12:48:29] [INFO] banc1: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***
+[2025-06-27 12:48:29] [INFO] UI: banc1 current_step (UI) mis à jour: 5
+[2025-06-27 12:48:29] [INFO] banc1: Fichier data\banc1\27062025-RW-48v2710002\config.json mis à jour: current_step=5
+[2025-06-27 12:48:29] [INFO] UI: Toutes les phases finalisées pour banc1
+[2025-06-27 12:48:29] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:48:29] [INFO] ConfigManager: bancs_config.json mis à jour pour banc1 avec current_step=5
+[2025-06-27 12:48:29] [INFO] banc1 réinitialisé dans bancs_config.json
+[2025-06-27 12:48:30] [INFO] banc2: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***
+[2025-06-27 12:48:30] [INFO] UI: banc2 current_step (UI) mis à jour: 5
+[2025-06-27 12:48:30] [INFO] banc2: Fichier data\banc2\27062025-RW-48v2710003\config.json mis à jour: current_step=5
+[2025-06-27 12:48:30] [INFO] UI: Toutes les phases finalisées pour banc2
+[2025-06-27 12:48:30] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:48:30] [INFO] ConfigManager: bancs_config.json mis à jour pour banc2 avec current_step=5
+[2025-06-27 12:48:30] [INFO] banc2 réinitialisé dans bancs_config.json
+[2025-06-27 12:48:30] [INFO] banc1: *** DEBUT ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:48:30] [INFO] banc1: Service d'impression détecté. Envoi des tâches à printer.py.
+[2025-06-27 12:48:30] [INFO] banc1: *** PAYLOAD PREPARE: {"serial_number": "RW-48v2710002", "timestamp_test_done": "2025-06-27T12:48:29.547635"} ***
+[2025-06-27 12:48:30] [INFO] banc1: *** CLIENT MQTT CONNECTE - ENVOI EN COURS ***
+[2025-06-27 12:48:30] [INFO] banc1: Résultat publish tâche consolidée (printer/test_done): 0, MID: 3
+[2025-06-27 12:48:30] [INFO] banc1: *** FIN ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:48:30] [INFO] banc1: Fichier CSV fermé.
+[2025-06-27 12:48:30] [INFO] banc1: Fichier CSV fermé après envoi des données.
+[2025-06-27 12:48:30] [INFO] banc2: *** DEBUT ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:48:30] [INFO] banc2: Service d'impression détecté. Envoi des tâches à printer.py.
+[2025-06-27 12:48:30] [INFO] banc2: *** PAYLOAD PREPARE: {"serial_number": "RW-48v2710003", "timestamp_test_done": "2025-06-27T12:48:30.154104"} ***
+[2025-06-27 12:48:30] [INFO] banc2: *** CLIENT MQTT CONNECTE - ENVOI EN COURS ***
+[2025-06-27 12:48:30] [INFO] banc2: Résultat publish tâche consolidée (printer/test_done): 0, MID: 7
+[2025-06-27 12:48:30] [INFO] banc2: *** FIN ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:48:30] [INFO] banc2: Fichier CSV fermé.
+[2025-06-27 12:48:30] [INFO] banc2: Fichier CSV fermé après envoi des données.
+[2025-06-27 12:48:31] [INFO] banc3: *** STEP 5 DETECTE - DEBUT TRAITEMENT - TEST TERMINE ***
+[2025-06-27 12:48:31] [INFO] UI: banc3 current_step (UI) mis à jour: 5
+[2025-06-27 12:48:31] [INFO] banc3: Fichier data\banc3\27062025-RW-48v2710001\config.json mis à jour: current_step=5
+[2025-06-27 12:48:31] [INFO] UI: Toutes les phases finalisées pour banc3
+[2025-06-27 12:48:31] [INFO] ConfigManager: Configuration chargée depuis bancs_config.json
+[2025-06-27 12:48:31] [INFO] ConfigManager: bancs_config.json mis à jour pour banc3 avec current_step=5
+[2025-06-27 12:48:31] [INFO] banc3 réinitialisé dans bancs_config.json
+[2025-06-27 12:48:31] [INFO] banc3: *** DEBUT ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:48:31] [INFO] banc3: Service d'impression détecté. Envoi des tâches à printer.py.
+[2025-06-27 12:48:31] [INFO] banc3: *** PAYLOAD PREPARE: {"serial_number": "RW-48v2710001", "timestamp_test_done": "2025-06-27T12:48:31.061077"} ***
+[2025-06-27 12:48:31] [INFO] banc3: *** CLIENT MQTT CONNECTE - ENVOI EN COURS ***
+[2025-06-27 12:48:31] [INFO] banc3: Résultat publish tâche consolidée (printer/test_done): 0, MID: 7
+[2025-06-27 12:48:31] [INFO] banc3: *** FIN ENVOI VERS PRINTER.PY ***
+[2025-06-27 12:48:31] [INFO] banc3: Fichier CSV fermé.
+[2025-06-27 12:48:31] [INFO] banc3: Fichier CSV fermé après envoi des données.
+[2025-06-27 12:48:35] [INFO] banc1: Nettoyage terminé. sys.exit() va fermer la connexion.
+[2025-06-27 12:48:35] [INFO] banc1: Fin du processus (appel à sys.exit(0)).
+[2025-06-27 12:48:35] [ERROR] banc1: *** FIN DU BLOC FINALLY. global_mqtt_config VA RETOURNER. ***
+[2025-06-27 12:48:35] [INFO] [DEBUG] Message MQTT reçu: topic='printer/test_done'
+[2025-06-27 12:48:35] [INFO] Message reçu sur 'printer/test_done': {"serial_number": "RW-48v2710002", "timestamp_test_done": "2025-06-27T12:48:29.547635"}
+[2025-06-27 12:48:35] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:48:35] [INFO] Traitement consolidé pour test_done S/N RW-48v2710002 à 2025-06-27T12:48:29.547635
+[2025-06-27 12:48:35] [INFO] Ligne pour RW-48v2710002 marquée avec TimestampTestDone: 2025-06-27T12:48:29.547635 et version: 1.01
+[2025-06-27 12:48:35] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampTestDone et version pour RW-48v2710002.
+[2025-06-27 12:48:35] [INFO] Action 1 (test_done): CSV mis à jour pour RW-48v2710002
+[2025-06-27 12:48:35] [INFO] Action 2 (test_done): Étiquette carton pour 'RW-48v2710002' ajoutée à la file. Taille: 9
+[2025-06-27 12:48:35] [INFO] Détails trouvés pour réimpression de RW-48v2710002: QR Code QW7iZA, TimestampImpression 2025-06-25T19:51:22.710692
+[2025-06-27 12:48:35] [INFO] Action 3 (test_done): Réimpression étiquette QR standard pour 'RW-48v2710002' (QR: QW7iZA) ajoutée à la file. Taille: 10
+[2025-06-27 12:48:35] [INFO] banc2: Nettoyage terminé. sys.exit() va fermer la connexion.
+[2025-06-27 12:48:35] [INFO] banc2: Fin du processus (appel à sys.exit(0)).
+[2025-06-27 12:48:35] [ERROR] banc2: *** FIN DU BLOC FINALLY. global_mqtt_config VA RETOURNER. ***
+[2025-06-27 12:48:35] [INFO] [DEBUG] Message MQTT reçu: topic='printer/test_done'
+[2025-06-27 12:48:35] [INFO] Message reçu sur 'printer/test_done': {"serial_number": "RW-48v2710003", "timestamp_test_done": "2025-06-27T12:48:30.154104"}
+[2025-06-27 12:48:35] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:48:35] [INFO] Traitement consolidé pour test_done S/N RW-48v2710003 à 2025-06-27T12:48:30.154104
+[2025-06-27 12:48:35] [INFO] Ligne pour RW-48v2710003 marquée avec TimestampTestDone: 2025-06-27T12:48:30.154104 et version: 1.01
+[2025-06-27 12:48:35] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampTestDone et version pour RW-48v2710003.
+[2025-06-27 12:48:35] [INFO] Action 1 (test_done): CSV mis à jour pour RW-48v2710003
+[2025-06-27 12:48:35] [INFO] Action 2 (test_done): Étiquette carton pour 'RW-48v2710003' ajoutée à la file. Taille: 11
+[2025-06-27 12:48:35] [INFO] Détails trouvés pour réimpression de RW-48v2710003: QR Code FlVqSt, TimestampImpression 2025-06-26T13:45:57.862535
+[2025-06-27 12:48:35] [INFO] Action 3 (test_done): Réimpression étiquette QR standard pour 'RW-48v2710003' (QR: FlVqSt) ajoutée à la file. Taille: 12
+[2025-06-27 12:48:35] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=12
+[2025-06-27 12:48:36] [INFO] banc3: Nettoyage terminé. sys.exit() va fermer la connexion.
+[2025-06-27 12:48:36] [INFO] banc3: Fin du processus (appel à sys.exit(0)).
+[2025-06-27 12:48:36] [ERROR] banc3: *** FIN DU BLOC FINALLY. global_mqtt_config VA RETOURNER. ***
+[2025-06-27 12:48:36] [INFO] [DEBUG] Message MQTT reçu: topic='printer/test_done'
+[2025-06-27 12:48:36] [INFO] Message reçu sur 'printer/test_done': {"serial_number": "RW-48v2710001", "timestamp_test_done": "2025-06-27T12:48:31.061077"}
+[2025-06-27 12:48:36] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:48:36] [INFO] Traitement consolidé pour test_done S/N RW-48v2710001 à 2025-06-27T12:48:31.061077
+[2025-06-27 12:48:36] [INFO] Ligne pour RW-48v2710001 marquée avec TimestampTestDone: 2025-06-27T12:48:31.061077 et version: 1.01
+[2025-06-27 12:48:36] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampTestDone et version pour RW-48v2710001.
+[2025-06-27 12:48:36] [INFO] Action 1 (test_done): CSV mis à jour pour RW-48v2710001
+[2025-06-27 12:48:36] [INFO] Action 2 (test_done): Étiquette carton pour 'RW-48v2710001' ajoutée à la file. Taille: 13
+[2025-06-27 12:48:36] [INFO] Détails trouvés pour réimpression de RW-48v2710001: QR Code fV1uMo, TimestampImpression 2025-06-25T10:51:26.342978
+[2025-06-27 12:48:36] [INFO] Action 3 (test_done): Réimpression étiquette QR standard pour 'RW-48v2710001' (QR: fV1uMo) ajoutée à la file. Taille: 14
+[2025-06-27 12:48:38] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:48:38] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:48:38] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:48:48] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:48:51] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:48:51] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:48:51] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:48:54] [INFO] UI: Prompt reçu: expedition
+[2025-06-27 12:48:54] [INFO] ScanManager: Traitement scan 'expedition' dans état 0
+[2025-06-27 12:48:58] [INFO] UI: Prompt reçu: RW-48v2710001
+[2025-06-27 12:48:58] [INFO] ScanManager: Traitement scan 'RW-48v2710001' dans état 8
+[2025-06-27 12:49:01] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:49:02] [INFO] UI: Prompt reçu: RW-48v2710002
+[2025-06-27 12:49:02] [INFO] ScanManager: Traitement scan 'RW-48v2710002' dans état 8
+[2025-06-27 12:49:04] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:49:04] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:49:04] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:49:05] [INFO] UI: Prompt reçu: RW-48v2710003
+[2025-06-27 12:49:05] [INFO] ScanManager: Traitement scan 'RW-48v2710003' dans état 8
+[2025-06-27 12:49:08] [INFO] UI: Prompt reçu: RW-48v2710004
+[2025-06-27 12:49:08] [INFO] ScanManager: Traitement scan 'RW-48v2710004' dans état 8
+[2025-06-27 12:49:12] [INFO] UI: Prompt reçu: RW-48v2710005
+[2025-06-27 12:49:12] [INFO] ScanManager: Traitement scan 'RW-48v2710005' dans état 8
+[2025-06-27 12:49:15] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:49:15] [INFO] UI: Prompt reçu: RW-48v2710006
+[2025-06-27 12:49:15] [INFO] ScanManager: Traitement scan 'RW-48v2710006' dans état 8
+[2025-06-27 12:49:18] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:49:18] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:49:18] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:49:22] [INFO] UI: Prompt reçu: RW-48v2710010
+[2025-06-27 12:49:22] [INFO] ScanManager: Traitement scan 'RW-48v2710010' dans état 8
+[2025-06-27 12:49:27] [INFO] UI: Prompt reçu: expedition
+[2025-06-27 12:49:27] [INFO] ScanManager: Traitement scan 'expedition' dans état 8
+[2025-06-27 12:49:27] [INFO] ScanManager: Confirmation expédition pour 7 batteries
+[2025-06-27 12:49:27] [INFO] [DEBUG] Message MQTT reçu: topic='printer/update_shipping_timestamp'
+[2025-06-27 12:49:27] [INFO] Message reçu sur 'printer/update_shipping_timestamp': {"serial_number": "RW-48v2710001", "timestamp_expedition": "2025-06-27T12:49:27.527441"}
+[2025-06-27 12:49:27] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:49:27] [INFO] UI: Tentative d'envoi de l'email d'expédition (Tentative 1/3)...
+[2025-06-27 12:49:27] [INFO] Demande de mise à jour TimestampExpedition pour S/N RW-48v2710001 à 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Ligne pour RW-48v2710001 sera mise à jour avec TimestampExpedition: 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampExpedition pour RW-48v2710001.
+[2025-06-27 12:49:27] [INFO] [DEBUG] Message MQTT reçu: topic='printer/update_shipping_timestamp'
+[2025-06-27 12:49:27] [INFO] Message reçu sur 'printer/update_shipping_timestamp': {"serial_number": "RW-48v2710002", "timestamp_expedition": "2025-06-27T12:49:27.527441"}
+[2025-06-27 12:49:27] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:49:27] [INFO] Demande de mise à jour TimestampExpedition pour S/N RW-48v2710002 à 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Ligne pour RW-48v2710002 sera mise à jour avec TimestampExpedition: 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampExpedition pour RW-48v2710002.
+[2025-06-27 12:49:27] [INFO] [DEBUG] Message MQTT reçu: topic='printer/update_shipping_timestamp'
+[2025-06-27 12:49:27] [INFO] Message reçu sur 'printer/update_shipping_timestamp': {"serial_number": "RW-48v2710003", "timestamp_expedition": "2025-06-27T12:49:27.527441"}
+[2025-06-27 12:49:27] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:49:27] [INFO] Demande de mise à jour TimestampExpedition pour S/N RW-48v2710003 à 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Ligne pour RW-48v2710003 sera mise à jour avec TimestampExpedition: 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampExpedition pour RW-48v2710003.
+[2025-06-27 12:49:27] [INFO] [DEBUG] Message MQTT reçu: topic='printer/update_shipping_timestamp'
+[2025-06-27 12:49:27] [INFO] Message reçu sur 'printer/update_shipping_timestamp': {"serial_number": "RW-48v2710004", "timestamp_expedition": "2025-06-27T12:49:27.527441"}
+[2025-06-27 12:49:27] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:49:27] [INFO] Demande de mise à jour TimestampExpedition pour S/N RW-48v2710004 à 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Ligne pour RW-48v2710004 sera mise à jour avec TimestampExpedition: 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampExpedition pour RW-48v2710004.
+[2025-06-27 12:49:27] [INFO] [DEBUG] Message MQTT reçu: topic='printer/update_shipping_timestamp'
+[2025-06-27 12:49:27] [INFO] Message reçu sur 'printer/update_shipping_timestamp': {"serial_number": "RW-48v2710005", "timestamp_expedition": "2025-06-27T12:49:27.527441"}
+[2025-06-27 12:49:27] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:49:27] [INFO] Demande de mise à jour TimestampExpedition pour S/N RW-48v2710005 à 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Ligne pour RW-48v2710005 sera mise à jour avec TimestampExpedition: 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampExpedition pour RW-48v2710005.
+[2025-06-27 12:49:27] [INFO] [DEBUG] Message MQTT reçu: topic='printer/update_shipping_timestamp'
+[2025-06-27 12:49:27] [INFO] Message reçu sur 'printer/update_shipping_timestamp': {"serial_number": "RW-48v2710006", "timestamp_expedition": "2025-06-27T12:49:27.527441"}
+[2025-06-27 12:49:27] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:49:27] [INFO] Demande de mise à jour TimestampExpedition pour S/N RW-48v2710006 à 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Ligne pour RW-48v2710006 sera mise à jour avec TimestampExpedition: 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampExpedition pour RW-48v2710006.
+[2025-06-27 12:49:27] [INFO] [DEBUG] Message MQTT reçu: topic='printer/update_shipping_timestamp'
+[2025-06-27 12:49:27] [INFO] Message reçu sur 'printer/update_shipping_timestamp': {"serial_number": "RW-48v2710010", "timestamp_expedition": "2025-06-27T12:49:27.527441"}
+[2025-06-27 12:49:27] [INFO] DEBUG: Handler trouvé: True
+[2025-06-27 12:49:27] [INFO] Demande de mise à jour TimestampExpedition pour S/N RW-48v2710010 à 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Ligne pour RW-48v2710010 sera mise à jour avec TimestampExpedition: 2025-06-27T12:49:27.527441
+[2025-06-27 12:49:27] [INFO] Fichier CSV 'printed_serials.csv' mis à jour avec TimestampExpedition pour RW-48v2710010.
+[2025-06-27 12:49:28] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:49:28] [INFO] UI: Email d'expédition envoyé avec succès à evan@revaw.fr, evan.hermier+banc@gmail.com !
+[2025-06-27 12:49:31] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:49:31] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:49:31] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:49:41] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:49:44] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:49:44] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:49:44] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:49:54] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:49:57] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:49:57] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:49:57] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:50:07] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:50:10] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:50:10] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:50:10] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:50:20] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:50:23] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:50:23] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:50:23] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:50:33] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:50:36] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:50:36] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:50:36] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:50:46] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:50:49] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:50:49] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:50:49] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:50:59] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:51:02] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:51:02] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:51:02] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:51:12] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:51:15] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:51:15] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:51:15] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:51:25] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:51:28] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:51:28] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:51:28] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:51:38] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:51:41] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:51:41] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:51:41] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:51:51] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:51:54] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:51:54] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:51:54] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:52:04] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:52:07] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:52:07] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:52:07] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:52:17] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:52:20] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:52:20] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:52:20] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:52:30] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:52:33] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:52:33] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:52:33] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:52:43] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:52:46] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:52:46] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:52:46] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:52:56] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:52:59] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:52:59] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:52:59] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:53:09] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:53:12] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:53:12] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:53:12] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:53:22] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:53:25] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:53:25] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:53:25] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:53:35] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:53:38] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:53:38] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:53:38] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:53:48] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:53:51] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:53:51] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:53:51] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:54:01] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:54:04] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:54:04] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:54:04] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:54:14] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:54:17] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:54:17] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:54:17] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:54:27] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:54:30] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:54:30] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:54:30] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:54:40] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:54:43] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:54:43] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:54:43] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:54:53] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:54:56] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:54:56] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:54:56] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:55:06] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:55:09] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:55:09] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:55:09] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:55:19] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:55:22] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:55:22] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:55:22] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:55:32] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:55:35] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:55:35] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:55:35] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:55:45] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:55:48] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:55:48] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:55:48] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:55:58] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:56:01] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:56:01] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:56:01] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:56:11] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:56:14] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:56:14] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:56:14] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:56:24] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:56:27] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:56:27] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:56:27] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:56:37] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:56:40] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:56:40] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:56:40] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:56:50] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:56:53] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:56:53] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:56:53] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:57:03] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:57:06] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:57:06] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:57:06] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:57:16] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:57:19] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:57:19] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:57:19] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:57:29] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:57:32] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:57:32] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:57:32] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:57:42] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:57:45] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:57:45] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:57:45] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:57:55] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:57:58] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:57:58] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:57:58] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:58:08] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:58:11] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:58:11] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:58:11] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:58:21] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:58:24] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:58:24] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:58:24] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:58:34] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:58:37] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:58:37] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:58:37] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:58:47] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:58:50] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:58:50] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:58:50] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:59:00] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:59:03] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:59:03] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:59:03] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:59:13] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:59:16] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:59:16] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:59:16] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:59:26] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:59:29] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:59:29] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:59:29] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:59:39] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:59:42] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:59:42] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:59:42] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 12:59:52] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 12:59:55] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 12:59:55] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 12:59:55] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:00:05] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:00:08] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:00:08] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:00:08] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:00:18] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:00:21] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:00:21] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:00:21] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:00:31] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:00:34] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:00:34] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:00:34] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:00:44] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:00:47] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:00:47] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:00:47] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:00:57] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:01:00] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:01:00] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:01:00] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:01:10] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:01:13] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:01:13] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:01:13] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:01:23] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:01:26] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:01:26] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:01:26] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:01:36] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:01:39] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:01:39] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:01:39] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:01:49] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:01:52] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:01:52] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:01:52] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:02:02] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:02:05] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:02:05] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:02:05] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:02:15] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:02:18] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:02:18] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:02:18] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:02:28] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:02:31] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:02:31] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:02:31] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:02:41] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:02:44] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:02:44] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:02:44] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:02:54] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:02:57] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:02:57] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:02:57] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:03:07] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:03:10] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:03:10] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:03:10] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:03:20] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:03:23] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:03:23] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:03:23] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:03:33] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:03:36] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:03:36] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:03:36] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:03:46] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:03:49] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:03:49] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:03:49] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:03:59] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:04:02] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:04:02] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:04:02] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:04:12] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:04:15] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:04:15] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:04:15] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:04:25] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:04:28] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:04:28] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:04:28] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:04:38] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:04:41] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:04:41] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:04:41] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:04:51] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:04:54] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:04:54] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:04:54] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:05:04] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:05:07] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:05:07] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:05:07] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:05:17] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:05:20] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:05:20] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:05:20] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:05:30] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:05:33] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:05:33] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:05:33] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:05:43] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:05:46] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:05:46] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:05:46] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:05:56] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:05:59] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:05:59] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:05:59] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:06:09] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:06:12] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:06:12] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:06:12] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:06:22] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:06:25] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:06:25] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:06:25] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:06:35] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:06:38] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:06:38] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:06:38] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:06:48] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:06:51] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:06:51] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:06:51] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:07:01] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:07:04] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:07:04] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:07:04] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:07:14] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:07:17] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:07:17] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:07:17] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:07:27] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:07:30] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:07:30] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:07:30] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:07:40] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:07:43] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:07:43] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:07:43] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:07:53] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:07:56] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:07:56] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:07:56] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:08:06] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:08:09] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:08:09] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:08:09] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:08:19] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:08:22] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:08:22] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:08:22] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:08:32] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:08:35] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:08:35] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:08:35] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:08:45] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:08:48] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:08:48] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:08:48] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:08:58] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:09:01] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:09:01] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:09:01] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:09:11] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:09:14] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:09:14] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:09:14] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:09:24] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:09:27] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:09:27] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:09:27] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:09:37] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:09:40] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:09:40] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:09:40] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:09:50] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:09:53] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:09:53] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:09:53] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:10:03] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:10:06] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:10:06] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:10:06] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:10:16] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:10:19] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:10:19] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:10:19] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.
+[2025-06-27 13:10:29] [INFO] Traitement de la file: PRINT_SHIPPING pour RW-48v2710010. QR: None, DateFab: None. File=14
+[2025-06-27 13:10:32] [ERROR] Timeout lors de la connexion initiale à 192.168.1.100:9100 pour statut.
+[2025-06-27 13:10:32] [INFO] Statut Imprimante déterminé: ERROR_COMM
+[2025-06-27 13:10:32] [WARNING] Impossible de vérifier statut pour RW-48v2710010 (PRINT_SHIPPING) (Erreur Comm). Retenté.

@@ -421,6 +421,8 @@ def on_message(client, userdata, msg):
     """
     Router simple vers les handlers spécifiques selon le topic.
     """
+    print(f"[DEBUG URGENT] Message MQTT reçu: topic='{msg.topic}', payload='{msg.payload.decode()}'")
+    log(f"[DEBUG] Message MQTT reçu: topic='{msg.topic}'", level="INFO")
     try:
         payload_str = msg.payload.decode("utf-8")
         log(f"Message reçu sur '{msg.topic}': {payload_str}", level="INFO")
@@ -451,7 +453,7 @@ if __name__ == "__main__":
     worker.start()
 
     client = mqtt.Client(client_id="raspberrypi_printer_listener_csv")
-    mqtt_client = client
+    main_mqtt_client = client
     client.on_connect = on_connect
     client.on_message = on_message
 
