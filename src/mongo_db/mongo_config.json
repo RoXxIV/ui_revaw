@@ -1,8 +1,0 @@
-{
-    "MONGO_URI": "mongodb+srv://evan:dXY5yweBjuEUooUp@revaw-cluster.pq7k9lp.mongodb.net/?retryWrites=true&w=majority&appName=Revaw-cluster",
-    "DB_NAME" : "batterie_db",
-    "COLLECTION_NAME" : "batteries",
-    "COLUMNS" : [
-        "TimestampImpression", "NumeroSerie", "CodeAleatoireQR", "TimestampTestDone", "TimestampExpedition", "version"
-    ]
-  }
