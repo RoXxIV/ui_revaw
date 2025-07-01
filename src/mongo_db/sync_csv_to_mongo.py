@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Script de synchronisation CSV vers MongoDB - Version améliorée
+Script de synchronisation CSV vers MongoDB - Version améliorée avec protection anti-régression
 Conçu pour fonctionner via CRON la nuit, hors production.
 """
 
@@ -11,6 +11,7 @@ import csv
 import json
 import time
 import glob
+import re
 from datetime import datetime
 from pymongo import MongoClient, UpdateOne
 from pymongo.errors import (ConnectionFailure, ServerSelectionTimeoutError, BulkWriteError, PyMongoError)
@@ -26,6 +27,10 @@ MAX_RETRIES = 3
 RETRY_DELAY = 5  # secondes
 CONNECTION_TIMEOUT = 10  # secondes
 SERVER_SELECTION_TIMEOUT = 5  # secondes
+
+# Configuration protection anti-régression
+LAST_SERIAL_FILE = os.path.join(SCRIPT_DIR, "last_serial.txt")
+SERIAL_PATTERN = r"RW-48v271(\d{4})"
 
 IGNORED_FOLDERS = {'archive_fails'}
 BANC_FOLDERS = [f"banc{i}" for i in range(1, 5)]
@@ -168,6 +173,143 @@ def validate_csv_file():
         sys.exit(1)
 
 
+def extract_serial_number(serial_str):
+    """Extrait le numéro incrémental d'un serial RW-48v271XXXX."""
+    if not serial_str:
+        return 0
+
+    match = re.match(SERIAL_PATTERN, serial_str.strip())
+    if match:
+        return int(match.group(1))
+    return 0
+
+
+def get_last_serial_from_file():
+    """Lit le dernier serial enregistré depuis le fichier de contrôle."""
+    if not os.path.exists(LAST_SERIAL_FILE):
+        log_message("📄 Aucun fichier de contrôle serial trouvé - premier lancement")
+        return None
+
+    try:
+        with open(LAST_SERIAL_FILE, 'r', encoding='utf-8') as f:
+            last_serial = f.read().strip()
+            if last_serial:
+                log_message(f"📄 Dernier serial enregistré: {last_serial}")
+                return last_serial
+    except Exception as e:
+        log_message(f"⚠️  Erreur lecture fichier serial: {e}", "WARNING")
+
+    return None
+
+
+def save_last_serial_to_file(serial_str):
+    """Sauvegarde le dernier serial dans le fichier de contrôle."""
+    try:
+        with open(LAST_SERIAL_FILE, 'w', encoding='utf-8') as f:
+            f.write(serial_str)
+        log_message(f"💾 Dernier serial sauvegardé: {serial_str}")
+    except Exception as e:
+        log_message(f"⚠️  Erreur sauvegarde fichier serial: {e}", "WARNING")
+
+
+def get_last_serial_from_csv():
+    """Trouve le dernier (plus grand) numéro de série dans le CSV."""
+    if not os.path.exists(CSV_PATH):
+        return None
+
+    max_serial = None
+    max_number = 0
+
+    try:
+        with open(CSV_PATH, 'r', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+
+            for row in reader:
+                serial = row.get("NumeroSerie", "").strip()
+                if serial:
+                    serial_number = extract_serial_number(serial)
+                    if serial_number > max_number:
+                        max_number = serial_number
+                        max_serial = serial
+
+        log_message(f"📊 Dernier serial trouvé dans CSV: {max_serial} (numéro: {max_number})")
+        return max_serial
+
+    except Exception as e:
+        log_message(f"❌ Erreur lecture CSV pour détection serial: {e}", "ERROR")
+        return None
+
+
+def check_serial_regression():
+    """
+    Vérifie s'il y a une régression dans les numéros de série.
+    Retourne True si c'est sûr de continuer, False sinon.
+    """
+    log_message("🔍 Vérification protection anti-régression serial...")
+
+    # Récupérer le dernier serial connu
+    last_known_serial = get_last_serial_from_file()
+
+    # Récupérer le dernier serial du CSV actuel
+    current_csv_last_serial = get_last_serial_from_csv()
+
+    if not current_csv_last_serial:
+        log_message("❌ Aucun serial valide trouvé dans le CSV", "ERROR")
+        log_to_file("Aucun serial valide trouvé dans le CSV - sync annulée", "ERROR")
+        return False
+
+    # Premier lancement - pas de fichier de contrôle
+    if not last_known_serial:
+        log_message("✅ Premier lancement - initialisation du fichier de contrôle")
+        save_last_serial_to_file(current_csv_last_serial)
+        log_to_file(f"Premier lancement - dernier serial initialisé: {current_csv_last_serial}")
+        return True
+
+    # Comparaison des numéros
+    last_known_number = extract_serial_number(last_known_serial)
+    current_csv_number = extract_serial_number(current_csv_last_serial)
+
+    log_message(f"🔢 Comparaison: Connu={last_known_number}, CSV={current_csv_number}")
+
+    # Vérification de régression
+    if current_csv_number < last_known_number:
+        log_message(f"🚨 RÉGRESSION DÉTECTÉE!", "ERROR")
+        log_message(f"   Dernier connu: {last_known_serial} (#{last_known_number})", "ERROR")
+        log_message(f"   CSV actuel:    {current_csv_last_serial} (#{current_csv_number})", "ERROR")
+        log_message(f"   🔒 SYNC BLOQUÉE pour protection des données", "ERROR")
+
+        log_to_file(f"RÉGRESSION SERIAL DÉTECTÉE: {last_known_serial} -> {current_csv_last_serial} - SYNC BLOQUÉE",
+                    "ERROR")
+        return False
+
+    # Tout va bien - mise à jour du fichier de contrôle
+    if current_csv_number >= last_known_number:
+        if current_csv_number > last_known_number:
+            log_message(f"✅ Progression normale: {last_known_number} -> {current_csv_number}")
+            save_last_serial_to_file(current_csv_last_serial)
+            log_to_file(f"Progression serial: {last_known_serial} -> {current_csv_last_serial}")
+        else:
+            log_message(f"✅ Même niveau: {current_csv_number} (pas de nouvelles batteries)")
+
+        return True
+
+
+def reset_serial_protection():
+    """
+    FONCTION DE MAINTENANCE - Remet à zéro la protection.
+    À utiliser UNIQUEMENT en cas de reset volontaire du CSV.
+    """
+    try:
+        if os.path.exists(LAST_SERIAL_FILE):
+            os.remove(LAST_SERIAL_FILE)
+            log_message("🔄 Fichier de protection serial supprimé")
+            log_to_file("Protection serial remise à zéro (action manuelle)")
+        else:
+            log_message("📄 Aucun fichier de protection à supprimer")
+    except Exception as e:
+        log_message(f"❌ Erreur suppression fichier protection: {e}", "ERROR")
+
+
 def process_csv_with_error_handling(collection):
     """Traite le CSV avec gestion d'erreurs robuste."""
     successful_operations = 0
@@ -302,7 +444,7 @@ def print_summary(successful, failed, duration):
 
 
 def main():
-    """Fonction principale avec gestion d'erreurs complète."""
+    """Fonction principale avec protection anti-régression."""
     start_time = time.time()
 
     try:
@@ -313,6 +455,12 @@ def main():
         log_message("📋 Validation des prérequis...")
         config = load_config()
         validate_csv_file()
+
+        # 🛡️ PROTECTION ANTI-RÉGRESSION
+        if not check_serial_regression():
+            log_message("🛑 Synchronisation annulée pour protection des données")
+            log_to_file("Synchronisation annulée - régression serial détectée", "ERROR")
+            sys.exit(2)  # Code d'erreur spécifique pour régression
 
         # Connexion MongoDB
         client = create_mongo_client_with_retry(config)
@@ -360,4 +508,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # Script de maintenance pour reset manuel
+    if len(sys.argv) > 1 and sys.argv[1] == "--reset-protection":
+        print("⚠️  Reset de la protection serial...")
+        reset_serial_protection()
+        print("✅ Protection remise à zéro")
+    else:
+        main()
