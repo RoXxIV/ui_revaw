@@ -386,14 +386,10 @@ def printer_worker_thread():
 def create_topic_handlers():
     """Crée les handlers MQTT avec accès aux variables globales."""
     base_handlers = get_topic_handlers()
-    print(f"DEBUG: base_handlers keys: {list(base_handlers.keys())}")  # ← Ajout
 
     wrapped_handlers = {}
     for topic, handler_func in base_handlers.items():
-        print(f"DEBUG: Wrapping {topic} -> {handler_func.__name__}")  # ← Ajout
         wrapped_handlers[topic] = lambda payload, h=handler_func: h(payload, print_queue, queue_lock)
-
-    print(f"DEBUG: wrapped_handlers keys: {list(wrapped_handlers.keys())}")  # ← Ajout
     return wrapped_handlers
 
 
@@ -404,7 +400,6 @@ TOPIC_HANDLERS = create_topic_handlers()
 def on_connect(client, userdata, flags, rc, properties=None):
     if rc == 0:
         log(f"Connecté au broker MQTT {PrinterConfig.MQTT_BROKER_HOST}:{PrinterConfig.MQTT_BROKER_PORT}", level="INFO")
-        log(f"DEBUG: MQTT_TOPIC_TEST_DONE = '{PrinterConfig.MQTT_TOPIC_TEST_DONE}'", level="INFO")
         client.subscribe([(PrinterConfig.MQTT_TOPIC_CREATE_LABEL, 1),
                           (PrinterConfig.MQTT_TOPIC_REQUEST_FULL_REPRINT, 1),
                           (PrinterConfig.MQTT_TOPIC_UPDATE_SHIPPING_TIMESTAMP, 1),
@@ -421,7 +416,6 @@ def on_message(client, userdata, msg):
     """
     Router simple vers les handlers spécifiques selon le topic.
     """
-    print(f"[DEBUG URGENT] Message MQTT reçu: topic='{msg.topic}', payload='{msg.payload.decode()}'")
     log(f"[DEBUG] Message MQTT reçu: topic='{msg.topic}'", level="INFO")
     try:
         payload_str = msg.payload.decode("utf-8")

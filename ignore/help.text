@@ -25,3 +25,10 @@ echo '{ "ri_discharge_average": 0.24781, "diffusion_discharge_average": 0.213292
     0.00004
   ]
 }
+
+j'ai besoins d'ajouter un truc a mon projet . un dossier src/mongodb avec un script indépendant du reste du code qui va, quand il est lancé récupérer les informations de printed_serials.csv et les ajouter a une bdd mongodb.
+
+pour chaque ligne il va verifier dans data (uniquement banc1,banc2,banc3 et banc4) si la batterie existe d'apres sont serial. si elle existe il recupere le contenu de config.json et l'ajouter egalement a la bdd.il il ne trouve pas le dossier alors pass ( on continu ).
+
+dXY5yweBjuEUooUp
+

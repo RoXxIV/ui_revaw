@@ -113,12 +113,13 @@ class LabelTemplates:
 ^XA
 ^MMT
 ^PW815
-^LL400
+^LL408
 ^LS0
-^FT202,73^A0N,28,28^FH\\^CI28^FDNumero de serie : {serial_number}^FS^CI27
-^FT267,348^A0N,28,28^FH\\^CI28^FDFabriqué le : {fabrication_date_str}^FS^CI27
-^FT11,36^A0N,28,28^FH\\^CI28^FD{PrinterConfig.SOFTWARE_VERSION}^FS^CI27
-^FT306,322^BQN,2,7
+^FT30,48^A0N,28,28^FH\\^CI28^FDVersion : {PrinterConfig.SOFTWARE_VERSION}^FS^CI27
+^FT30,92^A0N,28,28^FH\\^CI28^FDFabriqué le : {fabrication_date_str}^FS^CI27
+^FT30,291^A0N,28,28^FH\\^CI28^FDNumero de serie :^FS^CI27
+^FT30,366^A0N,68,68^FH\\^CI28^FD{serial_number}^FS^CI27
+^FT470,320^BQN,2,12
 ^FH\\^FDLA,{serial_number}^FS
 ^PQ1,0,1,Y
 ^XZ

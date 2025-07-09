@@ -462,7 +462,6 @@ class ScanManager:
             message1 (str): Message pour le premier label
             message2 (str): Message pour le second label
         """
-        print(f"DEBUG: _update_ui appelé avec '{message1}' et '{message2}'")
         if message1:  # Ne mettre à jour que si le message n'est pas vide
             self.app.label_response1.configure(text=message1)
         if message2:  # Ne mettre à jour que si le message n'est pas vide

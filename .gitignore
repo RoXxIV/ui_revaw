@@ -1,8 +1,12 @@
 *.pyc
 venv/
-logs.log
+src/logs
 data/
 bancs_config.json
 printed_serials.csv
 src/ui/email/email_config.json
 /ignore
+/src/mongo_db/mongo_config.json
+/src/mongo_db/mongo_sync.log
+/src/mongo_db/last_serial.txt
+/src/mongo_db/export.csv

@@ -804,7 +804,6 @@ def run_ui():
         app = App()
     except Exception as e:
         log(f"UI: Erreur critique lors de l'initialisation de App(): {e}", level="WARNING")
-        print(f"Erreur critique UI: {e}")
         return
 
     try:
